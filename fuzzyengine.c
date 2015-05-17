@@ -44,7 +44,8 @@ void add_ling_val(ling_var* variable, ling_val* value)
 }
 
 /* ======================= LINGUISTIC VALUE LOGIC ========================= */
-ling_val* create_linguistic_value(const char* name, double a, double b, double c)
+ling_val* create_linguistic_value(const char* name, double a, double b,
+                                  double c, double d)
 {
     uint8_t name_len = strlen(name);
     ling_val* value = (ling_val*)malloc(sizeof(ling_val));
@@ -54,6 +55,7 @@ ling_val* create_linguistic_value(const char* name, double a, double b, double c
     value->a = a;
     value->b = b;
     value->c = c;
+    value->d = d;
 
     return value;
 }
