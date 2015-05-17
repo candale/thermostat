@@ -6,15 +6,15 @@
 typedef enum {NONE = 0, AND, OR} fuzzy_op;
 typedef enum {INPUT = 0, OUTPUT} ling_var_type;
 
-/* holds the linguistic values, e.g. HIGH, LOW, MEDIUM etc       */
+/* holds the linguistic values, e.g. HIGH, LOW, MEDIUM etc */
 typedef struct ling_val_struct {
     char* name;
-    double a, b, c;
+    double a, b, c, d;
 } ling_val;
 
 typedef double (*triangular_mf)(ling_val*, double);
 
-/* holds the linguistic_variables, e.g. TEMPERATURE, HEIGHT etc  */
+/* holds the linguistic_variables, e.g. TEMPERATURE, HEIGHT etc */
 typedef struct ling_var_struct {
     char* name;
     double value;   
@@ -23,7 +23,7 @@ typedef struct ling_var_struct {
     ling_var_type type;
 } ling_var;
 
-/* holds part of an atecetend, e.g. TEMPERATURE is HIGH          */
+/* holds part of an atecetend, e.g. TEMPERATURE is HIGH */
 typedef struct condition_struct {
     ling_var* variable;
     ling_val* value;
@@ -76,7 +76,8 @@ void add_ling_val(ling_var*, ling_val*);
  * Allocates memory for a linguistic value and sets the name
  * and triangular shape boundries for it
 */
-ling_val* create_linguistic_value(const char* name, double, double, double);
+ling_val* create_linguistic_value(const char* name,
+                                  double a, double b, double c, double d);
 
 /*
  * Allocates memory for a rule and sets its antecentent and consequent
@@ -114,3 +115,9 @@ condition* create_condition(ling_var*, ling_val*, fuzzy_op);
  * linguistic variables and the rules
 */
 void dump_engine(fuzzy_engine*);
+
+/*
+ * Calculates the membership degree of a given input to a linguistic
+ * value determined by a trapezium
+*/
+// double trapezium_mf(double input, ling_val* value);

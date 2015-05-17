@@ -15,6 +15,6 @@ typedef struct linked_list_struct {
     void (*add)(struct linked_list_struct* list, void*data);
 } linked_list;
 
-linked_list_node* new_linked_list_node();
+// linked_list_node* new_linked_list_node();
 linked_list* new_linked_list();
 void add(linked_list* list, void* data);

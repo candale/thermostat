@@ -1,7 +1,7 @@
 #include "linkedlist.h"
 
 
-linked_list_node* new_linked_list_node() {
+static linked_list_node* new_linked_list_node() {
     linked_list_node* node = (
         (linked_list_node*)malloc(sizeof(linked_list_node)));
     memset(node, 0, sizeof(linked_list_node));

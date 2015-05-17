@@ -57,6 +57,7 @@ void init_fuzzy_engine(fuzzy_engine* engine) {
     add_ling_var(engine, rate_of_heating);
     add_ling_var(engine, heat_status);
 
+    // ============================== RULES ==================================
     // if temp_err is higg and rate_of_heating is low then heat_status is ON
     rule_antecedent* antecedent_1 = create_rule_antecedent();
     condition* cond_11 = create_condition(temp_err, high_temp, AND);

@@ -111,7 +111,8 @@ rule_consequent* create_rule_consequent(ling_var* variable, ling_val* value)
     return consequent;
 }
 
-void dump_engine(fuzzy_engine* engine) {
+void dump_engine(fuzzy_engine* engine)
+{
     printf("Linguistic variables\n====================\n");
     linked_list_node* node = engine->ling_vars->head;
     linked_list_node* aux_node;
@@ -149,4 +150,31 @@ void dump_engine(fuzzy_engine* engine) {
                rule->consequent->value->name);
         node = node->next;
     }
+}
+
+static double trapezium_mf(double input, ling_val* value)
+{
+    double a, b, c, d;
+    a = value->a;
+    b = value->b;
+    c = value->c;
+    d = value->d;
+
+    /* if outside of boundries */
+    if(input <= a && input >= d) {
+        return 0;
+    }
+    /* if on the ascending side */
+    if(input > a && input <= b) {
+        return (input - a) / (b - a);
+    }
+    /* if on the top side */
+    if(input > b && input <= c) {
+        return 1;
+    }
+    /* if on the descending side */
+    if(input > c && input <= d) {
+        return (d - input) / (d - c);
+    }
+    return 0;
 }
