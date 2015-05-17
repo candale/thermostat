@@ -120,7 +120,7 @@ void dump_engine(fuzzy_engine* engine)
     ling_val* val;
     while(node != 0) {
         var = (ling_var*)node->data;
-        printf("%d %d %s\n", var->id, var->type, var->name);
+        printf("%d %d %s %f\n", var->id, var->type, var->name, var->value);
         aux_node = var->values->head;
         printf("   ");
         while(aux_node != 0) {
@@ -146,10 +146,40 @@ void dump_engine(fuzzy_engine* engine)
             aux_node = aux_node->next;
         }
 
-        printf("then %s is %s\n", rule->consequent->variable->name,
-               rule->consequent->value->name);
+        printf("then %s is %s  |  result: %f  consequent value: %f\n",
+               rule->consequent->variable->name, rule->consequent->value->name,
+               rule->result, rule->consequent->result);
         node = node->next;
     }
+}
+
+static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
+                              double value)
+{
+    linked_list_node* node = engine->ling_vars->head;
+    ling_var* var;
+    while(node != 0) {
+        var = (ling_var*)node->data;
+        if(name != 0 && strcmp(var->name, name) == 0) {
+            var->value = value;
+            return 1;
+        } else if(id >= 0 && var->id == id) {
+            var->value = value;
+            return 1;
+        }
+        node = node->next;
+    }
+    return 0;
+}
+
+uint8_t register_value_by_name(fuzzy_engine* engine, char* name, double value)
+{
+    return register_value(engine, name, -1, value);
+}
+
+uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value)
+{
+    return register_value(engine, 0, id, value);
 }
 
 static double trapezium_mf(double input, ling_val* value)
@@ -177,4 +207,54 @@ static double trapezium_mf(double input, ling_val* value)
         return (d - input) / (d - c);
     }
     return 0;
+}
+
+static double max(double a, double b)
+{
+    return a > b ? a : b;
+}
+
+static double min(double a, double b)
+{
+    return a < b ? a: b;   
+}
+
+
+static void evaluate_rules(fuzzy_engine* engine) 
+{
+    linked_list_node* rule_node;
+    linked_list_node* condition_node;
+    condition* cond;
+    double tmp_res;
+    fuzzy_op op = NONE;
+
+    rule_node = engine->rules->head;
+    while(rule_node != 0) {
+        fuzzy_rule* rule = rule_node->data;
+        condition_node = rule->antecedent->head;
+
+        while(condition_node != 0) {
+            cond = condition_node->data;
+            tmp_res = trapezium_mf(cond->variable->value, cond->value);
+
+            if(op == AND) {
+                rule->result = min(rule->result, tmp_res);
+            } else if(op == OR) {
+                rule->result = max(rule->result, tmp_res);
+            } else {
+                rule->result = tmp_res;
+            }
+
+            op = cond->op;
+            condition_node = condition_node->next;
+        }
+        rule->consequent->result = max(rule->consequent->result, rule->result);
+
+        rule_node = rule_node->next;
+    }  
+}
+
+void run_fuzzy(fuzzy_engine* engine)
+{
+    evaluate_rules(engine);
 }

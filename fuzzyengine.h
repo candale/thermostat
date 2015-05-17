@@ -33,7 +33,11 @@ typedef struct condition_struct {
 /* holds the atecedent of a rule, 
    e.g. TEMPERATURE is HIGH AND HUMIDITY is LOW*/
 typedef linked_list rule_antecedent;
-typedef condition rule_consequent;
+typedef struct rule_consequent_struct {
+    ling_var* variable;
+    ling_val* value;
+    double result;
+} rule_consequent;
 
 /* holds the antecedent and consequent of a rule*/
 typedef struct rule_struct {
@@ -117,7 +121,49 @@ condition* create_condition(ling_var*, ling_val*, fuzzy_op);
 void dump_engine(fuzzy_engine*);
 
 /*
+ * Sets an input value for a linguistic variable that is identified
+ * by its name
+*/
+uint8_t register_value_by_name(fuzzy_engine* engine, char* name, double value);
+
+/*
+ * Sets an input value for a linguistic variable that is identified
+ * by its id
+*/
+uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value);
+
+/*
+ * Runs the whole fuzzy process
+*/
+ void run_fuzzy(fuzzy_engine* engine);
+
+/* ============================ STATIC FUNCTIONS =========================== */
+/*
  * Calculates the membership degree of a given input to a linguistic
  * value determined by a trapezium
 */
 // double trapezium_mf(double input, ling_val* value);
+
+/*
+ * Goes through all the rules and calculates the resulting value
+*/
+// void evaluate_rules();
+
+/*
+ * Returns the maximum of two values
+*/
+// double max(double a, double b);
+
+/*
+ * Returns the minimum of two values
+*/
+// double min(double a, double b);
+
+/*
+ * Sets an input value for a linguistic variable that is identified
+ * either by its id or its name
+ * To be identified by its id, the name pointer must be 0
+ * To be identified by its name, id must be less than 0
+*/
+// static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
+//                               double value)

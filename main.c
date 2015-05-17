@@ -80,6 +80,11 @@ void init_fuzzy_engine(fuzzy_engine* engine) {
     fuzzy_rule* rule_2 = create_rule(antecedent_2, consequent_2);
     add_rule(engine, rule_2);
 
+    register_value_by_name(engine, "temp_err", 5);
+    register_value_by_name(engine, "roh", 20);
+
+    run_fuzzy(engine);
+
 }
 
 int main() {
