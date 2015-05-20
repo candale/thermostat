@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "linkedlist.h"
 
+#define POINTS_ARE_EQUAL(p1, p2) (p1.x == p2.x && p1.y == p2.y)
 
 /* ============== STRUCTURE DEFINITIONS =============== */
 typedef enum {NONE = 0, AND, OR} fuzzy_op;
@@ -49,8 +50,13 @@ typedef struct rule_struct {
 /* holds everything together */
 typedef struct fuzzy_engine_struct {
     linked_list* ling_vars;
+    linked_list* consequents;
     linked_list* rules;
 } fuzzy_engine;
+
+typedef struct point_struct {
+    double x, y;
+} point;
 
 /*
  * Allocates a fuzzy_egine structre that holds all the components of
@@ -86,7 +92,7 @@ ling_val* create_linguistic_value(const char* name,
 /*
  * Allocates memory for a rule and sets its antecentent and consequent
 */
-fuzzy_rule* create_rule(rule_antecedent*, rule_consequent*);
+fuzzy_rule* create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
 
 /*
  * Allocates memory for a rule anatecedent
@@ -167,3 +173,14 @@ uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value);
 */
 // static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
 //                               double value)
+
+/*
+ * Defuzzyfies the rules' outputs using the centroid method
+*/
+// static void defuzzify(fuzzy_engine* engine)
+
+/*
+ * Insert sort that orders consequents by their values' a attribute
+*/
+//void order_consequents_geometrically(rule_consequent** consequent_list,
+//                                     int length)

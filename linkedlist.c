@@ -24,6 +24,7 @@ void add(linked_list* list, void* data) {
 
     list->tail->next = node;
     list->tail = node;
+    list->length++;
 }
 
 linked_list* new_linked_list() {
