@@ -1,0 +1,85 @@
+outside temperature:
+   - in order to determine how much heat will be lost while heating the room
+     thus knowing how much time should the heat be left on to achieve the exact
+     desidered temperature
+humidity:
+   - not sure yet 
+inside temperature:
+   - the temperature indoors
+target temperature:
+   - the remperature that needs to be reached
+     the higher the temperature the more should the heat be left on
+room light level:
+   - the higher the light level, the greater the felt temperature is
+rate of heating
+   - the faster the room heats up, the sooner we can turn of the heating,
+     thus saving energy
+rate of cooling
+   - the faster the cooling, the sooner we can start the heating so the
+     temperature would be constant?
+
+Control data like rapid cool down or rapid heat up?
+
+
+// not sure this is needed if we have rate of heating and cooling
+OUTISDE_TEMPREATURE: OT
+   extremly_cold  -50 ... -15    EC
+   very_cold      -20 ... -5     VC
+   cold           -10 ...  3     C
+   moderate       -1  ...  7     M
+
+HUMIDITY: H
+   low            < 30%          L
+   comfortable    30% ... 50%    C
+   high           > 50 %         H
+
+// probably needs more granularity  
+INSIDE_TEMP_DELTA: ITD
+   great       > 5                 G
+   moderate    2   ... 5           M
+   small       1   ... 3           A
+   very_small  0.5 ... 1           VS
+   negligible  0   ... 0.5         N
+
+ROOM_LIGHT_LEVEL: L
+   negligible        ?           N
+   high              ?           H
+   very_high         ?           VH
+   // this might not be relevant since it could be just a ray
+   direct_sunlight   ?           DS
+
+// it is defined in minutes per half a degree celsius
+RATE_OF_HEATING: ROH
+   very_slow         > 20        VS
+   slow              10 ... 25   S
+   fast              5 ... 15    F
+   very_fast         0 ... 10    VF
+
+// it is defined in minutes per half a degree celsius
+RATE_OF_COOLING: ROC
+   very_slow         > 20        VS
+   slow              10 ... 25   S
+   fast              5 ... 15    F
+   very_fast         0 ... 10    VF
+
+    
+RULES
+=====
+
+// ROH VS
+if ITD is G and ROH is VS TURN_ON
+if ITD is M and ROH is VS TURN_ON
+if ITD is S and ROH is VS TURN_ON
+if ITD is VS and ROH is VS TURN_ON
+
+// ROH S
+if ITD is G and ROH is S TURN_ON
+if ITD is M and ROH is S TURN_ON
+if ITD is S and ROH is S TURN_ON
+if ITD is VS and ROH is S TURN_ON
+
+
+
+// maybe by knowing the time it takes to step over the acceptable IDT
+// you can turn the heating on in advance?
+if IDT is N and ROH is VS and ROC is VF TURN_ON             ???

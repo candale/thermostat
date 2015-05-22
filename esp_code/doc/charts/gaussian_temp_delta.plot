@@ -1,0 +1,1 @@
+exp(-1./2. * ((x - 12.) / 8.) ** 2.) title 'great (c=12, md=8)', exp(-1./2. * ((x - 3.5) / 1.5) ** 2.) title 'moderate (c=3.5, md=1.5)', exp(-1./2. * ((x - 2.) / 1) ** 2) title 'small (c=2, md=1)', exp(-1./2. * ((x - 0.75) / 0.25) ** 2.) title 'very_small (c=0.75, md=0.75)', exp(-1./2.* ((x - 0.25) / 0.25) ** 2.) title 'negigible (c=0.25, md=0.25)' 
