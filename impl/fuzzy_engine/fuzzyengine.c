@@ -411,7 +411,7 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
 static point* get_centroid(linked_list* points)
 {
     double signed_area = 0.0;
-    double paritial_signed_area = 0.0; 
+    double paritial_signed_area = 0.0;
     double x0, y0, x1, y1;
     x0 = y0 = x1 = y1 = 0.0;
     linked_list_node* node = points->head;
@@ -484,6 +484,23 @@ static void defuzzify(fuzzy_engine* engine)
 
     point* centroid = get_centroid(points);
     printf("x: %f y:%f", centroid->x, centroid->y);
+
+    // free everything
+    linked_list_node *aux_node;
+    node = points->head;
+    while(node != 0) {
+        aux_node = node->next;
+        free(node->data);
+        free(node);
+        node = aux_node;
+    }
+    free(points);
+    free(centroid);
+    for(i = 0; i < consequents_no; i++) {
+        free(consequent_list[i]);
+    }
+    free(raw_points);
+    free(consequent_list);
 }
 
 void run_fuzzy(fuzzy_engine* engine)
