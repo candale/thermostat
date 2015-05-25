@@ -1,5 +1,7 @@
-#include <stdlib.h>
-#include <string.h>
+#include "ets_sys.h"
+#include "os_type.h"
+#include "osapi.h"
+#include "mem.h"
 
 
 typedef struct linked_list_node_struct {

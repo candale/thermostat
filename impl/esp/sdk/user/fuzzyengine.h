@@ -1,4 +1,7 @@
-#include <stdint.h>
+#include "ets_sys.h"
+#include "os_type.h"
+#include "osapi.h"
+#include "mem.h"
 #include "linkedlist.h"
 
 #define POINTS_ARE_EQUAL(p1, p2) (p1.x == p2.x && p1.y == p2.y)
@@ -18,7 +21,7 @@ typedef double (*triangular_mf)(ling_val*, double);
 /* holds the linguistic_variables, e.g. TEMPERATURE, HEIGHT etc */
 typedef struct ling_var_struct {
     char* name;
-    double value;   
+    double value;
     int id;
     linked_list* values;
     ling_var_type type;
@@ -31,7 +34,7 @@ typedef struct condition_struct {
     fuzzy_op op;
 } condition;
 
-/* holds the atecedent of a rule, 
+/* holds the atecedent of a rule,
    e.g. TEMPERATURE is HIGH AND HUMIDITY is LOW*/
 typedef linked_list rule_antecedent;
 typedef struct rule_consequent_struct {
@@ -110,7 +113,7 @@ void add_condition_to_antecedent(rule_antecedent*, condition*);
 rule_consequent* create_rule_consequent(ling_var*, ling_val*);
 
 /*
- * Allocates memory for a condition and sets its variable, value and 
+ * Allocates memory for a condition and sets its variable, value and
  * fuzzy operator that will be applied between the current condition
  * and the one that will follow it
  * Example:

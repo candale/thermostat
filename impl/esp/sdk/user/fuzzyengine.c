@@ -3,34 +3,38 @@
 
 
 /* ========================== FUZZY ENGINE LOGIC ========================== */
-fuzzy_engine* create_fuzzy_engine()
+fuzzy_engine* ICACHE_FLASH_ATTR
+create_fuzzy_engine()
 {
-    fuzzy_engine* engine = (fuzzy_engine*)malloc(sizeof(fuzzy_engine));
+    fuzzy_engine* engine = (fuzzy_engine*)os_malloc(sizeof(fuzzy_engine));
     engine->ling_vars = new_linked_list();
     engine->rules = new_linked_list();
     engine->consequents = new_linked_list();
     return engine;
 }
 
-void add_ling_var(fuzzy_engine* engine, ling_var* variable)
+void ICACHE_FLASH_ATTR
+add_ling_var(fuzzy_engine* engine, ling_var* variable)
 {
     engine->ling_vars->add(engine->ling_vars, variable);
 }
 
-void add_rule(fuzzy_engine* engine, fuzzy_rule* rule)
+void ICACHE_FLASH_ATTR
+add_rule(fuzzy_engine* engine, fuzzy_rule* rule)
 {
     engine->rules->add(engine->rules, rule);
 }
 
 /* ====================== LINGUISTIC VARIABLE LOGIC ======================= */
-ling_var* create_linguistic_variable(const char* name, int id,
+ling_var* ICACHE_FLASH_ATTR
+create_linguistic_variable(const char* name, int id,
                                      ling_var_type type)
 {
     uint8_t name_len = strlen(name);
-    ling_var* var = (ling_var*)malloc(sizeof(ling_var));
+    ling_var* var = (ling_var*)os_malloc(sizeof(ling_var));
 
     memset(var, 0, sizeof(ling_var));
-    var->name = (char*)malloc(name_len + 1);
+    var->name = (char*)os_malloc(name_len + 1);
     strcpy(var->name, name);
     var->id = id;
     var->values = new_linked_list();
@@ -39,19 +43,21 @@ ling_var* create_linguistic_variable(const char* name, int id,
     return var;
 }
 
-void add_ling_val(ling_var* variable, ling_val* value)
+void ICACHE_FLASH_ATTR
+add_ling_val(ling_var* variable, ling_val* value)
 {
     variable->values->add(variable->values, value);
 }
 
 /* ======================= LINGUISTIC VALUE LOGIC ========================= */
-ling_val* create_linguistic_value(const char* name, double a, double b,
+ling_val* ICACHE_FLASH_ATTR
+create_linguistic_value(const char* name, double a, double b,
                                   double c, double d)
 {
     uint8_t name_len = strlen(name);
-    ling_val* value = (ling_val*)malloc(sizeof(ling_val));
+    ling_val* value = (ling_val*)os_malloc(sizeof(ling_val));
     memset(value, 0, sizeof(ling_val));
-    value->name = (char*)malloc(name_len + 1);
+    value->name = (char*)os_malloc(name_len + 1);
     strcpy(value->name, name);
     value->a = a;
     value->b = b;
@@ -62,10 +68,11 @@ ling_val* create_linguistic_value(const char* name, double a, double b,
 }
 
 /* ======================== FUZZY RULE LOGIC ============================== */
-fuzzy_rule* create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
+fuzzy_rule* ICACHE_FLASH_ATTR
+create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
                         rule_consequent* consequent)
 {
-    fuzzy_rule* rule = (fuzzy_rule*)malloc(sizeof(fuzzy_rule));
+    fuzzy_rule* rule = (fuzzy_rule*)os_malloc(sizeof(fuzzy_rule));
     memset(rule, 0, sizeof(fuzzy_rule));
     rule->antecedent = antecedent;
     rule->consequent = consequent;
@@ -86,20 +93,23 @@ fuzzy_rule* create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
 
     return rule;
 }
-void set_rule_antecedent(fuzzy_rule* rule, rule_antecedent* antecedent)
+void ICACHE_FLASH_ATTR
+set_rule_antecedent(fuzzy_rule* rule, rule_antecedent* antecedent)
 {
     rule->antecedent = antecedent;
 }
 
-void set_rule_consequent(fuzzy_rule* rule, rule_consequent* consequent)
+void ICACHE_FLASH_ATTR
+set_rule_consequent(fuzzy_rule* rule, rule_consequent* consequent)
 {
     rule->consequent = consequent;
 }
 
 /* ====================== ANTECEDENT AND CONSEQUENT LOGIC ================= */
-condition* create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
+condition* ICACHE_FLASH_ATTR
+create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
 {
-    condition* cond = (condition*)malloc(sizeof(condition));
+    condition* cond = (condition*)os_malloc(sizeof(condition));
     memset(cond, 0, sizeof(condition));
     cond->variable = variable;
     cond->value = value;
@@ -107,18 +117,21 @@ condition* create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
     return cond;
 }
 
-rule_antecedent* create_rule_antecedent()
+rule_antecedent* ICACHE_FLASH_ATTR
+create_rule_antecedent()
 {
     rule_antecedent* antecedent = new_linked_list();
     return antecedent;
 }
 
-void add_condition_to_antecedent(rule_antecedent* antecedent, condition* cond)
+void ICACHE_FLASH_ATTR
+add_condition_to_antecedent(rule_antecedent* antecedent, condition* cond)
 {
     antecedent->add(antecedent, cond);
 }
 
-rule_consequent* create_rule_consequent(ling_var* variable, ling_val* value)
+rule_consequent* ICACHE_FLASH_ATTR
+create_rule_consequent(ling_var* variable, ling_val* value)
 {
     rule_consequent* consequent = (rule_consequent*)new_linked_list();
     memset(consequent, 0, sizeof(rule_consequent));
@@ -127,7 +140,7 @@ rule_consequent* create_rule_consequent(ling_var* variable, ling_val* value)
     return consequent;
 }
 
-void dump_engine(fuzzy_engine* engine)
+void ICACHE_FLASH_ATTR dump_engine(fuzzy_engine* engine)
 {
     printf("Linguistic variables\n====================\n");
     linked_list_node* node = engine->ling_vars->head;
@@ -169,7 +182,7 @@ void dump_engine(fuzzy_engine* engine)
     }
 }
 
-static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
+static uint8_t ICACHE_FLASH_ATTR register_value(fuzzy_engine* engine, char*name, int id,
                               double value)
 {
     linked_list_node* node = engine->ling_vars->head;
@@ -188,17 +201,19 @@ static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
     return 0;
 }
 
-uint8_t register_value_by_name(fuzzy_engine* engine, char* name, double value)
+uint8_t ICACHE_FLASH_ATTR
+register_value_by_name(fuzzy_engine* engine, char* name, double value)
 {
     return register_value(engine, name, -1, value);
 }
 
-uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value)
+uint8_t ICACHE_FLASH_ATTR
+register_value_by_id(fuzzy_engine* engine, int id, double value)
 {
     return register_value(engine, 0, id, value);
 }
 
-static double trapezium_mf(double input, ling_val* value)
+static double ICACHE_FLASH_ATTR trapezium_mf(double input, ling_val* value)
 {
     double a, b, c, d;
     a = value->a;
@@ -225,18 +240,18 @@ static double trapezium_mf(double input, ling_val* value)
     return 0;
 }
 
-static double max(double a, double b)
+static double ICACHE_FLASH_ATTR max(double a, double b)
 {
     return a > b ? a : b;
 }
 
-static double min(double a, double b)
+static double ICACHE_FLASH_ATTR min(double a, double b)
 {
     return a < b ? a: b;
 }
 
 
-static void evaluate_rules(fuzzy_engine* engine)
+static void ICACHE_FLASH_ATTR evaluate_rules(fuzzy_engine* engine)
 {
     linked_list_node* rule_node;
     linked_list_node* condition_node;
@@ -271,7 +286,7 @@ static void evaluate_rules(fuzzy_engine* engine)
     }
 }
 
-static void order_consequents_geometrically(rule_consequent** consequent_list,
+static void ICACHE_FLASH_ATTR order_consequents_geometrically(rule_consequent** consequent_list,
                                             int length)
 {
     int i, j;
@@ -287,7 +302,7 @@ static void order_consequents_geometrically(rule_consequent** consequent_list,
     }
 }
 
-static double get_x_for_y_on_line(double x1, double x2, double y, int dir)
+static double ICACHE_FLASH_ATTR get_x_for_y_on_line(double x1, double x2, double y, int dir)
 {
     if(x1 == x2) {
         return x1;
@@ -296,7 +311,7 @@ static double get_x_for_y_on_line(double x1, double x2, double y, int dir)
     return (slope * x1 + y) / slope;
 }
 
-static point* get_intersection_point(point p1, point p2, point p3, point p4)
+static point* ICACHE_FLASH_ATTR get_intersection_point(point p1, point p2, point p3, point p4)
 {
     double x1 = p1.x, x2 = p2.x, x3 = p3.x, x4 = p4.x;
     double y1 = p1.y, y2 = p2.y, y3 = p3.y, y4 = p4.y;
@@ -322,18 +337,18 @@ static point* get_intersection_point(point p1, point p2, point p3, point p4)
     }
 
     // Return the point of intersection
-    point * p = (point*)malloc(sizeof(point));
+    point * p = (point*)os_malloc(sizeof(point));
     p->x = x;
     p->y = y;
     return p;
 }
 
-static point* get_raw_polygon_points(rule_consequent** consequent_list,
+static point* ICACHE_FLASH_ATTR get_raw_polygon_points(rule_consequent** consequent_list,
                                      uint8_t length)
 {
     rule_consequent* consequent;
     ling_val* val;
-    point* points = (point*)malloc(length * 4 * sizeof(point));
+    point* points = (point*)os_malloc(length * 4 * sizeof(point));
     uint8_t i;
     uint8_t count = 0;
     for(i = 0; i < length; i++) {
@@ -366,7 +381,7 @@ static point* get_raw_polygon_points(rule_consequent** consequent_list,
     return points;
 }
 
-static linked_list* get_polygon_points(point* points, uint8_t length)
+static linked_list* ICACHE_FLASH_ATTR get_polygon_points(point* points, uint8_t length)
 {
     uint8_t i, j, found;
     point* intersection_point, *tmp_point;
@@ -378,7 +393,7 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
             intersection_point = get_intersection_point(
                 points[i], points[i + 1], points[j], points[j + 1]);
             if(intersection_point != 0) {
-                tmp_point = (point*)malloc(sizeof(point));
+                tmp_point = (point*)os_malloc(sizeof(point));
                 tmp_point->x = points[i].x;
                 tmp_point->y = points[i].y;
                 processed_points->add(processed_points, (void*)tmp_point);
@@ -386,7 +401,7 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
                 // the intersection point
                 processed_points->add(processed_points, (void*)intersection_point);
 
-                tmp_point = (point*)malloc(sizeof(point));
+                tmp_point = (point*)os_malloc(sizeof(point));
                 tmp_point->x = points[j + 1].x;
                 tmp_point->y = points[j + 1].y;
                 processed_points->add(processed_points, (void*)tmp_point);
@@ -396,7 +411,7 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
         }
 
         if(found == 0) {
-            tmp_point = (point*)malloc(sizeof(point));
+            tmp_point = (point*)os_malloc(sizeof(point));
             tmp_point->x = points[i].x;
             tmp_point->y = points[i].y;
             processed_points->add(processed_points, (void*)tmp_point);
@@ -408,7 +423,7 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
     return processed_points;
 }
 
-static point* get_centroid(linked_list* points)
+static point* ICACHE_FLASH_ATTR get_centroid(linked_list* points)
 {
     double signed_area = 0.0;
     double paritial_signed_area = 0.0;
@@ -416,7 +431,7 @@ static point* get_centroid(linked_list* points)
     x0 = y0 = x1 = y1 = 0.0;
     linked_list_node* node = points->head;
     point* current_point, *next_point, *centroid;
-    centroid = (point*)malloc(sizeof(point));
+    centroid = (point*)os_malloc(sizeof(point));
     while(node->next != 0) {
         current_point = (point*)node->data;
         next_point = (point*)((linked_list_node*)node->next)->data;
@@ -455,10 +470,10 @@ static point* get_centroid(linked_list* points)
     return centroid;
 }
 
-static void defuzzify(fuzzy_engine* engine)
+static void ICACHE_FLASH_ATTR defuzzify(fuzzy_engine* engine)
 {
     uint8_t consequents_no = engine->consequents->length;
-    rule_consequent** consequent_list = (rule_consequent**)malloc(
+    rule_consequent** consequent_list = (rule_consequent**)os_malloc(
         consequents_no * sizeof(rule_consequent*));
     uint8_t count = 0, i = 0;
     linked_list_node* node = engine->consequents->head;
@@ -490,17 +505,17 @@ static void defuzzify(fuzzy_engine* engine)
     node = points->head;
     while(node != 0) {
         aux_node = node->next;
-        free(node->data);
-        free(node);
+        os_free(node->data);
+        os_free(node);
         node = aux_node;
     }
-    free(points);
-    free(centroid);
+    os_free(points);
+    os_free(centroid);
     for(i = 0; i < consequents_no; i++) {
-        free(consequent_list[i]);
+        os_free(consequent_list[i]);
     }
-    free(raw_points);
-    free(consequent_list);
+    os_free(raw_points);
+    os_free(consequent_list);
 }
 
 void run_fuzzy(fuzzy_engine* engine)
