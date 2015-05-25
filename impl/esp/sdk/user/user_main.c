@@ -32,10 +32,16 @@
 #define MAX_HTPP_PARAM_VALUE_LENGTH 30
 
 
+/************************************************************/
+/* *************** VARIABLE RELATED CONSTANTS ***************/
+// maximum absolute difference between last recorded variable and current one
+#define MAX_VAR_DIFF 60
+#define MAX_VAR 0xFFFFFFFF
+
 /*****************************************************/
 /* *************** TIME SYNC CONSTANTS ***************/
 // 30 seconds, in microseconds
-#define PUBLISH_REPEAT_INTERVAL 60 * 1000
+#define PUBLISH_REPEAT_INTERVAL 20 * 1000
 
 
 /******************************************************/
@@ -131,8 +137,8 @@ struct espconn server;
 // timer structure to read and send data at given interval
 static volatile os_timer_t read_publish_timer;
 // variables that hold the information
-float temperature = 56.5;
-float humidity = 45.5;
+float temperature = MAX_VAR;
+float humidity = MAX_VAR;
 
 
 /******************************* PROGRAM *******************************/
@@ -563,7 +569,7 @@ void process_wifi_page(struct espconn* conn, char* data,
     }
     if(station_status != STATION_IDLE && station_status != STATION_GOT_IP
             && station_status != 255 && station_status != STATION_NO_AP_FOUND) {
-        os_sprintf(page_buffer, WIFI_FORM, RELOAD_HTML, get_station_status(),
+        os_sprintf(page_buffer, WIFI_FORM, " ", get_station_status(),
                    ip_str);
     } else {
         os_sprintf(page_buffer, WIFI_FORM, " ", get_station_status(),
@@ -601,11 +607,33 @@ void collect_data() {
     char buffer[50];
     buffer[0] = 0;
 
-    serial_read(buffer, 50);
+    if(serial_read(buffer, 50) == 0) {
+        return;
+    }
 
     _process_method_args(buffer, SERIAL);
-    temperature = os_atof((char*)get_param("temperature", SERIAL));
-    humidity = os_atof((char*)get_param("humidity", SERIAL));
+
+    float tmp = os_atof((char*)get_param("temperature", SERIAL));
+    float hum = os_atof((char*)get_param("humidity", SERIAL));
+
+    // somethings we get values that are very high ( ~= 150) out of nowhere
+    // this is a temporary fix that solves that. the problem seems to originate
+    // in the attiny code
+    if(temperature != MAX_VAR) {
+        if(abs(tmp -  temperature) <= MAX_VAR_DIFF) {
+            temperature = tmp;
+        }
+    } else {
+        temperature = tmp;
+    }
+
+    if(humidity != MAX_VAR) {
+        if(abs(hum -  humidity) <= MAX_VAR_DIFF) {
+            humidity = hum;
+        }
+    } else {
+        humidity = hum;
+    }
 }
 
 void read_and_publish_func(void* arg) {

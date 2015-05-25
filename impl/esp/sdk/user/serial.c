@@ -41,7 +41,7 @@ void serial_debug(char* message) {
     }
 }
 
-void serial_read(char* buffer, unsigned short length) {
+int serial_read(char* buffer, unsigned short length) {
     int character = 0;
     char character_byte = -1;
     unsigned short count = 0;
@@ -58,4 +58,5 @@ void serial_read(char* buffer, unsigned short length) {
         count++;
     }
     buffer[count] = 0;
+    return count;
 }
