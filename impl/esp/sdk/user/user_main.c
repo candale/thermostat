@@ -564,7 +564,6 @@ void process_wifi_page(struct espconn* conn, char* data,
     // if we are waiting for connection to access point
     uint8 station_status = wifi_station_get_connect_status();
     if(ip_str[0] == 0) {
-        ip_str = (char*)os_malloc(5);
         os_sprintf(ip_str, "%s", "NaN");
     }
     if(station_status != STATION_IDLE && station_status != STATION_GOT_IP
@@ -666,6 +665,7 @@ void http_recieve(void *arg, char* data, unsigned short length) {
 void ICACHE_FLASH_ATTR
 http_disconnect(void *arg) {
     clean_request_params();
+    os_free((struct espconn*) arg);
 }
 
 void ICACHE_FLASH_ATTR
