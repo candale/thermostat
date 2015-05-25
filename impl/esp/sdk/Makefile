@@ -25,13 +25,13 @@ SDK_BASE    ?= /home/andrei/workspace/licenta/toolchain/espressif_sdk/esp8266/es
 
 # esptool.py path and port
 ESPTOOL     ?= esptool.py
-ESPPORT     ?= /dev/ttyACM0
+ESPPORT     ?= /dev/ttyUSB0
 
 # name for the target project
 TARGET      = app
 
 # which modules (subdirectories) of the project to include in compiling
-MODULES      = driver user include
+MODULES      = user include
 EXTRA_INCDIR = include
 
 # libraries used in this project, mainly provided by the SDK
