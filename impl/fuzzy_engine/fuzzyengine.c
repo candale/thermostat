@@ -458,7 +458,7 @@ static point* get_centroid(linked_list* points)
 static void defuzzify(fuzzy_engine* engine)
 {
     uint8_t consequents_no = engine->consequents->length;
-    rule_consequent** consequent_list = (rule_consequent*)malloc(
+    rule_consequent** consequent_list = (rule_consequent**)malloc(
         consequents_no * sizeof(rule_consequent*));
     uint8_t count = 0, i = 0;
     linked_list_node* node = engine->consequents->head;
