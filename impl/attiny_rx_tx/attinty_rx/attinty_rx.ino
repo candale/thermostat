@@ -33,10 +33,16 @@ void debug_led() {
   digitalWrite(DEBUG_LED, LOW);
 }
 
+void reset_buffer() {
+  request_buffer[0] = request_buffer[1] = 0;
+  request_buffer[2] = request_buffer[3] = 0;
+}
+
 void send_data() {
     sprintf(command, "humidity=%i.%i&temperature=%i.%i",
             buffer[0], buffer[1], buffer[2], buffer[3]);
     serial.println(command);
+    reset_buffer();
 }
 
 void setup() {
