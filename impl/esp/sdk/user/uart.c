@@ -29,7 +29,7 @@ LOCAL void uart0_rx_intr_handler(void *para);
  * Parameters   : uart_no, use UART0 or UART1 defined ahead
  * Returns      : NONE
 *******************************************************************************/
-LOCAL void ICACHE_FLASH_ATTR
+LOCAL void ICACHE_RAM_ATTR
 uart_config(uint8 uart_no)
 {
     if (uart_no == UART1) {
@@ -69,7 +69,7 @@ uart_config(uint8 uart_no)
  * Parameters   : uint8 TxChar - character to tx
  * Returns      : OK
 *******************************************************************************/
-LOCAL STATUS ICACHE_FLASH_ATTR
+LOCAL STATUS ICACHE_RAM_ATTR
 uart1_tx_one_char(uint8 TxChar)
 {
     while (true)
@@ -91,7 +91,7 @@ uart1_tx_one_char(uint8 TxChar)
  * Parameters   : char c - character to tx
  * Returns      : NONE
 *******************************************************************************/
-LOCAL void ICACHE_FLASH_ATTR
+LOCAL void ICACHE_RAM_ATTR
 uart1_write_char(char c)
 {
     if (c == '\n') {
@@ -147,7 +147,7 @@ uart0_rx_intr_handler(void *para)
     }
 }
 
-int ICACHE_FLASH_ATTR uart0_available() {
+int ICACHE_RAM_ATTR uart0_available() {
     if(UartDev.rcv_buff.pReadPos == UartDev.rcv_buff.pWritePos) {
         return 0;
     } else {
@@ -155,7 +155,7 @@ int ICACHE_FLASH_ATTR uart0_available() {
     }
 }
 
-ICACHE_FLASH_ATTR int uart0_rx_one_char() {
+ICACHE_RAM_ATTR int uart0_rx_one_char() {
   if(UartDev.rcv_buff.pReadPos == UartDev.rcv_buff.pWritePos) return -1;
   int ret = *UartDev.rcv_buff.pReadPos;
   UartDev.rcv_buff.pReadPos++;
@@ -173,7 +173,7 @@ ICACHE_FLASH_ATTR int uart0_rx_one_char() {
  *                uint16 len - buffer len
  * Returns      :
 *******************************************************************************/
-void ICACHE_FLASH_ATTR
+void ICACHE_RAM_ATTR
 uart0_tx_buffer(uint8 *buf, uint16 len)
 {
     uint16 i;
@@ -190,7 +190,7 @@ uart0_tx_buffer(uint8 *buf, uint16 len)
  *                UartBautRate uart1_br - uart1 bautrate
  * Returns      : NONE
 *******************************************************************************/
-void ICACHE_FLASH_ATTR
+void ICACHE_RAM_ATTR
 uart_init(UartBautRate uart0_br, UartBautRate uart1_br)
 {
     // rom use 74880 baut_rate, here reinitialize

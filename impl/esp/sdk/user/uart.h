@@ -5,6 +5,7 @@
 #include "ets_sys.h"
 #include "os_type.h"
 #include "osapi.h"
+#include "user_config.h"
 
 #define RX_BUFF_SIZE    0x100
 #define TX_BUFF_SIZE    100
@@ -94,7 +95,7 @@ typedef struct {
 } UartDevice;
 
 void uart_init(UartBautRate uart0_br, UartBautRate uart1_br);
-ICACHE_FLASH_ATTR int uart0_rx_one_char();
+ICACHE_RAM_ATTR int uart0_rx_one_char();
 
 #endif
 

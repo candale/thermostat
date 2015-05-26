@@ -10,11 +10,11 @@ uart_ignore_char(char c)
 {
 }
 
-void serial_init(int baud) {
+void ICACHE_RAM_ATTR serial_init(int baud) {
     uart_init(baud, baud);
 }
 
-void serial_print(char* message) {
+void ICACHE_RAM_ATTR serial_print(char* message) {
     int index = 0;
     while(index < os_strlen(message)) {
         uart_tx_one_char(message[index]);
@@ -22,7 +22,7 @@ void serial_print(char* message) {
     }
 }
 
-void serial_nprint(char* message, unsigned short length) {
+void ICACHE_RAM_ATTR serial_nprint(char* message, unsigned short length) {
     int index = 0;
     while(index < os_strlen(message) && index < length) {
         uart_tx_one_char(message[index]);
@@ -30,18 +30,18 @@ void serial_nprint(char* message, unsigned short length) {
     }
 }
 
-void serial_println(char* message) {
+void ICACHE_RAM_ATTR serial_println(char* message) {
     serial_print(message);
     uart_tx_one_char('\n');
 }
 
-void serial_debug(char* message) {
+void ICACHE_RAM_ATTR serial_debug(char* message) {
     if(DEBUG) {
         serial_println(message);
     }
 }
 
-int serial_read(char* buffer, unsigned short length) {
+int ICACHE_RAM_ATTR serial_read(char* buffer, unsigned short length) {
     int character = 0;
     char character_byte = -1;
     unsigned short count = 0;

@@ -38,7 +38,7 @@ EXTRA_INCDIR = include
 LIBS        = c gcc hal pp phy net80211 lwip wpa main
 
 # compiler flags using during compilation of source files
-CFLAGS      = -Os -g -O2 -Wpointer-arith -Wundef -Werror -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals  -D__ets__ -DICACHE_FLASH
+CFLAGS      = -Os -g -Os -Wpointer-arith -Wundef -Werror -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals  -D__ets__ -DICACHE_FLASH
 
 # linker flags used to generate the main object file
 LDFLAGS     = -nostdlib -Wl,--no-check-sections -u call_user_start -Wl,-static
@@ -60,7 +60,7 @@ FW_FILE_2_ADDR  = 0x40000
 CC      := $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-gcc
 AR      := $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-ar
 LD      := $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-gcc
-
+OC      := $(XTENSA_TOOLS_ROOT)/xtensa-lx106-elf-objcopy
 
 
 ####
@@ -102,6 +102,8 @@ define compile-objects
 $1/%.o: %.c
 	$(vecho) "CC $$<"
 	$(Q) $(CC) $(INCDIR) $(MODULE_INCDIR) $(EXTRA_INCDIR) $(SDK_INCDIR) $(CFLAGS) -c $$< -o $$@
+	# move all object files to irom
+	$(Q) $(OC) --rename-section .text=.irom0.text --rename-section .literal=.irom0.literal $$@
 endef
 
 .PHONY: all checkdirs flash clean
