@@ -1,6 +1,5 @@
-#include "ets_sys.h"
-#include "os_type.h"
 #include "osapi.h"
+#include "os_type.h"
 #include "mem.h"
 
 
@@ -18,5 +17,8 @@ typedef struct linked_list_struct {
 } linked_list;
 
 // linked_list_node* new_linked_list_node();
-linked_list* new_linked_list();
-void add(linked_list* list, void* data);
+linked_list* ICACHE_FLASH_ATTR
+new_linked_list();
+
+void ICACHE_FLASH_ATTR
+add(linked_list* list, void* data);

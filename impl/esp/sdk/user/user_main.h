@@ -7,6 +7,7 @@
 #include "serial.h"
 #include "httpclient.h"
 #include "fuzzyengine.h"
+#include "user_config.h"
 
 
 /**********************************************/
@@ -135,6 +136,8 @@ struct time_keeping {
 char print_buffer[500];
 // wifi server
 struct espconn server;
+// fuzzy engine structure
+fuzzy_engine* engine;
 // timer structure to read and send data at given interval
 static volatile os_timer_t read_publish_timer;
 // variables that hold the information

@@ -1,8 +1,8 @@
-#include "ets_sys.h"
 #include "os_type.h"
 #include "osapi.h"
 #include "mem.h"
 #include "linkedlist.h"
+#include "serial.h"
 
 #define POINTS_ARE_EQUAL(p1, p2) (p1.x == p2.x && p1.y == p2.y)
 
@@ -65,52 +65,62 @@ typedef struct point_struct {
  * Allocates a fuzzy_egine structre that holds all the components of
  * the system
 */
-fuzzy_engine* create_fuzzy_engine();
+fuzzy_engine* ICACHE_FLASH_ATTR
+create_fuzzy_engine();
 /*
  * Adds a linguistic variable to a fuzzy_engine
 */
-void add_ling_var(fuzzy_engine*, ling_var*);
+void ICACHE_FLASH_ATTR
+add_ling_var(fuzzy_engine*, ling_var*);
 /*
  * Adds a rule to a fuzzy_engine
 */
-void add_rule(fuzzy_engine*, fuzzy_rule*);
+void ICACHE_FLASH_ATTR
+add_rule(fuzzy_engine*, fuzzy_rule*);
 
 /*
  * Allocates memory for a lingustic variable and sets its name, id
  * and variable type (INPUT, OUTPUT)
 */
-ling_var* create_linguistic_variable(const char* name, int id, ling_var_type);
+ling_var* ICACHE_FLASH_ATTR
+create_linguistic_variable(const char* name, int id, ling_var_type);
 /*
  * Adds a linguistic value to a linguistic variable
 */
-void add_ling_val(ling_var*, ling_val*);
+void ICACHE_FLASH_ATTR
+add_ling_val(ling_var*, ling_val*);
 
 /*
  * Allocates memory for a linguistic value and sets the name
  * and triangular shape boundries for it
 */
-ling_val* create_linguistic_value(const char* name,
+ling_val* ICACHE_FLASH_ATTR
+create_linguistic_value(const char* name,
                                   double a, double b, double c, double d);
 
 /*
  * Allocates memory for a rule and sets its antecentent and consequent
 */
-fuzzy_rule* create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
+fuzzy_rule* ICACHE_FLASH_ATTR
+create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
 
 /*
  * Allocates memory for a rule anatecedent
 */
-rule_antecedent* create_rule_antecedent();
+rule_antecedent* ICACHE_FLASH_ATTR
+create_rule_antecedent();
 /*
  * Adds a condition to a rule antecedent
 */
-void add_condition_to_antecedent(rule_antecedent*, condition*);
+void ICACHE_FLASH_ATTR
+add_condition_to_antecedent(rule_antecedent*, condition*);
 
 /*
  * Allocates memory for a rule consequent and sets its linguistic
  * variable and its linguistc value
 */
-rule_consequent* create_rule_consequent(ling_var*, ling_val*);
+rule_consequent* ICACHE_FLASH_ATTR
+create_rule_consequent(ling_var*, ling_val*);
 
 /*
  * Allocates memory for a condition and sets its variable, value and
@@ -121,30 +131,35 @@ rule_consequent* create_rule_consequent(ling_var*, ling_val*);
  *  create_condition("humidity", "low", NONE)
  * translates to "if temp is high AND humidity is low"
 */
-condition* create_condition(ling_var*, ling_val*, fuzzy_op);
+condition* ICACHE_FLASH_ATTR
+create_condition(ling_var*, ling_val*, fuzzy_op);
 
 /*
  * Outputs the egine's linguistic variables with their correspondig
  * linguistic variables and the rules
 */
-void dump_engine(fuzzy_engine*);
+void ICACHE_FLASH_ATTR
+dump_engine(fuzzy_engine*);
 
 /*
  * Sets an input value for a linguistic variable that is identified
  * by its name
 */
-uint8_t register_value_by_name(fuzzy_engine* engine, char* name, double value);
+uint8_t ICACHE_FLASH_ATTR
+register_value_by_name(fuzzy_engine* engine, char* name, double value);
 
 /*
  * Sets an input value for a linguistic variable that is identified
  * by its id
 */
-uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value);
+uint8_t ICACHE_FLASH_ATTR
+register_value_by_id(fuzzy_engine* engine, int id, double value);
 
 /*
  * Runs the whole fuzzy process
 */
- void run_fuzzy(fuzzy_engine* engine);
+ void ICACHE_FLASH_ATTR
+ run_fuzzy(fuzzy_engine* engine);
 
 /* ============================ STATIC FUNCTIONS =========================== */
 /*

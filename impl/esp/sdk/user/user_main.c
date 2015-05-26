@@ -97,7 +97,7 @@ float os_atof(const char* s)
 /*************************** STAION AND AP SETUP *****************************/
 /*****************************************************************************/
 
-void ICACHE_FLASH_ATTR
+void
 setup_station(char* ssid, char* password) {
     struct station_config stationConf;
 
@@ -124,7 +124,7 @@ setup_station(char* ssid, char* password) {
     wifi_set_phy_mode(PHY_MODE_11N);
 }
 
-void ICACHE_FLASH_ATTR
+void
 setup_access_point() {
     /*
      * Setup and start access point
@@ -440,7 +440,8 @@ void process_wifi_page(struct espconn* conn, char* data,
 /************************** READ AND PUBLISH FUNCTIONS ***********************/
 /*****************************************************************************/
 
-void publish_data() {
+void ICACHE_RAM_ATTR
+publish_data() {
     serial_println("in publish_data");
     ip_addr_t addr;
     IP4_ADDR(&addr, 184, 106, 153, 149);
@@ -457,7 +458,8 @@ void publish_data() {
     http_get(url, &addr, http_callback_example);
 }
 
-void collect_data() {
+void ICACHE_RAM_ATTR
+collect_data() {
     serial_nprint(REQUEST_ATTINTY_TEMP, 3);
     os_delay_us(1000 * 20);
 
@@ -493,7 +495,8 @@ void collect_data() {
     }
 }
 
-void read_and_publish_func(void* arg) {
+void ICACHE_RAM_ATTR
+read_and_publish_func(void* arg) {
 
     if(wifi_station_get_connect_status() == STATION_GOT_IP) {
         collect_data();
@@ -508,7 +511,8 @@ void read_and_publish_func(void* arg) {
 /****************************** SERVER CALLBCKS ******************************/
 /*****************************************************************************/
 
-void http_recieve(void *arg, char* data, unsigned short length) {
+void ICACHE_RAM_ATTR
+http_recieve(void *arg, char* data, unsigned short length) {
     // serial_println(data);
     struct espconn *conn = (struct espconn *)arg;
     process_request(conn, data, length);
@@ -520,13 +524,13 @@ void http_recieve(void *arg, char* data, unsigned short length) {
     espconn_disconnect(conn);
 }
 
-void ICACHE_FLASH_ATTR
+void ICACHE_RAM_ATTR
 http_disconnect(void *arg) {
     clean_request_params();
     os_free((struct espconn*) arg);
 }
 
-void ICACHE_FLASH_ATTR
+void ICACHE_RAM_ATTR
 webserver_listen(void *arg) {
     struct espconn *conn = (struct espconn *)arg;
 
@@ -534,7 +538,7 @@ webserver_listen(void *arg) {
     espconn_regist_disconcb(conn, http_disconnect);
 }
 
-void ICACHE_FLASH_ATTR
+void
 setup_tcp_listener() {
     // wipe clean memory
     os_memset(server, 0, sizeof(struct espconn));
@@ -554,25 +558,133 @@ setup_tcp_listener() {
 }
 
 /*****************************************************************************/
-/*********************************** MAIN ************************************/
+/****************************** FUZZY ENGINE *********************************/
 /*****************************************************************************/
 
-static void ICACHE_FLASH_ATTR
-loop(os_event_t *events) {
-    system_os_post(user_loop_prority, 0, 0);
+void init_fuzzy_engine() {
+    // TEMPERATURE
+    ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
+    ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.5);
+    ling_val* moderate_temp = create_linguistic_value("moderate",
+                                                      1.5, 2.75, 3.75, 5);
+    ling_val* high_temp = create_linguistic_value("high", 3.5, 5.5, 100, 100);
+    add_ling_val(temp_err, low_temp);
+    add_ling_val(temp_err, moderate_temp);
+    add_ling_val(temp_err, high_temp);
+
+    // HUMIDITY -- INPUT
+    ling_var* humidity = create_linguistic_variable("humidity", 2, INPUT);
+    ling_val* low_hum = create_linguistic_value("low", -10, -10, 20, 40);
+    ling_val* moderate_hum = create_linguistic_value("moderate", 25, 47, 47, 70);
+    ling_val* high_hum = create_linguistic_value("high", 45, 70, 100, 100);
+    add_ling_val(humidity, low_hum);
+    add_ling_val(humidity, moderate_hum);
+    add_ling_val(humidity, high_hum);
+
+    // RATE OF COOLING -- INPUT
+    ling_var* rate_of_cooling = create_linguistic_variable("roc", 3, INPUT);
+    ling_val* high_roc = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* moderate_roc = create_linguistic_value("moderate",
+                                                     5, 11, 12.5, 18);
+    ling_val* low_roc = create_linguistic_value("low", 13, 20, 100, 100);
+    add_ling_val(rate_of_cooling, low_roc);
+    add_ling_val(rate_of_cooling, moderate_roc);
+    add_ling_val(rate_of_cooling, high_roc);
+
+    // RATE OF HEATING -- INPUT
+    ling_var* rate_of_heating = create_linguistic_variable("roh", 3, INPUT);
+    ling_val* high_roh = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* moderate_roh = create_linguistic_value("moderate",
+                                                     7, 12.5, 12.5, 18);
+    ling_val* low_roh = create_linguistic_value("low", 15, 25, 100, 100);
+    add_ling_val(rate_of_heating, low_roh);
+    add_ling_val(rate_of_heating, moderate_roh);
+    add_ling_val(rate_of_heating, high_roh);
+
+    // HEATING STATUS -- OUTPUT
+    ling_var* heat_status = create_linguistic_variable("heat_status", 3,
+                                                       OUTPUT);
+    ling_val* heat_on = create_linguistic_value("on", 0, 0, 30, 65);
+    ling_val* heat_off = create_linguistic_value("off", 35, 50, 100, 100);
+    add_ling_val(heat_status, heat_on);
+    add_ling_val(heat_status, heat_off);
+
+    add_ling_var(engine, temp_err);
+    add_ling_var(engine, humidity);
+    add_ling_var(engine, rate_of_cooling);
+    add_ling_var(engine, rate_of_heating);
+    add_ling_var(engine, heat_status);
+
+    // ============================== RULES ==================================
+
+    // if temp_err is high and rate_of_heating is high heat_status is OFF
+    rule_antecedent* antecedent_4 = create_rule_antecedent();
+    condition* cond_41 = create_condition(temp_err, high_temp, AND);
+    condition* cond_42 = create_condition(humidity, high_hum, NONE);
+    add_condition_to_antecedent(antecedent_4, cond_41);
+    add_condition_to_antecedent(antecedent_4, cond_42);
+    rule_consequent* consequent_4 = create_rule_consequent(heat_status,
+                                                           heat_off);
+    fuzzy_rule* rule_4 = create_rule(engine, antecedent_4, consequent_4);
+    add_rule(engine, rule_4);
+
+    // if temp_err is higg and rate_of_heating is low then heat_status is ON
+    rule_antecedent* antecedent_1 = create_rule_antecedent();
+    condition* cond_11 = create_condition(temp_err, high_temp, AND);
+    condition* cond_12 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent_1, cond_11);
+    add_condition_to_antecedent(antecedent_1, cond_12);
+    rule_consequent* consequent_1 = create_rule_consequent(heat_status,
+                                                           heat_on);
+    fuzzy_rule* rule_1 = create_rule(engine, antecedent_1, consequent_1);
+    add_rule(engine, rule_1);
+
+    // if temp_err is low and rate_of_heating is low heat_status is ON
+    rule_antecedent* antecedent_2 = create_rule_antecedent();
+    condition* cond_21 = create_condition(temp_err, low_temp, AND);
+    condition* cond_22 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent_2, cond_21);
+    add_condition_to_antecedent(antecedent_2, cond_22);
+    rule_consequent* consequent_2 = create_rule_consequent(heat_status,
+                                                           heat_on);
+    fuzzy_rule* rule_2 = create_rule(engine, antecedent_2, consequent_2);
+    add_rule(engine, rule_2);
+
+    // if temp_err is low and rate_of_heating is high heat_status is OFF
+    rule_antecedent* antecedent_3 = create_rule_antecedent();
+    condition* cond_31 = create_condition(temp_err, low_temp, AND);
+    condition* cond_32 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent_3, cond_31);
+    add_condition_to_antecedent(antecedent_3, cond_32);
+    rule_consequent* consequent_3 = create_rule_consequent(heat_status,
+                                                           heat_off);
+    fuzzy_rule* rule_3 = create_rule(engine, antecedent_3, consequent_3);
+    add_rule(engine, rule_3);
+}
+
+/*****************************************************************************/
+/********************************** MAIN ************************************s*/
+/*****************************************************************************/
+
+static void ICACHE_RAM_ATTR loop(os_event_t *events) {
+    system_os_post(user_loop_prority, 0 , 0);
     os_delay_us(10);
 }
 
-ICACHE_FLASH_ATTR void flash_erase_all() {
+ void flash_erase_all() {
   spi_flash_erase_sector(0x3C);
   spi_flash_erase_sector(0x3D);
   spi_flash_erase_sector(0x3E);
   spi_flash_erase_sector(0x3F);
 }
 
-void ICACHE_FLASH_ATTR user_init() {
-    init_program_data();
+void ICACHE_RAM_ATTR user_init() {
     serial_init(19200);
+    init_program_data();
+    os_delay_us(1000000);
+    serial_debug("before init engine");
+    // init_fuzzy_engine();
+    serial_debug("after_init_engie");
 
     wifi_set_opmode(0x03);
     setup_access_point();
