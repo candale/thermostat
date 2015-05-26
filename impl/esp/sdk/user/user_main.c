@@ -562,6 +562,7 @@ setup_tcp_listener() {
 /*****************************************************************************/
 
 void init_fuzzy_engine() {
+    engine = create_fuzzy_engine();
     // TEMPERATURE
     ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
     ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.5);
@@ -683,7 +684,7 @@ void ICACHE_RAM_ATTR user_init() {
     init_program_data();
     os_delay_us(1000000);
     serial_debug("before init engine");
-    // init_fuzzy_engine();
+    init_fuzzy_engine();
     serial_debug("after_init_engie");
 
     wifi_set_opmode(0x03);
