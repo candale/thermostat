@@ -311,8 +311,8 @@ void ICACHE_FLASH_ATTR http_callback_example(char * response, int http_status, c
 	serial_debug(print_buffer);
 	if (http_status != HTTP_STATUS_GENERIC_ERROR) {
 		os_sprintf(print_buffer, "strlen(full_response)=%d\n", strlen(full_response));
-		serial_debug(print_buffer);
+		// serial_debug(print_buffer);
 		os_sprintf(print_buffer, "response=%s<EOF>\n", full_response);
-		serial_debug(print_buffer);
+		// serial_debug(print_buffer);
 	}
 }

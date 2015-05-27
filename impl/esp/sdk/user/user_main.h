@@ -12,6 +12,8 @@
 
 /**********************************************/
 /* *************** SERVER AUTH ****************/
+// not yet used, this macro
+#define THINGSPEAK_IP 184, 106, 153, 149
 #define SERVER_AUTH_KEY "CUTRB50CQ2REU78M"
 
 
@@ -24,6 +26,15 @@
 #define SERIAL 5
 
 
+/***********************************************/
+/* *************** ACCESS CONFIG ***************/
+#define AP_SSID "Your Thermostat"
+#define AP_PASS "coolthermostat"
+
+#define MDNS_HOST_NAME "thermostat"
+#define MDNS_SERVER_NAME "therm"
+
+
 /************************************************/
 /* *************** HTTP CONSTANTS ***************/
 #define WIFI_SERVER_LISTEN_PORT 80
@@ -34,22 +45,30 @@
 #define MAX_HTPP_PARAM_VALUE_LENGTH 30
 
 
+/*****************************************************/
+/* *************** TIME SYNC CONSTANTS ***************/
+// data read and publish time interval
+#define PUBLISH_REPEAT_INTERVAL_SECONDS 20
+#define PUBLISH_REPEAT_INTERVAL_MILIS PUBLISH_REPEAT_INTERVAL_SECONDS * 1000
+
+// mdns retry time interval
+#define MDNS_REPEAT_INTERVAL_SECONDS 10
+#define MDNS_REPEAT_INTERVAL_MILIS MDNS_REPEAT_INTERVAL_SECONDS * 1000
+
+
 /************************************************************/
 /* *************** VARIABLE RELATED CONSTANTS ***************/
 // maximum absolute difference between last recorded variable and current one
-#define MAX_VAR_DIFF 60
+#define MAX_VAR_DIFF 40
 #define MAX_VAR 0xFFFFFFFF
-
-/*****************************************************/
-/* *************** TIME SYNC CONSTANTS ***************/
-// 30 seconds, in microseconds
-#define PUBLISH_REPEAT_INTERVAL 20 * 1000
-
+// how many minutes of history will be held in memory
+#define TEMPERATURE_HISTORY_SPAN 5
+// don't touch this. IT IS COMPUTED
+#define TEMPERATURE_HISTORY_CONTAINER_COUNT 60 / PUBLISH_REPEAT_INTERVAL_SECONDS * TEMPERATURE_HISTORY_SPAN
 
 /******************************************************/
 /* *************** ATTINY COMM REQUESTS ***************/
-// 30 seconds, in microseconds
-char REQUEST_ATTINTY_TEMP[] = "ASK";
+const char REQUEST_ATTINTY_TEMP[] = "ASK";
 #define MAX_SERIAL_PARAM_NUMBER 4
 
 
@@ -58,7 +77,7 @@ char REQUEST_ATTINTY_TEMP[] = "ASK";
 #define PAGE_404 "<html>"\
                  "<h2>404 - Not Found</h2>"\
                  "</html>"
-char WIFI_FORM[] = "<html>"
+const char WIFI_FORM[] = "<html>"
                   "%s"
                   "Connected to acess point status: %s. Ip address: %s"
                   "<form method='post' action='/wifi_setup'>"
@@ -70,16 +89,16 @@ char WIFI_FORM[] = "<html>"
                   "</form>"
                   "</html>";
 
-char RELOAD_HTML[] = "<meta http-equiv='refresh' content='5'>";
+const char RELOAD_HTML[] = "<meta http-equiv='refresh' content='5'>";
 
 // station stats
-char STA_IDLE[] = "not connected";
-char STA_CONNECTING[] = "connecting";
-char STA_WRONG_PASSWORD[] = "wrong password";
-char STA_NO_AP_FOUND[] = "no access point found";
-char STA_CONNECT_FAIL[] = "failed to connect";
-char STA_GOT_IP[] = "connected";
-char STA_ERROR[] = "error";
+const char STA_IDLE[] = "not connected";
+const char STA_CONNECTING[] = "connecting";
+const char STA_WRONG_PASSWORD[] = "wrong password";
+const char STA_NO_AP_FOUND[] = "no access point found";
+const char STA_CONNECT_FAIL[] = "failed to connect";
+const char STA_GOT_IP[] = "connected";
+const char STA_ERROR[] = "error";
 
 
 /***************************************************/
@@ -140,6 +159,11 @@ struct espconn server;
 fuzzy_engine* engine;
 // timer structure to read and send data at given interval
 static volatile os_timer_t read_publish_timer;
-// variables that hold the information
+// timer structure that atempts to setup mdns at given interval
+static volatile os_timer_t mdns_setup_timer;
+// variables that hold the collected data
 float temperature = MAX_VAR;
 float humidity = MAX_VAR;
+// temperature history spanning TEMPERATURE_HISTORY_SPAN minutes
+float temperature_history[TEMPERATURE_HISTORY_CONTAINER_COUNT];
+uint8 temperature_history_count = 0;

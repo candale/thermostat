@@ -94,11 +94,38 @@ float os_atof(const char* s)
 
 
 /*****************************************************************************/
-/*************************** STAION AND AP SETUP *****************************/
+/*************************** STATION AND AP SETUP ****************************/
 /*****************************************************************************/
 
-void
-setup_station(char* ssid, char* password) {
+void ICACHE_RAM_ATTR
+setup_mdns(void *arg) {
+    serial_debug("Trying to setup mdns...");
+
+    uint8 station_status = wifi_station_get_connect_status();
+    struct ip_info station_info;
+    if(station_status == STATION_GOT_IP &&
+            wifi_get_ip_info(STATION_IF, &station_info)) {
+
+        struct mdns_info *info = (struct mdns_info *)os_zalloc(
+            sizeof(struct mdns_info));
+
+        info->host_name = MDNS_HOST_NAME;
+        info->ipAddr = station_info.ip.addr;
+        info->server_name = MDNS_SERVER_NAME;
+        info->server_port = 80;
+        info->txt_data = "version = now";
+
+        espconn_mdns_init(info);
+        espconn_mdns_enable();
+        espconn_mdns_server_register();
+        os_timer_disarm(&mdns_setup_timer);
+        serial_debug("Successfull mdns setup");
+    } else {
+        serial_debug("Don't have station ip yet. Next time");
+    }
+}
+
+void setup_station(char* ssid, char* password) {
     struct station_config stationConf;
 
     os_memcpy(stationConf.ssid, ssid, 32);
@@ -124,22 +151,18 @@ setup_station(char* ssid, char* password) {
     wifi_set_phy_mode(PHY_MODE_11N);
 }
 
-void
-setup_access_point() {
+void setup_access_point() {
     /*
      * Setup and start access point
-     */
-    const char ssid[32] = "andrei";
-    const char password[32] = "coolthermostat";
-
+    */
     struct softap_config ap_conf;
 
     // get current access point config
     wifi_softap_get_config(&ap_conf);
     // set config of access point
-    os_memcpy(ap_conf.ssid, ssid, os_strlen(ssid));
-    os_memcpy(ap_conf.password, password, os_strlen(password));
-    ap_conf.ssid_len = strlen(ssid);
+    os_memcpy(ap_conf.ssid, AP_SSID, os_strlen(AP_SSID));
+    os_memcpy(ap_conf.password, AP_PASS, os_strlen(AP_PASS));
+    ap_conf.ssid_len = strlen(AP_SSID);
     ap_conf.max_connection = 4;
     ap_conf.beacon_interval = 100;
     ap_conf.channel = 4;
@@ -159,7 +182,7 @@ setup_access_point() {
     }
 }
 
-char* get_station_status() {
+const char* get_station_status() {
     uint8 station_status = wifi_station_get_connect_status();
     switch(station_status) {
         case STATION_CONNECTING:
@@ -440,12 +463,35 @@ void process_wifi_page(struct espconn* conn, char* data,
 /************************** READ AND PUBLISH FUNCTIONS ***********************/
 /*****************************************************************************/
 
+void reset_temperature_history()
+{
+    int i;
+    for(i = 0; i < TEMPERATURE_HISTORY_CONTAINER_COUNT; i++) {
+        temperature_history[i] = MAX_VAR;
+    }
+}
+
+void record_temperature_history(float temp)
+{
+    int i;
+    if(temperature_history_count == TEMPERATURE_HISTORY_CONTAINER_COUNT) {
+        for(i = 0; i < temperature_history_count - 1; i++) {
+            temperature_history[i] = temperature_history[i + 1];
+        }
+        temperature_history[i] = temp;
+    } else {
+        temperature_history[temperature_history_count++] = temp;
+    }
+}
+
 void ICACHE_RAM_ATTR
-publish_data() {
-    serial_println("in publish_data");
+publish_data()
+{
+    serial_println("Publishing data");
     ip_addr_t addr;
     IP4_ADDR(&addr, 184, 106, 153, 149);
     char url[200];
+
     int tmp_whole = (int)(temperature);
     int tmp_fract = (int)((temperature - (int)temperature)*100);
 
@@ -459,7 +505,8 @@ publish_data() {
 }
 
 void ICACHE_RAM_ATTR
-collect_data() {
+collect_data()
+{
     serial_nprint(REQUEST_ATTINTY_TEMP, 3);
     os_delay_us(1000 * 20);
 
@@ -493,10 +540,13 @@ collect_data() {
     } else {
         humidity = hum;
     }
+
+    record_temperature_history(temperature);
 }
 
 void ICACHE_RAM_ATTR
-read_and_publish_func(void* arg) {
+read_and_publish_func(void* arg)
+{
 
     if(wifi_station_get_connect_status() == STATION_GOT_IP) {
         collect_data();
@@ -512,7 +562,8 @@ read_and_publish_func(void* arg) {
 /*****************************************************************************/
 
 void ICACHE_RAM_ATTR
-http_recieve(void *arg, char* data, unsigned short length) {
+http_recieve(void *arg, char* data, unsigned short length)
+{
     // serial_println(data);
     struct espconn *conn = (struct espconn *)arg;
     process_request(conn, data, length);
@@ -525,7 +576,8 @@ http_recieve(void *arg, char* data, unsigned short length) {
 }
 
 void ICACHE_RAM_ATTR
-http_disconnect(void *arg) {
+http_disconnect(void *arg)
+{
     clean_request_params();
     os_free((struct espconn*) arg);
 }
@@ -538,8 +590,8 @@ webserver_listen(void *arg) {
     espconn_regist_disconcb(conn, http_disconnect);
 }
 
-void
-setup_tcp_listener() {
+void setup_tcp_listener()
+{
     // wipe clean memory
     os_memset(server, 0, sizeof(struct espconn));
 
@@ -561,7 +613,8 @@ setup_tcp_listener() {
 /****************************** FUZZY ENGINE *********************************/
 /*****************************************************************************/
 
-void init_fuzzy_engine() {
+void init_fuzzy_engine()
+{
     engine = create_fuzzy_engine();
     // TEMPERATURE
     ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
@@ -667,35 +720,48 @@ void init_fuzzy_engine() {
 /********************************** MAIN ************************************s*/
 /*****************************************************************************/
 
-static void ICACHE_RAM_ATTR loop(os_event_t *events) {
+static void ICACHE_RAM_ATTR loop(os_event_t *events)
+{
     system_os_post(user_loop_prority, 0 , 0);
     os_delay_us(10);
 }
 
- void flash_erase_all() {
+ void flash_erase_all()
+ {
   spi_flash_erase_sector(0x3C);
   spi_flash_erase_sector(0x3D);
   spi_flash_erase_sector(0x3E);
   spi_flash_erase_sector(0x3F);
 }
 
+void init_timers()
+{
+    // runs every PUBLISH_REPEAT_INTERVAL_MILIS to collect and send data
+    os_timer_disarm(&read_publish_timer);
+    os_timer_setfn(&read_publish_timer,
+                   (os_timer_func_t *)read_and_publish_func, NULL);
+    os_timer_arm(&read_publish_timer, PUBLISH_REPEAT_INTERVAL_MILIS, 1);
+
+    // this timer will run until station has got ip. when that happnes
+    // it will try to setup mdns. if successfull, it will disarm the timer
+    os_timer_disarm(&mdns_setup_timer);
+    os_timer_setfn(&mdns_setup_timer,
+                   (os_timer_func_t *)setup_mdns, NULL);
+    os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_INTERVAL_MILIS, 1);
+}
+
 void ICACHE_RAM_ATTR user_init() {
     serial_init(19200);
+
     init_program_data();
-    os_delay_us(1000000);
-    serial_debug("before init engine");
     init_fuzzy_engine();
-    serial_debug("after_init_engie");
 
     wifi_set_opmode(0x03);
     setup_access_point();
     setup_tcp_listener();
     register_url("/wifi_setup", process_wifi_page);
 
-    os_timer_disarm(&read_publish_timer);
-    os_timer_setfn(&read_publish_timer,
-                   (os_timer_func_t *)read_and_publish_func, NULL);
-    os_timer_arm(&read_publish_timer, PUBLISH_REPEAT_INTERVAL, 1);
+    init_timers();
 
     system_os_task(loop, user_loop_prority, user_proc_task_queue, user_proc_queue_length);
     system_os_post(user_loop_prority, 0, 0 );

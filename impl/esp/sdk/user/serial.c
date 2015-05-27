@@ -1,7 +1,6 @@
 #include "serial.h"
-#include "osapi.h"
 
-#define DEBUG 0
+#define DEBUG 1
 #define WIFI_DEBUG 0
 
 
@@ -22,7 +21,7 @@ void ICACHE_RAM_ATTR serial_print(char* message) {
     }
 }
 
-void ICACHE_RAM_ATTR serial_nprint(char* message, unsigned short length) {
+void ICACHE_RAM_ATTR serial_nprint(const char* message, unsigned short length) {
     int index = 0;
     while(index < os_strlen(message) && index < length) {
         uart_tx_one_char(message[index]);
