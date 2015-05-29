@@ -115,7 +115,7 @@ static void loop(os_event_t *events);
 typedef void (* process_request_func)(
     struct espconn * conn, char* data, unsigned short data_length);
 // table that holds a mapping from url to processing function
-struct url_mapping_t {
+struct url_mapping_struct {
     struct data_holder {
         char* url;
         process_request_func func;
@@ -124,7 +124,7 @@ struct url_mapping_t {
 } request_handlers;
 
 // structure that holds the parameters from each request
-struct request_params_t {
+struct request_params_struct {
     struct params_dynamic {
         char* key;
         char* value;
@@ -133,9 +133,8 @@ struct request_params_t {
     uint8 get_length;
 } request_params;
 
-
 // structure that holds the parameters from each request
-struct serial_params_t {
+struct serial_params_struct {
     struct params_static {
         char key[20];
         char value[30];
@@ -143,10 +142,13 @@ struct serial_params_t {
     uint8 serial_length;
 } serial_params;
 
-
-struct time_keeping {
-    uint32 last_publish_call;
-} time_struct;
+struct publish_params_struct {
+  float temperature;
+  float humidity;
+  float tmp_trend_least_square;
+  float tmp_trend_diff;
+  float tmp_trend_avg;
+} publish_params;
 
 
 /**************************************************/
@@ -160,13 +162,6 @@ fuzzy_engine* engine;
 static volatile os_timer_t read_publish_timer;
 // timer structure that atempts to setup mdns at given interval
 static volatile os_timer_t mdns_setup_timer;
-// variables that hold the collected data
-float temperature = MAX_VAR;
-float humidity = MAX_VAR;
 // temperature history spanning TEMPERATURE_HISTORY_SPAN minutes
 float temperature_history[TEMPERATURE_HISTORY_CONTAINER_COUNT];
 uint8 temperature_history_count = 0;
-
-float p_least_square = 0;
-float p_diff = 0;
-float p_avg = 0;

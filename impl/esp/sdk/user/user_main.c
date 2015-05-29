@@ -34,7 +34,11 @@ void init_program_data() {
     request_params.post_length = 0;
     request_params.get_length = 0;
     serial_params.serial_length = 0;
-    time_struct.last_publish_call = 0;
+    publish_params.temperature = MAX_VAR;
+    publish_params.humidity = MAX_VAR;
+    publish_params.tmp_trend_least_square = 0;
+    publish_params.tmp_trend_diff = 0;
+    publish_params.tmp_trend_avg = 0;
 }
 
 
@@ -571,7 +575,7 @@ int linreg(int n, const float y[], float* m, float* b, float* r)
 
 float get_temperature_trend()
 {
-    float avg = MAX_VAR, tmp_avg = 0, last_tmp = MAX_VAR;
+    float avg = MAX_VAR, last_tmp = MAX_VAR;
     uint8 i, j;
     char buf[500];
     buf[0] = 0;
@@ -598,20 +602,22 @@ float get_temperature_trend()
     os_sprintf(buf, "average: ");
     ftoa(avg, buf);
     serial_debug(buf, DEBUG_1);
-    p_avg = avg;
+    publish_params.tmp_trend_avg = avg;
 
     os_sprintf(buf, "last and first difference: ");
     ftoa(temperature_history[temperature_history_count - 1] -
          temperature_history[0], buf);
     serial_debug(buf, DEBUG_1);
-    p_diff = temperature_history[temperature_history_count - 1] - temperature_history[0];
+    publish_params.tmp_trend_diff = (
+        temperature_history[temperature_history_count - 1] -
+        temperature_history[0]);
 
     float m, b, r;
     linreg(temperature_history_count, temperature_history, &m, &b, &r);
     os_sprintf(buf, "least squares: ");
     ftoa(m, buf);
     serial_debug(buf, DEBUG_1);
-    p_least_square = m;
+    publish_params.tmp_trend_least_square = m;
 
     return avg;
 }
@@ -650,22 +656,22 @@ publish_data()
     IP4_ADDR(&addr, 184, 106, 153, 149);
     char url[200];
 
-    char tmp[16], hum[16], tmp_least_square[16], tmp_diff[16], tmp_avg[16];
+    char tmp[16], hum[16], least_square[16], diff[16], avg[16];
     os_memset(tmp, 0, 16);
     os_memset(hum, 0, 16);
-    os_memset(tmp_least_square, 0, 16);
-    os_memset(tmp_diff, 0, 16);
-    os_memset(tmp_avg, 0, 16);
+    os_memset(least_square, 0, 16);
+    os_memset(diff, 0, 16);
+    os_memset(avg, 0, 16);
 
-    ftoa(temperature, tmp);
-    ftoa(humidity, hum);
-    ftoa(p_least_square, tmp_least_square);
-    ftoa(p_diff, tmp_diff);
-    ftoa(p_avg, tmp_avg);
+    ftoa(publish_params.temperature, tmp);
+    ftoa(publish_params.humidity, hum);
+    ftoa(publish_params.tmp_trend_least_square, least_square);
+    ftoa(publish_params.tmp_trend_diff, diff);
+    ftoa(publish_params.tmp_trend_avg, avg);
 
     os_sprintf(url,
         "http://api.thingspeak.com/update?key=%s&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s",
-        SERVER_AUTH_KEY, tmp, hum, tmp_least_square, tmp_diff, tmp_avg);
+        SERVER_AUTH_KEY, tmp, hum,least_square, diff, avg);
     serial_debug(url, DEBUG_1);
 
     http_get(url, &addr, http_callback_example);
@@ -693,23 +699,23 @@ collect_data()
     // somethings we get values that are very high ( ~= 150) out of nowhere
     // this is a temporary fix that solves that. the problem seems to originate
     // in the attiny code
-    if(temperature != MAX_VAR) {
-        if(abs(tmp -  temperature) <= MAX_VAR_DIFF) {
-            temperature = tmp;
+    if(publish_params.temperature != MAX_VAR) {
+        if(abs(tmp -  publish_params.temperature) <= MAX_VAR_DIFF) {
+            publish_params.temperature = tmp;
         }
     } else {
-        temperature = tmp;
+        publish_params.temperature = tmp;
     }
 
-    if(humidity != MAX_VAR) {
-        if(abs(hum -  humidity) <= MAX_VAR_DIFF) {
-            humidity = hum;
+    if(publish_params.humidity != MAX_VAR) {
+        if(abs(hum -  publish_params.humidity) <= MAX_VAR_DIFF) {
+            publish_params.humidity = hum;
         }
     } else {
-        humidity = hum;
+        publish_params.humidity = hum;
     }
 
-    record_temperature_history(temperature);
+    record_temperature_history(publish_params.temperature);
     get_temperature_trend();
     return 1;
 }
