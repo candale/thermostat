@@ -60,6 +60,34 @@ uint8 nstrcmp(char* first, char* second, unsigned short length) {
     return 0;
 }
 
+// Newton method for computing square root
+float n_sqrt(float n)
+{
+    double x = 0.0;
+    double xn = 0.0;
+    int iters = 0;
+    int i;
+    for (i = 0; i <= (int)n; ++i)
+    {
+        double val = i*i-n;
+        if (val == 0.0) {
+            return i;
+        }
+        if (val > 0.0)
+        {
+            xn = (i + (i - 1)) / 2.0;
+            break;
+        }
+    }
+    while (!(iters++ >= 100 || x == xn))
+    {
+        x = xn;
+        xn = x - (x * x - n) / (2 * x);
+    }
+
+  return xn;
+}
+
 float os_atof(const char* s)
 {
     float rez = 0, fact = 1;
@@ -92,6 +120,38 @@ float os_atof(const char* s)
     return rez * fact;
 }
 
+float os_pow(int x, int y) {
+    int i;
+    for(i = 1; i < y; i++) {
+        x = x * x;
+    }
+    return x;
+}
+
+void ftoa(float val, char *buff) {
+    char smallBuff[16];
+    char smallBuff_tmp[16];
+    int val1 = (int) val;
+    int val2 = (int) (100.0 * val) % 100;
+    unsigned int uval2;
+    if (val < 0) {
+        uval2 = (int) (-100.0 * val) % 100;
+    } else {
+        uval2 = (int) (100.0 * val) % 100;
+    }
+    if (uval2 < 10) {
+        os_sprintf(smallBuff, "%i.0%u", val1, uval2);
+    } else {
+        os_sprintf(smallBuff, "%i.%u", val1, uval2);
+    }
+
+    if(val2 < 0 && val1 == 0) {
+        os_sprintf(smallBuff_tmp, "-%s", smallBuff);
+        strcat(buff, smallBuff_tmp);
+    } else {
+        strcat(buff, smallBuff);
+    }
+}
 
 /*****************************************************************************/
 /*************************** STATION AND AP SETUP ****************************/
@@ -99,12 +159,14 @@ float os_atof(const char* s)
 
 void ICACHE_RAM_ATTR
 setup_mdns(void *arg) {
-    serial_debug("Trying to setup mdns...");
+    serial_debug("Trying to setup mdns...", DEBUG_1);
 
     uint8 station_status = wifi_station_get_connect_status();
     struct ip_info station_info;
     if(station_status == STATION_GOT_IP &&
             wifi_get_ip_info(STATION_IF, &station_info)) {
+
+        // kill softap
 
         struct mdns_info *info = (struct mdns_info *)os_zalloc(
             sizeof(struct mdns_info));
@@ -119,9 +181,9 @@ setup_mdns(void *arg) {
         espconn_mdns_enable();
         espconn_mdns_server_register();
         os_timer_disarm(&mdns_setup_timer);
-        serial_debug("Successfull mdns setup");
+        serial_debug("Successfull mdns setup", DEBUG_1);
     } else {
-        serial_debug("Don't have station ip yet. Next time");
+        serial_debug("Don't have station ip yet. Next time", DEBUG_1);
     }
 }
 
@@ -459,6 +521,102 @@ void process_wifi_page(struct espconn* conn, char* data,
     os_free(ip_str);
 }
 
+
+/*****************************************************************************/
+/****************************** DATA STATISTICS ******************************/
+/*****************************************************************************/
+/*
+ * Computes a function that aproximates the given data points
+*/
+ inline static float sqr(float x) {
+    return x*x;
+}
+
+int linreg(int n, const float y[], float* m, float* b, float* r)
+{
+    float sumx = 0.0;                        /* sum of x                      */
+    float sumx2 = 0.0;                       /* sum of x**2                   */
+    float sumxy = 0.0;                       /* sum of x * y                  */
+    float sumy = 0.0;                        /* sum of y                      */
+    float sumy2 = 0.0;                       /* sum of y**2                   */
+
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        sumx  += i;
+        sumx2 += sqr(i);
+        sumxy += i * y[i];
+        sumy  += y[i];
+        sumy2 += sqr(y[i]);
+    }
+
+    float denom = (n * sumx2 - sqr(sumx));
+    if (denom == 0) {
+           // singular matrix. can't solve the problem.
+        *m = 0;
+        *b = 0;
+        *r = 0;
+        return 1;
+    }
+
+    *m = (n * sumxy  -  sumx * sumy) / denom;
+    *b = (sumy * sumx2  -  sumx * sumxy) / denom;
+    if (r!=NULL) {
+        *r = (sumxy - sumx * sumy / n) /
+            (n_sqrt((sumx2 - sqr(sumx) / n) * (sumy2 - sqr(sumy) / n)));
+    }
+
+    return 0;
+}
+
+float get_temperature_trend()
+{
+    float avg = MAX_VAR, tmp_avg = 0, last_tmp = MAX_VAR;
+    uint8 i, j;
+    char buf[500];
+    buf[0] = 0;
+    // if(temperature_history_count != TEMPERATURE_HISTORY_CONTAINER_COUNT) {
+    //     return 0;
+    // }
+    uint8 records_per_minute = (
+        (uint8)TEMPERATURE_HISTORY_CONTAINER_COUNT / TEMPERATURE_HISTORY_SPAN);
+    avg = temperature_history[1] -  temperature_history[0];
+    for(i = 1; i < TEMPERATURE_HISTORY_CONTAINER_COUNT - 1; i++) {
+        avg = (avg + temperature_history[i + 1] - temperature_history[i]) / 2;
+    }
+    for(i = 0; i < TEMPERATURE_HISTORY_CONTAINER_COUNT; i++) {
+        // sprintf_float(buf, temperature_history[i]);
+        buf[0] = 0;
+        ftoa(temperature_history[i], buf);
+        serial_debug(buf, DEBUG_1);
+    }
+
+    if(temperature_history_count != TEMPERATURE_HISTORY_CONTAINER_COUNT) {
+        return 0;
+    }
+
+    os_sprintf(buf, "average: ");
+    ftoa(avg, buf);
+    serial_debug(buf, DEBUG_1);
+    p_avg = avg;
+
+    os_sprintf(buf, "last and first difference: ");
+    ftoa(temperature_history[temperature_history_count - 1] -
+         temperature_history[0], buf);
+    serial_debug(buf, DEBUG_1);
+    p_diff = temperature_history[temperature_history_count - 1] - temperature_history[0];
+
+    float m, b, r;
+    linreg(temperature_history_count, temperature_history, &m, &b, &r);
+    os_sprintf(buf, "least squares: ");
+    ftoa(m, buf);
+    serial_debug(buf, DEBUG_1);
+    p_least_square = m;
+
+    return avg;
+}
+
+
 /*****************************************************************************/
 /************************** READ AND PUBLISH FUNCTIONS ***********************/
 /*****************************************************************************/
@@ -492,19 +650,28 @@ publish_data()
     IP4_ADDR(&addr, 184, 106, 153, 149);
     char url[200];
 
-    int tmp_whole = (int)(temperature);
-    int tmp_fract = (int)((temperature - (int)temperature)*100);
+    char tmp[16], hum[16], tmp_least_square[16], tmp_diff[16], tmp_avg[16];
+    os_memset(tmp, 0, 16);
+    os_memset(hum, 0, 16);
+    os_memset(tmp_least_square, 0, 16);
+    os_memset(tmp_diff, 0, 16);
+    os_memset(tmp_avg, 0, 16);
 
-    int hum_whole = (int)(humidity);
-    int hum_fract = (int)((humidity - (int)humidity)*100);
+    ftoa(temperature, tmp);
+    ftoa(humidity, hum);
+    ftoa(p_least_square, tmp_least_square);
+    ftoa(p_diff, tmp_diff);
+    ftoa(p_avg, tmp_avg);
 
     os_sprintf(url,
-        "http://api.thingspeak.com/update?key=%s&field1=%d.%d&field2=%d.%d",
-        SERVER_AUTH_KEY, tmp_whole, tmp_fract, hum_whole, hum_fract);
+        "http://api.thingspeak.com/update?key=%s&field1=%s&field2=%s&field3=%s&field4=%s&field5=%s",
+        SERVER_AUTH_KEY, tmp, hum, tmp_least_square, tmp_diff, tmp_avg);
+    serial_debug(url, DEBUG_1);
+
     http_get(url, &addr, http_callback_example);
 }
 
-void ICACHE_RAM_ATTR
+uint8 ICACHE_RAM_ATTR
 collect_data()
 {
     serial_nprint(REQUEST_ATTINTY_TEMP, 3);
@@ -514,7 +681,8 @@ collect_data()
     buffer[0] = 0;
 
     if(serial_read(buffer, 50) == 0) {
-        return;
+        serial_debug("Did not receive any data form sensors", DEBUG_1);
+        return 0;
     }
 
     _process_method_args(buffer, SERIAL);
@@ -542,6 +710,8 @@ collect_data()
     }
 
     record_temperature_history(temperature);
+    get_temperature_trend();
+    return 1;
 }
 
 void ICACHE_RAM_ATTR
@@ -549,8 +719,9 @@ read_and_publish_func(void* arg)
 {
 
     if(wifi_station_get_connect_status() == STATION_GOT_IP) {
-        collect_data();
-        publish_data();
+        if(collect_data()) {
+            publish_data();
+        }
     } else {
         serial_println("Station does not have ip");
     }

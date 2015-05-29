@@ -9,7 +9,6 @@
 #include "fuzzyengine.h"
 #include "user_config.h"
 
-
 /**********************************************/
 /* *************** SERVER AUTH ****************/
 // not yet used, this macro
@@ -48,7 +47,7 @@
 /*****************************************************/
 /* *************** TIME SYNC CONSTANTS ***************/
 // data read and publish time interval
-#define PUBLISH_REPEAT_INTERVAL_SECONDS 20
+#define PUBLISH_REPEAT_INTERVAL_SECONDS 30
 #define PUBLISH_REPEAT_INTERVAL_MILIS PUBLISH_REPEAT_INTERVAL_SECONDS * 1000
 
 // mdns retry time interval
@@ -167,3 +166,7 @@ float humidity = MAX_VAR;
 // temperature history spanning TEMPERATURE_HISTORY_SPAN minutes
 float temperature_history[TEMPERATURE_HISTORY_CONTAINER_COUNT];
 uint8 temperature_history_count = 0;
+
+float p_least_square = 0;
+float p_diff = 0;
+float p_avg = 0;

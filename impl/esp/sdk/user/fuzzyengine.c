@@ -143,7 +143,7 @@ create_rule_consequent(ling_var* variable, ling_val* value)
 void dump_engine(fuzzy_engine* engine)
 {
     char buffer[500];
-    serial_debug("Linguistic variables\n====================\n");
+    serial_debug("Linguistic variables\n====================\n", DEBUG_2);
     linked_list_node* node = engine->ling_vars->head;
     linked_list_node* aux_node;
     ling_var* var;
@@ -151,31 +151,31 @@ void dump_engine(fuzzy_engine* engine)
     while(node != 0) {
         var = (ling_var*)node->data;
         os_sprintf(buffer, "%d %d %s %f\n", var->id, var->type, var->name, var->value);
-        serial_debug(buffer);
+        serial_debug(buffer, DEBUG_2);
         aux_node = var->values->head;
-        serial_debug("   ");
+        serial_debug("   ", DEBUG_2);
         while(aux_node != 0) {
             val = (ling_val*)aux_node->data;
             os_sprintf(buffer, "%s ", val->name);
-            serial_debug(buffer);
+            serial_debug(buffer, DEBUG_2);
             aux_node = aux_node->next;
         }
-        serial_debug("\n");
+        serial_debug("\n", DEBUG_2);
         node = node->next;
     }
 
-    serial_debug("Rules\n=====\n");
+    serial_debug("Rules\n=====\n", DEBUG_2);
     node = engine->rules->head;
     condition* cond;
     while(node != 0) {
         fuzzy_rule* rule = node->data;
         aux_node = rule->antecedent->head;
-        serial_debug("if ");
+        serial_debug("if ", DEBUG_2);
         while(aux_node != 0) {
             cond = aux_node->data;
             os_sprintf(buffer, "%s is %s %d ", cond->variable->name,
                        cond->value->name, cond->op);
-            serial_debug(buffer);
+            serial_debug(buffer, DEBUG_2);
             aux_node = aux_node->next;
         }
 
@@ -183,7 +183,7 @@ void dump_engine(fuzzy_engine* engine)
                    rule->consequent->variable->name,
                    rule->consequent->value->name,
                    rule->result, rule->consequent->result);
-        serial_debug(buffer);
+        serial_debug(buffer, DEBUG_2);
         node = node->next;
     }
 }
@@ -511,7 +511,7 @@ void defuzzify(fuzzy_engine* engine)
     point* centroid = get_centroid(points);
     char buffer[100];
     os_sprintf(buffer, "x: %f y:%f", centroid->x, centroid->y);
-    serial_debug(buffer);
+    serial_debug(buffer, DEBUG_2);
 
 
     // free everything

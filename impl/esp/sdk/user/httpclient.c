@@ -21,7 +21,7 @@
 
 // serial_debug output.
 #if 0
-#define serial_debug(...) serial_debug(__VA_ARGS__)
+#define serial_debug(...) serial_debug(__VA_ARGS_, DEBUG_2_)
 #else
 #define PRINTF(...)
 #endif
@@ -46,7 +46,7 @@ static char * esp_strdup(const char * str)
 	}
 	char * new_str = (char *)os_malloc(os_strlen(str) + 1); // 1 for null character
 	if (new_str == NULL) {
-		serial_debug("esp_strdup: malloc error");
+		serial_debug("esp_strdup: malloc error", DEBUG_2);
 		return NULL;
 	}
 	os_strcpy(new_str, str);
@@ -67,7 +67,7 @@ static void ICACHE_FLASH_ATTR receive_callback(void * arg, char * buf, unsigned 
 	char * new_buffer;
 	if (new_size > BUFFER_SIZE_MAX || NULL == (new_buffer = (char *)os_malloc(new_size))) {
 		os_sprintf(print_buffer, "Response too long (%d)", new_size);
-		serial_debug(print_buffer);
+		serial_debug(print_buffer, DEBUG_2);
 		req->buffer[0] = '\0'; // Discard the buffer to avoid using an incomplete response.
 		espconn_disconnect(conn);
 		return; // The disconnect callback will be called.
@@ -88,11 +88,11 @@ static void ICACHE_FLASH_ATTR sent_callback(void * arg)
 	request_args * req = (request_args *)conn->reverse;
 
 	if (req->post_data == NULL) {
-		serial_debug("All sent");
+		serial_debug("All sent", DEBUG_2);
 	}
 	else {
 		// The headers were sent, now send the contents.
-		serial_debug("Sending request body");
+		serial_debug("Sending request body", DEBUG_2);
 		espconn_sent(conn, (uint8_t *)req->post_data, strlen(req->post_data));
 		os_free(req->post_data);
 		req->post_data = NULL;
@@ -101,7 +101,7 @@ static void ICACHE_FLASH_ATTR sent_callback(void * arg)
 
 static void ICACHE_FLASH_ATTR connect_callback(void * arg)
 {
-	serial_debug("Connected");
+	serial_debug("Connected", DEBUG_2);
 	struct espconn * conn = (struct espconn *)arg;
 	request_args * req = (request_args *)conn->reverse;
 
@@ -128,14 +128,14 @@ static void ICACHE_FLASH_ATTR connect_callback(void * arg)
 						 "\r\n",
 						 method, req->path, req->hostname, req->port, post_headers);
 
-	serial_debug(buf);
+	serial_debug(buf, DEBUG_2);
 	espconn_sent(conn, (uint8_t *)buf, len);
-	serial_debug("Sending request header");
+	serial_debug("Sending request header", DEBUG_2);
 }
 
 static void ICACHE_FLASH_ATTR disconnect_callback(void * arg)
 {
-	serial_debug("Disconnected");
+	serial_debug("Disconnected", DEBUG_2);
 	struct espconn *conn = (struct espconn *)arg;
 
 	if(conn == NULL) {
@@ -150,7 +150,7 @@ static void ICACHE_FLASH_ATTR disconnect_callback(void * arg)
 		int http_status = -1;
 		char * body = "";
 		if (req->buffer == NULL) {
-			serial_debug("Buffer shouldn't be NULL");
+			serial_debug("Buffer shouldn't be NULL", DEBUG_2);
 		}
 		else if (req->buffer[0] != '\0') {
 			// FIXME: make sure this is not a partial response, using the Content-Length header.
@@ -158,7 +158,7 @@ static void ICACHE_FLASH_ATTR disconnect_callback(void * arg)
 			const char * version = "HTTP/1.1 ";
 			if (os_strncmp(req->buffer, version, strlen(version)) != 0) {
 				os_sprintf(print_buffer, "Invalid version in %s", req->buffer);
-				serial_debug(print_buffer);
+				serial_debug(print_buffer, DEBUG_2);
 			}
 			else {
 				http_status = atoi(req->buffer + strlen(version));
@@ -180,7 +180,7 @@ static void ICACHE_FLASH_ATTR disconnect_callback(void * arg)
 
 static void ICACHE_FLASH_ATTR error_callback(void *arg, sint8 errType)
 {
-	serial_debug("Disconnected with error");
+	serial_debug("Disconnected with error", DEBUG_2);
 	disconnect_callback(arg);
 }
 
@@ -190,14 +190,14 @@ static void ICACHE_FLASH_ATTR dns_callback(const char * hostname, ip_addr_t * ad
 
 	if (addr == NULL) {
 		os_sprintf(print_buffer, "DNS failed for %s", hostname);
-		serial_debug(print_buffer);
+		serial_debug(print_buffer, DEBUG_2);
 		if (req->user_callback != NULL) {
 			req->user_callback("", -1, "");
 		}
 		os_free(req);
 	}
 	else {
-		serial_debug("DNS found");
+		serial_debug("DNS found", DEBUG_2);
 
 		struct espconn * conn = (struct espconn *)os_malloc(sizeof(struct espconn));
 		conn->type = ESPCONN_TCP;
@@ -214,7 +214,7 @@ static void ICACHE_FLASH_ATTR dns_callback(const char * hostname, ip_addr_t * ad
 		espconn_regist_reconcb(conn, error_callback);
 
 		if(espconn_connect(conn) != 0) {
-			serial_debug("non successfull");
+			serial_debug("non successfull", DEBUG_2);
 		}
 	}
 }
@@ -223,7 +223,7 @@ void ICACHE_FLASH_ATTR http_raw_request(
 		const char * hostname, ip_addr_t* ip_addr, int port, const char * path, const char * post_data,
 		http_callback user_callback)
 {
-	serial_debug("in http_raw_request");
+	serial_debug("in http_raw_request", DEBUG_2);
 
 	request_args * req = (request_args *)os_malloc(sizeof(request_args));
 	req->hostname = esp_strdup(hostname);
@@ -255,7 +255,7 @@ void ICACHE_FLASH_ATTR http_post(const char * url, const char * post_data,
 
 	if (os_strncmp(url, "http://", strlen("http://")) != 0) {
 		os_sprintf(print_buffer, "URL is not HTTP %s", url);
-		serial_debug(print_buffer);
+		serial_debug(print_buffer, DEBUG_2);
 		return;
 	}
 	url += strlen("http://"); // Get rid of the protocol.
@@ -277,7 +277,7 @@ void ICACHE_FLASH_ATTR http_post(const char * url, const char * post_data,
 	else {
 		port = atoi(colon + 1);
 		if (port == 0) {
-			serial_debug("Port error");
+			serial_debug("Port error", DEBUG_2);
 			return;
 		}
 
@@ -291,11 +291,11 @@ void ICACHE_FLASH_ATTR http_post(const char * url, const char * post_data,
 	}
 
 	os_sprintf(print_buffer, "hostname=%s", hostname);
-	serial_debug(print_buffer);
+	serial_debug(print_buffer, DEBUG_2);
 	os_sprintf(print_buffer, "port=%d", port);
-	serial_debug(print_buffer);
+	serial_debug(print_buffer, DEBUG_2);
 	os_sprintf(print_buffer, "path=%s", path);
-	serial_debug(print_buffer);
+	serial_debug(print_buffer, DEBUG_2);
 	http_raw_request(hostname, ip_addr, port, path, post_data, user_callback);
 }
 
@@ -308,11 +308,11 @@ void ICACHE_FLASH_ATTR http_get(const char * url, ip_addr_t* ip_addr,
 void ICACHE_FLASH_ATTR http_callback_example(char * response, int http_status, char * full_response)
 {
 	os_sprintf(print_buffer, "http_status=%d", http_status);
-	serial_debug(print_buffer);
+	serial_debug(print_buffer, DEBUG_2);
 	if (http_status != HTTP_STATUS_GENERIC_ERROR) {
 		os_sprintf(print_buffer, "strlen(full_response)=%d\n", strlen(full_response));
-		// serial_debug(print_buffer);
+		// serial_debug(print_buffer, DEBUG_2);
 		os_sprintf(print_buffer, "response=%s<EOF>\n", full_response);
-		// serial_debug(print_buffer);
+		// serial_debug(print_buffer, DEBUG_2);
 	}
 }

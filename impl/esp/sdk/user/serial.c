@@ -1,9 +1,5 @@
 #include "serial.h"
 
-#define DEBUG 1
-#define WIFI_DEBUG 0
-
-
 void ICACHE_FLASH_ATTR
 uart_ignore_char(char c)
 {
@@ -34,8 +30,8 @@ void ICACHE_RAM_ATTR serial_println(char* message) {
     uart_tx_one_char('\n');
 }
 
-void ICACHE_RAM_ATTR serial_debug(char* message) {
-    if(DEBUG) {
+void ICACHE_RAM_ATTR serial_debug(char* message, uint8 debug_level) {
+    if(DEBUG_LEVEL >= debug_level) {
         serial_println(message);
     }
 }
