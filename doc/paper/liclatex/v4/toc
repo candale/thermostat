@@ -1,0 +1,34 @@
+hyb da with softag
+
+
+- da dm
+	- preprocessing
+	- clust		
+		- classical clust meth
+		- other meth
+		- performance measures
+	- class
+		- classical classif meth
+		- other meth		
+		- performance measures
+	? applications - stock exch
+
+- soft c
+	- fl, possib th, hybrid sys, dynamic env
+	- hybrid da ; overlapping clusters	
+
+- ma interact
+	- agent, mas, sas, acs, asm
+
+- soft ag
+
+- automatic ds selection
+	- nn, svm
+
+- asm clust
+	-...
+	- ctx dynamic env
+
+- inc clust
+
+-set cov

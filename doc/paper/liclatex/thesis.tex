@@ -1,0 +1,112 @@
+\documentclass[a4paper, 12pt, english]{report}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{babel}
+\usepackage{multicol}
+
+\usepackage[section]{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{psfig}
+
+\usepackage{verbatim} 
+\usepackage{color}
+
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\usepackage{setspace}
+%\onehalfspacing
+\singlespacing
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\graphicspath{{images/}}
+
+\newcommand{\A}{\ensuremath{\mathcal A}}
+\newcommand{\M}{\ensuremath{\mathcal M}}
+\newcommand{\E}{\ensuremath{\mathcal E}}
+\newcommand{\X}{\ensuremath{\mathcal X}}
+\newcommand{\D}{\ensuremath{\mathcal D}}
+\newcommand{\G}{\ensuremath{\mathcal G}}
+\newcommand{\powerset}{\ensuremath{\mathcal P}}
+\newcommand{\R}{\ensuremath{\mathcal R}}
+\newcommand{\re}{\ensuremath{\mathbb R}}
+\newcommand{\nat}{\ensuremath{\mathbb N}}
+
+
+\setcounter{secnumdepth}{3}
+
+\geometry{a4paper,top=2cm,left=2cm,right=2cm,bottom=2cm}
+\newtheorem{lemma} {Lemma}
+\newtheorem{definition} {Definition}[section]
+\newtheorem{proof} {Proof}
+\newtheorem{remark} {Remark}[section]
+\newtheorem{prop} {Proposition}
+\newtheorem{theorem} {Theorem}
+%\newtheorem{algorithm}{Algorithm}[section]
+  
+\newcommand{\eop}{\hfill $\sqcap\!\!\!\!\sqcup$} % end of proof   
+\pagestyle{headings}
+\begin{document}
+
+\begin{titlepage}
+\sloppy
+\begin{center}
+\Large{BABE\c{S}-BOLYAI UNIVERSITY}
+
+\Large{FACULTY OF MATHEMATICS AND COMPUTER SCIENCE}
+
+ 
+
+%\textsl{
+\vspace{8cm}
+\Huge \textbf{Thesis Title}
+
+\vspace{1.3cm}
+\Large \textbf{B.Sc. Thesis}
+\end{center}
+\vspace{4cm}
+\begin{flushright}
+\Large{PhD student: name}
+
+\Large{Scientific supervisor: Lect. Ph.D. Radu D. G\u{a}ceanu}
+
+\end{flushright}
+
+\vspace{2cm}
+
+\begin{center}
+\Large{2015}
+\end{center}
+
+\end{titlepage}
+
+\include{abstract}
+\include{publications}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\include{introduction}
+
+\include{background}
+
+\include{conclusions}
+
+
+
+
+\renewcommand\bibname{Bibliography}
+
+\addcontentsline{toc}{chapter}{\textbf{Bibliography}}
+%\bibliographystyle{apalike}
+%\bibliographystyle{alpha}
+\bibliographystyle{plain}
+\bibliography{bibliography} 
+
+\end{document}

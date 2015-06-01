@@ -1,0 +1,37 @@
+\select@language {english}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Decision tree}}{14}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Neural network}}{18}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces An agent perceiving its environment}}{24}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Agent perception and action}}{24}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Agents with state.}}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A soft agent senses its local environment and acts on the global environment.}}{33}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces A state agent.}}{35}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Example --- tipping problem.}}{36}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Fuzzy inference example.}}{36}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Fuzzy inference process.}}{37}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Execusion on scp410. }}{43}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Similarity}}{50}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Final grid configuration - synthetic dataset}}{54}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Membership degrees - synthetic dataset}}{54}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Classical approach result - synthetic dataset}}{55}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Final grid configuration - Iris dataset}}{56}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Membership degrees - Iris dataset}}{57}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Classical approach result --- Iris dataset}}{58}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The fuzzy variable Similarity}}{64}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Execution scenarios}}{74}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Performance}}{75}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Java code example.}}{80}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Spearman correlation}}{83}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Learning accuracy/episode}}{84}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Results}}{85}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Execution scenarios}}{90}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Performance}}{91}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Spearman correlation}}{99}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Results for the first case study}}{99}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Spearman correlation}}{102}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Results for the second case study}}{103}
+\addvspace {10\p@ }

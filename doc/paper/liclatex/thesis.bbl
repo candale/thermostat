@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}
+
+\bibitem{Ben08Encyclopedia}
+Irad Ben-Gal.
+\newblock {\em Bayesian Networks}.
+\newblock John Wiley \& Sons, Ltd, 2008.
+
+\bibitem{Han06DataMining}
+Jiawei Han and Micheline Kamber.
+\newblock {\em Data Mining: Concepts and Techniques, 2nd ed.}
+\newblock Morgan Kaufmann, 2006.
+
+\bibitem{Kotsiantis07Supervised}
+Sotiris~B. Kotsiantis.
+\newblock Supervised machine learning: A review of classification techniques.
+\newblock {\em Informatica (Slovenia)}, 31(3):249--268, 2007.
+
+\bibitem{website:clustering}
+Stephen Marsland.
+\newblock {\em Machine Learning: An Algorithmic Perspective}.
+\newblock Chapman \& Hall/CRC, 1st edition, 2009.
+
+\end{thebibliography}

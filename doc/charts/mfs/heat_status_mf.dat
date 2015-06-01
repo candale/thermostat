@@ -1,0 +1,18 @@
+# x y
+0 0
+0 1
+27 1
+65 0
+
+# x y
+30 0
+63 1
+100 1
+100 0
+
+# x y
+0 0
+100 0
+
+# set xtics 10
+# plot [0:100] [-0.05:1.1] 'heat_status_mf.dat' title "Heat Status mf"  with lines lt rgb "black"

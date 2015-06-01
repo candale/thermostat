@@ -1,0 +1,831 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{SdLFdCG09}
+
+\bibitem[AAA03]{Alon03OnlineSCP}
+Noga Alon, Baruch Awerbuch, and Yossi Azar.
+\newblock The online set cover problem.
+\newblock In {\em Proceedings of the thirty-fifth annual ACM symposium on
+  Theory of computing}, STOC '03, pages 100--105, New York, NY, USA, 2003. ACM.
+
+\bibitem[ABKS99]{Ankerst99OPTICS}
+Mihael Ankerst, Markus~M. Breunig, Hans-Peter Kriegel, and J{\"o}rg Sander.
+\newblock Optics: Ordering points to identify the clustering structure.
+\newblock In {\em SIGMOD Conference}, pages 49--60, 1999.
+
+\bibitem[AM10]{Alfandari10ClusteredSCP}
+Laurent Alfandari and J{\'e}r{\^o}me Monnot.
+\newblock Approximation of the clustered set covering problem.
+\newblock {\em Electronic Notes in Discrete Mathematics}, 36:479--485, 2010.
+
+\bibitem[AY01]{Aggarwal01Outlier}
+Charu~C. Aggarwal and Philip~S. Yu.
+\newblock Outlier detection for high dimensional data.
+\newblock In {\em SIGMOD Conference}, pages 37--46, 2001.
+
+\bibitem[AZAY10]{Zoubi}
+Moh'd~Belal Al-Zoubi, Al-Dahoud Ali, and Abdelfatah~A. Yahya.
+\newblock Fuzzy clustering-based approach for outlier detection.
+\newblock In {\em Proceedings of the 9th WSEAS international conference on
+  Applications of computer engineering}, ACE'10, pages 192--197, Stevens Point,
+  Wisconsin, USA, 2010. World Scientific and Engineering Academy and Society
+  (WSEAS).
+
+\bibitem[BC96]{Beasley96AGenetic}
+J.E Beasley and P.C Chu.
+\newblock A genetic algorithm for the set covering problem.
+\newblock {\em European Journal of Operational Research}, 94(2):392 -- 404,
+  1996.
+
+\bibitem[Bea]{website:scp}
+J~E Beasley.
+\newblock {OR-L}ibrary. http://people.brunel.ac.uk/$\sim$mastjjb/jeb/orlib
+  /scpinfo.html.
+
+\bibitem[BG08]{Ben08Encyclopedia}
+Irad Ben-Gal.
+\newblock {\em Bayesian Networks}.
+\newblock John Wiley \& Sons, Ltd, 2008.
+
+\bibitem[Bla94a]{blair94interview}
+Betty Blair.
+\newblock Interview with zadeh, creator of fuzzy logic.
+\newblock {\em Azerbaijan International}, 2(4):46--47, Winter 1994.
+
+\bibitem[Bla94b]{blair94short}
+Betty Blair.
+\newblock Short biographical sketch.
+\newblock {\em Azerbaijan International}, 2(4):4, Winter 1994.
+
+\bibitem[BR03]{Blum03Metaheuristics}
+Christian Blum and Andrea Roli.
+\newblock Metaheuristics in combinatorial optimization: Overview and conceptual
+  comparison.
+\newblock {\em ACM Comput. Surv.}, 35(3):268--308, 2003.
+
+\bibitem[BW94]{30}
+Aart J.~C. Bik and Harry A.~G. Wijshoff.
+\newblock On automatic data structure selection and code generation for sparse
+  computations.
+\newblock In {\em Proceedings of the 6th International Workshop on Languages
+  and Compilers for Parallel Computing}, pages 57--75, London, UK, 1994.
+  Springer-Verlag.
+
+\bibitem[BW96]{29}
+Aart J.~C. Bik and Harry A.~G. Wijshoff.
+\newblock Automatic data structure selection and transformation for sparse
+  matrix computations.
+\newblock {\em IEEE Trans. Parallel Distrib. Syst.}, 7:109--126, February 1996.
+
+\bibitem[CCFM97]{Charikar97Inc}
+Moses Charikar, Chandra Chekuri, Tom\'{a}s Feder, and Rajeev Motwani.
+\newblock Incremental clustering and dynamic information retrieval.
+\newblock In {\em Proceedings of the twenty-ninth annual ACM symposium on
+  Theory of computing}, STOC '97, pages 626--635, New York, NY, USA, 1997. ACM.
+
+\bibitem[CCGa]{Czibula11Intelligent}
+Gabriela Czibula, Istvan Czibula, and Radu G{\u{a}}ceanu.
+\newblock Intelligent data structures selection using neural networks.
+\newblock {\em Knowledge and Information Systems}, pages 1--22.
+\newblock 10.1007/s10115-011-0468-3.
+
+\bibitem[CCGb]{Czibula12SVM}
+Gabriela Czibula, Istvan Czibula, and Radu G{\u{a}}ceanu.
+\newblock A support vector machine model for intelligent selection of data
+  representations.
+\newblock {\em Applied Soft Computing}.
+\newblock under review.
+
+\bibitem[CDG07]{Chira07Stigmergic}
+C.~Chira, D.~Dumitrescu, and R.~D. G\u{a}ceanu.
+\newblock Stigmergic agent systems for solving {NP}-hard problems.
+\newblock {\em Studia Informatica}, Special Issue KEPT-2007: Knowledge
+  Engineering: Principles and Techniques (June 2007):177--184, June 2007.
+
+\bibitem[CH96]{chuang}
+Tyng-Ruey Chuang and Wen~L. Hwang.
+\newblock A probabilistic approach to the problem of automatic selection of
+  data representations.
+\newblock {\em SIGPLAN Not.}, 31:190--200, June 1996.
+
+\bibitem[cir10]{im3}
+Patient contributed~image repository.
+\newblock http://www.pcir.org/, 2010.
+
+\bibitem[CL11]{libsvm}
+Chih-Chung Chang and Chih-Jen Lin.
+\newblock {LIBSVM}: A library for support vector machines.
+\newblock {\em ACM Transactions on Intelligent Systems and Technology},
+  2:27:1--27:27, 2011.
+\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
+
+\bibitem[CLRS09]{Cormen09Introduction}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock {\em Introduction to Algorithms (3. ed.)}.
+\newblock MIT Press, 2009.
+
+\bibitem[CM01]{Catalano01Parallel}
+Maria Stella~Fiorenzo Catalano and Federico Malucelli.
+\newblock Practical parallel computing.
+\newblock chapter Parallel randomized heuristics for the set covering problem,
+  pages 113--132. Nova Science Publishers, Inc., Commack, NY, USA, 2001.
+
+\bibitem[CMP06]{cmpintea06}
+C.~Chira C.~M.~Pintea, P.~Pop.
+\newblock Reinforcing ant colony system for the generalized traveling salesman
+  problem.
+\newblock In {\em Volume of Evolutionary Computing, International Conference
+  Bio-Inspired Computing - Theory and Applications (BIC-TA)}, pages 245--252,
+  New York, NY, USA, September 18--22, 2006. Wuhan, China.
+
+\bibitem[CMR{\etalchar{+}}07]{TFLSC07}
+Oscar Castillo, Patricia Melin, Oscar~Montiel Ross, Roberto~Seplveda Cruz,
+  Witold Pedrycz, and Janusz Kacprzyk.
+\newblock {\em Theoretical Advances and Applications of Fuzzy Logic and Soft
+  Computing}.
+\newblock Springer Publishing Company, Incorporated, 1st edition, 2007.
+
+\bibitem[coNop]{compediumnp}
+A~compendium of NP~optimization problems.
+\newblock http://www.nada.kth.se/ ~viggo/problemlist/compendium.html.
+
+\bibitem[CSM{\etalchar{+}}11]{Crawford11AHybrid}
+Broderick Crawford, Ricardo Soto, Eric Monfroy, Fernando Paredes, and Wenceslao
+  Palma.
+\newblock A hybrid ant algorithm for the set covering problem.
+\newblock {\em International Journal of the Physical Sciences},
+  6(19):4667--4673, September 16 2011.
+
+\bibitem[CST00]{nello}
+Nello Cristianini and John Shawe-Taylor.
+\newblock {\em An introduction to support Vector Machines: and other
+  kernel-based learning methods}.
+\newblock Cambridge University Press, New York, NY, USA, 2000.
+
+\bibitem[CXC04]{Chen04AnAdaptive}
+L.~Chen, X.~H. Xu, and Y.~X Chen.
+\newblock An adaptive ant colony clustering algorithm.
+\newblock In {\em Machine Learning and Cybernetics, 2004. Proceedings of 2004
+  International Conference on, Vol. 3}, pages 1387--1392, 2004.
+
+\bibitem[DB05]{Dorigo05Ant}
+Marco Dorigo and Christian Blum.
+\newblock Ant colony optimization theory: A survey.
+\newblock {\em Theor. Comput. Sci.}, 344(2-3):243--278, 2005.
+
+\bibitem[DDC99]{tspgraph99}
+Marco Dorigo and Gianni Di~Caro.
+\newblock {\em The ant colony optimization meta-heuristic}, pages 11--32.
+\newblock McGraw-Hill Ltd., UK, Maidenhead, UK, England, 1999.
+
+\bibitem[DGF{\etalchar{+}}91]{Deneubourg91TheDynamic}
+J.~L. Deneubourg, S.~Goss, N.~Franks, A.~Sendova-Franks, C.~Detrain, and
+  L.~Chretien.
+\newblock The dynamic of collective sorting robot-like ants and ant-like
+  robots.
+\newblock In {\em SAB’90 - 1st Conf. On Simulation of Adaptive Behavior: From
+  Animals to Animats}, pages 356--365. MIT Press, 1991.
+
+\bibitem[DICiM11]{dicom}
+{D}igital {I}maging and {C}ommunications~in {M}edicine.
+\newblock http://medical.nema.org/, 2011.
+
+\bibitem[DL11]{Li11Training}
+Steven~Simske Dalong~Li.
+\newblock Training set compression by incremental clustering.
+\newblock {\em Journal of Pattern Recognition Research}, 6:56--64, 2011.
+
+\bibitem[Dor07]{Dorigo07Ant}
+M.~Dorigo.
+\newblock Ant colony optimization.
+\newblock {\em Scholarpedia}, 2(3):1461, 2007.
+
+\bibitem[DP95]{dumitrescu95degenerate}
+Dan Dumitrescu and Horia~Florin Pop.
+\newblock Degenerate and non-degenerate convex decomposition of finite fuzzy
+  partitions --- {I}.
+\newblock {\em Fuzzy Sets and Systems}, 73:365--376, 1995.
+
+\bibitem[DP98]{dumitrescu98degenerate}
+Dan Dumitrescu and Horia~Florin Pop.
+\newblock Degenerate and non-degenerate convex decomposition of finite fuzzy
+  partitions --- {II}.
+\newblock {\em Fuzzy Sets and Systems}, 96:111--118, 1998.
+
+\bibitem[DS04]{Dorigo04Ant}
+M.~Dorigo and T.~St{\"{u}}tzle.
+\newblock {\em Ant Colony Optimization}.
+\newblock MIT Press, 2004.
+
+\bibitem[EKS{\etalchar{+}}98]{DBSCANIncremental}
+Martin Ester, Hans-Peter Kriegel, J\"{o}rg Sander, Michael Wimmer, and Xiaowei
+  Xu.
+\newblock Incremental clustering for mining in a data warehousing environment.
+\newblock In {\em Proceedings of the 24rd International Conference on Very
+  Large Data Bases}, VLDB '98, pages 323--333, San Francisco, CA, USA, 1998.
+  Morgan Kaufmann Publishers Inc.
+
+\bibitem[EpKSX96]{DBSCAN}
+Martin Ester, Hans peter Kriegel, Jörg S, and Xiaowei Xu.
+\newblock A density-based algorithm for discovering clusters in large spatial
+  databases with noise.
+\newblock pages 226--231. AAAI Press, 1996.
+
+\bibitem[Est09]{Ester09Density}
+Martin Ester.
+\newblock Density-based clustering.
+\newblock In {\em Encyclopedia of Database Systems}, pages 795--799. 2009.
+
+\bibitem[Etz96]{Etzioni96Moving}
+O.~Etzioni.
+\newblock Moving up the information food chain: deploying softbots on the world
+  wide web.
+\newblock In {\em Proceedings of the 13rd national Conference on Artificial
+  Intelligence (AAAI- 96)}, pages 4--8. Portland, OR, 1996.
+
+\bibitem[fIPA]{website:fipa.org}
+Foundation for Intelligent Physical~Agents.
+\newblock http://www.fipa.org/.
+
+\bibitem[FLM97]{Finin97Kqml}
+T.~Finin, Y.~Labrou, and J.~Mayfield.
+\newblock {\em Kqml as an Agent Communication Language}.
+\newblock Software Agents, B.M. Jeffrey, MIT Press, 1997.
+
+\bibitem[FMPS00]{forth00anExperiment}
+Kilian Foth, Wolfgang Menzel, Horia~Florin Pop, and Ingo Schr{\"{o}}der.
+\newblock An experiment on incremental analysis using robust parsing
+  techniques.
+\newblock In {\em The 18th International Conference on Computational
+  Linguistics}, pages 1026--1030. Universit{\"{a}}t des Saarlandes,
+  Saarbr{\"{u}}cken, Germany, July-August 2000.
+
+\bibitem[For10]{forina}
+M~Forina.
+\newblock http://archive.ics.uci.edu/ml, 2010.
+
+\bibitem[G{\u{a}}c11]{Gaceanu11ABio}
+Radu~D. G{\u{a}}ceanu.
+\newblock A bio-inspired fuzzy agent clustering algorithm for search engines.
+\newblock {\em Procedia Computer Science}, 7(0):305 -- 307, 2011.
+\newblock Proceedings of the 2nd European Future Technologies Conference and
+  Exhibition 2011 (FET 11).
+
+\bibitem[GC10]{Guillaume10Interpretable}
+Serge Guillaume and Brigitte Charnomordic.
+\newblock Interpretable fuzzy inference systems for cooperation of expert
+  knowledge and data in agricultural applications using fispro.
+\newblock In {\em FUZZ-IEEE}, pages 1--8, 2010.
+
+\bibitem[Gei93]{geisser}
+S.~Geisser.
+\newblock {\em Predictive inference: an introduction}.
+\newblock Monographs on statistics and applied probability. Chapman \& Hall,
+  1993.
+
+\bibitem[GKP02]{speech}
+Mihaela Gordan, Constantine Kotropoulos, and Ioannis Pitas.
+\newblock A support vector machine-based dynamic network for visual speech
+  recognition applications.
+\newblock {\em EURASIP J. Appl. Signal Process.}, 2002:1248--1259, January
+  2002.
+
+\bibitem[GKS09]{George09Spatio}
+Betsy George, James~M. Kang, and Shashi Shekhar.
+\newblock Spatio-temporal sensor graphs (stsg): A data model for the discovery
+  of spatio-temporal patterns.
+\newblock {\em Intell. Data Anal.}, 13(3):457--475, 2009.
+
+\bibitem[Glo89]{Glover89Tabu}
+Fred Glover.
+\newblock Tabu search - part {I}.
+\newblock {\em INFORMS Journal on Computing}, 1(3):190--206, 1989.
+
+\bibitem[Glo90]{Glover90Tabu}
+Fred Glover.
+\newblock Tabu search - part {II}.
+\newblock {\em INFORMS Journal on Computing}, 2(1):4--32, 1990.
+
+\bibitem[GO11]{Gaceanu11Using}
+R.~D. G{\u{a}}ceanu and G.~Orb{\'{a}}n.
+\newblock Using rsl to describe the stock exchange domain.
+\newblock In {\em microCAD International Scientific Conference}. University of
+  Miskolc, Hungary, 31 March -- 1 April 2011.
+
+\bibitem[Gol89]{Genetic}
+David~E. Goldberg.
+\newblock {\em Genetic Algorithms in Search, Optimization and Machine
+  Learning}.
+\newblock Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA, 1st
+  edition, 1989.
+
+\bibitem[GP08]{Gouwanda08Evolutionary}
+Darwin Gouwanda and S.~G. Ponnambalam.
+\newblock Evolutionary search techniques to solve set covering problems.
+\newblock In {\em World Academy of Science, Engineering and Technology}, pages
+  20--26. WASET, March 2008.
+
+\bibitem[GP10]{Gaceanu10AnAdaptive}
+R.~D. G{\u{a}}ceanu and H.~F. Pop.
+\newblock An adaptive fuzzy agent clustering algorithm for search engines.
+\newblock In {\em MACS2010: Proceedings of the 8th Joint Conference on
+  Mathematics and Computer Science}, pages 185--196. Komarno, Slovakia, 2010.
+
+\bibitem[GP11a]{Gaceanu11AContext}
+R.~D. G{\u{a}}ceanu and H.~F. Pop.
+\newblock A context-aware {ASM}-based clustering algorithm.
+\newblock {\em Studia Universitatis Babes-Bolyai Series Informatica},
+  LVI(2):55--61, 2011.
+
+\bibitem[GP11b]{Gaceanu11AFuzzy}
+R.~D. G{\u{a}}ceanu and H.~F. Pop.
+\newblock A fuzzy clustering algorithm for dynamic environments.
+\newblock In {\em KEPT2011: Knowledge Engineering Principles and Techniques,
+  Selected Papers, Eds: M. Frentiu, H.F. Pop, S. Motogna}, pages 119--130.
+  Babes-Bolyai University, Cluj-Napoca, Romania, July 4--6 2011.
+
+\bibitem[GP11c]{Gaceanu11AnIncremental}
+R.~D. G{\u{a}}ceanu and H.~F. Pop.
+\newblock An incremental {ASM}-based fuzzy clustering algorithm.
+\newblock In {\em Informatics'2011, Slovakia, i'11:Proceedings of the Eleventh
+  International Conference on Informatics, Informatics 2011, Eds: V.
+  Novitzk{\'{a}}, {\u{S}}tefan Hud{\'{a}}k}, pages 198--204. Slovak Society for
+  Applied Cybernetics and Informatics, Ro{\u{z}}{\u{n}}ava, Slovakia, November
+  16--18 2011.
+
+\bibitem[GP12]{Gaceanu12SCP}
+R.~D. G{\u{a}}ceanu and H.~F. Pop.
+\newblock An incremental approach to the set covering problem.
+\newblock {\em Studia Universitatis Babes-Bolyai Series Informatica}, LVIII(2),
+  2012.
+
+\bibitem[Har75]{Hartigan75Clustering}
+J.A. Hartigan.
+\newblock {\em Clustering algorithms}.
+\newblock Wiley series in probability and mathematical statistics. Applied
+  probability and statistics. Wiley, 1975.
+
+\bibitem[HCL00]{Hsu00APractical}
+Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin.
+\newblock A practical guide to support vector classification, 2000.
+
+\bibitem[HFH{\etalchar{+}}09]{Hall09Weka}
+Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann,
+  and Ian~H. Witten.
+\newblock The weka data mining software: an update.
+\newblock {\em SIGKDD Explorations}, 11(1):10--18, 2009.
+
+\bibitem[HK06]{Han06DataMining}
+Jiawei Han and Micheline Kamber.
+\newblock {\em Data Mining: Concepts and Techniques, 2nd ed.}
+\newblock Morgan Kaufmann, 2006.
+
+\bibitem[HKT01]{Han01Spatial}
+J.~Han, M.~Kamber, and A.~K.~H. Tung.
+\newblock {\em {Spatial Clustering Methods in Data Mining: A Survey}}.
+\newblock Taylor and Francis, 2001.
+
+\bibitem[HL0]{hl7}
+{H}ealth~{L}evel 7.
+\newblock www.hl7.org/, 0.
+
+\bibitem[hp10]{im5}
+DICOM home page.
+\newblock ftp://medical.nema.org/medical/dicom/datasets/, 2010.
+
+\bibitem[HSP08]{Hassan08Friends}
+Samer Hassan, Mauricio Salgado, and Juan Pav{\'o}n.
+\newblock Friends forever: Social relationships with a fuzzy agent-based model.
+\newblock In {\em HAIS}, pages 523--532, 2008.
+
+\bibitem[HZK{\etalchar{+}}09]{Haghighi09Context}
+Pari~Delir Haghighi, Arkady~B. Zaslavsky, Shonali Krishnaswamy, Mohamed~Medhat
+  Gaber, and Seng~Wai Loke.
+\newblock Context-aware adaptive data stream mining.
+\newblock {\em Intell. Data Anal.}, 13(3):423--434, 2009.
+
+\bibitem[Ins]{tsplib}
+MP-TESTDATA The TSPLIB Symmetric Traveling Salesman~Problem Instances.
+\newblock http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/index.html.
+
+\bibitem[Iri88]{website:iris}
+Machine Learning~Repository Iris.
+\newblock http://archive.ics.uci.edu/ml/datasets/iris, 1988.
+
+\bibitem[Kam10]{Kamble}
+A.~Kamble.
+\newblock Incremental clustering in data mining using genetic algorithm.
+\newblock {\em International Journal of Computer Theory and Engineering},
+  2(3):1793--8201, 2010.
+
+\bibitem[KH01]{kiczales97}
+Gregor Kiczales and Erik Hilsdale.
+\newblock Aspect-oriented programming.
+\newblock {\em SIGSOFT Softw. Eng. Notes}, 26:313--, September 2001.
+
+\bibitem[KHK99]{Karypis99Chameleon}
+George Karypis, Eui-Hong Han, and Vipin Kumar.
+\newblock Chameleon: Hierarchical clustering using dynamic modeling.
+\newblock {\em IEEE Computer}, 32(8):68--75, 1999.
+
+\bibitem[KJV83]{Kirkpatrick83Optimization}
+Scott Kirkpatrick, D.~Gelatt Jr., and Mario~P. Vecchi.
+\newblock Optimization by simmulated annealing.
+\newblock {\em Science}, 220(4598):671--680, 1983.
+
+\bibitem[KKvdSS96]{ann2}
+Ben Kröse, Ben Krose, Patrick van~der Smagt, and Patrick Smagt.
+\newblock An introduction to neural networks, 1996.
+
+\bibitem[Kot07]{Kotsiantis07Supervised}
+Sotiris~B. Kotsiantis.
+\newblock Supervised machine learning: A review of classification techniques.
+\newblock {\em Informatica (Slovenia)}, 31(3):249--268, 2007.
+
+\bibitem[KS05]{Kumar05Fuzzy}
+Vikas Kumar and Marta Schuhmacher.
+\newblock Fuzzy uncertainty analysis in system modelling.
+\newblock In {\em European Symposium on Computer Aided Process Engineering –
+  15 L. Puigjaner and A. Espuña (Editors)}, 2005.
+
+\bibitem[KS08]{wspsvm}
+P.~R.~Kumar K.~Sreelakshmi.
+\newblock Performance evaluation of short term wind speed prediction
+  techniques.
+\newblock {\em IJCSNS International Journal of Computer Science and Network
+  Security}, 8(8):162--169, 2008.
+
+\bibitem[KTL11]{tezel}
+Suzan K{\"o}knar-Tezel and Longin~Jan Latecki.
+\newblock Improving svm classification on imbalanced time series data sets with
+  ghost points.
+\newblock {\em Knowl. Inf. Syst.}, 28:1--23, July 2011.
+
+\bibitem[KY95]{Klir95Fuzzy}
+GEORGE~J. Klir and BO~Yuan.
+\newblock {\em FUZZY SETS AND FUZZY LOGIC Theory and Applications}.
+\newblock Prentice Hall, 1995.
+
+\bibitem[LB05]{ann4}
+Kristopher~R. Linstrom and A.~John Boye.
+\newblock A neural network prediction model for a psychiatric application.
+\newblock In {\em Proceedings of the Sixth International Conference on
+  Computational Intelligence and Multimedia Applications}, pages 36--40,
+  Washington, DC, USA, 2005. IEEE Computer Society.
+
+\bibitem[LF94]{Lumer94Diversity}
+E.~Lumer and B.~Faieta.
+\newblock Diversity and adaptation in populations of clustering ants.
+\newblock In {\em J.-A.Meyer, S.W.Wilson(Eds.), Proceedings of the Third
+  International Conference on Simulation of Adaptive Behavior: From Animats,
+  Vol.3}, pages 501--508. MIT Press/Bradford Books,Cambridge, MA, 1994.
+
+\bibitem[LKC02]{Lee02Inc}
+Kyung-Soon Lee, Kyo Kageura, and Key-Sun Choi.
+\newblock Implicit ambiguity resolution using incremental clustering in
+  korean-to-english cross-language information retrieval.
+\newblock In {\em Proceedings of the 19th international conference on
+  Computational linguistics - Volume 1}, COLING '02, pages 1--7, Stroudsburg,
+  PA, USA, 2002. Association for Computational Linguistics.
+
+\bibitem[LLLH10]{Li10Incclust}
+Zhenhui Li, Jae-Gil Lee, Xiaolei Li, and Jiawei Han.
+\newblock Incremental clustering for trajectories.
+\newblock In Hiroyuki Kitagawa, Yoshiharu Ishikawa, Qing Li, and Chiemi
+  Watanabe, editors, {\em Database Systems for Advanced Applications}, volume
+  5982 of {\em Lecture Notes in Computer Science}, pages 32--46. Springer
+  Berlin / Heidelberg, 2010.
+
+\bibitem[Low78]{Low}
+James~R. Low.
+\newblock Automatic data structure selection: an example and overview.
+\newblock {\em Commun. ACM}, 21:376--385, May 1978.
+
+\bibitem[LR76]{lowrovner}
+James Low and Paul Rovner.
+\newblock Techniques for the automatic selection of data structures.
+\newblock In {\em Proceedings of the 3rd ACM SIGACT-SIGPLAN symposium on
+  Principles on programming languages}, POPL '76, pages 58--67, New York, NY,
+  USA, 1976. ACM.
+
+\bibitem[MA75]{Mamdani75AnExperiment}
+E.~H. Mamdani and S.~Assilian.
+\newblock An experiment in linguistic synthesis with a fuzzy logic controller.
+\newblock {\em International Journal of Man-Machine Studies}, 7(1):1--13, 1975.
+
+\bibitem[Mar09]{website:clustering}
+Stephen Marsland.
+\newblock {\em Machine Learning: An Algorithmic Perspective}.
+\newblock Chapman \& Hall/CRC, 1st edition, 2009.
+
+\bibitem[Mat]{website:fuzzyinference}
+Fuzzy Logic~Toolbox MathWorks.
+\newblock \url{http://www.mathworks.com/help/toolbox /fuzzy/fp351dup8.html}.
+
+\bibitem[Mit97]{mitchell}
+Thomas~M. Mitchell.
+\newblock {\em Machine Learning}.
+\newblock McGraw-Hill, Inc., New York, NY, USA, 1 edition, 1997.
+
+\bibitem[MK91]{Miyake91Aneural}
+S.~Miyake and F.~Kanaya.
+\newblock A neural network approach to a bayesian statistical decision problem.
+\newblock {\em IEEE Trans. Neural Networks}, 2:538--540, 1991.
+
+\bibitem[Mou01]{mount}
+D.M. Mount.
+\newblock Lecture notes {CMSC} 420, {D}ata {S}tructures, 2001.
+
+\bibitem[NGS11]{Goyal}
+K~Venkatramaiah Deepak P~C Navneet~Goyal, Poonam~Goyal and Sanoop~P S.
+\newblock An efficient density based incremental clustering algorithm in data
+  warehousing environment.
+\newblock In {\em 2009 International Conference on Computer Engineering and
+  Applications IPCSIT vol.2 (2011), IACSIT Press, Singapore}, pages 482 -- 486,
+  2011.
+
+\bibitem[Ngu10]{nguyen}
+Nam Nguyen.
+\newblock A new svm approach to multi-instance multi-label learning.
+\newblock In {\em Proceedings of the 2010 IEEE International Conference on Data
+  Mining}, ICDM '10, pages 384--392, Washington, DC, USA, 2010. IEEE Computer
+  Society.
+
+\bibitem[NMM06]{Narzisi06Multiobjective}
+Giuseppe Narzisi, Venkatesh Mysore, and Bud Mishra.
+\newblock Multi-objective evolutionary optimization of agent-based models: An
+  application to emergency response planning.
+\newblock In {\em Computational Intelligence}, pages 228--232, 2006.
+
+\bibitem[oPDsf10]{im4}
+Washington State University~College of~Pharmacy DICOM~sample files.
+\newblock http://info.betaustur.org/, 2010.
+
+\bibitem[Osi10]{im1}
+Advanced Imaging in 3D/4D/5D Sample DICOM Image~Sets Osirix.
+\newblock http://pubimage.hcuge.ch:8080/, 2010.
+
+\bibitem[OSM]{asm}
+Object{W}eb: {O}pen~{S}ource {M}iddleware.
+\newblock http://asm.objectweb.org/.
+
+\bibitem[PS82]{Papadimitriou82Combinatorial}
+Christos~H. Papadimitriou and Kenneth Steiglitz.
+\newblock {\em Combinatorial Optimization: Algorithms and Complexity}.
+\newblock Prentice-Hall, 1982.
+
+\bibitem[PS96]{pop96aNewFuzzy}
+Horia~Florin Pop and Costel S{\^{a}}rbu.
+\newblock A new fuzzy regression algorithm.
+\newblock {\em Anal. Chem.}, 68:771--778, 1996.
+
+\bibitem[PSHD96]{pop96aFuzzyClassification}
+Horia~Florin Pop, Costel S{\^{a}}rbu, Ossi Horowitz, and Dan Dumitrescu.
+\newblock A fuzzy classification of the chemical elements.
+\newblock {\em J. Chem. Inf. Comput. Sci.}, 36:465--482, 1996.
+
+\bibitem[RHW86]{momentum}
+D.~E. Rumelhart, G.~E. Hinton, and R.~J. Williams.
+\newblock {\em Learning internal representations by error propagation}, pages
+  318--362.
+\newblock MIT Press, Cambridge, MA, USA, 1986.
+
+\bibitem[RiplsDis10]{im2}
+J.-P.:~Signal Roux and image processing lab sample DICOM~image sets.
+\newblock http://www.creatis.insa-lyon.fr/~jpr/public/gdcm/gdcmsampledata/,
+  2010.
+
+\bibitem[RKY10]{raykar}
+Vikas~C. Raykar, Balaji Krishnapuram, and Shipeng Yu.
+\newblock Designing efficient cascaded classifiers: tradeoff between accuracy
+  and cost.
+\newblock In {\em Proceedings of the 16th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, KDD '10, pages 853--860, New York,
+  NY, USA, 2010. ACM.
+
+\bibitem[RN02]{Russell02Artificial}
+Stuart~J. Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock Prentice Hall, 2002.
+
+\bibitem[Roj96]{ann1}
+Ra\'{u}l Rojas.
+\newblock {\em Neural networks: a systematic introduction}.
+\newblock Springer-Verlag New York, Inc., New York, NY, USA, 1996.
+
+\bibitem[Rov78]{rovner}
+P.~Rovner.
+\newblock {\em Automatic representation selection for associative data}.
+\newblock Managing Requirements Knowledge, International Workshop, 1978.
+
+\bibitem[SB98]{sutton}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock {\em Introduction to Reinforcement Learning}.
+\newblock MIT Press, Cambridge, MA, USA, 1st edition, 1998.
+
+\bibitem[SC08]{svm}
+Ingo Steinwart and Andreas Christmann.
+\newblock {\em Support Vector Machines}.
+\newblock Springer Publishing Company, Incorporated, 1st edition, 2008.
+
+\bibitem[SCCK04]{Schockaert04Fuzzy}
+S.~Schockaert, M.~De Cock, C.~Cornelis, and E.~E. Kerre.
+\newblock Fuzzy ant based clustering.
+\newblock In {\em Ant Colony Optimization and Swarm Intelligence, 4th
+  International Workshop (ANTS 2004), LNCS 3172}, pages 342--349, 2004.
+
+\bibitem[sciom11]{im6}
+Open source~clinical image and object management.
+\newblock http://www.dcm4che.org/, 2011.
+
+\bibitem[SdLFdCG09]{Spinosa09Novelty}
+Eduardo~J. Spinosa, Andr{\'e} Carlos~Ponce de~Leon Ferreira~de Carvalho, and
+  Jo{\~a}o Gama.
+\newblock Novelty detection with application to data streams.
+\newblock {\em Intell. Data Anal.}, 13(3):405--422, 2009.
+
+\bibitem[{\,{S}}er06]{Serban06Sisteme}
+Gabriela {\,{S}}erban.
+\newblock {\em Sisteme Mutiagent in inteligenta artificiala distribuita.
+  Arhitecturi si aplicatii}.
+\newblock Ed. Risoprint, Cluj-Napoca, 2006.
+
+\bibitem[sf]{apache}
+Apache software foundation.
+\newblock http://www.apache.org/.
+
+\bibitem[SGT{\etalchar{+}}02]{schroder02learningWeights}
+Ingo Schr{\"{o}}der, K.~Giannakoglou, D.~Tsahalis, J.~Periaux, K.~Papailiou,
+  T.~Fogarty (eds, Horia~F. Pop, A~Fachbereich Informatik, Wolfgang Menzel, and
+  Kilian~A. Foth.
+\newblock Learning weights for a natural language grammar using genetic
+  algorithms, 2002.
+
+\bibitem[SH07]{ann3}
+Mark~D. Skowronski and John~G. Harris.
+\newblock Automatic speech recognition using a predictive echo state network
+  classifier.
+\newblock {\em Neural Networks}, 20(3):414 -- 423, 2007.
+\newblock Echo State Networks and Liquid State Machines.
+
+\bibitem[SK99]{koh}
+Panu Somervuo and Teuvo Kohonen.
+\newblock Self-organizing maps and learning vector quantization forfeature
+  sequences.
+\newblock {\em Neural Process. Lett.}, 10:151--159, October 1999.
+
+\bibitem[SP00]{sarbu00fuzzyClustering}
+Costel S{\^{a}}rbu and Horia~Florin Pop.
+\newblock Fuzzy clustering analysis of the first 10 meic chemicals.
+\newblock {\em Chemosphere}, 40:513--520, 2000.
+
+\bibitem[{\,{S}}P04]{Serban04Tehnici}
+Gabriela {\,{S}}erban and Horia~Florin Pop.
+\newblock {\em Tehnici de Inteligenta Artificiala. Abordari bazate pe Agenti
+  Inteligenti}.
+\newblock Ed. Mediamira, Cluj-Napoca, 2004.
+
+\bibitem[Spe87]{spearman}
+C.~Spearman.
+\newblock {The proof and measurement of association between two things. By C.
+  Spearman, 1904.}
+\newblock {\em The American journal of psychology}, 100(3-4):441--471, 1987.
+
+\bibitem[SS01]{smola}
+Bernhard Scholkopf and Alexander~J. Smola.
+\newblock {\em Learning with Kernels: Support Vector Machines, Regularization,
+  Optimization, and Beyond}.
+\newblock MIT Press, Cambridge, MA, USA, 2001.
+
+\bibitem[SSS79]{31}
+Edmond Schonberg, Jacob~T. Schwartz, and Micha Sharir.
+\newblock Automatic data structure selection in setl.
+\newblock In {\em Proceedings of the 6th ACM SIGACT-SIGPLAN symposium on
+  Principles of programming languages}, POPL '79, pages 197--210, New York, NY,
+  USA, 1979. ACM.
+
+\bibitem[SSS81]{sch}
+Edmond Schonberg, Jacob~T. Schwartz, and Micha Sharir.
+\newblock An automatic technique for selection of data representations in setl
+  programs.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 3:126--143, April 1981.
+
+\bibitem[Ste90]{Steels90Components}
+Luc Steels.
+\newblock Components of expertise.
+\newblock {\em AI Magazine}, 11(2):28--49, 1990.
+
+\bibitem[TD10]{takacs}
+Balint Takacs and Yiannis Demiris.
+\newblock Spectral clustering in multi-agent systems.
+\newblock {\em Knowl. Inf. Syst.}, 25:607--622, December 2010.
+
+\bibitem[Vap00]{vapnik}
+V.N. Vapnik.
+\newblock {\em The nature of statistical learning theory}.
+\newblock Statistics for engineering and information science. Springer, 2000.
+
+\bibitem[VSP09]{SoftComputingDM09}
+K.~R. Venugopal, K.~G. Srinivasa, and L.~M. Patnaik.
+\newblock {\em Soft Computing for Data Mining Applications}.
+\newblock Springer Publishing Company, Incorporated, 1st edition, 2009.
+
+\bibitem[Wat89]{Watkins89Learning}
+C.~J. C.~H. Watkins.
+\newblock {\em Learning from Delayed Rewards}.
+\newblock PhD thesis, Cambridge University, Cambridge, England, 1989.
+
+\bibitem[WB01]{adt}
+D.A. Watt and D.F. Brown.
+\newblock {\em Java collections: an introduction to abstract data types, data
+  structures, and algorithms}.
+\newblock John Wiley, 2001.
+
+\bibitem[WD92]{Watkins92Technical}
+Christopher J. C.~H. Watkins and Peter Dayan.
+\newblock Technical note q-learning.
+\newblock {\em Machine Learning}, 8:279--292, 1992.
+
+\bibitem[Win91]{website:wine}
+Machine Learning~Repository Wine.
+\newblock http://archive.ics.uci.edu/ml/datasets/wine, 1991.
+
+\bibitem[WLZ00]{wahba}
+G~Wahba, Y~Lin, and H~Zhang.
+\newblock Generalized approximate cross validation for support vector machines,
+  or, another way to look at margin-like quantities.
+\newblock {\em Advances in large margin classifiers}, (1006):297–309, 2000.
+
+\bibitem[Woo99]{Wooldridge99Intelligent}
+Michael Wooldridge.
+\newblock {\em Intelligent Agents, An Introduction to Multiagent Systems}.
+\newblock Ed. G. Weiss, 1999.
+
+\bibitem[Woo09]{Wooldridge09AnIntroduction}
+Michael~J. Wooldridge.
+\newblock {\em An Introduction to MultiAgent Systems (2. ed.)}.
+\newblock Wiley, 2009.
+
+\bibitem[WYM97]{Wang97STING}
+Wei Wang, Jiong Yang, and Richard~R. Muntz.
+\newblock Sting: A statistical information grid approach to spatial data
+  mining.
+\newblock In {\em VLDB}, pages 186--195, 1997.
+
+\bibitem[Yel03]{Yellin}
+D.~M. Yellin.
+\newblock Competitive algorithms for the dynamic selection of component
+  implementations.
+\newblock {\em IBM Syst. J.}, 42:85--97, January 2003.
+
+\bibitem[Zad65]{zadeh65fuzzy}
+Lotfi~Askar Zadeh.
+\newblock Fuzzy sets.
+\newblock {\em Inf. Control}, 8:338--353, 1965.
+
+\bibitem[Zad94]{Zadeh:soft}
+Lotfi~A. Zadeh.
+\newblock Fuzzy logic, neural networks, and soft computing.
+\newblock {\em Commun. ACM}, 37:77--84, March 1994.
+
+\bibitem[Zad97]{Zadeh97TheRoles}
+Lotfi~A. Zadeh.
+\newblock The roles of fuzzy logic and soft computing in the conception, design
+  and deployment of intelligent systems.
+\newblock In {\em Software Agents and Soft Computing}, pages 183--190, 1997.
+
+\bibitem[Zad02]{Zadeh02Toward}
+Lotfi~A. Zadeh.
+\newblock Toward a perception-based theory of probabilistic reasoning with
+  imprecise probabilities.
+\newblock {\em Journal of Statistical Planning and Inference}, 105(1):233 --
+  264, 2002.
+\newblock Imprecise Probability Models and their Applications.
+
+\bibitem[Zad08]{zadeh08isThere}
+Lotfi~Askar Zadeh.
+\newblock Is there a need for fuzzy logic.
+\newblock {\em Information Sciences}, 178(13):2751--2779, July 2008.
+
+\bibitem[ZDYZ11]{zhu}
+Xingquan Zhu, Wei Ding, Philip Yu, and Chengqi Zhang.
+\newblock One-class learning and concept summarization for data streams.
+\newblock {\em Knowledge and Information Systems}, 28:523--553, 2011.
+\newblock 10.1007/s10115-010-0331-y.
+
+\bibitem[Zha00]{Zhang00Neural}
+G.~P. Zhang.
+\newblock Neural networks for classification: a survey.
+\newblock {\em IEEE Trans. Systems, Man and Cybernetics}, 30(4):451--462,
+  November 2000.
+
+\bibitem[ZL10]{zhou}
+Zhi-Hua Zhou and Ming Li.
+\newblock Semi-supervised learning by disagreement.
+\newblock {\em Knowl. Inf. Syst.}, 24:415--439, September 2010.
+
+\bibitem[ZRL97]{Zhang97BIRCH}
+Tian Zhang, Raghu Ramakrishnan, and Miron Livny.
+\newblock Birch: A new data clustering algorithm and its applications.
+\newblock {\em Data Min. Knowl. Discov.}, 1(2):141--182, 1997.
+
+\end{thebibliography}

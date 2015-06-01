@@ -1,0 +1,64 @@
+
+\chapter{Conclusions}
+\label{chap:concth}
+%\addcontentsline{toc}{chapter}{\textbf{Conclusions}}
+
+It has been that seen pattern recognition is central in data analysis tasks. As data is often characterised by a great deal of imprecision and uncertainty, intelligent, autonomous systems need to be developed that can handle such complex problems.
+
+In Chapter \ref{chap:dsselection} we have presented our model for dynamically selecting the most suitable implementation of an abstract data type from a software application based on the system's execution context. For predicting, at runtime, the most appropriate data representation, a neural network and a support vector machine classification model were used. We have also illustrated the accuracy of both proposed approaches on case studies.
+
+Considering the results presented in Section \ref{exp} and in Section \ref{compexp}, we can conclude that the approaches introduced in this paper for a dynamic selection of data representations have the following advantages:
+
+\begin{itemize}
+
+\item They are general, as they can be used for determining the appropriate \emph{implementation} for any abstract data type, and with arbitrary number of data structures that can be chosen for implementing the ADT.
+
+\item They reduce the computational time by selecting the data structure implementation which provides a minimum overall complexity for the operations performed on a certain abstract data type on a given execution scenario. Consequently the efficiency of the software system during its evolution is increased.
+
+\item They are is scalable, as even if the considered software system is large, the abstract data types are locally optimized, considering only the current execution context. The size of the execution context does not depend on the size of the software system (as shown in Section~\ref{tm}).
+
+\end{itemize}
+
+In Chapter \ref{chap:asmclustering} we have presented our contribution to agent-based clustering, particularly in two main directions: ASM-based batch clustering and incremental clustering. We have focused on developing clustering algorithms that allow the discovery and analysis of hybrid data. 
+The algorithms presented in Section \ref{sec:asmbasedclustering} are based on the adaptive ASM approach from \cite{Chen04AnAdaptive}. The major improvement is that, instead to moving the agents at a randomly selected site, we are letting the agents choose the best location. Agents can directly communicate with each other --- similar to the approach from \cite{Chira07Stigmergic}. In \cite{Schockaert04Fuzzy}, the fuzzy IF-THEN rules are used for deciding if the agents are picking up or dropping an item. In our model we are using the fuzzy rules for deciding upon the direction and length of the movement. Moreover, in the approach from Section \ref{sec:contextaware} the agents are able to adapt their movements if changes in the environment would occur. Case studies for these approaches have been performed in Section \ref{sec:caseasm}. In order to test the algorithm in a real-world scenario, the Iris and Wine datasets have been considered \cite{website:iris, website:wine}. Experiments outline the ability of our approaches to discover hybrid data. 
+In Section \ref{chap:incrementalclustering} an incremental clustering algorithm is introduced. Incremental clustering is used to process sequential, continuous data flows or data streams and in situations in which cluster shapes change over time. Such algorithms are well fitted in real-time systems, wireless sensor networks or data streams because in such systems it is difficult to store the datasets in memory. The algorithm considers one instance at a time and it basically tries to assign it to one of the existing clusters. Only cluster representations need to be kept in memory so computation is both fast and memory friendly. 
+We have seen in the tests from the incremental approach (Section \ref{sec:experiments}) that most of the apparently classification errors were actually items that have high membership degrees to more than one cluster. Nevertheless, in our opinion, it is again clear that we are dealing with hybrid data. Actually the hybrid nature of the data is suggested in \cite{website:iris} and in \cite{website:wine} and this is the main reason for choosing these datasets for our analysis. By using fuzzy methods such features of the data are easy to be observed. The fact that there are hybrid items could be an indication of the quality of data.
+
+In Chapter \ref{chap:softagents}, we have presented our contribution to NP optimization problems, focusing on two  well-known NP-hard problems: Travelling Salesman Problem (TSP) and Set Covering Problem (SCP).
+In Section \ref{sec:np} a short overview of NP completeness is made. In Section \ref{sec:stigmergic} the travelling salesman problem is approached using the stigmergic agent model. The Stigmergic Agent System (SAS) combines the strengths of Multi-agent Systems (MAS) and Ant Colony Systems (ACS).  Stigmergy provides a general mechanism that relates individual and colony level behaviours: individual behaviour modifies the environment, which in turn modifies the behaviour of other individuals. The stigmergic agent mechanism employs several agents able to interoperate in order to solve problems by using both direct communication and indirect (stigmergic) communication. The algorithm was evaluated on several standard datasets outlining the potential of the method. 
+In Section \ref{sec:softagents} the soft agent model is introduced. A soft agent is an intelligent agent that has to deal with imprecision, uncertainty, partial truth and approximation during its execution as a reactive agent or goal oriented agent or both. This new agent model is used in Section \ref{sec:scp} where a new incremental clustering approach to the Set Covering Problem is presented. Experiments on standard datasets suggest that the approach is promising. 
+
+As future research directions, we intend to improve the proposed approaches, to extend the evaluation of the techniques that were proposed in this thesis and to investigate the use and to develop other computational models in pattern recognition. 
+
+Future work will be conducted in the following directions:
+
+\begin{itemize}
+\item investigating other metaheuristics with the aim of identifying additional potentially beneficial hybrid models
+
+\item using our models for solving other NP-optimization problems
+
+\item extending our methods in order to handle categorical data
+
+\item applying the incremental clustering approach in Intrusion Detection Systems
+
+\item improving the proposed classification model for DRSP by adding to it the capability to adapt itself using a feedback received when inappropriate data representations are selected
+
+\item applying other machine learning techniques like self-organizing feature maps or other modelling techniques for solving the problem of automatic selection of data representations during the execution of a software system
+
+\item studying the applicability of other learning techniques like semi-supervised learning or reinforcement learning  in order to avoid as much as possible the supervision during the training process
+
+\item evaluating our techniques on other case studies and real software systems.
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+

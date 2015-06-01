@@ -1,0 +1,91 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{\textbf{Introduction}}
+\markright{INTRODUCTION}
+
+This work is the result of my research in the field of Pattern Recognition, particularly Agent Based Pattern Recognition, research conducted under the supervision of both Prof. Dr. Horia F. Pop (starting from 2008) and of Assoc. Prof. Dr. Habil. L\'{a}szl\'{o} Kozma (starting from 2009).
+
+The research topic is about using several types of software agents in pattern recognition. We will investigate in the thesis the use of agents in NP-hard optimization problems as well as in hybrid data analysis. 
+
+The rapid growth of data comes with the natural need for extracting and analysing meaningful information and knowledge from this data. This information and knowledge could be used in different applications, ranging from fraud detection, to production control, market basket analysis, customer analytics and so on. Data analysis can be viewed as a step forward in the information technology evolution. It is the process of inspecting, transforming, and modelling data with the goal of uncovering patterns, associations and anomalies and thus support decision making. 
+
+An important step in data mining is pattern recognition which deals with assigning a label to a given input data. Classification and clustering are examples of pattern recognition. Classification and clustering can be applied in many fields like in marketing (for finding groups of customers with similar behaviour), biology (classification of plants and animals given their features), fraud detection, and document classification. 
+
+Classification is the process of assigning a label to a piece of input data based, for example, on a predefined model. Since the class label of each training data item is provided, classification is a supervised learning problem. On the other hand, clustering is an unsupervised learning problem and it deals with finding a structure in a collection of unlabelled data. Classification and clustering together with a general overview of data analysis are presented in Chapter \ref{chap:dataanalysis}.
+
+In both classification and clustering object data belonging to the same class or cluster have to be similar with each other and items from different classes or clusters have to be as dissimilar as possible. This implies a great deal of imprecision and uncertainty and a way to handle this is by using soft computing methods. Soft computing deals with imprecision and uncertainty in the attempt to achieve robustness and low cost solutions. This multidisciplinary field was introduced by Lotfi A. Zadeh and its main goal is to develop intelligent systems and to solve mathematically unmodelled problems \cite{Zadeh97TheRoles, TFLSC07, SoftComputingDM09}. 
+
+Soft Computing opens the  possibility of solving complex problems for which a mathematical model is not available. Moreover, it introduces human knowledge like cognition, recognition, learning into the field of computing. This opens the way for constructing intelligent, autonomous, self-tuning systems. 
+%Soft computing and some of its components are presented in Chapter \ref{chap:dataanalysis}.
+
+In order to design autonomous and intelligent systems software agents are employed. An agent is an entity that can be viewed as perceiving its environment through sensors and acting upon that environment through effectors. An agent that always tries to optimize an appropriate performance measure is called a rational agent. 
+Agents exhibit several characteristics (\cite{Serban04Tehnici, Serban06Sisteme}) from which the most interesting one is self-organization. It is the capability of an entity to organize and improve its behaviour without being guided or managed.
+Agents seldom reside alone in the environment. Instead they coexist and interact forming multi-agent systems. Chapter \ref{chap:dataanalysis} presents several types of interactions in a multi-agent system. 
+%The chapter makes an overview of software agents, presents general models of intelligent agents and multi-agent %systems. Ant colony systems are also approached as a type of multi-agent interaction. The chapter also presents the %notion of stigmergic agents and a personal contribution in that area \cite{Chira07Stigmergic}.
+
+The thesis is structured in four chapters as follows.
+
+Chapter \ref{chap:dataanalysis}, \textbf{Theoretical background}, introduces the field of data analysis and agent-based data analysis. Data analysis is becoming increasingly popular, due to the rapid growth of data amounts and the natural need for extracting meaningful information and knowledge from this data. The information and knowledge could be used in different applications ranging from intrusion detection systems, to production control, pattern recognition and so on. Data analysis can be viewed as a step forward in the information technology evolution. This chapter presents some of the most important problems in data analysis like clustering and classification and also the use of software agents. 
+
+The Chapters \ref{chap:softagents}, \ref{chap:asmclustering} and \ref{chap:dsselection} contain our original contribution in the field of agent-based pattern recognition.  For each original approach that we propose, we outline possibilities for improvement and future research directions. Chapter \ref{chap:concth} outlines the conclusions of the thesis.
+
+Chapter \ref{chap:softagents}, \textbf{Contributions to NP optimization problems}, begins with a short overview of NP completeness and NP optimization problems in Section \ref{sec:np}. The rest of the chapter is entirely original and presents our contribution to NP optimization problems, focusing on two  well-known NP-hard problems: Travelling Salesman Problem (TSP) and Set Covering Problem (SCP). In Section \ref{sec:np} a short overview of NP completeness is made. In Section \ref{sec:stigmergic} the travelling salesman problem is approached using the stigmergic agent model. The Stigmergic Agent System (SAS) combines the strengths of Multi-agent Systems (MAS) and Ant Colony Systems (ACS).  Stigmergy provides a general mechanism that relates individual and colony level behaviours: individual behaviour modifies the environment, which in turn modifies the behaviour of other individuals. The stigmergic agent mechanism employs several agents able to interoperate in order to solve problems by using both direct communication and indirect (stigmergic) communication. The algorithm was evaluated on several standard datasets outlining the potential of the method. 
+In Section \ref{sec:softagents} the soft agent model is introduced. A soft agent is an intelligent agent that may  deal with imprecision, uncertainty, partial truth and approximation during its execution as a reactive agent or goal oriented agent or both. This new agent model is used in Section \ref{sec:scp} where a new incremental clustering approach to the Set Covering Problem is presented. Experiments on standard datasets suggest that the approach is promising. Section \ref{sec:scpconcfw} outlines the conclusions of the chapter and indicates future research directions.
+
+Chapter \ref{chap:asmclustering}, \textbf{New approaches to unsupervised learning}, begins with a short overview of various agent-based clustering approaches in Section \ref{sec:agentbased}. The rest of the chapter is entirely original and presents our contribution to agent-based clustering, particularly in two main directions: ASM-based batch clustering and incremental clustering \cite{DBSCANIncremental, Kamble, Lee02Inc, Li10Incclust, Li11Training}. We are focusing on developing clustering algorithms that allow the discovery and analysis of hybrid data.
+In Section \ref{sec:agentbased} a short overview of various agent-based clustering approaches is presented. 
+We approach the idea of agent-based cluster analysis in Section \ref{sec:asmbasedclustering}. Each data is represented by an agent placed in a two dimensional grid. The agents will group themselves into clusters by making simple moves according to some local environment information and the parameters are selected and adjusted adaptively. This behaviour based on ASM (Ant Sleeping Model \cite{Chen04AnAdaptive}) where an agent may be either in an active state or in a sleeping state. In order to avoid the agents being trapped in local minima, they are also able to directly communicate with each other. Furthermore, the agent moves are expressed by fuzzy IF-THEN rules and hence hybridization with a classical clustering algorithm is needless. The proposed fuzzy ASM-based clustering  algorithm is presented in Section \ref{sec:fuzzyasmclustering}. 
+In this model data items to be clustered are represented by agents that are able to react according to the changes in the environment, namely the number of neighbouring agents. However a change in the data item itself is not handled at runtime. An extension to a context-aware system would be beneficial in many practical situations. 
+In general, context-aware systems could greatly change the way we interact with the world --- they could anticipate our needs and advice us when taking some decisions. In a changing environment context-awareness is undoubtedly beneficial.  Such systems could make much more relevant recommendations and support decision making. An extension to a context-aware approach is presented in Section \ref{sec:contextaware}. Case studies for both approaches including experiments on standard datasets \cite{website:iris, website:wine} are presented in Section \ref{sec:caseasm}.
+The idea behind incremental clustering is that it is possible to consider one instance at a time and assign it to one of the already built clusters without significantly affecting the already existing structures. Section \ref{chap:incrementalclustering} presents an incremental clustering approach based on ASM. In incremental clustering only the cluster representations need to be kept in memory so not the entire dataset and thus the space requirements for such an algorithm are very small. Whenever a new instance is considered an incremental clustering algorithm would basically try to assign it to one of the already exiting clusters. Such a process is not very complex and therefore the time requirements for an incremental clustering algorithm are also small. The fuzziness of the approach allows the discovery of hybrid data. Experimental evaluation on standard datasets \cite{website:iris, website:wine} are presented in Section \ref{sec:experiments}. Section \ref{sec:clustconclusionsfw} outlines the conclusions of the chapter and indicates some research directions that will be followed.
+
+Chapter \ref{chap:dsselection}, \textbf{New supervised learning approaches to software development}, is entirely original and it focuses on the problem of dynamically selecting, using supervised learning approaches, the most suitable representation for an abstract data type, according to the software system's current execution context. In this direction, a neural network approach and a support vector machine approach are proposed. 
+Selecting and creating the appropriate data structure for implementing an abstract data type (ADT) can greatly influence the performance of a software system. It is not a trivial problem for a software developer, as it is hard to anticipate all the usage scenarios of the deployed application. It is not clear how to select a good implementation
+for an abstract data type when access patterns to it are
+highly variant, or even unpredictable. Due to this fact, the software system may choose the appropriate data representation, at runtime, based on the effective data usage pattern. This dynamic selection can be achieved using machine learning techniques, which can assure complex and adaptive systems development.
+In this chapter we approach the problem of dynamically selecting, using supervised learning approaches, the most suitable representation for an abstract data type according to the software system's current execution context. In this direction, a neural network model and a support vector machine model are proposed. The considered problem arises from practical needs, it has a major importance for software developers. Improper use of data structures in software applications leads to performance degradation and high memory consumption. These problems can be avoided by properly selecting data structures for implementing ADTs, according to the nature of the manipulated data.
+In Section \ref{mot} the problem of dynamic data structure selection is presented. It is explained that this is a complex problem because each particular data structure is usually more efficient for some operations and less efficient for others and that is why a static analysis for choosing the best representation can be inappropriate, as the performed operations can not be statically predicted. A practical example is presented and an experiment is performed in order to motivate our approach. 
+In Section \ref{our} we present our first proposal of using supervised learning for dynamically selecting the implementation of an abstract data type from the software system, based on its current execution context. For this purpose, a neural network model will be used. In fact, selecting the most appropriate implementation of an abstract data type is equivalent to predicting, based on the current execution context, the type and the number of operations performed on the ADT, on a certain execution scenario.
+In Section \ref{exp} we evaluate the accuracy of the technique proposed in Section \ref{our}, i.e. the ANN model's prediction accuracy. Starting from a data set given at \cite{forina}, we have simulated an experiment for selecting the most appropriate data structure for implementing the $List$ ADT. Experimental results suggest that our approach provides optimized data structure selection and reduces the computational time by selecting the data structure implementation which provides a minimum overall complexity for the operations performed on a certain abstract data type on a given execution scenario. Section \ref{cmp} presents a comparison to related work.
+In Section \ref{sec:drspsvm} the problem of data representation selection problem (DRSP) is approached using support vector machines. Computational experiments from Section \ref{compexp} confirm a good performance of the proposed model and indicates the potential of our proposal. The advantages of our approach in comparison with similar approaches are also emphasized in Section \ref{sec:cmpsvm}.  
+
+Chapter \ref{chap:concth}, \textbf{Conclusions}, draws the conclusions of the thesis.
+
+The original contributions introduced by this thesis are contained in Chapters \ref{chap:softagents}, \ref{chap:asmclustering} and \ref{chap:dsselection}  and they are as follows:
+
+\begin{itemize}
+
+\item A stigmergic agent system algorithm for solving the travelling salesman problem (Section \ref{sec:stigmergic}) \cite{Chira07Stigmergic}.
+
+\item A new model for software agents: the soft agent model (Section \ref{sec:softagents}) \cite{Gaceanu12SCP}.
+
+\item An incremental clustering algorithm for solving the set covering problem (Section \ref{sec:scp}) \cite{Gaceanu12SCP}.
+
+\item Experimental evaluation of both algorithms on standard datasets (Section \ref{sec:stigmergic} and Section \ref{sec:scp}) \cite{Chira07Stigmergic, Gaceanu12SCP}.
+
+
+\item A fuzzy ASM-based clustering algorithm (Section \ref{sec:fuzzyasmclustering}) \cite{Gaceanu10AnAdaptive, Gaceanu11ABio}.
+
+\item A context-aware fuzzy clustering algorithm (Section \ref{sec:contextaware}) \cite{Gaceanu11AContext, Gaceanu11AFuzzy}.
+
+\item An incremental fuzzy clustering algorithm (Section \ref{chap:incrementalclustering}) \cite{Gaceanu11AnIncremental}.
+
+\item Experimental evaluation of the algorithms on standard datasets (Section \ref{sec:caseasm} and Section \ref{sec:experiments}) \cite{Gaceanu10AnAdaptive, Gaceanu11ABio, Gaceanu11AContext, Gaceanu11AFuzzy, Gaceanu11AnIncremental}.
+
+\item The discovery and analysis of hybrid data (Section \ref{sec:caseasm} and Section \ref{sec:experiments}) \cite{Gaceanu11AContext, Gaceanu11AFuzzy, Gaceanu11AnIncremental}.
+
+\item The applicability of the fuzzy ASM-based methods in clustering web search results (Section \ref{sec:caseasm}) \cite{Gaceanu10AnAdaptive, Gaceanu11ABio}.
+
+
+\item A supervised learning approach for the dynamic selection of abstract data types implementations during the execution of a software system, in order to increase the system's efficiency (Section \ref{our}) \cite{Czibula11Intelligent, Czibula12SVM}. 
+
+\item A neural networks approach to the considered problem (Section \ref{ann}) \cite{Czibula11Intelligent}.
+
+\item Accuracy evaluation of the proposed neural network based technique on a case study (Section \ref{exp}) \cite{Czibula11Intelligent}.
+
+\item A support vector machines approach to the considered problem (Section \ref{sub:methodologysvm}) \cite{Czibula12SVM}.
+
+\item Accuracy evaluation of the proposed support vector machine based technique on a case study (Section \ref{compexp})  \cite{Czibula12SVM}.
+
+\item A comparison of the advantages of the proposed supervised learning approaches to DRSP with existing similar approaches (Section \ref{cmp} and Section \ref{sec:cmpsvm}) \cite{Czibula11Intelligent, Czibula12SVM}.
+
+\end{itemize}

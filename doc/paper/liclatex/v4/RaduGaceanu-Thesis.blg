@@ -1,0 +1,85 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: RaduGaceanu-Thesis.aux
+A level-1 auxiliary file: acknowledgments.aux
+A level-1 auxiliary file: publications.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: dataanalysis.aux
+A level-1 auxiliary file: contributions.aux
+A level-1 auxiliary file: clustering.aux
+A level-1 auxiliary file: dsselection.aux
+A level-1 auxiliary file: conclusions.aux
+The style file: alpha.bst
+Database file #1: bibliography.bib
+A bad cross reference---entry "Zadeh97TheRoles"
+refers to entry "DBLP:conf/btlab/1997", which doesn't exist
+A bad cross reference---entry "Hassan08Friends"
+refers to entry "DBLP:conf/hais/2008", which doesn't exist
+A bad cross reference---entry "Guillaume10Interpretable"
+refers to entry "DBLP:conf/fuzzIEEE/2010", which doesn't exist
+A bad cross reference---entry "Narzisi06Multiobjective"
+refers to entry "DBLP:conf/iastedCI/2006", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/fuzzIEEE/2010"
+Warning--I didn't find a database entry for "DBLP:conf/hais/2008"
+Warning--I didn't find a database entry for "DBLP:conf/iastedCI/2006"
+Warning--I didn't find a database entry for "DBLP:conf/btlab/1997"
+Name 1 in "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." has a comma at the end for entry Goyal
+while executing---line 1185 of file alpha.bst
+Too many commas in name 1 of "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." for entry Goyal
+while executing---line 1185 of file alpha.bst
+Name 1 in "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." has a comma at the end for entry Goyal
+while executing---line 1185 of file alpha.bst
+Too many commas in name 1 of "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." for entry Goyal
+while executing---line 1185 of file alpha.bst
+Warning--empty chapter and pages in Ben08Encyclopedia
+Warning--empty year in Czibula11Intelligent
+Warning--empty year in Czibula12SVM
+Warning--empty booktitle in Catalano01Parallel
+Warning--empty booktitle in DBSCAN
+Warning--empty publisher in Ester09Density
+Name 1 in "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." has a comma at the end for entry Goyal
+while executing---line 1250 of file alpha.bst
+Too many commas in name 1 of "Navneet Goyal, Poonam Goyal, K Venkatramaiah, Deepak P C, and Sanoop P S." for entry Goyal
+while executing---line 1250 of file alpha.bst
+Warning--there's a number but no volume in wahba
+You've used 146 entries,
+            2543 wiz_defined-function locations,
+            1439 strings with 28397 characters,
+and the built_in function-call counts, 58858 in all, are:
+= -- 5881
+> -- 2627
+< -- 92
++ -- 904
+- -- 868
+* -- 3991
+:= -- 9398
+add.period$ -- 451
+call.type$ -- 146
+change.case$ -- 873
+chr.to.int$ -- 142
+cite$ -- 153
+duplicate$ -- 2456
+empty$ -- 4504
+format.name$ -- 1048
+if$ -- 12375
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 153
+newline$ -- 719
+num.names$ -- 440
+pop$ -- 968
+preamble$ -- 1
+purify$ -- 1043
+quote$ -- 0
+skip$ -- 2143
+stack$ -- 0
+substring$ -- 3235
+swap$ -- 475
+text.length$ -- 92
+text.prefix$ -- 41
+top$ -- 0
+type$ -- 1048
+warning$ -- 7
+while$ -- 554
+width$ -- 150
+write$ -- 1875
+(There were 10 error messages)

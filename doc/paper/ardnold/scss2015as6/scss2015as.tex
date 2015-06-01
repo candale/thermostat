@@ -1,0 +1,492 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[section]{algorithm}
+\usepackage{algorithmic}
+\usepackage{enumerate}
+\usepackage{mathtools}
+\usepackage{tablefootnote}
+\usepackage{color}
+
+\newcommand{\C}{\ensuremath{\mathcal C}}
+\newtheorem{definition} {Definition}[section]
+
+\begin{document}
+
+\title{Performance evaluation of various distance metrics in agglomerative clustering}
+
+\author{\IEEEauthorblockN{Arnold Szederjesi}
+\IEEEauthorblockA{Department of Computer Science\\
+Babe\c{s}-Bolyai University\\
+1 M. Kogalniceanu Street, 400084, Cluj-Napoca, Romania\\
+Email: saie1486@scs.ubbcluj.ro}}
+
+\maketitle
+
+
+\begin{abstract}
+
+In hierarchical clustering algorithms the choice of the metric is essential, because it will influence the whole process, as some elements may be close related to one distance and far away according to another. There are many distances that are applied in our agent-based clustering algorithm and thus the paper presents an illustration of how this distances actually work.
+{\color{red} Abstractul este un rezumat al articolului. Unele reviste sunt chiar scumpe; la fiecare articol se poate vedea gratuit numai abstractul; acesta trebuie sa ma convinga sa cumpar revista/articolul. Abstractul il scriem ultimul.
+}
+
+\end{abstract}
+
+
+\section{Introduction}
+
+In data mining, clustering is a very important aspect for data grouping. In many other fields like Biology\cite{biology}, Bioinformatics\cite{website:bioinformatics}, Chemistry\cite{website:chemistry} data classification is essential, but it is not trivial. The need of such kind of algorithms is high in these domains. So we implemented an agglomerative hierarchical clustering algorithm. Coming from the nature of these clustering approaches, the choice of the metric to be used when combining similar data is important but not that simple. Every dataset is different, some datasets can be separated linearly, some not\cite{website:iris}. This is why is important to adapt the metric used to the dataset on which is going to be applied. Considering this problem in this paper we apply several metrics to see how they perform in a real environment.
+
+The paper is organized as follows: Section \ref{Motivation} describes our motivation to develop such an application, Section \ref{Related work} presents related works that are based on the same datasets, Section \ref{Theoretical Background} consists of information needed to understand the concepts that follow, Section \ref{Proposed approach} shows and explains the proposed algorithm, and presents the distances used, Section \ref{Methodology} reflects the ideas regarding the datasets, and how we applied the algorithm, Section \ref{Experiments} illustrates the results with tables and some analysis on them, and finally Section \ref{Conclusion} draws the conclusions of this paper and presents ideas for future work.
+
+
+\section{Motivation}
+\label{Motivation}
+
+The goal of this paper is to show how hierarchical clustering is viable even for large datasets, and to emphasize the importance of the chosen metric. We want to show that for different datasets different metrics have to be used to achieve the best results possible. The advantage of hierarchical clustering algorithms is the fact that the number of clusters does not need to be known in advance. On the other hand a big disadvantage of them is their computational expensiveness.
+
+The idea to overcome this is to parallelize the clustering process. This is achieved by using a MAS (multi-agent system) \cite{MAS} which consists of agents (one agent for each data). Multi-agent systems are suitable for concurrent execution of different tasks, the agents have to work together in order to achieve higher order goals, which could not be achieved by a single agent. In this case the use of agents is important for concurrent clustering of data, which makes even a computationally expensive algorithm to run as a linear one.
+These agents are implemented to run on processes provided by the Erlang \cite{website:erlang} VM. Some important projects that run on the Erlang Virtual Machine are the chats from Facebook and Whatsapp. Also to avoid the negative experience, the boilerplates and the code duplications needed when programming in Erlang we rather used Elixir \cite{website:elixir} \cite{ProgrammingElixir}.
+Elixir is a functional, concurrent, general-purpose, meta-programming aware programming language that runs on the Erlang Virtual Machine, adopting the capabilities of building concurrent, distributed and fault-tolerant applications. The main difference between Elixir/Erlang and the other programming languages is that they provide concurrency automatically. As Jos\acute{e} Valim, the creator of Elixir says in \cite{ProgrammingElixir}: "As garbage collection once freed developers from the shackles of memory management, Elixir is here to free you from antiquated concurrency mechanisms...". Also languages like Java, or C do not support meta-programming, which sometimes can make a programmer's life easier. Elixir opposed to Erlang, also supports polymorphism and first-class tooling, whereas also bringing joy when writing code.
+
+\section{Related work}
+\label{Related work}
+
+{\color{red} aici ar trebui luate pe rand articolele altora si zici un pic ce/cum au facut. La fiecare articol sa fie macar 5-6 randuri. }
+
+On the datasets Iris \cite{website:iris} and Cancer \cite{website:breastcancer} we choose the article \cite{cannon0approximate}. In this paper they made an algorithm which works with distance approximation to build the clusters. For the dataset Seeds \cite{website:seeds} the article \cite{CompleteGradientClusteringAlgorithm} was chosen. The focus in this paper is on the algorithm they designed for clustering, and is compared with the K-means \cite{website:kmeans}.
+
+\section{Theoretical Background}
+\label{Theoretical Background}
+
+In machine learning, clustering is an example of unsupervised learning because it does not rely on predefined classes and class-labelled training examples. So it could be said that clustering is a form of learning by observation, rather than learning by examples. In data analysis, efforts have been conducted on finding methods for efficient and effective cluster analysis in large databases. The main requirements for a good clustering algorithm would be the scalability of the method, its effectiveness for clustering complex shapes and types of data, dealing with high-dimensional data, and handling mixed numerical and categorical data in large databases \cite{Han06DataMining}.
+
+
+
+\begin{definition}
+\label{def:clustering}
+Clustering is the process of finding a set
+\begin{align}
+\C=\{ C_{k} \vert k=\overline{1,p} \}
+\end{align}
+of subsets of a given set of objects
+\begin{align}
+ X = \{ x^{i} \vert
+ i = \overline{1,n}, 1 \leq p \leq n \}
+\end{align}
+ such that:
+ \begin{itemize}
+	\item $\forall k,l = \overline{1,p}, k \neq l: C_{k} \cap C_{l} = \emptyset$
+	\item $\bigcup_{k=1}^{n} C_{k} = X $
+	\item $\forall k = \overline{1,p}: C_{k} \neq \emptyset $
+	\item $\forall k = \overline{1,p}, \forall i,j = \overline{1, \vert C_{k} \vert}: sim(x^{i},x^{j})$ --- holds,
+ \end{itemize}
+ where: $sim(x^{i},x^{j})$ denotes the similarity between two items $x^{i}$ and $x^{j}$.
+\end{definition}
+
+Hierarchical clustering \cite{website:hierarchical}, also known as hierarchical cluster analysis, is a technique which aims for building a hierarchy of clusters. There are two strategies to achieve this:
+\renewcommand{\labelitemi}{$\bullet$}
+\begin{itemize}
+\item agglomerative: initially each instance is in its own cluster, and they are merged until a reasonable number of clusters remain
+\item divisive: at the start all the observations are in one cluster, and this is splitted into smaller clusters
+\end{itemize}
+
+Multi-agent Systems are systems composed of agents that interact with each other to achieve higher goals, that a single agent could not be able to reach. As Shoham says: "Most often, when people use the term ‘agent’ they refer to an entity that functions continuously and autonomously in an environment in which other processes take place and other agents exist." \cite{Agents}
+Agents should behave autonomously, parallel and based on stimulation provided by the environment they are set in. It is a computerized simulation of human behaviour in a company, in a class or even in the street. MAS can be used to solve difficult problems, that need concurrency and "teamwork". In our case is important to use MAS to make the clustering work in parallel to reduce the complexity of the algorithm. It is also good to remark that without agents this kind of approach would not be possible, because there is the need of continuous communication between data.
+
+\section{Proposed approach}
+\label{Proposed approach}
+
+We propose an agent-based agglomerative approach, and in order to decide which clusters to combine a measure of similarity between data, and sets of data has to be considered. In most of the cases, as in our case too, this is carried out by the use of an appropriate distance function and a linkage criterion. The latter one in our approach is trivial, every two observations that are closer according to the distance applied and to a similarity rate are combined. However choosing the appropriate metric is not effortless. Although the most common distance measure used is the Euclidean distance \cite{website:euclidean} , it is not the best choice for every dataset.
+
+\subsection{Agent based clustering algorithm}
+\label{clustering algorithm}
+
+In this section, we provide a Pseudocode description of our agent-based clustering approach.
+
+The application starts with initializing the system parameters --- reading the dataset and normalizing it. Afterwards the agents are created and placed in their cluster, one agent per cluster.
+
+\subsubsection{Hierarchical clustering}
+
+In Algorithm \ref{alg:clustering}, the main clustering procedure is described.
+
+\scriptsize
+\begin{algorithm}
+\caption{Agglomerative Agent Clustering}
+\label{alg:clustering}
+\begin{algorithmic}[1]
+\STATE Input: $name, i_{max}, \sigma, \lambda$
+\STATE Output: $clusters$
+\STATE $agents = initialize{\_}agents(name, \sigma)$
+\FORALL {$i \in range(0,i_{max})$}
+	\FORALL {$agent \in agents $}
+		\STATE $cluster = get{\_}cluster(agent)$
+		\STATE $similar{\_}agent = $
+		\STATE $~ 	~search{\_}for{\_}similar(cluster, \lambda, agent.data, agent.sim{\_}limit)$
+		\IF {$similar{\_}agent != null$}
+			\STATE $new{\_}cluster = get{\_}cluster(similar{\_}agent)$
+			\STATE $change{\_}cluster(agent, cluster)$
+		\ENDIF
+	\ENDFOR
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\normalsize
+
+The input parameters from Algorithm \ref{alg:clustering} are: $name$, $i_{max}$, $\sigma$, $\lambda$. The parameter $name$ denotes the name of the considered dataset (this has to be provided in a csv file in the input folder, for example "cancer.csv"). The parameter $i_{max}$ represents the number of iterations i.e. how many times the clustering will be done by each of the agents. The similarity rate $\sigma$ represents a real value (for example 0.012), that is the maximum value of the distance between data which will be allowed between two similar agents. Finally $\lambda$ is the number of trials to find a similar agent, using the metric and the similarity rate provided (for example 100).
+The complexity of the algorithm is $\theta(i_{max} \times \vert agents \vert)$, where $i_{max}$ denotes the number of iterations to be done, and $\vert agents \vert$ is the number of agents, i.e. the number of instances in the dataset provided. To have a good clustering the parameter $i_{max}$ generally is larger than the cardinality of the dataset, which means that the algorithm is at least of linear complexity. In the worst case the complexity is $O(n^{2})$, but by parallelizing the clustering done by the agents, it can work in linear time.
+
+The $search\_for\_similar$ function/procedure is presented in Algorithm \ref{alg:search_for_similar}:
+
+
+\scriptsize
+\begin{algorithm}
+\caption{$search\_for\_similar$}
+\label{alg:search_for_similar}
+\begin{algorithmic}[1]
+\STATE Input: $cluster, \lambda, data, similarity{\_}limit$
+\STATE Output: $similar{\_}agent$
+\STATE $total{\_}other{\_}agent{\_}nr = get{\_}other{\_}agent{\_}nr()$
+\STATE $other{\_}agent{\_}nr = random{\_}uniform()$
+\STATE $other{\_}cluster = get{\_}cluster(other{\_}agent{\_}nr)$
+\IF {$other{\_}cluster != cluster$}
+	\STATE $other{\data} = get{\_}data(other{\_}agent{\_}nr)$
+	\STATE $similarity=compute{\_}similarity(data, other{\_}data)$
+	\IF {$similarity <= similarity{\_}limit$}
+		\STATE $similarity{\_}limit = similarity$
+		\RETURN $other{\_}agent{\_}nr$
+	\ELSE
+		\RETURN $search{\_}for{\_}similar(cluster, \lambda-1, data, similarity{\_}limit)$
+	\ENDIF
+\ELSE
+	\RETURN
+	\STATE $ ~ ~search{\_}for{\_}similar(cluster, \lambda, data, similarity{\_}limit)$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+\normalsize
+
+As we can see the other agent is searched randomly, and if it was found we compute the similarity between the current agent and the other one, and when they are similar we change the limit and return the similar agent. So, practically this algorithm searches for the most similar agent to the current agent. The similar limit initially is sigma, the parameter given by the user, and it decreases as more similar agents are found. This is necessary because we do not want an agent to find a very similar agent, and then to "throw" it away for another one that is similar. Practically every agents searches for the most similar agent to him from the whole dataset.
+The $compute{\_}similarity$ is based on the distance applied. If lambda reaches 0 the algorithm stops and returns null.
+
+\subsubsection{Similar cluster unification}
+
+The next step is to merge the similar clusters. This is done by using representatives for each cluster. Representatives are instances with the average data from each cluster. The average is computed by the formula:
+
+\begin{equation}
+	average = \frac{\displaystyle\sum_{agent \in cluster} data_{agent}}{|cluster|}
+\end{equation}
+
+This step is necessary to combine those clusters that are similar, but the data in them are not the most similar, as the idea in the previous step was.
+
+\scriptsize
+\begin{algorithm}
+\caption{Similar cluster unification}
+\label{alg:unification}
+\begin{algorithmic}[1]
+\STATE $representatives = create{\_}cluster{\_}representatives()$
+\FORALL {$representative \in representatives$}
+	\IF{$@ ~representative ~is~ similar~ with~ cluster~ from~ clusters$}
+		\STATE $cluster = cluster \bigcup \{representative\}$
+		\STATE $@ ~change~ cluster~ for~ each~ data~ from~ the~ representative's~ cluster$
+	\ELSE
+		\STATE $clusters = clusters \bigcup new{\_}cluster(representative)$
+	\ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\normalsize
+
+\subsubsection{Outlier elimination}
+
+The last component is to search for outliers and to combine them with the closest cluster. Outliers are clusters that have relatively small number of instances (like 5\% or less of the whole dataset).
+
+\scriptsize
+\begin{algorithm}
+\caption{Outlier elimination}
+\label{alg:outliers}
+\begin{algorithmic}[1]
+\STATE $representatives = build{\_}representatives()$
+\STATE $\{outliers, clusters\} = detect{\_}outliers(representatives)$
+\STATE $new{\_}clusters = join{\_}outliers(outliers,clusters)$
+\end{algorithmic}
+\end{algorithm}
+\normalsize
+
+The function $detect{\_}outliers$ separates the outliers from the real clusters (this is done relatively to a given percentage, i.e. those clusters that have smaller number of data are outliers, the other ones being the clusters we are searching for). The procedure $join{\_}outliers$ unifies each outlier with the most similar cluster (by the means of the metric chosen). This means that the algorithm can detect outliers, and also sorts them out.
+
+\subsection{Distances}
+\label{distances}
+
+In this section we present $3$ metrics used in the proposed approach: Euclidean distance, Manhattan distance and Chebyshev distance \cite{website:euclidean, website:manhattan, website:chebyshev}. Actually all of them are a particular case of the Minkowski distance \cite{website:minkowski}. Its formula for two vectors p,q is:
+
+\begin{equation}
+	d(p,q) = \sqrt[p]{\displaystyle\sum_{i=1}^{n} |q_i - p_i|^p}
+\end{equation}
+
+It is used typically with p being 1 or 2. The case for 1 represents the Manhattan distance and for 2 the Euclidean distance. The Chebyshev metric is the instance when p is reaching positive infinity.
+
+
+\subsubsection{Euclidean Distance}
+
+The Euclidean distance is the distance between two points in the Euclidean space, i.e. the length of the line segment connecting them. In Cartesian Coordinates \cite{website:cartesian} if p=($p_1$, $p_2$, ..., $p_n$) and q=($q_1$, $q_2$, .. , $q_n$) then the distance d is given by the Pythagorean formula:
+
+\begin{equation}
+	d(p,q) = \sqrt{\displaystyle\sum_{i=1}^{n} (q_i - p_i)^2}
+\end{equation}
+
+In our algorithm we actually used the squared Euclidean distance(the square of the Euclidean distance), because we just needed to compare them and it takes less processing.
+
+\subsubsection{Manhattan Distance}
+
+The Manhattan distance or the taxicab distance \cite{website:manhattan} between two points in Cartesian Coordinate System is the sum of the lengths of the projections of the line segment between the points onto the coordinate axes. Expressed by mathematical formula:
+
+\begin{equation}
+	d(p,q) = \displaystyle\sum_{i=1}^{n} |q_i - p_i|
+\end{equation}
+
+In our design we also divided the result given by the metric with the number of the dimensions to have the final result in the interval $[0,1]$.
+
+\subsubsection{Chebyshev Distance}
+
+The Chebyshev distance between two points is the greatest of their differences along any coordinate dimension. The formula in the standard coordinate system(Cartesian Coordinate System) is:
+
+\begin{equation}
+	d(p,q) = \max_{1<=i<=n} |q_i - p_i|
+\end{equation}
+
+\section{Methodology}
+\label{Methodology}
+
+This section presents the needed steps and infrastructure for applying our clustering approach.
+
+\subsection{Data sets and preprocessing}
+
+Each dataset has many instances with many attributes, so our idea was to get the datasets from csv \cite{website:csv} files provided by the user. Until now we can only cluster datasets with numerical data, without the class labels, and without missing data.
+
+For preprocessing the data there are several methods that can be used \cite{Han06DataMining}
+\begin{itemize}
+	\item Min-max normalization: this normalization is done by using minimum and maximum values of each attribute. If $min_A$ is the minimum and $max_A$ is the maximum, the formula looks like:
+		\begin{equation}
+			value_i' = \frac{value_i - min_A}{max_A - min_A}new\_diff + new\_min_A
+		\end{equation}
+		where $new\_diff = new\_max_A - new\_min_A$.
+		This normalization is good to normalize all the attributes in the interval $[new\_min_A, new\_max_A]$.
+	\item z-score normalization: based on the average mean and the standard deviation:
+		\begin{equation}
+			value_i' = \frac{value_i - \bar{A}}{\sigma_A}
+		\end{equation}
+		where $\bar{A}$ is computed as:
+		\begin{equation}
+			\bar{A} = \frac{\displaystyle\sum_{i=1}^{n} value_i}{n}
+		\end{equation}
+		and $\sigma_A$ with the formula:
+		\begin{equation}
+			\sigma_A = \sqrt{\frac{\displaystyle\sum_{i=1}^{n} (value_i - \bar{A})^2}{n-1}}
+		\end{equation}
+		This method is useful when the minimum or the maximum is unknown or in the case when some outliers are not spotted by the min-max normalization.
+	\item normalization by decimal scaling normalizes by moving the decimal point of the value of the attribute. It is calculated as follows:
+		\begin{equation}
+			value_i' = \frac{value_i}{10^j}
+		\end{equation}
+		where j is the smallest integer such that $max(|value_i |) < $1
+
+\end{itemize}
+For our case we used the min-max normalization, with $new\_min_A$ = 0 and $new\_max_A$ = 1, because we wanted to bring all the values into the range $[0,1]$. The formula for this particular case is:
+
+\begin{equation}
+	value_i' = \frac{value_i-min_A}{max_A - min_A}
+\end{equation}
+
+\subsection{Clustering}
+
+After the whole clustering is done, we put the results in a "results" folder and identify the new result file by the exact date and time and by the dataset it was applied on. For verifying the clusters obtained, we use Elixir scripts (one for each dataset) also implemented by us in order to make the evaluation easier. The job of this scripts is to iterate through all the instances and checks if it was classified correctly or not. Also they compute statistics too, like true positives, instances in every class, accuracy, etc.
+
+\section{Experiments}
+\label{Experiments}
+
+In Tables \ref{table_seeds},\ref{table_cancer},\ref{table_iris} we display the results obtained by applying the algorithm on three standard datasets: Seeds \cite{website:seeds} , Cancer \cite{website:breastcancer} , and Iris \cite{website:iris} and using the three distance functions mentioned above: Euclidean \cite{website:euclidean} , Manhattan \cite{website:manhattan} and Chebyshev \cite{website:chebyshev}.
+
+For evaluating the results we provided the following measures: the number of correct instances in the cluster(C), the number of incorrect observations in the cluster(IC), the total number of data in the cluster(Total), and the precision(Prec.) calculated from the following formula:
+
+\begin{equation}
+	accuracy= \frac{C}{nr.\ of\ instances\ in\ the\ real\ cluster}100 ~[\%]
+\end{equation}
+
+It is important to notice that the precision is not calculated using the total number of data in the cluster, but the number of correct instances that should be in that cluster(this number is specified in the dataset description for every dataset).
+
+\subsection{Case study --- seeds dataset}
+
+The Seeds dataset \cite{website:seeds} contains kernels belonging to three different varieties of wheat: Kama, Rosa and Canadian. Every wheat has 70 instances, so 210 in total. Every kernel has 7 attributes, mainly physical characteristics about them, as area, perimeter, length of kernel, etc.
+
+Testing on seeds dataset was done with the parameters:
+\begin{itemize}
+\item Euclidean: $i_{max}$=200, $\sigma$=0.022, $\lambda$=200
+\item Manhattan: $i_{max}$=10, $\sigma$=0.15, $\lambda$=10
+\item Chebyshev: $i_{max}$=100, $\sigma$=0.1, $\lambda$=100
+\end{itemize}
+
+In this subsection we compare the results obtained by applying various distances on the seeds \cite{website:seeds} dataset. These are illustrated in the Table \ref{table_seeds}.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Seeds dataset results}
+\label{table_seeds}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\cline{1-5}
+ Distance & Measure & \multicolumn{3}{|c|}{Clusters} \\
+\cline{1-5}
+Euclidean & & Kama & Rosa & Canadian	  \\
+& C & 62 & 63 & 66 \\
+& IC & 11 & 2 & 6 \\
+& Total & 73 & 65 & 72 \\
+& Accuracy & 88.57\% & 90.00\% & 94.28\% \\
+\hline
+Manhattan & & Kama & Rosa & Canadian	  \\
+& C & 53 & 60 & 65 \\
+& IC & 15 & 3 & 14 \\
+& Total & 68 & 63 & 79 \\
+& Accuracy & 75.71\% & 85.71\% & 92.86\% \\
+\hline
+Chebyshev & & Kama & Rosa & Canadian	  \\
+& C & 63 & 65 & 60 \\
+& IC & 15 & 2 & 5 \\
+& Total & 78 & 67 & 65 \\
+& Accuracy & 90.00\% & 92.86\% & 85.71\% \\
+\hline
+\end{tabular}
+\end{table}
+
+We can see that the performance of the 3 metrics is actually close, overall the Euclidean distance is the best, but the Chebyshev made the best results for two clusters. The Manhattan is a bit weaker, but it took shorter time to achieve this result.
+
+\subsection{Case study --- cancer dataset}
+
+The Cancer dataset \cite{website:breastcancer} consists of data, reported by a doctor from Wisconsin. It has 699 instances, every one with 9 attributes. All the attributes are between 1 and 10. The prediction has to be made upon the fact that the patient is benign or malignant. The benign class contains 458 instances and the malignant one has 241.
+
+The parameters used were:
+\begin{itemize}
+\item Euclidean: $i_{max}$=100, $\sigma$=0.3, $\lambda$=100
+\item Manhattan: $i_{max}$=10, $\sigma$=0.2, $\lambda$=10
+\item Chebyshev: $i_{max}$=200, $\sigma$=0.12, $\lambda$=200
+\end{itemize}
+
+This part shows the comparison of the results obtained by applying the distances on the cancer \cite{website:breastcancer} dataset. These can be seen on the table \ref{table_cancer}
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Cancer dataset results}
+\label{table_cancer}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\cline{1-4}
+ Distance & Measure & \multicolumn{2}{|c|}{Clusters} \\
+\cline{1-4}
+Euclidean & & Malignant & Benign	  \\
+& C & 218 & 450 \\
+& IC & 8 & 23 \\
+& Total & 226 & 473 \\
+& Accuracy & 90.45\% & 98.25\% \\
+\hline
+Manhattan & & Malignant & Benign	  \\
+& C & 228 & 438 \\
+& IC & 20 & 13 \\
+\hline
+& Total & 248 & 451 \\
+& Accuracy & 94.61\% & 95.63\% \\
+Chebyshev & & Malignant & Benign	  \\
+& C & 63 & 260 \\
+& IC & 198 & 178 \\
+& Total & 261 & 438 \\
+& Accuracy & 26.14\% & 56.77\% \\
+\hline
+\end{tabular}
+\end{table}
+
+On this dataset also the Euclidean distance was the best, but for guessing the malignant patients the Manhattan metric is better. The Chebyshev metric did not produce anything useful.
+
+\subsection{Case study --- iris dataset}
+
+The Iris dataset \cite{website:iris} dataset is one of the most popular datasets, especially in pattern recognition. Its data comes from measurements made on flowers named "iris". It has 150 instances, 50 for each cluster. The first class is easily separable from the other 2, however these two are harder to separate. The prediction has to be made on the class of the plant. Every instance has four attributes.
+
+The parameters for this dataset were:
+\begin{itemize}
+\item Euclidean: $i_{max}$=350, $\sigma$=0.012, $\lambda$=350
+\item Manhattan: $i_{max}$=100, $\sigma$=0.045, $\lambda$=100
+\item Chebyshev: $i_{max}$=10, $\sigma$=0.2, $\lambda$=10
+\end{itemize}
+
+Here is a table with the results obtained by using the three distances mentioned on the iris \cite{website:iris} dataset. The Table \ref{table_iris} is used to show these.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Iris dataset results}
+\label{table_iris}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\cline{1-5}
+ Distance & Measure & \multicolumn{3}{|c|}{Clusters} \\
+\cline{1-5}
+Euclidean & & Iris-setosa & Iris-versicolor & Iris-virginica \\
+& C & 50 & 49 & 46 \\
+& IC & 0 & 4 & 1 \\
+& Total & 50 & 53 & 47 \\
+& Accuracy & 100\% & 98\% & 92\% \\
+\hline
+Manhattan & & Iris-setosa & Iris-versicolor & Iris-virginica \\
+& C & 50 & 50 & 27 \\
+& IC & 0 & 23 & 0 \\
+& Total & 50 & 73 & 27 \\
+& Accuracy & 100\% & 100\% & 54\% \\
+\hline
+Chebyshev & & Iris-setosa & Iris-versicolor & Iris-virginica \\
+& C & 50 & 40 & 47 \\
+& IC & 0 & 3 & 10 \\
+& Total & 50 & 43 & 57 \\
+& Accuracy & 100\% & 80\% & 94\% \\
+\hline
+\end{tabular}
+\end{table}
+
+We can see that the Euclidean distance outperforms the other too, but each cluster is done the best by a different metric. One more thing to observe is that the Chebyshev metric needed a short time to achieve this, also the accuracy for this metric is reduced.
+
+\subsection{Discussion}
+
+\subsubsection{Analysis}
+
+As we can see the Euclidean distance works pretty well on all the datasets. However the Manhattan does not perform well on Iris and the Chebyshev does not give good results on the Cancer dataset. The euclidean distance rarely gives the best results in this benchmark for a cluster compared to the other distances, but it gives the best results on the whole datasets, that we considered. Another idea to mention is that the Chebyshev distance needs much more time and computation to converge, and also it has much lower accuracy compared to the other two metrics.
+
+\subsubsection{Comparison to related work}
+
+In Table \ref{table_comparison} we show a summary of our results in comparison with the results obtained in \cite{cannon0approximate} and \cite{CompleteGradientClusteringAlgorithm}. Columns $Euclidean$, $Manhatan$, $Chebyshev$ represent the results obtained using the metric; The last column, $ Related work$, represents the results obtained in \cite{cannon0approximate} for datasets iris and cancer, and in \cite{CompleteGradientClusteringAlgorithm} for seeds.
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\label{table_comparison}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\cline{1-5}
+ Dataset & Euclidean & Manhattan & Chebyshev & Related Work \\
+\cline{1-5}
+Iris & \bf{96.7\%} & 84.7\% & 91,3\% & 91.3\% \\
+\hline
+Cancer & \bf{95.6\%} & 95.3\% & 46.2\% & \bf{95.6\%} \\
+\hline
+Seeds & 91.0\% & 84.8\% & 89.5\% & \bf{91.9\%} \\
+\hline
+\end{tabular}
+\caption{Comparison to related work.}
+\end{table}
+
+On the dataset Iris in the related paper the best result mentioned is 91.3\% accuracy. In our case with metric Euclidean we have 96.7\%, with the Chebyshev one 91,3\%, but actually the result of applying the Manhattan metric is the only one having 100\% accuracy for more than one cluster, although there is a bad accuracy for the third one.
+On the Cancer the Manhattan produced much better results, having an accuracy of 95.3\%, and it is just a bit worse than the accuracy coming from the Euclidean distance and the accuracy of the algorithm from the approximate distance algorithm, both having 95.6\%. In this case the Chebyshev metric's result is far away from what we expected, having an abysmal accuracy of 46.2\%.
+Finally when we talk about the Seeds set, we have to mention the Gradient Algorithm, proposed by the polish guys, having an accuracy of 91.9\% while our approach with Euclidean having 91.0\% and with Chebyshev 89.5, so they are not that far away.
+
+\section{Conclusion}
+\label{Conclusion}
+
+As we outlined in our experiments, hierarchical clustering algorithms highly depend on the metric chosen. In conclusion the Euclidean distance function is a safe choice almost for every dataset, but if we want the results to be as close to 100\% as possible we should find the metric which best fits the given dataset. In the future, we consider adopting the Mahalanobis \cite{website:mahalanobis} distance too, which is considered to be better than the euclidean one.
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibliography}
+
+\end{document}
