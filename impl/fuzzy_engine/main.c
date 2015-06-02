@@ -6,10 +6,10 @@
 void init_fuzzy_engine(fuzzy_engine* engine) {
     // TEMPERATURE
     ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
-    ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.5);
+    ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.75);
     ling_val* moderate_temp = create_linguistic_value("moderate",
                                                       1.5, 2.75, 3.75, 5);
-    ling_val* high_temp = create_linguistic_value("high", 3.5, 5.5, 100, 100);
+    ling_val* high_temp = create_linguistic_value("high", 3.75, 5.5, 100, 100);
     add_ling_val(temp_err, low_temp);
     add_ling_val(temp_err, moderate_temp);
     add_ling_val(temp_err, high_temp);
@@ -17,28 +17,28 @@ void init_fuzzy_engine(fuzzy_engine* engine) {
     // HUMIDITY -- INPUT
     ling_var* humidity = create_linguistic_variable("humidity", 2, INPUT);
     ling_val* low_hum = create_linguistic_value("low", -10, -10, 20, 40);
-    ling_val* moderate_hum = create_linguistic_value("moderate", 25, 47, 47, 70);
-    ling_val* high_hum = create_linguistic_value("high", 45, 70, 100, 100);
+    ling_val* moderate_hum = create_linguistic_value("moderate", 20, 47, 47, 70);
+    ling_val* high_hum = create_linguistic_value("high", 50, 70, 100, 100);
     add_ling_val(humidity, low_hum);
     add_ling_val(humidity, moderate_hum);
     add_ling_val(humidity, high_hum);
 
     // RATE OF COOLING -- INPUT
     ling_var* rate_of_cooling = create_linguistic_variable("roc", 3, INPUT);
-    ling_val* high_roc = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* high_roc = create_linguistic_value("high", 0, 0, -0.11, -0.28);
     ling_val* moderate_roc = create_linguistic_value("moderate",
-                                                     5, 11, 12.5, 18);
-    ling_val* low_roc = create_linguistic_value("low", 13, 20, 100, 100);
+                                                     -0.11, -0.32, -0.32, -0.5);
+    ling_val* low_roc = create_linguistic_value("low", -0.35,- 0.5, -2, -2);
     add_ling_val(rate_of_cooling, low_roc);
     add_ling_val(rate_of_cooling, moderate_roc);
     add_ling_val(rate_of_cooling, high_roc);
 
     // RATE OF HEATING -- INPUT
     ling_var* rate_of_heating = create_linguistic_variable("roh", 3, INPUT);
-    ling_val* high_roh = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* high_roh = create_linguistic_value("high", 0, 0, 0.11, 0.28);
     ling_val* moderate_roh = create_linguistic_value("moderate",
-                                                     7, 12.5, 12.5, 18);
-    ling_val* low_roh = create_linguistic_value("low", 15, 25, 100, 100);
+                                                     0.11, 0.32, 0.32, 0.5);
+    ling_val* low_roh = create_linguistic_value("low", 0.35, 0.5, 2, 2);
     add_ling_val(rate_of_heating, low_roh);
     add_ling_val(rate_of_heating, moderate_roh);
     add_ling_val(rate_of_heating, high_roh);

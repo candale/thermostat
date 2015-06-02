@@ -47,7 +47,7 @@
 /*****************************************************/
 /* *************** TIME SYNC CONSTANTS ***************/
 // data read and publish time interval
-#define PUBLISH_REPEAT_INTERVAL_SECONDS 30
+#define PUBLISH_REPEAT_INTERVAL_SECONDS 10
 #define PUBLISH_REPEAT_INTERVAL_MILIS PUBLISH_REPEAT_INTERVAL_SECONDS * 1000
 
 // mdns retry time interval
@@ -100,6 +100,22 @@ const char STA_GOT_IP[] = "connected";
 const char STA_ERROR[] = "error";
 
 
+/*****************************************/
+/* *************** MOCKING ***************/
+#define MOCK_DATA 1
+#define MOCK_TEMPERATURE_SET 28.5
+#define MOCK_TEMPERATURE 28
+#define MOCK_HUMIDITY 50
+#define MOCK_LEST_SQUARE 0
+
+
+/****************************************************/
+/* *************** PROGRAM PARAMETERS ***************/
+#define IS_PUBLISH_ENABLED 0
+#define IS_FUZZY_ENABLED 1
+#define IS_DATA_COLLECTION_ENABLED 1
+
+
 /***************************************************/
 /* *************** TASKS DEFINITIONS ***************/
 #define user_loop_prority        1
@@ -143,6 +159,7 @@ struct serial_params_struct {
 } serial_params;
 
 struct publish_params_struct {
+  float temperature_set;
   float temperature;
   float humidity;
   float tmp_trend_least_square;
@@ -159,7 +176,7 @@ struct espconn server;
 // fuzzy engine structure
 fuzzy_engine* engine;
 // timer structure to read and send data at given interval
-static volatile os_timer_t read_publish_timer;
+static volatile os_timer_t collect_and_process_timer;
 // timer structure that atempts to setup mdns at given interval
 static volatile os_timer_t mdns_setup_timer;
 // temperature history spanning TEMPERATURE_HISTORY_SPAN minutes

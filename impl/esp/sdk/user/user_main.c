@@ -34,6 +34,9 @@ void init_program_data() {
     request_params.post_length = 0;
     request_params.get_length = 0;
     serial_params.serial_length = 0;
+
+    // collected data
+    publish_params.temperature_set = 24;
     publish_params.temperature = MAX_VAR;
     publish_params.humidity = MAX_VAR;
     publish_params.tmp_trend_least_square = 0;
@@ -170,7 +173,9 @@ setup_mdns(void *arg) {
     if(station_status == STATION_GOT_IP &&
             wifi_get_ip_info(STATION_IF, &station_info)) {
 
-        // kill softap
+        // kill softap - mdns works without AP
+        wifi_set_opmode(0x1);
+        wifi_softap_free_station_info();
 
         struct mdns_info *info = (struct mdns_info *)os_zalloc(
             sizeof(struct mdns_info));
@@ -651,6 +656,11 @@ void record_temperature_history(float temp)
 void ICACHE_RAM_ATTR
 publish_data()
 {
+    if(!IS_PUBLISH_ENABLED) {
+        serial_debug("Publish disabled", DEBUG_1);
+        return;
+    }
+
     serial_println("Publishing data");
     ip_addr_t addr;
     IP4_ADDR(&addr, 184, 106, 153, 149);
@@ -677,9 +687,26 @@ publish_data()
     http_get(url, &addr, http_callback_example);
 }
 
+void mock_data() {
+    publish_params.temperature_set = MOCK_TEMPERATURE_SET;
+    publish_params.temperature = MOCK_TEMPERATURE;
+    publish_params.humidity = MOCK_HUMIDITY;
+    publish_params.tmp_trend_least_square = MOCK_LEST_SQUARE;
+}
+
 uint8 ICACHE_RAM_ATTR
 collect_data()
 {
+    if(!IS_DATA_COLLECTION_ENABLED) {
+        serial_debug("Data collection is not enabled", DEBUG_1);
+        return 0;
+    }
+
+    if(MOCK_DATA) {
+        mock_data();
+        return 1;
+    }
+
     serial_nprint(REQUEST_ATTINTY_TEMP, 3);
     os_delay_us(1000 * 20);
 
@@ -696,7 +723,7 @@ collect_data()
     float tmp = os_atof((char*)get_param("temperature", SERIAL));
     float hum = os_atof((char*)get_param("humidity", SERIAL));
 
-    // somethings we get values that are very high ( ~= 150) out of nowhere
+    // sometimes we get values that are very high ( ~= 150) out of nowhere
     // this is a temporary fix that solves that. the problem seems to originate
     // in the attiny code
     if(publish_params.temperature != MAX_VAR) {
@@ -721,11 +748,44 @@ collect_data()
 }
 
 void ICACHE_RAM_ATTR
-read_and_publish_func(void* arg)
+handle_fuzzy()
 {
+    if(!IS_FUZZY_ENABLED) {
+        serial_debug("Fuzzy is not enabled", DEBUG_1);
+    }
 
-    if(wifi_station_get_connect_status() == STATION_GOT_IP) {
+    serial_debug("Registering fuzzy values ...", DEBUG_1);
+
+    register_value_by_name(engine, "tmp_err",
+                           publish_params.temperature_set -
+                           publish_params.temperature);
+    register_value_by_name(engine, "humidity", publish_params.humidity);
+    register_value_by_name(engine, "roc",
+                           publish_params.tmp_trend_least_square);
+    register_value_by_name(engine, "roh",
+                           publish_params.tmp_trend_least_square);
+
+    serial_debug("Running fuzzy ...", DEBUG_1);
+    point* p = run_fuzzy(engine);
+    serial_debug("Done running fuzzy", DEBUG_1);
+
+    char buf[50];
+    os_strcpy(buf, "x: ");
+    ftoa(p->x, buf);
+    serial_debug(buf, DEBUG_1);
+
+    os_strcpy(buf, "y: ");
+    ftoa(p->y, buf);
+    serial_debug(buf, DEBUG_1);
+    os_free(p);
+}
+
+void ICACHE_RAM_ATTR
+collect_and_process_data(void* arg)
+{
+    if(wifi_station_get_connect_status() == STATION_GOT_IP || !IS_PUBLISH_ENABLED) {
         if(collect_data()) {
+            handle_fuzzy();
             publish_data();
         }
     } else {
@@ -793,12 +853,12 @@ void setup_tcp_listener()
 void init_fuzzy_engine()
 {
     engine = create_fuzzy_engine();
-    // TEMPERATURE
+// TEMPERATURE
     ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
-    ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.5);
+    ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.75);
     ling_val* moderate_temp = create_linguistic_value("moderate",
                                                       1.5, 2.75, 3.75, 5);
-    ling_val* high_temp = create_linguistic_value("high", 3.5, 5.5, 100, 100);
+    ling_val* high_temp = create_linguistic_value("high", 3.75, 5.5, 100, 100);
     add_ling_val(temp_err, low_temp);
     add_ling_val(temp_err, moderate_temp);
     add_ling_val(temp_err, high_temp);
@@ -806,28 +866,28 @@ void init_fuzzy_engine()
     // HUMIDITY -- INPUT
     ling_var* humidity = create_linguistic_variable("humidity", 2, INPUT);
     ling_val* low_hum = create_linguistic_value("low", -10, -10, 20, 40);
-    ling_val* moderate_hum = create_linguistic_value("moderate", 25, 47, 47, 70);
-    ling_val* high_hum = create_linguistic_value("high", 45, 70, 100, 100);
+    ling_val* moderate_hum = create_linguistic_value("moderate", 20, 47, 47, 70);
+    ling_val* high_hum = create_linguistic_value("high", 50, 70, 100, 100);
     add_ling_val(humidity, low_hum);
     add_ling_val(humidity, moderate_hum);
     add_ling_val(humidity, high_hum);
 
     // RATE OF COOLING -- INPUT
     ling_var* rate_of_cooling = create_linguistic_variable("roc", 3, INPUT);
-    ling_val* high_roc = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* high_roc = create_linguistic_value("high", 0, 0, -0.11, -0.28);
     ling_val* moderate_roc = create_linguistic_value("moderate",
-                                                     5, 11, 12.5, 18);
-    ling_val* low_roc = create_linguistic_value("low", 13, 20, 100, 100);
+                                                     -0.11, -0.32, -0.32, -0.5);
+    ling_val* low_roc = create_linguistic_value("low", -0.35,- 0.5, -2, -2);
     add_ling_val(rate_of_cooling, low_roc);
     add_ling_val(rate_of_cooling, moderate_roc);
     add_ling_val(rate_of_cooling, high_roc);
 
     // RATE OF HEATING -- INPUT
     ling_var* rate_of_heating = create_linguistic_variable("roh", 3, INPUT);
-    ling_val* high_roh = create_linguistic_value("high", 0, 0, 4.5, 9);
+    ling_val* high_roh = create_linguistic_value("high", 0, 0, 0.11, 0.28);
     ling_val* moderate_roh = create_linguistic_value("moderate",
-                                                     7, 12.5, 12.5, 18);
-    ling_val* low_roh = create_linguistic_value("low", 15, 25, 100, 100);
+                                                     0.11, 0.32, 0.32, 0.5);
+    ling_val* low_roh = create_linguistic_value("low", 0.35, 0.5, 2, 2);
     add_ling_val(rate_of_heating, low_roh);
     add_ling_val(rate_of_heating, moderate_roh);
     add_ling_val(rate_of_heating, high_roh);
@@ -914,10 +974,10 @@ static void ICACHE_RAM_ATTR loop(os_event_t *events)
 void init_timers()
 {
     // runs every PUBLISH_REPEAT_INTERVAL_MILIS to collect and send data
-    os_timer_disarm(&read_publish_timer);
-    os_timer_setfn(&read_publish_timer,
-                   (os_timer_func_t *)read_and_publish_func, NULL);
-    os_timer_arm(&read_publish_timer, PUBLISH_REPEAT_INTERVAL_MILIS, 1);
+    os_timer_disarm(&collect_and_process_timer);
+    os_timer_setfn(&collect_and_process_timer,
+                   (os_timer_func_t *)collect_and_process_data, NULL);
+    os_timer_arm(&collect_and_process_timer, PUBLISH_REPEAT_INTERVAL_MILIS, 1);
 
     // this timer will run until station has got ip. when that happnes
     // it will try to setup mdns. if successfull, it will disarm the timer
