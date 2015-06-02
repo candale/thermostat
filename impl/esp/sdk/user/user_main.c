@@ -502,22 +502,25 @@ void process_request(struct espconn* conn, char* data,
 }
 
 void process_wifi_page(struct espconn* conn, char* data,
-                       unsigned short length) {
+                       unsigned short length)
+{
     uint8 method = get_http_method(data);
     char* ip_str = (char*)os_malloc(16);
+    unsigned short wifi_page_length = os_strlen(WIFI_FORM);
+    char page_buffer[wifi_page_length + 70];
+
     ip_str[0] = 0;
     if(method == POST) {
         setup_station(get_param("ssid", POST), get_param("pass", POST));
         get_station_ip(ip_str);
     }
 
-    unsigned short wifi_page_length = os_strlen(WIFI_FORM);
-    char page_buffer[wifi_page_length + 70];
     // if we are waiting for connection to access point
     uint8 station_status = wifi_station_get_connect_status();
     if(ip_str[0] == 0) {
         os_sprintf(ip_str, "%s", "NaN");
     }
+
     if(station_status != STATION_IDLE && station_status != STATION_GOT_IP
             && station_status != 255 && station_status != STATION_NO_AP_FOUND) {
         os_sprintf(page_buffer, WIFI_FORM, " ", get_station_status(),
@@ -528,6 +531,29 @@ void process_wifi_page(struct espconn* conn, char* data,
     }
     espconn_sent(conn, page_buffer, os_strlen(page_buffer));
     os_free(ip_str);
+}
+
+void process_temperature_control_page(struct espconn* conn, char* data,
+                                      unsigned short length)
+{
+    unsigned short control_page_length = os_strlen(TMP_CONTROL_FORM);
+    char page_buffer[control_page_length + 20];
+
+    uint8 method = get_http_method(data);
+    if(method == POST) {
+        char* set_tmp = get_param("temperature", POST);
+        publish_params.temperature_set = os_atof(set_tmp);
+    }
+
+    char current_temperature_str[10], set_temperature_str[10];
+    current_temperature_str[0] = set_temperature_str[0] = 0;
+
+    ftoa(publish_params.temperature, current_temperature_str);
+    ftoa(publish_params.temperature_set, set_temperature_str);
+
+    os_sprintf(page_buffer, TMP_CONTROL_FORM,
+               current_temperature_str, set_temperature_str);
+    espconn_sent(conn, page_buffer, os_strlen(page_buffer));
 }
 
 
@@ -752,6 +778,7 @@ handle_fuzzy()
 {
     if(!IS_FUZZY_ENABLED) {
         serial_debug("Fuzzy is not enabled", DEBUG_1);
+        return;
     }
 
     serial_debug("Registering fuzzy values ...", DEBUG_1);
@@ -783,13 +810,16 @@ handle_fuzzy()
 void ICACHE_RAM_ATTR
 collect_and_process_data(void* arg)
 {
-    if(wifi_station_get_connect_status() == STATION_GOT_IP || !IS_PUBLISH_ENABLED) {
-        if(collect_data()) {
-            handle_fuzzy();
+    // publish and run fuzzy only if we have read some data
+    if(collect_data()) {
+        handle_fuzzy();
+
+        if(wifi_station_get_connect_status() == STATION_GOT_IP &&
+                !IS_PUBLISH_ENABLED) {
             publish_data();
+        } else {
+            serial_println("Station does not have ip");
         }
-    } else {
-        serial_println("Station does not have ip");
     }
     reset_serial_params();
 }
@@ -997,6 +1027,7 @@ void ICACHE_RAM_ATTR user_init() {
     setup_access_point();
     setup_tcp_listener();
     register_url("/wifi_setup", process_wifi_page);
+    register_url("/control", process_temperature_control_page);
 
     init_timers();
 

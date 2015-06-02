@@ -88,6 +88,16 @@ const char WIFI_FORM[] = "<html>"
                   "</form>"
                   "</html>";
 
+const char TMP_CONTROL_FORM[] = "<html>"
+                  "<h3>Current temperature: %s</h3>"
+                  "<h3>Set temperature: %s</h3>"
+                  "<form method='post' action='/control'>"
+                  "<label>Set temperature</label>"
+                  "<input type='text' pattern='[0-9]+[\\.]*[0-9]*' name='temperature'>"
+                  "<input type='submit' value='Submit'>"
+                  "</form>"
+                  "</html>";
+
 const char RELOAD_HTML[] = "<meta http-equiv='refresh' content='5'>";
 
 // station stats
@@ -112,7 +122,7 @@ const char STA_ERROR[] = "error";
 /****************************************************/
 /* *************** PROGRAM PARAMETERS ***************/
 #define IS_PUBLISH_ENABLED 0
-#define IS_FUZZY_ENABLED 1
+#define IS_FUZZY_ENABLED 0
 #define IS_DATA_COLLECTION_ENABLED 1
 
 
