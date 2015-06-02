@@ -1,4 +1,4 @@
-#include "linkedlist.h"
+#include "linkedlist_comp.h"
 
 
 static linked_list_node* new_linked_list_node() {

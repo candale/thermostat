@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include "fuzzyengine.h"
+#include "fuzzyengine_comp.h"
 
 
 /* ========================== FUZZY ENGINE LOGIC ========================== */
-fuzzy_engine* create_fuzzy_engine()
+fuzzy_engine*
+create_fuzzy_engine()
 {
     fuzzy_engine* engine = (fuzzy_engine*)malloc(sizeof(fuzzy_engine));
     engine->ling_vars = new_linked_list();
@@ -12,18 +13,21 @@ fuzzy_engine* create_fuzzy_engine()
     return engine;
 }
 
-void add_ling_var(fuzzy_engine* engine, ling_var* variable)
+void
+add_ling_var(fuzzy_engine* engine, ling_var* variable)
 {
     engine->ling_vars->add(engine->ling_vars, variable);
 }
 
-void add_rule(fuzzy_engine* engine, fuzzy_rule* rule)
+void
+add_rule(fuzzy_engine* engine, fuzzy_rule* rule)
 {
     engine->rules->add(engine->rules, rule);
 }
 
 /* ====================== LINGUISTIC VARIABLE LOGIC ======================= */
-ling_var* create_linguistic_variable(const char* name, int id,
+ling_var*
+create_linguistic_variable(const char* name, int id,
                                      ling_var_type type)
 {
     uint8_t name_len = strlen(name);
@@ -39,14 +43,16 @@ ling_var* create_linguistic_variable(const char* name, int id,
     return var;
 }
 
-void add_ling_val(ling_var* variable, ling_val* value)
+void
+add_ling_val(ling_var* variable, ling_val* value)
 {
     variable->values->add(variable->values, value);
 }
 
 /* ======================= LINGUISTIC VALUE LOGIC ========================= */
-ling_val* create_linguistic_value(const char* name, double a, double b,
-                                  double c, double d)
+ling_val*
+create_linguistic_value(const char* name, float a, float b,
+                                  float c, float d)
 {
     uint8_t name_len = strlen(name);
     ling_val* value = (ling_val*)malloc(sizeof(ling_val));
@@ -62,7 +68,8 @@ ling_val* create_linguistic_value(const char* name, double a, double b,
 }
 
 /* ======================== FUZZY RULE LOGIC ============================== */
-fuzzy_rule* create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
+fuzzy_rule*
+create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
                         rule_consequent* consequent)
 {
     fuzzy_rule* rule = (fuzzy_rule*)malloc(sizeof(fuzzy_rule));
@@ -86,18 +93,21 @@ fuzzy_rule* create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
 
     return rule;
 }
-void set_rule_antecedent(fuzzy_rule* rule, rule_antecedent* antecedent)
+void
+set_rule_antecedent(fuzzy_rule* rule, rule_antecedent* antecedent)
 {
     rule->antecedent = antecedent;
 }
 
-void set_rule_consequent(fuzzy_rule* rule, rule_consequent* consequent)
+void
+set_rule_consequent(fuzzy_rule* rule, rule_consequent* consequent)
 {
     rule->consequent = consequent;
 }
 
 /* ====================== ANTECEDENT AND CONSEQUENT LOGIC ================= */
-condition* create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
+condition*
+create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
 {
     condition* cond = (condition*)malloc(sizeof(condition));
     memset(cond, 0, sizeof(condition));
@@ -107,18 +117,21 @@ condition* create_condition(ling_var* variable, ling_val* value, fuzzy_op op)
     return cond;
 }
 
-rule_antecedent* create_rule_antecedent()
+rule_antecedent*
+create_rule_antecedent()
 {
     rule_antecedent* antecedent = new_linked_list();
     return antecedent;
 }
 
-void add_condition_to_antecedent(rule_antecedent* antecedent, condition* cond)
+void
+add_condition_to_antecedent(rule_antecedent* antecedent, condition* cond)
 {
     antecedent->add(antecedent, cond);
 }
 
-rule_consequent* create_rule_consequent(ling_var* variable, ling_val* value)
+rule_consequent*
+create_rule_consequent(ling_var* variable, ling_val* value)
 {
     rule_consequent* consequent = (rule_consequent*)new_linked_list();
     memset(consequent, 0, sizeof(rule_consequent));
@@ -129,48 +142,42 @@ rule_consequent* create_rule_consequent(ling_var* variable, ling_val* value)
 
 void dump_engine(fuzzy_engine* engine)
 {
-    printf("Linguistic variables\n====================\n");
+    char buffer[500];
     linked_list_node* node = engine->ling_vars->head;
     linked_list_node* aux_node;
     ling_var* var;
     ling_val* val;
     while(node != 0) {
         var = (ling_var*)node->data;
-        printf("%d %d %s %f\n", var->id, var->type, var->name, var->value);
         aux_node = var->values->head;
-        printf("   ");
         while(aux_node != 0) {
             val = (ling_val*)aux_node->data;
-            printf("%s ", val->name);
             aux_node = aux_node->next;
         }
-        printf("\n");
         node = node->next;
     }
 
-    printf("Rules\n=====\n");
     node = engine->rules->head;
     condition* cond;
     while(node != 0) {
         fuzzy_rule* rule = node->data;
         aux_node = rule->antecedent->head;
-        printf("if ");
         while(aux_node != 0) {
             cond = aux_node->data;
-            printf("%s is %s %d ", cond->variable->name, cond->value->name,
-                   cond->op);
+                       // cond->value->name, cond->op);
             aux_node = aux_node->next;
         }
 
-        printf("then %s is %s  |  result: %f  consequent value: %f\n",
-               rule->consequent->variable->name, rule->consequent->value->name,
-               rule->result, rule->consequent->result);
+                   // rule->consequent->variable->name,
+                   // rule->consequent->value->name,
+                   // rule->result, rule->consequent->result);
         node = node->next;
     }
 }
 
-static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
-                              double value)
+uint8_t
+register_value(fuzzy_engine* engine, char*name, int id,
+               float value)
 {
     linked_list_node* node = engine->ling_vars->head;
     ling_var* var;
@@ -188,19 +195,21 @@ static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
     return 0;
 }
 
-uint8_t register_value_by_name(fuzzy_engine* engine, char* name, double value)
+uint8_t
+register_value_by_name(fuzzy_engine* engine, char* name, float value)
 {
     return register_value(engine, name, -1, value);
 }
 
-uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value)
+uint8_t
+register_value_by_id(fuzzy_engine* engine, int id, float value)
 {
     return register_value(engine, 0, id, value);
 }
 
-static double trapezium_mf(double input, ling_val* value)
+float trapezium_mf(float input, ling_val* value)
 {
-    double a, b, c, d;
+    float a, b, c, d;
     a = value->a;
     b = value->b;
     c = value->c;
@@ -225,23 +234,23 @@ static double trapezium_mf(double input, ling_val* value)
     return 0;
 }
 
-static double max(double a, double b)
+float max(float a, float b)
 {
     return a > b ? a : b;
 }
 
-static double min(double a, double b)
+float min(float a, float b)
 {
     return a < b ? a: b;
 }
 
 
-static void evaluate_rules(fuzzy_engine* engine)
+void evaluate_rules(fuzzy_engine* engine)
 {
     linked_list_node* rule_node;
     linked_list_node* condition_node;
     condition* cond;
-    double tmp_res;
+    float tmp_res;
     fuzzy_op op = NONE;
 
     rule_node = engine->rules->head;
@@ -271,15 +280,19 @@ static void evaluate_rules(fuzzy_engine* engine)
     }
 }
 
-static void order_consequents_geometrically(rule_consequent** consequent_list,
+// insertion sort
+
+void order_consequents_geometrically(rule_consequent** consequent_list,
                                             int length)
 {
+    char buffer[100];
     int i, j;
     rule_consequent* temp;
     for(i = 1; i < length; i++){
         temp = consequent_list[i];
         j = i - 1;
         while(j >= 0 && temp->value->a < consequent_list[j]->value->a) {
+                       // (int)consequent_list[j]->value->a);
             consequent_list[j + 1] = consequent_list[j];
             j = j - 1;
         }
@@ -287,29 +300,30 @@ static void order_consequents_geometrically(rule_consequent** consequent_list,
     }
 }
 
-static double get_x_for_y_on_line(double x1, double x2, double y, int dir)
+float get_x_for_y_on_line(float x1, float x2, float y, int dir)
 {
     if(x1 == x2) {
         return x1;
     }
-    double slope = 1 / (x2 - x1) * dir;
+    float slope = 1 / (x2 - x1) * dir;
     return (slope * x1 + y) / slope;
 }
 
-static point* get_intersection_point(point p1, point p2, point p3, point p4)
+point*
+get_intersection_point(point p1, point p2, point p3, point p4)
 {
-    double x1 = p1.x, x2 = p2.x, x3 = p3.x, x4 = p4.x;
-    double y1 = p1.y, y2 = p2.y, y3 = p3.y, y4 = p4.y;
-    double d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+    float x1 = p1.x, x2 = p2.x, x3 = p3.x, x4 = p4.x;
+    float y1 = p1.y, y2 = p2.y, y3 = p3.y, y4 = p4.y;
+    float d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
     // If d is zero, there is no intersection
     if (d == 0) {
         return 0;
     }
 
     // Get the x and y
-    double pre = (x1*y2 - y1*x2), post = (x3*y4 - y3*x4);
-    double x = ( pre * (x3 - x4) - (x1 - x2) * post ) / d;
-    double y = ( pre * (y3 - y4) - (y1 - y2) * post ) / d;
+    float pre = (x1*y2 - y1*x2), post = (x3*y4 - y3*x4);
+    float x = ( pre * (x3 - x4) - (x1 - x2) * post ) / d;
+    float y = ( pre * (y3 - y4) - (y1 - y2) * post ) / d;
 
     // Check if the x and y coordinates are within both lines
     if(x < min(x1, x2) || x > max(x1, x2) ||
@@ -328,7 +342,7 @@ static point* get_intersection_point(point p1, point p2, point p3, point p4)
     return p;
 }
 
-static point* get_raw_polygon_points(rule_consequent** consequent_list,
+point* get_raw_polygon_points(rule_consequent** consequent_list,
                                      uint8_t length)
 {
     rule_consequent* consequent;
@@ -366,7 +380,8 @@ static point* get_raw_polygon_points(rule_consequent** consequent_list,
     return points;
 }
 
-static linked_list* get_polygon_points(point* points, uint8_t length)
+
+linked_list* get_polygon_points(point* points, uint8_t length)
 {
     uint8_t i, j, found;
     point* intersection_point, *tmp_point;
@@ -408,11 +423,12 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
     return processed_points;
 }
 
-static point* get_centroid(linked_list* points)
+
+point* get_centroid(linked_list* points)
 {
-    double signed_area = 0.0;
-    double paritial_signed_area = 0.0;
-    double x0, y0, x1, y1;
+    float signed_area = 0.0;
+    float paritial_signed_area = 0.0;
+    float x0, y0, x1, y1;
     x0 = y0 = x1 = y1 = 0.0;
     linked_list_node* node = points->head;
     point* current_point, *next_point, *centroid;
@@ -455,7 +471,7 @@ static point* get_centroid(linked_list* points)
     return centroid;
 }
 
-static void defuzzify(fuzzy_engine* engine)
+point* defuzzify(fuzzy_engine* engine)
 {
     uint8_t consequents_no = engine->consequents->length;
     rule_consequent** consequent_list = (rule_consequent**)malloc(
@@ -467,23 +483,14 @@ static void defuzzify(fuzzy_engine* engine)
         node = node->next;
         count++;
     }
-    order_consequents_geometrically(consequent_list,
-                                    consequents_no);
+
+    char buf[100];
+
+    order_consequents_geometrically(consequent_list, consequents_no);
     point* raw_points = get_raw_polygon_points(consequent_list, consequents_no);
-    // for(i = 0; i < consequents_no * 4; i++) {
-    //     printf("%.2f, %.2f\n", raw_points[i].x, raw_points[i].y);
-    // }
     linked_list* points = get_polygon_points(raw_points, consequents_no * 4);
-    // node = points->head;
-    // point * p;
-    // while(node != 0) {
-    //     p = (point*)node->data;
-    //     printf("%.2f, %.2f\n", p->x, p->y);
-    //     node = node->next;
-    // }
 
     point* centroid = get_centroid(points);
-    printf("x: %f y:%f", centroid->x, centroid->y);
 
     // free everything
     linked_list_node *aux_node;
@@ -495,16 +502,19 @@ static void defuzzify(fuzzy_engine* engine)
         node = aux_node;
     }
     free(points);
-    free(centroid);
+    // free(centroid);
     for(i = 0; i < consequents_no; i++) {
         free(consequent_list[i]);
     }
+
     free(raw_points);
     free(consequent_list);
+
+    return centroid;
 }
 
-void run_fuzzy(fuzzy_engine* engine)
+point* run_fuzzy(fuzzy_engine* engine)
 {
     evaluate_rules(engine);
-    defuzzify(engine);
+    return defuzzify(engine);
 }
