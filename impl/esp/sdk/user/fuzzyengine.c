@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "fuzzyengine.h"
+#include "fuzzyengine_comp.h"
 
 
 /* ========================== FUZZY ENGINE LOGIC ========================== */
@@ -51,8 +51,8 @@ add_ling_val(ling_var* variable, ling_val* value)
 
 /* ======================= LINGUISTIC VALUE LOGIC ========================= */
 ling_val*
-create_linguistic_value(const char* name, double a, double b,
-                                  double c, double d)
+create_linguistic_value(const char* name, float a, float b,
+                                  float c, float d)
 {
     uint8_t name_len = strlen(name);
     ling_val* value = (ling_val*)os_malloc(sizeof(ling_val));
@@ -188,9 +188,9 @@ void dump_engine(fuzzy_engine* engine)
     }
 }
 
-static uint8_t
+uint8_t
 register_value(fuzzy_engine* engine, char*name, int id,
-               double value)
+               float value)
 {
     linked_list_node* node = engine->ling_vars->head;
     ling_var* var;
@@ -209,20 +209,20 @@ register_value(fuzzy_engine* engine, char*name, int id,
 }
 
 uint8_t
-register_value_by_name(fuzzy_engine* engine, char* name, double value)
+register_value_by_name(fuzzy_engine* engine, char* name, float value)
 {
     return register_value(engine, name, -1, value);
 }
 
 uint8_t
-register_value_by_id(fuzzy_engine* engine, int id, double value)
+register_value_by_id(fuzzy_engine* engine, int id, float value)
 {
     return register_value(engine, 0, id, value);
 }
 
-static double trapezium_mf(double input, ling_val* value)
+float trapezium_mf(float input, ling_val* value)
 {
-    double a, b, c, d;
+    float a, b, c, d;
     a = value->a;
     b = value->b;
     c = value->c;
@@ -247,23 +247,23 @@ static double trapezium_mf(double input, ling_val* value)
     return 0;
 }
 
-static double max(double a, double b)
+float max(float a, float b)
 {
     return a > b ? a : b;
 }
 
-static double min(double a, double b)
+float min(float a, float b)
 {
     return a < b ? a: b;
 }
 
 
-static void evaluate_rules(fuzzy_engine* engine)
+void evaluate_rules(fuzzy_engine* engine)
 {
     linked_list_node* rule_node;
     linked_list_node* condition_node;
     condition* cond;
-    double tmp_res;
+    float tmp_res;
     fuzzy_op op = NONE;
 
     rule_node = engine->rules->head;
@@ -293,15 +293,21 @@ static void evaluate_rules(fuzzy_engine* engine)
     }
 }
 
-static void order_consequents_geometrically(rule_consequent** consequent_list,
+// insertion sort
+
+void order_consequents_geometrically(rule_consequent** consequent_list,
                                             int length)
 {
+    char buffer[100];
+    os_sprintf(buffer, "length: %d", length);
     int i, j;
     rule_consequent* temp;
     for(i = 1; i < length; i++){
         temp = consequent_list[i];
         j = i - 1;
         while(j >= 0 && temp->value->a < consequent_list[j]->value->a) {
+            os_sprintf(buffer, "lol? : %d and %d", (int)temp->value->a,
+                       (int)consequent_list[j]->value->a);
             consequent_list[j + 1] = consequent_list[j];
             j = j - 1;
         }
@@ -309,30 +315,30 @@ static void order_consequents_geometrically(rule_consequent** consequent_list,
     }
 }
 
-static double get_x_for_y_on_line(double x1, double x2, double y, int dir)
+float get_x_for_y_on_line(float x1, float x2, float y, int dir)
 {
     if(x1 == x2) {
         return x1;
     }
-    double slope = 1 / (x2 - x1) * dir;
+    float slope = 1 / (x2 - x1) * dir;
     return (slope * x1 + y) / slope;
 }
 
-static point* ICACHE_RAM_ATTR
+point*
 get_intersection_point(point p1, point p2, point p3, point p4)
 {
-    double x1 = p1.x, x2 = p2.x, x3 = p3.x, x4 = p4.x;
-    double y1 = p1.y, y2 = p2.y, y3 = p3.y, y4 = p4.y;
-    double d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+    float x1 = p1.x, x2 = p2.x, x3 = p3.x, x4 = p4.x;
+    float y1 = p1.y, y2 = p2.y, y3 = p3.y, y4 = p4.y;
+    float d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
     // If d is zero, there is no intersection
     if (d == 0) {
         return 0;
     }
 
     // Get the x and y
-    double pre = (x1*y2 - y1*x2), post = (x3*y4 - y3*x4);
-    double x = ( pre * (x3 - x4) - (x1 - x2) * post ) / d;
-    double y = ( pre * (y3 - y4) - (y1 - y2) * post ) / d;
+    float pre = (x1*y2 - y1*x2), post = (x3*y4 - y3*x4);
+    float x = ( pre * (x3 - x4) - (x1 - x2) * post ) / d;
+    float y = ( pre * (y3 - y4) - (y1 - y2) * post ) / d;
 
     // Check if the x and y coordinates are within both lines
     if(x < min(x1, x2) || x > max(x1, x2) ||
@@ -351,7 +357,7 @@ get_intersection_point(point p1, point p2, point p3, point p4)
     return p;
 }
 
-static point* get_raw_polygon_points(rule_consequent** consequent_list,
+point* get_raw_polygon_points(rule_consequent** consequent_list,
                                      uint8_t length)
 {
     rule_consequent* consequent;
@@ -389,7 +395,7 @@ static point* get_raw_polygon_points(rule_consequent** consequent_list,
     return points;
 }
 
-static ICACHE_RAM_ATTR
+
 linked_list* get_polygon_points(point* points, uint8_t length)
 {
     uint8_t i, j, found;
@@ -432,12 +438,12 @@ linked_list* get_polygon_points(point* points, uint8_t length)
     return processed_points;
 }
 
-static ICACHE_RAM_ATTR
+
 point* get_centroid(linked_list* points)
 {
-    double signed_area = 0.0;
-    double paritial_signed_area = 0.0;
-    double x0, y0, x1, y1;
+    float signed_area = 0.0;
+    float paritial_signed_area = 0.0;
+    float x0, y0, x1, y1;
     x0 = y0 = x1 = y1 = 0.0;
     linked_list_node* node = points->head;
     point* current_point, *next_point, *centroid;
@@ -480,8 +486,7 @@ point* get_centroid(linked_list* points)
     return centroid;
 }
 
-static ICACHE_RAM_ATTR
-void defuzzify(fuzzy_engine* engine)
+point* defuzzify(fuzzy_engine* engine)
 {
     uint8_t consequents_no = engine->consequents->length;
     rule_consequent** consequent_list = (rule_consequent**)os_malloc(
@@ -493,13 +498,15 @@ void defuzzify(fuzzy_engine* engine)
         node = node->next;
         count++;
     }
-    order_consequents_geometrically(consequent_list,
-                                    consequents_no);
+
+    order_consequents_geometrically(consequent_list, consequents_no);
     point* raw_points = get_raw_polygon_points(consequent_list, consequents_no);
+    // debugging
     // for(i = 0; i < consequents_no * 4; i++) {
     //     printf("%.2f, %.2f\n", raw_points[i].x, raw_points[i].y);
     // }
     linked_list* points = get_polygon_points(raw_points, consequents_no * 4);
+    // debugging
     // node = points->head;
     // point * p;
     // while(node != 0) {
@@ -509,10 +516,6 @@ void defuzzify(fuzzy_engine* engine)
     // }
 
     point* centroid = get_centroid(points);
-    char buffer[100];
-    os_sprintf(buffer, "x: %f y:%f", centroid->x, centroid->y);
-    serial_debug(buffer, DEBUG_2);
-
 
     // free everything
     linked_list_node *aux_node;
@@ -524,16 +527,14 @@ void defuzzify(fuzzy_engine* engine)
         node = aux_node;
     }
     os_free(points);
-    os_free(centroid);
-    for(i = 0; i < consequents_no; i++) {
-        os_free(consequent_list[i]);
-    }
     os_free(raw_points);
     os_free(consequent_list);
+    points = raw_points = consequent_list = 0;
+    return centroid;
 }
 
-void run_fuzzy(fuzzy_engine* engine)
+point* run_fuzzy(fuzzy_engine* engine)
 {
     evaluate_rules(engine);
-    defuzzify(engine);
+    return defuzzify(engine);
 }

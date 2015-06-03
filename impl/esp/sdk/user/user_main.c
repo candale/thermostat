@@ -792,9 +792,7 @@ handle_fuzzy()
     register_value_by_name(engine, "roh",
                            publish_params.tmp_trend_least_square);
 
-    serial_debug("Running fuzzy ...", DEBUG_1);
     point* p = run_fuzzy(engine);
-    serial_debug("Done running fuzzy", DEBUG_1);
 
     char buf[50];
     os_strcpy(buf, "x: ");

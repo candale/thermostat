@@ -13,15 +13,15 @@ typedef enum {INPUT = 0, OUTPUT} ling_var_type;
 /* holds the linguistic values, e.g. HIGH, LOW, MEDIUM etc */
 typedef struct ling_val_struct {
     char* name;
-    double a, b, c, d;
+    float a, b, c, d;
 } ling_val;
 
-typedef double (*triangular_mf)(ling_val*, double);
+typedef float (*triangular_mf)(ling_val*, float);
 
 /* holds the linguistic_variables, e.g. TEMPERATURE, HEIGHT etc */
 typedef struct ling_var_struct {
     char* name;
-    double value;
+    float value;
     int id;
     linked_list* values;
     ling_var_type type;
@@ -40,14 +40,14 @@ typedef linked_list rule_antecedent;
 typedef struct rule_consequent_struct {
     ling_var* variable;
     ling_val* value;
-    double result;
+    float result;
 } rule_consequent;
 
 /* holds the antecedent and consequent of a rule*/
 typedef struct rule_struct {
     rule_antecedent* antecedent;
     rule_consequent* consequent;
-    double result;
+    float result;
 } fuzzy_rule;
 
 /* holds everything together */
@@ -58,7 +58,7 @@ typedef struct fuzzy_engine_struct {
 } fuzzy_engine;
 
 typedef struct point_struct {
-    double x, y;
+    float x, y;
 } point;
 
 /*
@@ -96,7 +96,7 @@ add_ling_val(ling_var*, ling_val*);
 */
 ling_val* ICACHE_FLASH_ATTR
 create_linguistic_value(const char* name,
-                                  double a, double b, double c, double d);
+                                  float a, float b, float c, float d);
 
 /*
  * Allocates memory for a rule and sets its antecentent and consequent
@@ -146,19 +146,19 @@ dump_engine(fuzzy_engine*);
  * by its name
 */
 uint8_t ICACHE_FLASH_ATTR
-register_value_by_name(fuzzy_engine* engine, char* name, double value);
+register_value_by_name(fuzzy_engine* engine, char* name, float value);
 
 /*
  * Sets an input value for a linguistic variable that is identified
  * by its id
 */
 uint8_t ICACHE_FLASH_ATTR
-register_value_by_id(fuzzy_engine* engine, int id, double value);
+register_value_by_id(fuzzy_engine* engine, int id, float value);
 
 /*
  * Runs the whole fuzzy process
 */
- void ICACHE_FLASH_ATTR
+ point* ICACHE_FLASH_ATTR
  run_fuzzy(fuzzy_engine* engine);
 
 /* ============================ STATIC FUNCTIONS =========================== */
@@ -166,7 +166,7 @@ register_value_by_id(fuzzy_engine* engine, int id, double value);
  * Calculates the membership degree of a given input to a linguistic
  * value determined by a trapezium
 */
-// double trapezium_mf(double input, ling_val* value);
+// float trapezium_mf(float input, ling_val* value);
 
 /*
  * Goes through all the rules and calculates the resulting value
@@ -176,12 +176,12 @@ register_value_by_id(fuzzy_engine* engine, int id, double value);
 /*
  * Returns the maximum of two values
 */
-// double max(double a, double b);
+// float max(float a, float b);
 
 /*
  * Returns the minimum of two values
 */
-// double min(double a, double b);
+// float min(float a, float b);
 
 /*
  * Sets an input value for a linguistic variable that is identified
@@ -189,13 +189,13 @@ register_value_by_id(fuzzy_engine* engine, int id, double value);
  * To be identified by its id, the name pointer must be 0
  * To be identified by its name, id must be less than 0
 */
-// static uint8_t register_value(fuzzy_engine* engine, char*name, int id,
-//                               double value)
+// uint8_t register_value(fuzzy_engine* engine, char*name, int id,
+//                               float value)
 
 /*
  * Defuzzyfies the rules' outputs using the centroid method
 */
-// static void defuzzify(fuzzy_engine* engine)
+// point* defuzzify(fuzzy_engine* engine)
 
 /*
  * Insert sort that orders consequents by their values' a attribute
