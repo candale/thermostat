@@ -501,15 +501,19 @@ point* defuzzify(fuzzy_engine* engine)
         free(node);
         node = aux_node;
     }
+
     free(points);
-    // free(centroid);
-    for(i = 0; i < consequents_no; i++) {
-        free(consequent_list[i]);
-    }
+    points = 0;
+
+    // here was a for that was freeing every element from consequent list
+    // elements which were actually the consequents from the fuzzy_egine
+    // the firs run they were freed and the second run the progra would fail
+
+    free(consequent_list);
+    consequent_list = 0;
 
     free(raw_points);
-    free(consequent_list);
-
+    raw_points = 0;
     return centroid;
 }
 
