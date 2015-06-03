@@ -52,8 +52,11 @@
 #define PUBLISH_REPEAT_INTERVAL_MILIS PUBLISH_REPEAT_INTERVAL_SECONDS * 1000
 
 // mdns retry time interval
-#define MDNS_REPEAT_INTERVAL_SECONDS 11
-#define MDNS_REPEAT_INTERVAL_MILIS MDNS_REPEAT_INTERVAL_SECONDS * 1000
+#define MDNS_REPEAT_PROBE_INTERVAL_SECONDS 11
+#define MDNS_REPEAT_PROBE_INTERVAL_MILIS MDNS_REPEAT_PROBE_INTERVAL_SECONDS * 1000
+
+#define MDNS_REPEAT_PUBLISH_INTERVAL_SECONDS 120
+#define MDNS_REPEAT_PUBLISH_INTERVAL_MILIS MDNS_REPEAT_PUBLISH_INTERVAL_SECONDS * 1000
 
 
 /************************************************************/
@@ -78,25 +81,29 @@ const char REQUEST_ATTINTY_TEMP[] = "ASK";
                  "<h2>404 - Not Found</h2>"\
                  "</html>"
 const char WIFI_FORM[] = "<html>"
+                  "<head> <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css'></head>"
                   "%s"
                   "Connected to acess point status: %s. Ip address: %s"
                   "<form method='post' action='/wifi_setup'>"
                   "<label>SSID</label>"
-                  "<input type='text' name='ssid'>"
+                  "<input placeholder='SSID' class='validate' type='text' name='ssid'>"
                   "<label>Password</label>"
-                  "<input type='password' name='pass'>"
+                  "<input placeholder='Password' class='validate' type='password' name='pass'>"
                   "<input type='submit' value='Connect'>"
                   "</form>"
+                  "<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js'></script>"
                   "</html>";
 
 const char TMP_CONTROL_FORM[] = "<html>"
+                  "<head> <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css'></head>"
                   "<h3>Current temperature: %s</h3>"
                   "<h3>Set temperature: %s</h3>"
                   "<form method='post' action='/control'>"
                   "<label>Set temperature</label>"
-                  "<input type='text' pattern='[0-9]+[\\.]*[0-9]*' name='temperature'>"
+                  "<input type='text' placeholder='Temperature' class='validate' pattern='[0-9]+[\\.]*[0-9]*' name='temperature'>"
                   "<input type='submit' value='Submit'>"
                   "</form>"
+                  "<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js'></script>"
                   "</html>";
 
 const char RELOAD_HTML[] = "<meta http-equiv='refresh' content='5'>";
@@ -177,6 +184,11 @@ struct publish_params_struct {
   double tmp_trend_diff;
   double tmp_trend_avg;
 } publish_params;
+
+
+/**************************************************/
+/* ***************** FLAGS ************************/
+uint8 MDNS_RUNNING = 0;
 
 
 /**************************************************/

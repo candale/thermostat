@@ -74,7 +74,18 @@ setup_mdns(void *arg) {
         espconn_mdns_init(info);
         espconn_mdns_enable();
         espconn_mdns_server_register();
+
         os_timer_disarm(&mdns_setup_timer);
+
+        // reset timer at larger interval to keep publishing
+        // itself on the network
+        if(MDNS_RUNNING == 0) {
+            os_timer_setfn(&mdns_setup_timer,
+                           (os_timer_func_t *)setup_mdns, NULL);
+            os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_PUBLISH_INTERVAL_MILIS, 1);
+            MDNS_RUNNING = 1;
+        }
+
         serial_debug("Successfull mdns setup", DEBUG_1);
     } else {
         serial_debug("Don't have station ip yet. Next time", DEBUG_1);
@@ -666,7 +677,7 @@ handle_fuzzy()
         return;
     }
 
-    serial_debug("Registering fuzzy values ...", DEBUG_1);
+    serial_debug("Registering fuzzy values ...", DEBUG_2);
 
     register_value_by_name(engine, "temp_err",
                            publish_params.temperature_set -
@@ -680,18 +691,18 @@ handle_fuzzy()
     point* p = run_fuzzy(engine);
 
     if(p == 0) {
-        serial_debug("Rules do not cover everything. Area is 0");
-        return
+        serial_debug("Rules do not cover everything. Area is 0", DEBUG_1);
+        return;
     }
 
     char buf[50];
     os_strcpy(buf, "x: ");
     ftoa(p->x, buf);
-    serial_debug(buf, DEBUG_1);
+    serial_debug(buf, DEBUG_2);
 
     os_strcpy(buf, "y: ");
     ftoa(p->y, buf);
-    serial_debug(buf, DEBUG_1);
+    serial_debug(buf, DEBUG_2);
     os_free(p);
 }
 
@@ -902,7 +913,7 @@ void init_timers()
     os_timer_disarm(&mdns_setup_timer);
     os_timer_setfn(&mdns_setup_timer,
                    (os_timer_func_t *)setup_mdns, NULL);
-    os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_INTERVAL_MILIS, 1);
+    os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_PROBE_INTERVAL_MILIS, 1);
 }
 
 void ICACHE_RAM_ATTR user_init() {

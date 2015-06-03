@@ -483,7 +483,7 @@ point* get_centroid(linked_list* points)
     centroid->y += (y0 + y1) * paritial_signed_area;
 
     if(signed_area == 0) {
-        free(centroid);
+        os_free(centroid);
         return 0;
     }
 
