@@ -195,11 +195,6 @@ uint8_t
 register_value(fuzzy_engine* engine, char*name, int id,
                double value)
 {
-    char buf[100];
-    os_sprintf(buf, "name: %s", name);
-    ftoa(value, buf);
-    serial_debug(buf, DEBUG_1);
-
     linked_list_node* node = engine->ling_vars->head;
     ling_var* var;
     while(node != 0) {
