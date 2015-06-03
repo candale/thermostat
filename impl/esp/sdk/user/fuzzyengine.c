@@ -304,12 +304,10 @@ void order_consequents_geometrically(rule_consequent** consequent_list,
     rule_consequent* temp;
     for(i = 1; i < length; i++){
         temp = consequent_list[i];
-        serial_debug(temp->variable->name, DEBUG_1);
         j = i - 1;
         while(j >= 0 && temp->value->a < consequent_list[j]->value->a) {
             os_sprintf(buffer, "lol? : %d and %d", (int)temp->value->a,
                        (int)consequent_list[j]->value->a);
-            serial_debug(buffer, DEBUG_1);
             consequent_list[j + 1] = consequent_list[j];
             j = j - 1;
         }
@@ -490,7 +488,6 @@ point* get_centroid(linked_list* points)
 
 point* defuzzify(fuzzy_engine* engine)
 {
-    serial_debug("Defuzzify", DEBUG_1);
     uint8_t consequents_no = engine->consequents->length;
     rule_consequent** consequent_list = (rule_consequent**)os_malloc(
         consequents_no * sizeof(rule_consequent*));
@@ -502,25 +499,13 @@ point* defuzzify(fuzzy_engine* engine)
         count++;
     }
 
-    serial_debug("Defuzzify order", DEBUG_1);
-    char buf[100];
-    os_sprintf(buf, "pointer: %d", consequent_list);
-    serial_debug(buf, DEBUG_1);
-    os_sprintf(buf, "length: %d", consequents_no);
-    serial_debug(buf, DEBUG_1);
-    os_sprintf(buf, "heap: %d", system_get_free_heap_size());
-    serial_debug(buf, DEBUG_1);
-
     order_consequents_geometrically(consequent_list, consequents_no);
-    serial_debug("after order geometrically", DEBUG_1);
     point* raw_points = get_raw_polygon_points(consequent_list, consequents_no);
-    serial_debug("after raw_points", DEBUG_1);
     // debugging
     // for(i = 0; i < consequents_no * 4; i++) {
     //     printf("%.2f, %.2f\n", raw_points[i].x, raw_points[i].y);
     // }
     linked_list* points = get_polygon_points(raw_points, consequents_no * 4);
-    serial_debug("after get polygon points", DEBUG_1);
     // debugging
     // node = points->head;
     // point * p;
@@ -531,34 +516,20 @@ point* defuzzify(fuzzy_engine* engine)
     // }
 
     point* centroid = get_centroid(points);
-    serial_debug("after get_centroid", DEBUG_1);
 
     // free everything
     linked_list_node *aux_node;
     node = points->head;
-    serial_debug("freeing list", DEBUG_1);
     while(node != 0) {
         aux_node = node->next;
-        serial_debug("freeing data", DEBUG_1);
         os_free(node->data);
-        serial_debug("freeing node", DEBUG_1);
         os_free(node);
         node = aux_node;
     }
-    serial_debug("freeing points", DEBUG_1);
     os_free(points);
-    // os_free(centroid);
-    serial_debug("freeing consequent list", DEBUG_1);
-    for(i = 0; i < consequents_no; i++) {
-        os_free(consequent_list[i]);
-    }
-    os_sprintf(buffer, "rawu points pointer: %d", raw_points);
-    serial_debug("freeing raw_points", DEBUG_1);
     os_free(raw_points);
-    serial_debug("freeing cosequent list", DEBUG_1);
     os_free(consequent_list);
-
-    serial_debug("returning ", DEBUG_1);
+    points = raw_points = consequent_list = 0;
     return centroid;
 }
 
