@@ -8,6 +8,7 @@
 #include "httpclient.h"
 #include "fuzzyengine.h"
 #include "user_config.h"
+#include "helpers.h"
 
 /**********************************************/
 /* *************** SERVER AUTH ****************/
@@ -113,16 +114,16 @@ const char STA_ERROR[] = "error";
 /*****************************************/
 /* *************** MOCKING ***************/
 #define MOCK_DATA 1
-#define MOCK_TEMPERATURE_SET 28.5
+#define MOCK_TEMPERATURE_SET 40
 #define MOCK_TEMPERATURE 28
-#define MOCK_HUMIDITY 50
+#define MOCK_HUMIDITY 90
 #define MOCK_LEST_SQUARE 0
 
 
 /****************************************************/
 /* *************** PROGRAM PARAMETERS ***************/
 #define IS_PUBLISH_ENABLED 0
-#define IS_FUZZY_ENABLED 0
+#define IS_FUZZY_ENABLED 1
 #define IS_DATA_COLLECTION_ENABLED 1
 
 
@@ -169,12 +170,12 @@ struct serial_params_struct {
 } serial_params;
 
 struct publish_params_struct {
-  float temperature_set;
-  float temperature;
-  float humidity;
-  float tmp_trend_least_square;
-  float tmp_trend_diff;
-  float tmp_trend_avg;
+  double temperature_set;
+  double temperature;
+  double humidity;
+  double tmp_trend_least_square;
+  double tmp_trend_diff;
+  double tmp_trend_avg;
 } publish_params;
 
 
@@ -190,5 +191,5 @@ static volatile os_timer_t collect_and_process_timer;
 // timer structure that atempts to setup mdns at given interval
 static volatile os_timer_t mdns_setup_timer;
 // temperature history spanning TEMPERATURE_HISTORY_SPAN minutes
-float temperature_history[TEMPERATURE_HISTORY_CONTAINER_COUNT];
+double temperature_history[TEMPERATURE_HISTORY_CONTAINER_COUNT];
 uint8 temperature_history_count = 0;

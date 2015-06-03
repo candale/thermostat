@@ -408,6 +408,12 @@ static linked_list* get_polygon_points(point* points, uint8_t length)
     return processed_points;
 }
 
+/*
+ * In case the fuzzy engine receives an input for which it does not
+ * have the proper rules defined, it can happen that the points
+ * describe a polygon with surface 0.
+ * IN THE ABOVE DESCRIBED CASE THE FUNCTION RETURNS A NULL POINTER
+*/
 static point* get_centroid(linked_list* points)
 {
     double signed_area = 0.0;
@@ -448,6 +454,11 @@ static point* get_centroid(linked_list* points)
     centroid->x += (x0 + x1) * paritial_signed_area;
     centroid->y += (y0 + y1) * paritial_signed_area;
 
+    if(signed_area == 0) {
+        free(centroid);
+        return 0;
+    }
+
     signed_area *= 0.5;
     centroid->x /= (6.0 * signed_area);
     centroid->y /= (6.0 * signed_area);
@@ -455,7 +466,7 @@ static point* get_centroid(linked_list* points)
     return centroid;
 }
 
-static void defuzzify(fuzzy_engine* engine)
+static point* defuzzify(fuzzy_engine* engine)
 {
     uint8_t consequents_no = engine->consequents->length;
     rule_consequent** consequent_list = (rule_consequent**)malloc(
@@ -483,7 +494,6 @@ static void defuzzify(fuzzy_engine* engine)
     // }
 
     point* centroid = get_centroid(points);
-    printf("x: %f y:%f", centroid->x, centroid->y);
 
     // free everything
     linked_list_node *aux_node;
@@ -495,16 +505,17 @@ static void defuzzify(fuzzy_engine* engine)
         node = aux_node;
     }
     free(points);
-    free(centroid);
     for(i = 0; i < consequents_no; i++) {
         free(consequent_list[i]);
     }
     free(raw_points);
     free(consequent_list);
+
+    return centroid;
 }
 
-void run_fuzzy(fuzzy_engine* engine)
+point* run_fuzzy(fuzzy_engine* engine)
 {
     evaluate_rules(engine);
-    defuzzify(engine);
+    return defuzzify(engine);
 }

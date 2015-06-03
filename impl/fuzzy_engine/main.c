@@ -103,17 +103,17 @@ void init_fuzzy_engine(fuzzy_engine* engine) {
     fuzzy_rule* rule_3 = create_rule(engine, antecedent_3, consequent_3);
     add_rule(engine, rule_3);
 
-    register_value_by_name(engine, "temp_err", 5);
-    register_value_by_name(engine, "roh", 20);
-    register_value_by_name(engine, "humidity", 80);
+    register_value_by_name(engine, "temp_err", 0);
+    register_value_by_name(engine, "roh", 0);
+    register_value_by_name(engine, "humidity", 50);
 
-    run_fuzzy(engine);
+    point * p = run_fuzzy(engine);
+    printf("result: x: %.4f  y: %.4f", p->x, p->y);
 
 }
 
 int main() {
     fuzzy_engine* engine = create_fuzzy_engine();
     init_fuzzy_engine(engine);
-    dump_engine(engine);
     return 0;
 }

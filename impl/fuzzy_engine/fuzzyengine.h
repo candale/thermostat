@@ -18,7 +18,7 @@ typedef double (*triangular_mf)(ling_val*, double);
 /* holds the linguistic_variables, e.g. TEMPERATURE, HEIGHT etc */
 typedef struct ling_var_struct {
     char* name;
-    double value;   
+    double value;
     int id;
     linked_list* values;
     ling_var_type type;
@@ -31,7 +31,7 @@ typedef struct condition_struct {
     fuzzy_op op;
 } condition;
 
-/* holds the atecedent of a rule, 
+/* holds the atecedent of a rule,
    e.g. TEMPERATURE is HIGH AND HUMIDITY is LOW*/
 typedef linked_list rule_antecedent;
 typedef struct rule_consequent_struct {
@@ -110,7 +110,7 @@ void add_condition_to_antecedent(rule_antecedent*, condition*);
 rule_consequent* create_rule_consequent(ling_var*, ling_val*);
 
 /*
- * Allocates memory for a condition and sets its variable, value and 
+ * Allocates memory for a condition and sets its variable, value and
  * fuzzy operator that will be applied between the current condition
  * and the one that will follow it
  * Example:
@@ -141,7 +141,7 @@ uint8_t register_value_by_id(fuzzy_engine* engine, int id, double value);
 /*
  * Runs the whole fuzzy process
 */
- void run_fuzzy(fuzzy_engine* engine);
+ point* run_fuzzy(fuzzy_engine* engine);
 
 /* ============================ STATIC FUNCTIONS =========================== */
 /*

@@ -46,121 +46,6 @@ void init_program_data() {
 
 
 /*****************************************************************************/
-/******************************** HELPERS ************************************/
-/*****************************************************************************/
-
-
-uint8 nstrcmp(char* first, char* second, unsigned short length) {
-    if(os_strlen(first) < length || os_strlen(second) < length) {
-        return -2;
-    }
-    unsigned short index = 0;
-    while(index < length) {
-        if(first[index] > second[index]) {
-            return 1;
-        } else if(first[index] < second[index]) {
-            return -1;
-        }
-        index++;
-    }
-
-    return 0;
-}
-
-// Newton method for computing square root
-float n_sqrt(float n)
-{
-    double x = 0.0;
-    double xn = 0.0;
-    int iters = 0;
-    int i;
-    for (i = 0; i <= (int)n; ++i)
-    {
-        double val = i*i-n;
-        if (val == 0.0) {
-            return i;
-        }
-        if (val > 0.0)
-        {
-            xn = (i + (i - 1)) / 2.0;
-            break;
-        }
-    }
-    while (!(iters++ >= 100 || x == xn))
-    {
-        x = xn;
-        xn = x - (x * x - n) / (2 * x);
-    }
-
-  return xn;
-}
-
-float os_atof(const char* s)
-{
-    float rez = 0, fact = 1;
-    while (*s && (*s == ' ' || *s == '\t' || *s == '\r' || *s == '\n'))
-        s++;
-    if (*s == 0)
-        return 0; // can't read
-
-    if (*s == '-')
-    {
-        s++;
-        fact = -1;
-    };
-    int point_seen;
-    for (point_seen = 0; *s; s++)
-    {
-        if (*s == '.')
-        {
-            point_seen = 1;
-            continue;
-        };
-        int d = *s - '0';
-        if (d >= 0 && d <= 9)
-        {
-            if (point_seen)
-                fact /= 10.0;
-            rez = rez * 10.0f + (float) d;
-        };
-    };
-    return rez * fact;
-}
-
-float os_pow(int x, int y) {
-    int i;
-    for(i = 1; i < y; i++) {
-        x = x * x;
-    }
-    return x;
-}
-
-void ftoa(float val, char *buff) {
-    char smallBuff[16];
-    char smallBuff_tmp[16];
-    int val1 = (int) val;
-    int val2 = (int) (100.0 * val) % 100;
-    unsigned int uval2;
-    if (val < 0) {
-        uval2 = (int) (-100.0 * val) % 100;
-    } else {
-        uval2 = (int) (100.0 * val) % 100;
-    }
-    if (uval2 < 10) {
-        os_sprintf(smallBuff, "%i.0%u", val1, uval2);
-    } else {
-        os_sprintf(smallBuff, "%i.%u", val1, uval2);
-    }
-
-    if(val2 < 0 && val1 == 0) {
-        os_sprintf(smallBuff_tmp, "-%s", smallBuff);
-        strcat(buff, smallBuff_tmp);
-    } else {
-        strcat(buff, smallBuff);
-    }
-}
-
-/*****************************************************************************/
 /*************************** STATION AND AP SETUP ****************************/
 /*****************************************************************************/
 
@@ -563,17 +448,17 @@ void process_temperature_control_page(struct espconn* conn, char* data,
 /*
  * Computes a function that aproximates the given data points
 */
- inline static float sqr(float x) {
+ inline static double sqr(double x) {
     return x*x;
 }
 
-int linreg(int n, const float y[], float* m, float* b, float* r)
+int linreg(int n, const double y[], double* m, double* b, double* r)
 {
-    float sumx = 0.0;                        /* sum of x                      */
-    float sumx2 = 0.0;                       /* sum of x**2                   */
-    float sumxy = 0.0;                       /* sum of x * y                  */
-    float sumy = 0.0;                        /* sum of y                      */
-    float sumy2 = 0.0;                       /* sum of y**2                   */
+    double sumx = 0.0;                        /* sum of x                      */
+    double sumx2 = 0.0;                       /* sum of x**2                   */
+    double sumxy = 0.0;                       /* sum of x * y                  */
+    double sumy = 0.0;                        /* sum of y                      */
+    double sumy2 = 0.0;                       /* sum of y**2                   */
 
     int i;
     for (i = 0; i < n; i++)
@@ -585,7 +470,7 @@ int linreg(int n, const float y[], float* m, float* b, float* r)
         sumy2 += sqr(y[i]);
     }
 
-    float denom = (n * sumx2 - sqr(sumx));
+    double denom = (n * sumx2 - sqr(sumx));
     if (denom == 0) {
            // singular matrix. can't solve the problem.
         *m = 0;
@@ -604,9 +489,9 @@ int linreg(int n, const float y[], float* m, float* b, float* r)
     return 0;
 }
 
-float get_temperature_trend()
+double get_temperature_trend()
 {
-    float avg = MAX_VAR, last_tmp = MAX_VAR;
+    double avg = MAX_VAR, last_tmp = MAX_VAR;
     uint8 i, j;
     char buf[500];
     buf[0] = 0;
@@ -620,7 +505,7 @@ float get_temperature_trend()
         avg = (avg + temperature_history[i + 1] - temperature_history[i]) / 2;
     }
     for(i = 0; i < TEMPERATURE_HISTORY_CONTAINER_COUNT; i++) {
-        // sprintf_float(buf, temperature_history[i]);
+        // sprintf_double(buf, temperature_history[i]);
         buf[0] = 0;
         ftoa(temperature_history[i], buf);
         serial_debug(buf, DEBUG_1);
@@ -643,7 +528,7 @@ float get_temperature_trend()
         temperature_history[temperature_history_count - 1] -
         temperature_history[0]);
 
-    float m, b, r;
+    double m, b, r;
     linreg(temperature_history_count, temperature_history, &m, &b, &r);
     os_sprintf(buf, "least squares: ");
     ftoa(m, buf);
@@ -666,7 +551,7 @@ void reset_temperature_history()
     }
 }
 
-void record_temperature_history(float temp)
+void record_temperature_history(double temp)
 {
     int i;
     if(temperature_history_count == TEMPERATURE_HISTORY_CONTAINER_COUNT) {
@@ -746,8 +631,8 @@ collect_data()
 
     _process_method_args(buffer, SERIAL);
 
-    float tmp = os_atof((char*)get_param("temperature", SERIAL));
-    float hum = os_atof((char*)get_param("humidity", SERIAL));
+    double tmp = os_atof((char*)get_param("temperature", SERIAL));
+    double hum = os_atof((char*)get_param("humidity", SERIAL));
 
     // sometimes we get values that are very high ( ~= 150) out of nowhere
     // this is a temporary fix that solves that. the problem seems to originate
@@ -783,7 +668,7 @@ handle_fuzzy()
 
     serial_debug("Registering fuzzy values ...", DEBUG_1);
 
-    register_value_by_name(engine, "tmp_err",
+    register_value_by_name(engine, "temp_err",
                            publish_params.temperature_set -
                            publish_params.temperature);
     register_value_by_name(engine, "humidity", publish_params.humidity);
@@ -793,6 +678,11 @@ handle_fuzzy()
                            publish_params.tmp_trend_least_square);
 
     point* p = run_fuzzy(engine);
+
+    if(p == 0) {
+        serial_debug("Rules do not cover everything. Area is 0");
+        return
+    }
 
     char buf[50];
     os_strcpy(buf, "x: ");
@@ -893,7 +783,7 @@ void init_fuzzy_engine()
 
     // HUMIDITY -- INPUT
     ling_var* humidity = create_linguistic_variable("humidity", 2, INPUT);
-    ling_val* low_hum = create_linguistic_value("low", -10, -10, 20, 40);
+    ling_val* low_hum = create_linguistic_value("low", 0, 0, 20, 40);
     ling_val* moderate_hum = create_linguistic_value("moderate", 20, 47, 47, 70);
     ling_val* high_hum = create_linguistic_value("high", 50, 70, 100, 100);
     add_ling_val(humidity, low_hum);
@@ -902,20 +792,20 @@ void init_fuzzy_engine()
 
     // RATE OF COOLING -- INPUT
     ling_var* rate_of_cooling = create_linguistic_variable("roc", 3, INPUT);
-    ling_val* high_roc = create_linguistic_value("high", 0, 0, -0.11, -0.28);
+    ling_val* high_roc = create_linguistic_value("low", 0, 0, -0.11, -0.28);
     ling_val* moderate_roc = create_linguistic_value("moderate",
                                                      -0.11, -0.32, -0.32, -0.5);
-    ling_val* low_roc = create_linguistic_value("low", -0.35,- 0.5, -2, -2);
+    ling_val* low_roc = create_linguistic_value("high", -0.35,- 0.5, -2, -2);
     add_ling_val(rate_of_cooling, low_roc);
     add_ling_val(rate_of_cooling, moderate_roc);
     add_ling_val(rate_of_cooling, high_roc);
 
     // RATE OF HEATING -- INPUT
     ling_var* rate_of_heating = create_linguistic_variable("roh", 3, INPUT);
-    ling_val* high_roh = create_linguistic_value("high", 0, 0, 0.11, 0.28);
+    ling_val* high_roh = create_linguistic_value("low", 0, 0, 0.11, 0.28);
     ling_val* moderate_roh = create_linguistic_value("moderate",
                                                      0.11, 0.32, 0.32, 0.5);
-    ling_val* low_roh = create_linguistic_value("low", 0.35, 0.5, 2, 2);
+    ling_val* low_roh = create_linguistic_value("high", 0.35, 0.5, 2, 2);
     add_ling_val(rate_of_heating, low_roh);
     add_ling_val(rate_of_heating, moderate_roh);
     add_ling_val(rate_of_heating, high_roh);
