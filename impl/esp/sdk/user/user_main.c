@@ -75,11 +75,10 @@ setup_mdns(void *arg) {
         espconn_mdns_enable();
         espconn_mdns_server_register();
 
-        os_timer_disarm(&mdns_setup_timer);
-
         // reset timer at larger interval to keep publishing
         // itself on the network
         if(MDNS_RUNNING == 0) {
+            os_timer_disarm(&mdns_setup_timer);
             os_timer_setfn(&mdns_setup_timer,
                            (os_timer_func_t *)setup_mdns, NULL);
             os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_PUBLISH_INTERVAL_MILIS, 1);
