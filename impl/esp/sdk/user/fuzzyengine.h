@@ -103,7 +103,7 @@ create_linguistic_value(const char* name,
  * Allocates memory for a rule and sets its antecentent and consequent
 */
 fuzzy_rule* ICACHE_FLASH_ATTR
-create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
+create_rule(rule_antecedent*, rule_consequent*);
 
 /*
  * Allocates memory for a rule anatecedent
@@ -121,7 +121,7 @@ add_condition_to_antecedent(rule_antecedent*, condition*);
  * variable and its linguistc value
 */
 rule_consequent* ICACHE_FLASH_ATTR
-create_rule_consequent(ling_var*, ling_val*);
+create_rule_consequent(fuzzy_engine*, ling_var*, ling_val*);
 
 /*
  * Allocates memory for a condition and sets its variable, value and

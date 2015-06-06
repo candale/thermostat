@@ -58,7 +58,7 @@ setup_mdns(void *arg) {
     if(station_status == STATION_GOT_IP &&
             wifi_get_ip_info(STATION_IF, &station_info)) {
 
-        // kill softap - mdns works without AP
+        // mDSN works only in STATION mode
         wifi_set_opmode(0x1);
         wifi_softap_free_station_info();
 
@@ -69,7 +69,7 @@ setup_mdns(void *arg) {
         info->ipAddr = station_info.ip.addr;
         info->server_name = MDNS_SERVER_NAME;
         info->server_port = 80;
-        info->txt_data = "version = now";
+        os_strcpy(info->txt_data, "version = now");
 
         espconn_mdns_init(info);
         espconn_mdns_enable();
@@ -698,11 +698,11 @@ handle_fuzzy()
     char buf[50];
     os_strcpy(buf, "x: ");
     ftoa(p->x, buf);
-    serial_debug(buf, DEBUG_2);
+    serial_debug(buf, DEBUG_1);
 
     os_strcpy(buf, "y: ");
     ftoa(p->y, buf);
-    serial_debug(buf, DEBUG_2);
+    serial_debug(buf, DEBUG_1);
     os_free(p);
 }
 
@@ -782,7 +782,8 @@ void setup_tcp_listener()
 void init_fuzzy_engine()
 {
     engine = create_fuzzy_engine();
-// TEMPERATURE
+
+    // TEMPERATURE
     ling_var* temp_err = create_linguistic_variable("temp_err", 1, INPUT);
     ling_val* low_temp = create_linguistic_value("low", -100, -100, 1.75, 2.75);
     ling_val* moderate_temp = create_linguistic_value("moderate",
@@ -837,49 +838,309 @@ void init_fuzzy_engine()
 
     // ============================== RULES ==================================
 
-    // if temp_err is high and rate_of_heating is high heat_status is OFF
-    rule_antecedent* antecedent_4 = create_rule_antecedent();
-    condition* cond_41 = create_condition(temp_err, high_temp, AND);
-    condition* cond_42 = create_condition(humidity, high_hum, NONE);
-    add_condition_to_antecedent(antecedent_4, cond_41);
-    add_condition_to_antecedent(antecedent_4, cond_42);
-    rule_consequent* consequent_4 = create_rule_consequent(heat_status,
-                                                           heat_off);
-    fuzzy_rule* rule_4 = create_rule(engine, antecedent_4, consequent_4);
-    add_rule(engine, rule_4);
+    rule_antecedent* antecedent;
+    condition* cond1;
+    condition* cond2;
+    condition* cond3;
+    rule_consequent* consequent;
+    fuzzy_rule* rule;
 
-    // if temp_err is higg and rate_of_heating is low then heat_status is ON
-    rule_antecedent* antecedent_1 = create_rule_antecedent();
-    condition* cond_11 = create_condition(temp_err, high_temp, AND);
-    condition* cond_12 = create_condition(rate_of_heating, low_roh, NONE);
-    add_condition_to_antecedent(antecedent_1, cond_11);
-    add_condition_to_antecedent(antecedent_1, cond_12);
-    rule_consequent* consequent_1 = create_rule_consequent(heat_status,
-                                                           heat_on);
-    fuzzy_rule* rule_1 = create_rule(engine, antecedent_1, consequent_1);
-    add_rule(engine, rule_1);
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
 
-    // if temp_err is low and rate_of_heating is low heat_status is ON
-    rule_antecedent* antecedent_2 = create_rule_antecedent();
-    condition* cond_21 = create_condition(temp_err, low_temp, AND);
-    condition* cond_22 = create_condition(rate_of_heating, low_roh, NONE);
-    add_condition_to_antecedent(antecedent_2, cond_21);
-    add_condition_to_antecedent(antecedent_2, cond_22);
-    rule_consequent* consequent_2 = create_rule_consequent(heat_status,
-                                                           heat_on);
-    fuzzy_rule* rule_2 = create_rule(engine, antecedent_2, consequent_2);
-    add_rule(engine, rule_2);
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
 
-    // if temp_err is low and rate_of_heating is high heat_status is OFF
-    rule_antecedent* antecedent_3 = create_rule_antecedent();
-    condition* cond_31 = create_condition(temp_err, low_temp, AND);
-    condition* cond_32 = create_condition(rate_of_heating, high_roh, NONE);
-    add_condition_to_antecedent(antecedent_3, cond_31);
-    add_condition_to_antecedent(antecedent_3, cond_32);
-    rule_consequent* consequent_3 = create_rule_consequent(heat_status,
-                                                           heat_off);
-    fuzzy_rule* rule_3 = create_rule(engine, antecedent_3, consequent_3);
-    add_rule(engine, rule_3);
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, low_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, moderate_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_off);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, low_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, moderate_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, low_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, moderate_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
+
+    antecedent = create_rule_antecedent();
+    cond1 = create_condition(temp_err, high_temp, AND);
+    cond2 = create_condition(humidity, high_hum, AND);
+    cond3 = create_condition(rate_of_heating, high_roh, NONE);
+    add_condition_to_antecedent(antecedent, cond1);
+    add_condition_to_antecedent(antecedent, cond2);
+    add_condition_to_antecedent(antecedent, cond3);
+    consequent = create_rule_consequent(engine, heat_status, heat_on);
+    rule = create_rule(antecedent, consequent);
+    add_rule(engine, rule);
 }
 
 /*****************************************************************************/
