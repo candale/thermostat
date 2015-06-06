@@ -1,0 +1,13 @@
+\select@language {english}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Architecture Diagram}}{6}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Central Unit Electrical Diagram}}{7}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Central Unit Prototype On PCB}}{7}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Central Unit Prototype On PCB}}{8}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Reporter Prototype On PCB}}{9}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces DHT22 Temperature and humidity sensor}}{9}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces DHT22 Temperature and humidity sensor errors}}{10}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces MX-05CV Radio transmitter and receiver}}{10}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Attiny85 AVR microcontroller}}{11}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces ESP8266 Wireless module}}{13}
+\addvspace {10\p@ }
