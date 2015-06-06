@@ -1,0 +1,72 @@
+\begin{thebibliography}{10}
+
+\bibitem{website:dht22_library}
+Dht-sensor-library, https://github.com/adafruit/dht-sensor-library.
+
+\bibitem{website:httpclient_lib}
+Esp8266 esphttpcliennt, https://github.com/caerbannog/esphttpclient.
+
+\bibitem{website:esppicture}
+Esp8266 wifi serial module, http://is.gd/jiv6jk.
+
+\bibitem{website:attiny85program}
+How to program an attiny85, http://highlowtech.org/?p=1695.
+
+\bibitem{website:softserial}
+Softwareserial library, http://www.arduino.cc/en/reference/softwareserial.
+
+\bibitem{DisruptiveCivilTechnologies}
+Six technologies with potential impacts on us interests out to 2025.
+\newblock In {\em Disruptive Civil Technologies}. National Intelligence
+  Council, 2008.
+
+\bibitem{datasheet:dht22}
+AOSONG, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf.
+\newblock {\em DHT22 Temperature and Humidity sensor}.
+
+\bibitem{datasheet:atmega328}
+Atmel, http://is.gd/ef7Fyq.
+\newblock {\em Atmega328P-PU microcontroller}.
+
+\bibitem{datasheet:attiny85}
+Atmel, http://is.gd/wV8aIA.
+\newblock {\em Attiny85 microcontroller}.
+
+\bibitem{website:attiny85pic}
+Attiny85.
+\newblock http://thomastesla.com/mcu\_class/.
+
+\bibitem{website:espressifdesc}
+ESP8266.
+\newblock http://espressif.com/en/products/esp8266/.
+
+\bibitem{datasheet:esp8266_api}
+Espressif, http://is.gd/H0otjK.
+\newblock {\em ESP8266 Wireless module API}.
+
+\bibitem{website:espruino}
+Espruino.
+\newblock http://www.espruino.com/.
+
+\bibitem{website:manchester}
+Manchester.
+\newblock http://mchr3k.github.io/arduino-libs-manchester/.
+
+\bibitem{website:rf_tx_rx_img}
+MX-05CV.
+\newblock http://is.gd/eubb0h.
+
+\bibitem{website:nodemcu}
+NodeMCU.
+\newblock http://www.nodemcu.com/.
+
+\bibitem{website:attiny_sleep_tests}
+Nathan Seidle.
+\newblock Low power attiny85,
+  https://learn.sparkfun.com/tutorials/h2ohno/low-power-attiny.
+
+\bibitem{datasheet:radio_tx}
+Texas Instruments, http://www.ti.com/lit/ds/swrs037b/swrs037b.pdf.
+\newblock {\em Low Power Sub-1 GHz RF Transmitter}.
+
+\end{thebibliography}
