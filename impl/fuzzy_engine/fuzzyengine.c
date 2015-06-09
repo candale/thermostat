@@ -509,9 +509,6 @@ static point* defuzzify(fuzzy_engine* engine)
         node = aux_node;
     }
     free(points);
-    for(i = 0; i < consequents_no; i++) {
-        free(consequent_list[i]);
-    }
     free(raw_points);
     free(consequent_list);
 

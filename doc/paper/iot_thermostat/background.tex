@@ -174,7 +174,7 @@ an apple turns to when it is verdant, half-ripe and ripe. We establish these rul
     \item If color of apple is green then apple is verdant
     \item If color of apple is yellow then apple is half-ripe
     \item If color of apple is red then apple is ripe
-\end
+\end{itemize}
 
 Considering these rules, we can get the following table:
 \begin{center}
@@ -249,6 +249,147 @@ Y \times Z respectively.
 \end{itemize}}
 
 
-\section{Inference}
+\section{Fuzzy inference}
+
+\qquad Having established all the concepts surrounding fuzzy logic, we can now take it further to the actual steps
+that are involved in the decision making based on some given input, i.e. inference.
+
+\qquad The inference process is based on the fuzzy sets that were defined, their membership functions and
+the rules which contain the actual knowledge of the system. The great thing about fuzzy logic is that the
+process through which the system computes a solution is by making use of some knowledge that an expert (e.g.
+a person) has. What is great about it is the fact that the intelligence can be expressed in a human-readable
+form, more specifically rules. This aspect makes it extremely easy to design such a system because a
+mathematical model of the problem is not necessary.
+
+There are seven steps that to take a fuzzy logic iteration to its end:
+\begin{itemize}
+    \item 1. Defining linguistic variable that will be the input for the system; e.g. height, weight
+             etc. There are also output variables
+    \item 2. Defining linguistic values for each of the above linguistic variables; e.g. height: short, tall,
+             very tall etc.
+    \item 3. Defining rules that will comprise the system's knowledge of the problem; e.g. \par
+             \say{if height is short then age is young}
+    \item 4. Fuzzify the variables and compute each one's degree of membership to its corresponding linguistic
+             values
+    \item 5. Compute the consequent of each rule based on its consequent variables
+    \item 6. Combine the consequents to get an output distribution
+    \item 7. Defuzzify the output distribution to get a crisp value
+\end{itemize}}
+
+\quad The first three steps were described in the previous sections and in the following, the next four will
+be presented.
+
+\subsection{Fuzzfication}
+\label{subsec:fuzzification}
+
+\qquad The fuzzification process happens right after the system receives the input values for all its
+linguistic variables. The fuzzification is the process of taking the fuzzy input of a linguistic variable,
+run it through all of its membership functions and find the membership degree of to each of the linguistic
+values it has.
+
+Example: Let us consider that after eating at a restaurant we may rate the food and the treatment that the
+customer received. And so we have the linguistic variables food and treatment with the values bad, acceptable
+and tasty for food and bad, good and very good for treatment. After getting a certain rating, say from 0 to 10
+for our variables and by running them through the associated membership functions of the linguistic values
+tasty and good, we find that the food was 0.48 tasty and the treatment was 0.57 good \ref{fig:fuzzify}.
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=fuzz_example_food.eps,width=0.4\textwidth}}
+    \centerline{\psfig{figure=fuzz_example_treatment.eps,width=0.4\textwidth}}
+    \caption[Graphical result of fuzzification]{Graphical result of fuzzification}
+\label{fig:fuzzify}
+\end{figure}
+
+\qquad In essence, the process of fuzzification of a given set of inputs represents the computation of their
+membership to a certain linguistic value.
 
 
+\subsection{Rule evaluation}
+
+\qquad After having the degree of membership of all inputs to some linguistic values, the next step is going
+through all the rules that were defined and compute their consequent.
+
+\qquad As stated before, because of the nature of fuzzy logic, the rules can be expressed as natural, human
+like rules:
+
+\begin{align}
+if \quad x \quad is \quad A \quad and \quad y \quad is \quad B \quad then \quad c \quad is \quad U
+\end{align}
+
+The first part of the rule (right until \say{then}) is called the antecedent and the last part (after and
+starting with \say{then}) is called the consequent. The antecedent may have one or more tests that it performs
+and each of these tests is connected with the next through a binary fuzzy logic operator. The operators are
+the equivalent of the logical, mathematical operators $OR$, $AND$ and $NOT$ but have a difference definition.
+There are Zadeh fuzzy operators and probabilistic fuzzy operators, each with their own definition.
+
+Zadeh operators are in the following form:
+
+\begin{align}
+AND = min(\mu_{A}(x), \mu_{B}(x))
+\end{align}
+
+\begin{align}
+OR = min(\mu_{A}(x), \mu_{B}(x))
+\end{align}
+
+\begin{align}
+NOT = 1 - \mu_{A}(x)
+\end{align}
+
+while probabilistic operators:
+\begin{align}
+AND = \mu_{A}(x) \times \mu_{B}(x)
+\end{align}
+
+\begin{align}
+OR = \mu_{A}(x) + \mu_{B}(x) - \mu_{A}(x) \times \mu_{B}(x)
+\end{align}
+
+\begin{align}
+NOT = 1 - \mu_{A}(x)
+\end{align}
+
+\qquad The antecedent of every rule is taken, computed and the consequent receives the resulted value.
+The case can present itself when we have multiple rules for which the consequent is identical. \par
+For example: \par
+\say{if food is bad and treatment is bad then tip is low}\par
+and \par
+\say{if temperature is good and treatment is bad then tip is low} \par
+In such a case, the value that is chosen is the one for which the resulting membership function is the
+greatest. For example if the resulting membership function for the first rule is 0.45 and the resulting
+membership function for the second rule is 0.7, for the linguistic value \say{off} of variable
+heating\_status will be 0.7.
+
+Example: Considering the example from section \ref{subsec:fuzzification}, we had that food is 0.48 \say{tasty}
+and \say{treatment} is 0.57 good, lets consider the following rule: \par
+\begin{align}
+if \quad food \quad is \quad tasty \quad and \quad treatment \quad is \quad good \quad then \quad tip \quad is
+\quad big
+\end{align}
+
+Given our antecedent \say{if food is tasty AND treatment is good} we can see that the operator is AND, thus we
+apply the $min$ operator on the resulted membership degrees. The result is that \say{tip} is now 0.48 big
+\ref{fig:rule_eval}.
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=fuzz_example.eps,width=0.7\textwidth}}
+    \caption[Graphical representation of rule evaluation]{Graphical representation of rule evaluation}
+\label{fig:rule_eval}
+\end{figure}
+
+\section{Defuzzification}
+
+\qquad After having computed the consequent of all the rules, it's time to take those values and turn them
+into a crisp value that can be used.
+
+\quad The result of each consequent is either a clipped version of the output linguistic variable's
+membership function or the membership function itself if the result of antecedent is one.
+To get a crisp value out of the output distribution, the resulting output membership functions are combined
+to form a polynomial for which the center of gravity will be calculate. The abscissa of the resulting point
+will represent the crisp value that is the final result of the system.
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=final_res.eps,width=0.7\textwidth}}
+    \caption[Graphical representation of rule evaluation]{Graphical representation of rule evaluation}
+\label{fig:final_res}
+\end{figure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  9 JUN 2015 01:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  9 JUN 2015 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,16 +741,6 @@ Such booboos are generally harmless, so keep going.
 [8]
 psfig: searching height.eps for bounding box
 psfig: including height.eps 
-Runaway argument?
-! Paragraph ended before \end was complete.
-<to be read again> 
-                   \par 
-l.178 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -772,14 +762,7 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (13.74902pt too wide) in paragraph at lines 217--221
-\OT1/cmr/m/n/12 In fuzzy logic, a fuzzy re-la-tion $\OML/cmm/m/it/12 R$ \OT1/cm
-r/m/n/12 is a map-ping from the Carte-sian space X $\OMS/cmsy/m/n/12 ^^B\OML/cm
-m/m/it/12 Ytotheinterval$\OT1/cmr/m/n/12 [0,
- []
-
-
-Overfull \hbox (40.16664pt too wide) in paragraph at lines 217--221
+Overfull \hbox (40.79195pt too wide) in paragraph at lines 217--221
 \OT1/cmr/m/n/12 1]$\OML/cmm/m/it/12 ; wherethestrengthofthemappingisexpressedby
 themembershipfunctionoftherelation$$^^V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y
 \OT1/cmr/m/n/12 )$ 
@@ -801,45 +784,40 @@ l.235
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-! Missing } inserted.
-<inserted text> 
-                }
-l.235 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-\@par ... \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.235 
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten \endgroup.
+! Too many }'s.
 l.249 \end{itemize}}
                     
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
 
-) [10]
+[10]
+! Too many }'s.
+l.277 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+psfig: searching fuzz_example_food.eps for bounding box
+psfig: including fuzz_example_food.eps 
+psfig: searching fuzz_example_treatment.eps for bounding box
+psfig: including fuzz_example_treatment.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11] [12]
+psfig: searching fuzz_example.eps for bounding box
+psfig: including fuzz_example.eps 
+[13]
+psfig: searching final_res.eps for bounding box
+psfig: including final_res.eps 
+) [14]
 \openout2 = `architecture.aux'.
 
  (./architecture.tex
 Chapter 2.
 psfig: searching architecture_diagram.eps for bounding box
 psfig: including architecture_diagram.eps 
-[11
+[15
 
 
 
@@ -848,7 +826,7 @@ psfig: searching central_unit_diagram.eps for bounding box
 psfig: including central_unit_diagram.eps 
 psfig: searching central_unit.eps for bounding box
 psfig: including central_unit.eps 
-[12]
+[16]
 psfig: searching reporter_diagram.eps for bounding box
 psfig: including reporter_diagram.eps 
 psfig: searching reporter.eps for bounding box
@@ -856,7 +834,7 @@ psfig: including reporter.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13]
+[17]
 psfig: searching dht22.eps for bounding box
 psfig: including dht22.eps 
 Missing character: There is no Â in font cmr12!
@@ -868,40 +846,41 @@ psfig: including dht22_stats.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14]
+[18]
 psfig: searching rf_tx_rx.eps for bounding box
 psfig: including rf_tx_rx.eps 
-[15]
+[19]
 psfig: searching attiny85.eps for bounding box
 psfig: including attiny85.eps 
-[16]
+[20]
 psfig: searching ESP8266.eps for bounding box
 psfig: including ESP8266.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17] (./lstlang1.sty
+[21] (./lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-) [18]
+)
+Overfull \hbox (6.45403pt too wide) in paragraph at lines 299--300
+[]\OT1/cmr/m/n/12 In the fol-low-ing sub-sec-tions the ba-sic API of the ESP826
+6 wire-less mod-ule will be de-scribed. 
+ []
+
+[22]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 327.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 327.
- [19] [20]
+ [23] [24]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 414.
 
-Overfull \hbox (25.077pt too wide) in paragraph at lines 441--442
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[21
+[25
 
 ]
 Overfull \hbox (60.59573pt too wide) in paragraph at lines 503--506
@@ -909,58 +888,35 @@ Overfull \hbox (60.59573pt too wide) in paragraph at lines 503--506
 by go-ing the URL http://thermostat.local/control.
  []
 
-) [22]
+) [26]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 3.
-) [23
+) [27
 
 
 
-] (./thesis.bbl
-Overfull \hbox (10.55542pt too wide) in paragraph at lines 72--75
-[]\OT1/cmr/m/n/12 Nathan Sei-dle.  Low power at-tiny85, https://learn.sparkfun.
-com/tutorials/h2ohno/low-
- []
-
-[24
+] (./thesis.bbl [28
 
 
-])
-
-! LaTeX Error: \begin{itemize} on input line 173 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 \end{document}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[25] (./thesis.aux (./abstract.aux) (./publications.aux) (./introduction.aux)
-(./motivation.aux) (./background.aux) (./architecture.aux) (./conclusions.aux))
+]) [29] (./thesis.aux (./abstract.aux)
+(./publications.aux) (./introduction.aux) (./motivation.aux) (./background.aux)
+(./architecture.aux) (./conclusions.aux))
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
- )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 173 (\begingroup)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 5174 strings out of 495029
- 69926 string characters out of 6181523
- 180259 words of memory out of 5000000
- 8226 multiletter control sequences out of 15000+600000
+ 5182 strings out of 495029
+ 70051 string characters out of 6181523
+ 180044 words of memory out of 5000000
+ 8230 multiletter control sequences out of 15000+600000
  11108 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,14n,51p,264b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,51p,264b,1490s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (26 pages, 94588 bytes).
+Output written on thesis.dvi (30 pages, 107424 bytes).
