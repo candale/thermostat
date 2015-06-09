@@ -1,7 +1,7 @@
 \chapter{Architecture}
 \label{chap:architecture}
 
-This chapter will describe the architecture of the thermostat: the components that make it up and how
+\qquad This chapter will describe the architecture of the thermostat: the components that make it up and how
 all of them are interacting with each other.
 
 \section{Overview}
@@ -28,7 +28,7 @@ humidity values from the environment they are in and send it to the central unit
 
 \subsection{Central unit}
 
-The central unit is the module where the data is centralized, analyzed and where the actions of turning the
+\qquad The central unit is the module where the data is centralized, analyzed and where the actions of turning the
 heating on or off happen.
 It is home to an Attiny85 microcontroller, a 433 MHz radio receiver, a relay, an ESP8266 and a LF33CV voltage
 regulator. These components will be described in-depth in the next sections.
@@ -40,7 +40,7 @@ regulator. These components will be described in-depth in the next sections.
     \label{fig:central_unit_diag}
 \end{figure}
 
-Most heating system in Northern Europe are based on a gas central heating unit that has two states: on or off.
+\qquad Most heating system in Northern Europe are based on a gas central heating unit that has two states: on or off.
 The control mechanism they employ is a standard one: there are two wires that need to make contact in order
 for the heating to be set to on. When the wires no longer make contact, the heating will be off.
 The two wires that provide the mean to control the central heating will be connected to the relay that's on
@@ -57,7 +57,7 @@ SMD components and by improving their layout.
     \label{fig:central_unit_diag}
 \end{figure}
 
-The whole assembly of components can be powered with a voltage that ranges from 6 to 40 volts. That is due to
+\qquad The whole assembly of components can be powered with a voltage that ranges from 6 to 40 volts. That is due to
 on board LF33CV voltage regulator that limits the the number volts to 3.3. This voltage was chosen because
 the ESP8266 works at a maximum rating of 3.3 volts and the other parts were selected so they would also run
 at this rating.
@@ -68,7 +68,7 @@ converts 110/220  volts alternative current to 6-40 volts direct current.
 
 \subsection{Reporter}
 
-The second module of the thermostat, the reporter, it's what collects that data from the environment and sends
+\qquad The second module of the thermostat, the reporter, it's what collects that data from the environment and sends
 it to central unit. The reporter is an independent module that consists of an Attiny85 (See section
 \ref{sec:attiny85}) a 433 MHz radio transmitter, a DHT22 temperature and humidity sensors and an L7805CV voltage
 regulator.
@@ -95,7 +95,7 @@ sized houses and it can even be placed outside, given that it is weather proof. 
 powering the reporter give the transmitter enough power to have a range of about 300 meters with no obstacles
 in the way \cite{datasheet:radio_tx}.
 
-As stated above, the components of the reporter are in a small number thus giving the possibility to put
+\qquad As stated above, the components of the reporter are in a small number thus giving the possibility to put
 everything in a small package. The dimensions of the PCB which holds the parts is five by four centimeters
 but it can be greatly reduced if SMD components are used and a better layout is chosen.
 
@@ -113,7 +113,7 @@ as factor by which the inside temperature can be tuned.
 \section{Sensors}
 \label{sec:sensors}
 
-The thermostat in discussion uses a single sensors that reports temperature and humidity.
+\qquad The thermostat in discussion uses a single sensors that reports temperature and humidity.
 The DHT22 is temperature compensated and calibrated in accurate calibration chamber and the
 calibration-coefficient is saved in OTP memory; when the sensor is detecting, it will cite
 coefficient from memory \cite{datasheet:dht22}.
@@ -125,7 +125,7 @@ coefficient from memory \cite{datasheet:dht22}.
     \label{fig:dht22}
 \end{figure}
 
-The DHT22 is a basic, low power sensors but precise enough to be reliable in the conditions the thermostat is
+\qquad The DHT22 is a basic, low power sensors but precise enough to be reliable in the conditions the thermostat is
 designed for. The precision with which it reports the data is of 0.1 for both temperature an humidity having a
  rage of -40 °C to 80 °C for temperature while for humidity it has a range that starts from 0 and ends at 100,
 measured in percentage, representing the relative humidity of the environment.
@@ -145,7 +145,7 @@ responsible for reading the data.
 \section{Radio communication}
 \label{sec:radiocomm}
 
-The communication protocol and hardware was chosen based on two factors: low power and affordability.
+\qquad The communication protocol and hardware was chosen based on two factors: low power and affordability.
 Given the fact that the agent-based architecture that was chosen for this applications has agents that only
 report data but do not need to receive any, the solution chosen comes in two packages: a transmitter and a
 receiver.
@@ -158,16 +158,16 @@ receiver.
     \label{fig:rf_tx_rx}
 \end{figure}
 
-The radio hardware is the MX-05CV receiver/transmitter pair \ref{fig:rf_tx_rx} that works on 433 MHz
+\qquad The radio hardware is the MX-05CV receiver/transmitter pair \ref{fig:rf_tx_rx} that works on 433 MHz
 frequency. It is a low power, cheap solution that is intended for application where data needs to be carried
 over short distances. The radio communication uses AM (Amplitude modulation) modulation technique, meaning
 that the amplitude of the radio signal is varied in order the represent the data one is transmitting.
 
-The radio receiver works on 5 volts, direct current and takes up about 4 milliamperes of current when on stand-by
+\qquad The radio receiver works on 5 volts, direct current and takes up about 4 milliamperes of current when on stand-by
 which makes it suitable for low energy footprint application such as the one we're discussing. The receiver is
 fitted with a seventeen centimeter antenna that boosts its signal capturing capabilities.
 
-The radio transmitter works in the range of 3.5 to 12 volts. The signal range  varies proportionally to the
+\qquad The radio transmitter works in the range of 3.5 to 12 volts. The signal range  varies proportionally to the
 voltage applied to the module having a transmitting power is of 10 milliwatts and a maximum data transfer rate
 of 4 kilobytes per second.
 
@@ -177,7 +177,7 @@ specifications, it makes it the perfect communication solution.
 \section{Attiny85}
 \label{sec:attiny85}
 
-The ATtiny25/45/85 is a low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. By
+\qquad The ATtiny25/45/85 is a low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. By
 executing powerful instructions in a single clock cycle, the ATtiny25/45/85 achieves throughputs approaching 1
 MIPS (million instructions per second) per MHz allowing the system designer to optimize power consumption
 versus processing speed
@@ -192,18 +192,18 @@ versus processing speed
 \end{figure}
 
 
-The Attiny85 is small microcontroller that has 8 kilobytes of In-System Programmable Flash, 512 bytes of
+\qquad The Attiny85 is small microcontroller that has 8 kilobytes of In-System Programmable Flash, 512 bytes of
 EEPROM (non-volatile memory that holds across power-ups) and 256 bytes of SRAM and it work at a frequency of
 8 MHz. It has 6 general purpose I/O lines that may be used for either output or input.
 
-Given its low power consumption and the relatively high processing power, the Attiny85 can perform non-trivial
+\qquad Given its low power consumption and the relatively high processing power, the Attiny85 can perform non-trivial
 tasks like generating pulses to drive a radio transmitter to send data, collect data from a
 radio receiver and read various information from sensors.
 The Attiny85 comes in a small package, it requires no external components like a crystal clock, having one
 internally that runs on 8 MHz, which makes it suitable for the central unit of the thermostat as well for the
 reporter due to its small PCB footprint.
 
-The microcontroller comes with a sleep mode feature that enables it to go in a state where the power
+\qquad The microcontroller comes with a sleep mode feature that enables it to go in a state where the power
 consumption is negligible. It features three sleeping modes, each of them disabling a further layer
 of its architecture thus lowering the power draw to a point where is almost non-existing.
 This is a nice feature that can be used in the thermostat's reporter since it runs on battery.
@@ -216,7 +216,7 @@ battery contained about 200 milliamperes hour, that gives us ($200 mAh / 20 mA$)
 With the sleeping mode enabled, the microcontroller draws about 1 microamp of current, thus being able to reach
 four thousand hours of runtime. That is an amazing figure for the battery in discussion.
 
-The Attiny85 can be programmed with the well known platform, Arduino by using the Arduino IDE
+\qquad The Attiny85 can be programmed with the well known platform, Arduino by using the Arduino IDE
 \cite{website:attiny85program}.
 As in all Arduino boards, the program for such a microconctroller has the following structure: a setup
 and a loop function. The setup function is called only once when the Atinny85 starts up and here is the place
@@ -225,7 +225,7 @@ is called repeatedly for as long as the microcontroller has power. This pattern 
 idea that your code has to do something periodically, like checking the data on some sensors or checking for
 the pressing of some buttons.
 
-In the presented thermostat, the Attiny85 is used in both the central unit and reporter. In the central unit
+\qquad n the presented thermostat, the Attiny85 is used in both the central unit and reporter. In the central unit
 the, the microcontroller has the responsibility to read the data from the radio receiver, send that data to
 the ESP8266 (where data processing happens) and control the relay at the request of the ESP8266.
 The receptor has only two tasks, reading the temperature and humidity from the sensors and sending it via
@@ -240,7 +240,7 @@ For the radio communication, the Manchester encoding library \cite{website:manch
 a reliable implementation of an encoding protocol that works regardless of the frequency of the
 microcontroller it operates on.
 
-On the central unit of the thermostat, the Attiny85 is constantly communicating with the ESP8266 data that is
+\qquad On the central unit of the thermostat, the Attiny85 is constantly communicating with the ESP8266 data that is
 receiving from the reporters and itself is receiving data from the ESP8266 regarding the state of the heating.
 Unlike other microcontrollers, as the one that lies on the Arduino board (Atmel Atmega328P-PU
 \cite{datasheet:atmega328}), the Attiny85 does not have a hardware implementation of serial communication. In
@@ -252,7 +252,7 @@ central unit.
 \section{ESP8266}
 \label{sec:esp8266}
 
-The ESP826 is a small, 32 bit wireless enabled microcontroller build onto ARM architecture. It offers a
+\qquad The ESP826 is a small, 32 bit wireless enabled microcontroller build onto ARM architecture. It offers a
 complete and self-contained Wi-Fi networking solution, allowing it to either host the application or to
 offload all Wi-Fi networking functions from another application processor \cite{website:espressifdesc}.
 The chip comes packed with 200 kB of ROM, 32 kB ofSRAM and 80 kB of DRAM which is more than enough to give it
@@ -272,7 +272,7 @@ Since its release, the open-source community has developed a number of programmi
 including  Lua \cite{website:nodemcu} and JavaScript \cite{website:espruino} but, while testing, it has been
 found that currently the C SDK that the producer has released is the most stable and it is the one used.
 
-The SDK provided by Espressif, the maker of the ESP8266, exposes a low-level C interface to manipulate the
+\qquad The SDK provided by Espressif, the maker of the ESP8266, exposes a low-level C interface to manipulate the
 various features of the wireless chip \cite{datasheet:esp8266_api}.
 The way the code is structured in the case of this chip is similar to the one from the Attiny85. There is
 user\_init function where the system is initialized and the environment prepared for runtime and the user
@@ -301,13 +301,13 @@ In the following subsections the basic API of the ESP8266 wireless module will b
 \subsection{Operation Mode}
 \label{sec:opmode}
 
-As stated before, the ESP8266 wireless module has the sufficient features to either run a complete application
+\qquad As stated before, the ESP8266 wireless module has the sufficient features to either run a complete application
 on itself or to offload all the communication work of another microcontroller thus the chip can be configured
 in  three ways: in STATION mode, SOFTAP (soft access point) mode or both STATION+SOFTAP mode.
 This setting can be modified by the API function $wifi\_set\_opmode(uint8 opmode)$ where, for STATION, opmode
 has the value 0x01, for SOFTAP 0x02 and for STATION+SOFTAP 0x03.
 
-The STATION mode allows the module to connect itself to an existing access point (AP), host a webserver that
+\qquad The STATION mode allows the module to connect itself to an existing access point (AP), host a webserver that
 can respond to requests which are made through the connected AP and make requests of its own. When using the
 chip in station mode, one can use its mDNS feature to publish the IP address that the router to which it
 connected to assigned to it. This is a nice feature that enables the user to acquire easy access to the device
@@ -335,6 +335,7 @@ espconn_mdns_init(info);
 espconn_mdns_enable();
 espconn_mdns_server_register();
 \end{lstlisting}
+
 Now, the webserver that is running on the ESP8266 will be available from within the network to which it
 connected, by accessing the URL htpp://thermostat.local. This offers a great deal of flexibility because one
 does not have to change APs just because one wants to get access to the thermostat
@@ -363,7 +364,7 @@ address.
 
 \subsection{Running a webserver}
 
-The ESP8266 wireless module API comes with a basic implementation of a webserver. The way it works is that
+\qquad The ESP8266 wireless module API comes with a basic implementation of a webserver. The way it works is that
 first one sets the type of connection he wants (TCP, UDP) and the port on which the server will listen and
 then a callback is registered that is called whenever a connection is received. The said callback is
 responsible for setting other callbacks: for receive data event and for disconnect event.
@@ -404,7 +405,7 @@ the AP it connected to and it will call the corresponding callbacks that were re
 
 \subsection{Webserver wrapper}
 
-The server implementation provided by the API is a basic one and has functionality limited to fetching the
+\qquad The server implementation provided by the API is a basic one and has functionality limited to fetching the
 request body and its size. In order facilitate the processing of requests, a wrapper around the API's webserver
 was developed that makes it easier to get and interpret a request's body.
 The wrapper has the following API:
@@ -445,7 +446,7 @@ char* get_param(char* name, uint8 method);
 
 \subsection{Making HTTP requests}
 
-The API that is provided for the ESP8266 comes with functions that perform HTTP requests, given the IP of a
+\qquad The API that is provided for the ESP8266 comes with functions that perform HTTP requests, given the IP of a
 server, and that make DNS queries in order to resolve the IP of a domain name.
 The presented thermostat uses a library \cite{website:httpclient_lib} that is written around the mentioned
 API to make it easier to perform requests and not have to deal with the rather complicated native process.
@@ -467,7 +468,7 @@ http_get(url, &addr, http_callback_example);
 \section{Putting everything together}
 \label{sec:toghether}
 
-Every component that we have described so far plays a crucial role in the functioning of the thermostat and
+\qquad Every component that we have described so far plays a crucial role in the functioning of the thermostat and
 they are all necessary for this purpose. All the pieces of hardware that were chosen were done so considering
 most of all affordability, processing power and connectivity.
 
@@ -476,12 +477,12 @@ a functioning thermostat and how the user is interacting with it.
 
 \subsection{Thermostat high level components interaction}
 
-As stated before, the thermostat is composed of a central unit and one or more reporters. The central unit's
+\qquad As stated before, the thermostat is composed of a central unit and one or more reporters. The central unit's
 purpose is to collect data from reporters, process the data and make a decision about whether or not to turn
 the heating on or off and it is also responsible for running the necessary software that provides the user
 interaction with the system.
 
-There are two types of connections that need to be alive for the thermostat be operating as intended.
+\qquad There are two types of connections that need to be alive for the thermostat be operating as intended.
 First of all, the radio connection through which data is send from the reporters to the central unit. This is
 a key aspect that the system cannot do without.
 The second connection, though not mandatory, is with the home wireless router. The central unit needs to
@@ -493,7 +494,7 @@ user experience.
 
 \subsection{User interaction}
 
-After first starting up the thermostat, the user needs to set the SSID and password of his/shes home wireless
+\qquad After first starting up the thermostat, the user needs to set the SSID and password of his/shes home wireless
 router in order for the ESP8266 to connect to it. In order to do that one must connect to the AP that the
 central unit has created an go to the address $192.168.4.1/wifi\_setup$ to set the credentials.
 After doing so, the thermostat will connect to the router, the AP it created will disappear and the ESP8266
@@ -502,8 +503,4 @@ will be accessible through the network to which it connected by going to the URL
 The thermostat provides means by which one can monitor the temperature that the reporters are recording and
 set a desired temperature. This is done by going the URL http://thermostat.local/control. A webpage will
 appear where one can configure the temperature that one desires.
-
-
-
-
 
