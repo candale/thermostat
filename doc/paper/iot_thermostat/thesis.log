@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  9 JUN 2015 20:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  10 JUN 2015 02:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -328,8 +328,18 @@ LaTeX Info: Redefining \] on input line 2666.
 \c@prop=\count133
 \c@theorem=\count134
  (./thesis.aux
-(./abstract.aux) (./publications.aux) (./introduction.aux) (./motivation.aux)
-(./background.aux) (./architecture.aux
+(./abstract.aux) (./publications.aux) (./introduction.aux) (./background.aux)
+(./conceptual_model.aux
+
+LaTeX Warning: Label `fig:tmp_err_mf' multiply defined.
+
+
+LaTeX Warning: Label `fig:humidex' multiply defined.
+
+
+LaTeX Warning: Label `fig:humidity_mf' multiply defined.
+
+) (./architecture.aux
 
 LaTeX Warning: Label `fig:general_architecture' multiply defined.
 
@@ -362,6 +372,12 @@ LaTeX Warning: Label `fig:attiny85' multiply defined.
 
 
 LaTeX Warning: Label `fig:esp8266' multiply defined.
+
+
+LaTeX Warning: Label `fig:connect_ap' multiply defined.
+
+
+LaTeX Warning: Label `fig:control' multiply defined.
 
 ) (./conclusions.aux))
 \openout1 = `thesis.aux'.
@@ -425,36 +441,36 @@ No file abstract.tex.
 
 No file publications.tex.
 (./thesis.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [1
+
+
+
+
+
+])
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
- [1
-
-
-
-
-
-] (./thesis.lof)
+ [2]
+(./thesis.lof)
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
-
-[2
+ [3
 
 ] (./thesis.lot)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
- [3
+ [4
 
 ]
 \openout2 = `introduction.aux'.
@@ -466,144 +482,137 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-) [4
+) [5
 
 
-]
-\openout2 = `motivation.aux'.
-
- (./motivation.tex) [5
-
-
-
-]
+] [6]
 \openout2 = `background.aux'.
 
 
 (./background.tex
 Chapter 1.
 
-LaTeX Warning: Citation `Fuzyy_Sets' on page 6 undefined on input line 31.
+LaTeX Warning: Citation `Fuzyy_Sets' on page 7 undefined on input line 31.
 
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \end{align}
-                
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \end{align}
-                
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.46 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing \right. inserted.
-<inserted text> 
-                \right .
-l.46 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.46 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \end{align}
-                
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Illegal character in array arg.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \end{align}
-                
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Extra }, or forgotten \right.
-<template> }
-            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.46 \end{align}
-                
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing \right. inserted.
-<inserted text> 
-                \right .
-l.46 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.46 \end{align}
-                
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[6
+[7
 
 
 
 ]
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 ! LaTeX Error: Illegal character in array arg.
 
@@ -724,27 +733,30 @@ psfig: searching fuzzy_set.eps for bounding box
 psfig: including fuzzy_set.eps 
 psfig: searching mf_functions.eps for bounding box
 psfig: including mf_functions.eps 
-[7]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
-
+ [9]
 ! Too many }'s.
 l.119 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-[8]
+[10]
 psfig: searching height.eps for bounding box
 psfig: including height.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9]
+[11]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -790,34 +802,90 @@ l.249 \end{itemize}}
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-[10]
+[12]
 ! Too many }'s.
 l.277 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
+[13]
 psfig: searching fuzz_example_food.eps for bounding box
 psfig: including fuzz_example_food.eps 
 psfig: searching fuzz_example_treatment.eps for bounding box
 psfig: including fuzz_example_treatment.eps 
+[14] [15]
+psfig: searching fuzz_example.eps for bounding box
+psfig: including fuzz_example.eps 
+psfig: searching final_res.eps for bounding box
+psfig: including final_res.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11] [12]
-psfig: searching fuzz_example.eps for bounding box
-psfig: including fuzz_example.eps 
-[13]
-psfig: searching final_res.eps for bounding box
-psfig: including final_res.eps 
-) [14]
+) [16] [17]
+\openout2 = `conceptual_model.aux'.
+
+ (./conceptual_model.tex
+Chapter 2.
+[18
+
+
+
+] [19]
+Missing character: There is no ¬ in font cmr12!
+Missing character: There is no ∞ in font cmr12!
+
+! Too many }'s.
+l.88 \end{itemize}}
+                   
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+psfig: searching tmp_err_mf.eps for bounding box
+psfig: including tmp_err_mf.eps 
+[20]
+! Undefined control sequence.
+l.109 \qquadd
+              When relative humidity gets too low, skin and mucous surfaces ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+psfig: searching humidex.eps for bounding box
+psfig: including humidex.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+psfig: searching humidity_mf.eps for bounding box
+psfig: including humidity_mf.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21] [22]
+psfig: searching experiments.eps for bounding box
+psfig: including experiments.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[23
+
+] [24]
+! Too many }'s.
+l.253 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+) [25]
 \openout2 = `architecture.aux'.
 
  (./architecture.tex
-Chapter 2.
+Chapter 3.
 psfig: searching architecture_diagram.eps for bounding box
 psfig: including architecture_diagram.eps 
-[15
+[26
 
 
 
@@ -826,15 +894,16 @@ psfig: searching central_unit_diagram.eps for bounding box
 psfig: including central_unit_diagram.eps 
 psfig: searching central_unit.eps for bounding box
 psfig: including central_unit.eps 
-[16]
-psfig: searching reporter_diagram.eps for bounding box
-psfig: including reporter_diagram.eps 
-psfig: searching reporter.eps for bounding box
-psfig: including reporter.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17]
+[27]
+psfig: searching reporter_diagram.eps for bounding box
+psfig: including reporter_diagram.eps 
+[28]
+psfig: searching reporter.eps for bounding box
+psfig: including reporter.eps 
+[29]
 psfig: searching dht22.eps for bounding box
 psfig: including dht22.eps 
 Missing character: There is no ¬ in font cmr12!
@@ -843,66 +912,256 @@ Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∞ in font cmr12!
 psfig: searching dht22_stats.eps for bounding box
 psfig: including dht22_stats.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[18]
 psfig: searching rf_tx_rx.eps for bounding box
 psfig: including rf_tx_rx.eps 
-[19]
-psfig: searching attiny85.eps for bounding box
-psfig: including attiny85.eps 
-[20]
-psfig: searching ESP8266.eps for bounding box
-psfig: including ESP8266.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] (./lstlang1.sty
+[30]
+psfig: searching attiny85.eps for bounding box
+psfig: including attiny85.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[31] [32]
+psfig: searching ESP8266.eps for bounding box
+psfig: including ESP8266.eps 
+[33] (./lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-Overfull \hbox (6.45403pt too wide) in paragraph at lines 299--300
+Overfull \hbox (6.45403pt too wide) in paragraph at lines 301--302
 []\OT1/cmr/m/n/12 In the fol-low-ing sub-sec-tions the ba-sic API of the ESP826
 6 wire-less mod-ule will be de-scribed. 
  []
 
-[22]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 327.
+[34]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 329.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 327.
- [23] [24]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 329.
+ [35] [36]
+[37]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 414.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 416.
+ [38
 
-[25
+] [39]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.527 inherited from linked_
+                            list.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-]
-Overfull \hbox (60.59573pt too wide) in paragraph at lines 503--506
+! Missing $ inserted.
+<inserted text> 
+                $
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\@par ... \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.528 \begin{lstlisting}[frame=single]
+                                      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Undefined control sequence.
+\lst@GetLineInterval ...r \lst@GLI \lst@linerange 
+                                                  \@nil 
+l.528 \begin{lstlisting}[frame=single]
+                                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Runaway argument?
+\@nil \lst@ifsensitive \else \let \lst@KeywordTest \lst@KEYWORDTEST \let \ETC.
+! Paragraph ended before \lst@GLI was complete.
+<to be read again> 
+                   \par 
+l.531 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+[40] [41]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 610--611
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[42]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 646--647
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.676 \qquad First of all, a fuzzy_
+                                   engine object needs to be created that ho...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.677 \begin{lstlisting}[frame=single]
+                                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.677 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.677 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.677 \begin{lstlisting}[frame=single]
+                                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (0.48763pt too wide) in paragraph at lines 676--677
+ \OT1/cmr/m/n/12 First of all, a fuzzy$[]\OML/cmm/m/it/12 ngineobjectneedstobec
+reatedthatholdsallthecomponentstogether$ 
+ []
+
+! Undefined control sequence.
+\lst@GetLineInterval ...r \lst@GLI \lst@linerange 
+                                                  \@nil 
+l.677 \begin{lstlisting}[frame=single]
+                                      
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Runaway argument?
+\@nil \lst@ifsensitive \else \let \lst@KeywordTest \lst@KEYWORDTEST \let \ETC.
+! Paragraph ended before \lst@GLI was complete.
+<to be read again> 
+                   \par 
+l.680 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+[43]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 718--719
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+[44] [45]
+psfig: searching connect_to_ap.eps for bounding box
+psfig: including connect_to_ap.eps 
+
+Overfull \hbox (60.59573pt too wide) in paragraph at lines 784--787
 \OT1/cmr/m/n/12 are record-ing and set a de-sired tem-per-a-ture. This is done 
 by go-ing the URL http://thermostat.local/control.
  []
 
-) [26]
+psfig: searching thermostat_control.eps for bounding box
+psfig: including thermostat_control.eps 
+) [46]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
-Chapter 3.
-) [27
+Chapter 4.
+) [47
 
 
 
-] (./thesis.bbl [28
+] (./thesis.bbl [48
 
 
-]) [29] (./thesis.aux (./abstract.aux)
-(./publications.aux) (./introduction.aux) (./motivation.aux) (./background.aux)
-(./architecture.aux) (./conclusions.aux))
+]) [49] (./thesis.aux (./abstract.aux)
+(./publications.aux) (./introduction.aux) (./background.aux)
+(./conceptual_model.aux) (./architecture.aux) (./conclusions.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -911,12 +1170,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5182 strings out of 495029
- 70051 string characters out of 6181523
- 180044 words of memory out of 5000000
- 8230 multiletter control sequences out of 15000+600000
+ 5340 strings out of 495029
+ 72487 string characters out of 6181523
+ 182273 words of memory out of 5000000
+ 8382 multiletter control sequences out of 15000+600000
  11108 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,14n,51p,264b,1490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,51p,264b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (30 pages, 107424 bytes).
+Output written on thesis.dvi (50 pages, 169520 bytes).

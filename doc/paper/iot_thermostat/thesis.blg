@@ -4,61 +4,64 @@ The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: publications.aux
 A level-1 auxiliary file: introduction.aux
-A level-1 auxiliary file: motivation.aux
 A level-1 auxiliary file: background.aux
+A level-1 auxiliary file: conceptual_model.aux
 A level-1 auxiliary file: architecture.aux
 A level-1 auxiliary file: conclusions.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
 Warning--I didn't find a database entry for "Fuzyy_Sets"
 Warning--to sort, need author or key in DisruptiveCivilTechnologies
+Warning--to sort, need author or key in website:humidex
 Warning--to sort, need author or key in website:attiny85program
 Warning--to sort, need author or key in website:dht22_library
 Warning--to sort, need author or key in website:softserial
 Warning--to sort, need author or key in website:esppicture
 Warning--to sort, need author or key in website:httpclient_lib
 Warning--empty author in DisruptiveCivilTechnologies
+Warning--empty journal in human_comfort
+Warning--empty year in human_comfort
 Warning--empty journal in FuzzySets_Algo
 Warning--empty journal in ling_vars_zadeh
-You've used 23 entries,
+You've used 25 entries,
             2118 wiz_defined-function locations,
-            587 strings with 6266 characters,
-and the built_in function-call counts, 4176 in all, are:
-= -- 383
-> -- 95
+            592 strings with 6388 characters,
+and the built_in function-call counts, 4523 in all, are:
+= -- 412
+> -- 103
 < -- 0
-+ -- 48
-- -- 24
-* -- 164
-:= -- 631
-add.period$ -- 47
-call.type$ -- 23
-change.case$ -- 81
++ -- 52
+- -- 26
+* -- 180
+:= -- 681
+add.period$ -- 50
+call.type$ -- 25
+change.case$ -- 88
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 189
-empty$ -- 479
-format.name$ -- 24
-if$ -- 925
+cite$ -- 37
+duplicate$ -- 206
+empty$ -- 519
+format.name$ -- 26
+if$ -- 1000
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 6
-newline$ -- 95
-num.names$ -- 24
-pop$ -- 145
+int.to.str$ -- 25
+missing$ -- 7
+newline$ -- 102
+num.names$ -- 26
+pop$ -- 161
 preamble$ -- 1
-purify$ -- 63
+purify$ -- 68
 quote$ -- 0
-skip$ -- 180
+skip$ -- 196
 stack$ -- 0
-substring$ -- 146
-swap$ -- 22
+substring$ -- 156
+swap$ -- 23
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 92
-warning$ -- 9
-while$ -- 26
-width$ -- 25
-write$ -- 174
-(There were 10 warnings)
+type$ -- 100
+warning$ -- 12
+while$ -- 28
+width$ -- 27
+write$ -- 186
+(There were 13 warnings)

@@ -12,6 +12,9 @@ Esp8266 wifi serial module, http://is.gd/jiv6jk.
 \bibitem{website:attiny85program}
 How to program an attiny85, http://highlowtech.org/?p=1695.
 
+\bibitem{website:humidex}
+Humidex, http://is.gd/llhnw3.
+
 \bibitem{website:softserial}
 Softwareserial library, http://www.arduino.cc/en/reference/softwareserial.
 
@@ -51,6 +54,10 @@ Espruino.
 \bibitem{website:manchester}
 Manchester.
 \newblock http://mchr3k.github.io/arduino-libs-manchester/.
+
+\bibitem{human_comfort}
+"Warren~Fincher" "Michael~Boduch".
+\newblock Standards of human comfort.
 
 \bibitem{website:rf_tx_rx_img}
 MX-05CV.

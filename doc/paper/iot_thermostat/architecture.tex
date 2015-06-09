@@ -76,7 +76,7 @@ regulator.
 \begin{figure}[h!]
     \label{fig:reporter_diag}
     \centerline{\psfig{figure=reporter_diagram.eps,width=0.7\textwidth}}
-    \caption[Central Unit Prototype On PCB]{Central unit prototype on PCB.}
+    \caption[Reporter electrical diagram]{Reporter electrical diagram}
     \label{fig:reporter_diag}
 \end{figure}
 
@@ -110,7 +110,9 @@ Because the communication between the reporter and the central unit is made by r
 such a reporter outside giving chance to a new range of possibilities including having the outside temperature
 as factor by which the inside temperature can be tuned.
 
-\section{Sensors}
+\section{Hardware}
+
+\subsection{Sensors}
 \label{sec:sensors}
 
 \qquad The thermostat in discussion uses a single sensors that reports temperature and humidity.
@@ -142,7 +144,7 @@ enough for the purposes of this application. It uses a single-bus communication 
 data-line. This represents an advantage since the number of I/O pins is small on the microcontroller
 responsible for reading the data.
 
-\section{Radio communication}
+\subsection{Radio communication}
 \label{sec:radiocomm}
 
 \qquad The communication protocol and hardware was chosen based on two factors: low power and affordability.
@@ -174,7 +176,7 @@ of 4 kilobytes per second.
 The cost of such a pair of radio devices comes extremely cheap and in combination with the above mentioned
 specifications, it makes it the perfect communication solution.
 
-\section{Attiny85}
+\subsection{Attiny85}
 \label{sec:attiny85}
 
 \qquad The ATtiny25/45/85 is a low-power CMOS 8-bit microcontroller based on the AVR enhanced RISC architecture. By
@@ -249,7 +251,7 @@ order to bring serial communication to this microcontroller, a SoftwareSerial li
 central unit.
 
 
-\section{ESP8266}
+\subsection{ESP8266}
 \label{sec:esp8266}
 
 \qquad The ESP826 is a small, 32 bit wireless enabled microcontroller build onto ARM architecture. It offers a
@@ -298,7 +300,7 @@ void user_init(void)
 
 In the following subsections the basic API of the ESP8266 wireless module will be described.
 
-\subsection{Operation Mode}
+\subsubsection{Operation Mode}
 \label{sec:opmode}
 
 \qquad As stated before, the ESP8266 wireless module has the sufficient features to either run a complete application
@@ -362,7 +364,7 @@ and at the same time it is able to sent requests by also being in STATION mode. 
 accessible, from the network it connected to, through a domain name but only through its designated IP
 address.
 
-\subsection{Running a webserver}
+\subsubsection{Running a webserver}
 
 \qquad The ESP8266 wireless module API comes with a basic implementation of a webserver. The way it works is that
 first one sets the type of connection he wants (TCP, UDP) and the port on which the server will listen and
@@ -403,7 +405,7 @@ void setup_tcp_listener()
 The server will accept any TCP connection that comes on the specified port wither from the AP it setup or from
 the AP it connected to and it will call the corresponding callbacks that were registered.
 
-\subsection{Webserver wrapper}
+\subsubsection{Webserver wrapper}
 
 \qquad The server implementation provided by the API is a basic one and has functionality limited to fetching the
 request body and its size. In order facilitate the processing of requests, a wrapper around the API's webserver
@@ -444,7 +446,7 @@ void register_url(char* url, process_request_func func);
 char* get_param(char* name, uint8 method);
 \end{lstlisting}
 
-\subsection{Making HTTP requests}
+\subsubsection{Making HTTP requests}
 
 \qquad The API that is provided for the ESP8266 comes with functions that perform HTTP requests, given the IP of a
 server, and that make DNS queries in order to resolve the IP of a domain name.
@@ -465,8 +467,279 @@ http_get(url, &addr, http_callback_example);
 \end{lstlisting}
 
 
-\section{Putting everything together}
-\label{sec:toghether}
+\section{Fuzzy engine implementation}
+
+\qquad Given the fact that the proposed application uses microcontrollers as its power horse, there were
+concerns and challenged regarding the way of code developing. The greatest concern was regarding the memory
+usage, both instruction code memory and heap memory, when choosing how the fuzzy logic engine should be
+designed. Eventually, the decision has been made to develop a new fuzzy engine, from scratch, that would be
+tailored for the specific problem in discussion such that no redundancies would find way into the code.
+
+\qquad The rest of this section will provide a description of the created API.
+
+\subsection{Data structures}
+\label{subsec:data_structures}
+
+\qquad Due to the fact that the application had to written in C programming language, the building block
+of the fuzzy engine is the $struct$ directive. All the structures that were needed to represent the data
+are defined as C structures and by using the $typedef$ directive, are turned into types.
+
+\qquad The following data structure were created:
+
+\begin{itemize}
+\item Linguistic variable \par
+Holds the all the data corresponding to a linguistic variable.
+\begin{lstlisting}[frame=single]
+typedef struct ling_var_struct {
+    char* name; // name of the linguistic variable
+    double value; // the input value
+    int id; // identificator
+    linked_list* values; // list of linguistic values associated
+                         // with the current variable
+    ling_var_type type; // the type fo the variable:
+                        // input or output
+} ling_var;
+\end{lstlisting}
+
+\item Linguistic value \par
+Holds all the data that associated with a linguistic value.
+\begin{lstlisting}[frame=single]
+typedef struct ling_val_struct {
+    char* name; // name of the liguistic value
+    double a, b, c, d; // abscissa coordinates corresponding
+                       // to the trapezium that the membership
+                       // function describes
+} ling_val;
+\end{lstlisting}
+
+\item Condition \par
+Holds a single test that is part of a rule antecedent.
+\begin{lstlisting}[frame=single]
+typedef struct condition_struct {
+    ling_var* variable;
+    ling_val* value;
+    fuzzy_op op;
+} condition;
+\end{lstlisting}
+
+\item Rule antecedent \par
+Represents a list of objects of type condition and represents a list of tests that form an antecedent. It is
+inherited from linked_list.
+\begin{lstlisting}[frame=single]
+typedef linked_list rule_antecedent;
+\end{lstlisting}
+
+\item Rule consequent \par
+Represents the data that is associated with the second part of a rule.
+\begin{lstlisting}[frame=single]
+typedef struct rule_consequent_struct {
+    ling_var* variable; // output variable
+    ling_val* value; // chosen value
+    double result; // consequent result
+} rule_consequent;
+\end{lstlisting}
+
+\item Fuzzy rule \par
+Holds the antecedent, consequent and the resulted value after rule evaluation.
+\begin{lstlisting}[frame=single]
+typedef struct rule_struct {
+    rule_antecedent* antecedent;
+    rule_consequent* consequent;
+    double result;
+} fuzzy_rule;
+\end{lstlisting}
+
+\item Fuzzy engine \par
+This structure holds all the data from the fuzzy engine (linguistic variables, rules etc).
+The attribute \say{consequents} of the fuzzy\_engine is the collection of added consequents. Each consequent
+is a singleton.
+\begin{lstlisting}[frame=single]
+typedef struct fuzzy_engine_struct {
+    linked_list* ling_vars; // linguistic variables
+    linked_list* consequents; // consequents singletons
+    linked_list* rules;
+} fuzzy_engine;
+\end{lstlisting}
+
+\end{itemize}
+
+\subsection{Fuzzy engine API}
+
+\qquad In order to be able to manipulate all the structures \ref{subsec:data_structures} an API was defined.
+
+\qquad This is the public API of the fuzzy engine:
+\begin{lstlisting}[frame=single]
+/*
+ * Allocates a fuzzy_egine structure that holds all the components
+ *   of the system
+*/
+fuzzy_engine*
+create_fuzzy_engine();
+/*
+ * Adds a linguistic variable to a fuzzy_engine
+*/
+void
+add_ling_var(fuzzy_engine*, ling_var*);
+/*
+ * Adds a rule to a fuzzy_engine
+*/
+void
+add_rule(fuzzy_engine*, fuzzy_rule*);
+
+/*
+ * Allocates memory for a linguistic variable and sets its name,
+ * id and variable type (INPUT, OUTPUT)
+*/
+ling_var*
+create_linguistic_variable(const char* name, int id, ling_var_type);
+/*
+ * Adds a linguistic value to a linguistic variable
+*/
+void
+add_ling_val(ling_var*, ling_val*);
+
+/*
+ * Allocates memory for a linguistic value and sets the name
+ * and triangular shape boundaries for it
+*/
+ling_val*
+create_linguistic_value(const char* name,
+                        double a, double b, double c, double d);
+
+/*
+ * Allocates memory for a rule and sets its antecedent and consequent
+*/
+fuzzy_rule*
+create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
+
+/*
+ * Allocates memory for a rule antecedent
+*/
+rule_antecedent*
+create_rule_antecedent();
+/*
+ * Adds a condition to a rule antecedent
+*/
+void
+add_condition_to_antecedent(rule_antecedent*, condition*);
+
+/*
+ * Allocates memory for a rule consequent and sets its linguistic
+ * variable and its linguistic value
+*/
+rule_consequent*
+create_rule_consequent(ling_var*, ling_val*);
+
+/*
+ * Allocates memory for a condition and sets its variable, value and
+ * fuzzy operator that will be applied between the current condition
+ * and the one that will follow it
+ * Example:
+ *  create_condition("temp", "high", AND)
+ *  create_condition("humidity", "low", NONE)
+ * translates to "if temp is high AND humidity is low"
+*/
+condition*
+create_condition(ling_var*, ling_val*, fuzzy_op);
+
+/*
+ * Outputs the engine's linguistic variables with their corresponding
+ * linguistic variables and the rules
+*/
+void
+dump_engine(fuzzy_engine*);
+
+/*
+ * Sets an input value for a linguistic variable that is identified
+ * by its name
+*/
+uint8_t
+register_value_by_name(fuzzy_engine* engine, char* name,
+                       double value);
+
+/*
+ * Sets an input value for a linguistic variable that is identified
+ * by its id
+*/
+uint8_t
+register_value_by_id(fuzzy_engine* engine, int id, double value);
+
+/*
+ * Runs the whole fuzzy process
+*/
+ point*
+ run_fuzzy(fuzzy_engine* engine);
+\end{lstlisting}
+
+\subsection{API examples}
+
+\qquad First of all, a fuzzy_engine object needs to be created that holds all the components together
+\begin{lstlisting}[frame=single]
+engine = create_fuzzy_engine();
+\end{lstlisting}
+
+\qquad After initializing the fuzzy engine structure, is time to create the linguistic variables. \par
+Example:
+\lstset{language=C}
+\begin{lstlisting}[frame=single]
+// create variable with name "tmp_err", id 1 and type INPUT
+ling_var* temp_err = create_linguistic_variable(
+    "temp_err", 1, INPUT);
+// create values for the variable
+ling_val* low_temp = create_linguistic_value(
+    "low", -100, -100, 1.75, 2.75);
+ling_val* moderate_temp = create_linguistic_value(
+    "moderate", 1.5, 2.75, 3.75, 5);
+ling_val* high_temp = create_linguistic_value(
+    "high", 3.75, 5.5, 100, 100);
+// add the values to the variable
+add_ling_val(temp_err, low_temp);
+add_ling_val(temp_err, moderate_temp);
+add_ling_val(temp_err, high_temp);
+// add the linguistic variable to the engine
+add_ling_var(engine, temp_err);
+\end{lstlisting}
+
+\qquad After creating the linguistic variables, the only remaining step is create the rules. \par
+A rule is created in the following way:
+\begin{lstlisting}[frame=single]
+// create the antecedent
+rule_antecedent* antecedent_4 = create_rule_antecedent();
+// create the test conditions for the antecedent
+condition* cond_41 = create_condition(temp_err, high_temp, AND);
+condition* cond_42 = create_condition(humidity, high_hum, NONE);
+// add the tests to the condition
+add_condition_to_antecedent(antecedent_4, cond_41);
+add_condition_to_antecedent(antecedent_4, cond_42);
+// create the rule consequent
+rule_consequent* consequent_4 = create_rule_consequent(heat_status,
+                                                       heat_off);
+// create the rule
+fuzzy_rule* rule_4 = create_rule(engine, antecedent_4, consequent_4);
+// add the rule to the engine
+add_rule(engine, rule_4);
+\end{lstlisting}
+
+\quad After the building of the fuzzy engine is done, a second step before running it is to register input
+values for the linguistic variables that were defined. \par
+Example:
+\begin{lstlisting}[frame=single]
+register_value_by_name(engine, "temp_err", 2.1);
+register_value_by_name(engine, "rate_of_heating", 0.1);
+register_value_by_name(engine, "humidity", 50);
+\end{lstlisting}
+
+after which the engine may be ran:
+\begin{lstlisting}[frame=single]
+point * centroid = run_fuzzy(engine);
+printf("Centroid: X: %.4f  Y: %.4f\n",
+       centroid->x, centroid->y);
+\end{lstlisting}
+
+The printed result will be the point that resulted from running the fuzzy engine.
+
+\section{Application}
+\label{sec:application}
 
 \qquad Every component that we have described so far plays a crucial role in the functioning of the thermostat and
 they are all necessary for this purpose. All the pieces of hardware that were chosen were done so considering
@@ -497,10 +770,25 @@ user experience.
 \qquad After first starting up the thermostat, the user needs to set the SSID and password of his/shes home wireless
 router in order for the ESP8266 to connect to it. In order to do that one must connect to the AP that the
 central unit has created an go to the address $192.168.4.1/wifi\_setup$ to set the credentials.
+
+\begin{figure}[h!]
+    \label{fig:connect_ap}
+    \centerline{\psfig{figure=connect_to_ap.eps,width=0.9\textwidth}}
+    \caption[Connect to wireless router access point]{Connect to wireless router access point}
+    \label{fig:connect_ap}
+\end{figure}
+
 After doing so, the thermostat will connect to the router, the AP it created will disappear and the ESP8266
 will be accessible through the network to which it connected by going to the URL http://thermostat.local.
 
 The thermostat provides means by which one can monitor the temperature that the reporters are recording and
 set a desired temperature. This is done by going the URL http://thermostat.local/control. A webpage will
 appear where one can configure the temperature that one desires.
+
+\begin{figure}[h!]
+    \label{fig:control}
+    \centerline{\psfig{figure=thermostat_control.eps,width=0.9\textwidth}}
+    \caption[Thermostat information and control page]{Thermostat information and control page}
+    \label{fig:control}
+\end{figure}
 
