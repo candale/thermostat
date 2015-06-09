@@ -1,0 +1,254 @@
+\chapter{Theoretical background}
+\label{chap:theoretical_brackground}
+
+\section{Introduction}
+
+\qquad Fuzzy logic is an extension of Boolean logic coined by Lotfi Zadef in 1965 \cite{FuzzySets}
+\cite{FuzzySets_NewApproach} \cite{FuzzySets_Algo}. Fuzzy logic is build on the theory of fuzzy sets which is
+a generalization of the classical set theory. Zadef introduced the notion of degree in the verification of a
+condition such that it could be in a state different from true or false. This provides a valuable extended
+flexibility for reasoning which makes it possible to take into account inaccurate data. One advantage of fuzzy
+logic is that the rules by which the reasoning is made can be expressed in natural language making it easy to
+take advantage of a human expert and the knowledge he/she posses.
+
+\qquad This approach to set theory was not applied in control systems until the 70's due to the fact that technology
+did not yet reach the point where powerful enough computer would be developed. Professor Zadeh started from
+observing that people do not need precise, numerical information input to manifest the highly adaptive control
+they do. This lead to the idea that if computer would receive noisy, imprecise input values, using this
+method of control, they would be much more effective and easier to implement.
+
+\qquad This technique is now used in a wide spectrum of applications, ranging from washing machines to car gear
+boxes \cite{INT:INT4550030208}.
+
+The following sections will present the concepts surrounding fuzzy logic.
+
+\section{Fuzzy sets}
+\label{sec:fuzzy_sets}
+
+\qquad Let $X$ be a space of points (objects), with a generic element of $X$ denoted by $x$. Thus, $X = {x}$.
+A fuzzy set (class) $A$ in $X$ is characterized by a membership function (characteristic) function $f_{A}(x)$
+which associates each point in X a real number in the interval $[0, 1]$, with the value of $f_{A}(x)$ at $x$
+representing \say{grade of membership} of $x$ in $A$. \cite{Fuzyy_Sets}
+Basically, a fuzzy set is characterized by a membership function whose result, given an input $x$, represents
+how strongly does that input belong to a certain class $A$.
+
+\qquad As opposed to crisp sets, where certain inputs may belong to one class OR the other, in fuzzy logic,
+a given input may belong to a certain class in a certain degree, belong to two classed at the same time
+or to none.
+
+A crisp set is defined in the following way:
+\begin{align}
+    \mu(x) = \left\{
+    \begin{array}{11}
+        0 & \mbox{if } x \in A \\
+        1 & \mbox{if } x \not\in A
+    \end{array}
+\end{align}
+
+As it can be observed, a given input can be classified as belonging to $A$ OR as not belonging to $A$.
+As stated above, in fuzzy sets the belonging of an input to a class or the other is computed in the following
+way:
+
+\begin{align}
+\label{frm:mf}
+    \mu(x) = \left\{
+    \begin{array}{11}
+        0 & \mbox{if } x \in [a, b] \\
+        f(x) & \mbox{if } \in [b, c] \\
+        1 & \mbox{if } x \in [c, d]
+    \end{array}
+\end{align}
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=crisp_set.eps,width=0.4\textwidth}}
+    \centerline{\psfig{figure=fuzzy_set.eps,width=0.4\textwidth}}
+    \caption[Crisp and fuzzy set graphical comparison]{Crisp and fuzzy set graphical comparison}
+\label{fig:crisp_fuzzy_cmp}
+\end{figure}
+Figure ~\ref{fig:crisp_fuzzy_cmp} is a graphical representation that compares a crisp and fuzzy set.
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=mf_functions.eps,width=0.4\textwidth}}
+    \caption[Membership function types]{Membership function types}
+\label{fig:mf_functions}
+\end{figure}
+
+In the formula ~\ref{frm:mf}, $f(x)$ can be replaced with any function that may be the best for the given
+application. Some popular examples for the membership functions are presented in figure
+~\ref{fig:mf_functions}.
+
+\subsection{Fuzzy sets properties}
+
+Given the fact that fuzzy sets are an extension of crisp sets from classical mathematics, they comes with
+the following properties:
+
+\begin{itemize}
+    \item Support of a fuzzy set: all elements of $A$ with non-zero membership grade
+    \begin{align}
+    supp(A) = \left\{ x \in | \mu_{A}(x) > 0 \right\}
+    \end{align}
+
+    \item Core of a fuzzy set: all elements of $A$ that completely belong to a class
+    \begin{align}
+    core(A) = \left\{ x \in X | \mu_{A}(x) = 1 \right\}
+    \end{align}
+
+    \item Height: maximum peak at which the function rises; a height is called normal if it is equal to 1 and
+subnormal if less than 1
+
+\end{itemize}
+
+\subsection{Operations}
+
+\qquad Like in classical sets, fuzzy sets also define operations that can be applied.
+\begin{itemize}
+    \item Union
+    \begin{align}
+        U[\mu_{A}, \mu_{B}] = max[\mu_{A}, \mu_{B}]
+    \end{align}
+
+    \item Intersection
+    \begin{align}
+        I[\mu_{A}, \mu_{B}] = min[\mu_{A}, \mu_{B}]
+    \end{align}
+
+    \item Complement
+    \begin{align}
+        \mu_{\overline{A}}(x) = 1 - \mu_{A}(x)
+    \end{align}
+\end{itemize}}
+
+
+\section{Linguistic variables and values}
+
+\qquad By a linguistic variable we mean a variable whose values are words or sentences in a natural or artificial
+language. For example, age is a linguistic variable if its values are linguistic rather than numerical, i.e.,
+young, not young, very young, quite young, old, not very oldand not very young, etc., rather than 20, 21, 22,
+23 \cite{ling_vars_zadeh}. In mode specific terms, a linguistic variables is represented by a quintuple
+
+\begin{align}
+(\sigma, T(\sigma), U, G, M)
+\end{align}
+
+where $\sigma$ is the name of the variable; $T(\sigma)$ is the collection of the
+linguistic values; $U$ is the universe of discourse; $G$ is a syntactic rule which generates the terms in
+$T(\sigma)$; and $M$ is a semantic rule which associates with each linguistic value $X$ its meaning, $M(X)$
+where $M(X)$ denotes a fuzzy subset of $U$.
+
+\qquad The concept of linguistic variable enables to approximate phenomena which are too complex or too ill-defined
+to be described through a mathematical model. Thus, treating a truth value as a linguistic variable with
+values such as true, very true, extremely true, not so true, and so on leads to what Zadeh coined as fuzzy
+logic \cite{ling_vars_zadeh}.
+By providing such a framework on which data can be processed we can get closer to human like reasoning that
+is more realistic and simpler to implement than the classical, mathematical model.
+
+\qquad The fact that we can now express things as age in a more human-like manner means that systems can be
+defined in a human like way using values as \say{very young}, \say{young} and \say{not so young} which
+enables a system designer to make use of the knowledge that a human has.
+
+\qquad As stated before, for each linguistic variable we have a set of linguistic values that describe
+the range of inputs the variable can get. The collection of values defined for a certain linguistic variable
+constitutes its term-set. For each of the values found in a term-set, we define a restriction.
+Consider the linguistic variable \say{height} for which we define the linguistic values \say{short},
+\say{normal} and \say{tall}. Considering that \say{height} can range from 30 to 250 centimeters,
+we need to define boundaries for each linguistic value. These represent the membership function that were
+discussed in section \ref{sec:fuzzy_sets}.
+
+\begin{figure}[h!]
+    \centerline{\psfig{figure=height.eps,width=0.6\textwidth}}
+    \caption[Height linguistic variable]{Height linguistic variable}
+\end{figure}
+
+
+\section{Fuzzy relations}
+
+\qquad A relation is mathematical description of a situation where certain elements of different sets are related
+based on some knowledge. Fuzzy relations are an important part of fuzzy logic and fuzzy control, representing
+the knowledge that drives a fuzzy engine.
+
+\qquad To explain what a fuzzy relations is, we first need to explain what a crisp relation is and extend from
+it. To illustrate what a crisp relation is, lets consider that we are trying to figure out how ripe a fruit is
+given its color. In order to reach this conclusion we need to have some previous knowledge about what color
+an apple turns to when it is verdant, half-ripe and ripe. We establish these rules:
+\begin{itemize}
+    \item If color of apple is green then apple is verdant
+    \item If color of apple is yellow then apple is half-ripe
+    \item If color of apple is red then apple is ripe
+\end
+
+Considering these rules, we can get the following table:
+\begin{center}
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{| l | l | l | l |}
+        \hline
+        & Verdant & Half-ripe & Ripe \\ \hline
+        Green & 1 & 0 & 0 \\ \hline
+        Yellow & 0 & 1 & 0 \\ \hline
+        Red & 0 & 0 & 1 \\
+        \hline
+    \end{tabular}
+    \caption[Crisp relation example]{Crisp relation example}
+    \label{table:crisp_relation}
+    \end{table}
+\end{center}
+
+\qquad In the table ~\ref{table:crisp_relation} the values \say{0} and \say{1} represent the grade of
+membership of an apple with the given color to the corresponding ripeness. The crisp relation show only
+the absence or presence of connection but it doesn't show anything in between.
+
+\qquad In contrast, for the exact same rules, the corresponding table would be \ref{table:fuzzy_rules}.
+
+\begin{center}
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{| l | l | l | l |}
+        \hline
+        & Verdant & Half-ripe & Ripe \\ \hline
+        Green & 1 & 0.3 & 0 \\ \hline
+        Yellow & 0.5 & 1 & 0.5 \\ \hline
+        Red & 0 & 0.3 & 1 \\ \hline
+    \end{tabular}
+    \caption[Fuzzy relation example]{Fuzzy relation example}
+    \label{table:fuzzy_rules}
+    \end{table}
+\end{center}
+
+\qquad What the tables \ref{table:crisp_relation} and \ref{table:fuzzy_rules} actually are, is the Cartesian
+product between two sets. In fuzzy logic, a fuzzy relation $R$ is a mapping from the Cartesian space X \times
+Y to the interval $[0, 1]$, where the strength of the mapping is expressed by the membership function of the
+relation $\mu_{R}(x, y)$
+
+\begin{align}
+\mu_{R} : A \times B \rightarrow [0, 1]
+\end{align}
+
+\begin{align}
+R = \{((x, y), \mu_{R}(x, y)) | \mu_{R}(x, y) \geq 0, x \in A, y \in B \}
+\end{align}
+
+\subsection{Composition of fuzzy rules}
+
+\qquad For composing two fuzzy rules, one might use one of the the following compositions: max-min or min-max.
+Lets us consider two fuzzy relations $R_{1}$ and $R_{2}$ defined on the Cartesian space X \times Y and
+Y \times Z respectively.
+
+
+\begin{itemize}
+    \item max-min
+    \begin{align}
+        R_{1} \circ R_{2} = [(x, y), max\{min\{\mu_{R_{1}}(x, y), \mu_{R_{2}}(x, y)\}\}] | x \in X, y \in Y,
+        z \in Z
+    \end{align}
+
+    \item min-max
+    \begin{align}
+        R_{1} \circ R_{2} = [(x, y), min\{max\{\mu_{R_{1}}(x, y), \mu_{R_{2}}(x, y)\}\}] | x \in X, y \in Y,
+        z \in Z
+    \end{align}
+\end{itemize}}
+
+
+\section{Inference}
+
+

@@ -56,6 +56,14 @@ Manchester.
 MX-05CV.
 \newblock http://is.gd/eubb0h.
 
+\bibitem{INT:INT4550030208}
+Constantin Negoita.
+\newblock Fuzzy sets and applications: Selected papers by l. a. zadeh, r.
+  yager, s. ovchinnokov, r. tong, and h. nguyen (eds.), wiley, new york, 1987,
+  684 p.
+\newblock {\em International Journal of Intelligent Systems}, 3(2):203--204,
+  1988.
+
 \bibitem{website:nodemcu}
 NodeMCU.
 \newblock http://www.nodemcu.com/.
@@ -68,5 +76,27 @@ Nathan Seidle.
 \bibitem{datasheet:radio_tx}
 Texas Instruments, http://www.ti.com/lit/ds/swrs037b/swrs037b.pdf.
 \newblock {\em Low Power Sub-1 GHz RF Transmitter}.
+
+\bibitem{FuzzySets}
+Lotfali~Askar Zadeh.
+\newblock Fuzzy sets.
+\newblock {\em Fuzzy Logic}, 1965.
+
+\bibitem{FuzzySets_Algo}
+Lotfali~Askar Zadeh.
+\newblock Fuzzy algorithms.
+\newblock 1968.
+
+\bibitem{FuzzySets_NewApproach}
+Lotfali~Askar Zadeh.
+\newblock Outline of a new approach to the analysis of of complex systems and
+  decision processes.
+\newblock {\em Fuzzy Logic}, 1973.
+
+\bibitem{ling_vars_zadeh}
+Lotfali~Askar Zadeh.
+\newblock The concept of a linguistic variable and its application to
+  approximate reasoning-i.
+\newblock 1975.
 
 \end{thebibliography}

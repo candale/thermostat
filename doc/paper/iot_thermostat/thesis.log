@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  6 JUN 2015 22:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  9 JUN 2015 01:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -228,6 +228,35 @@ File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
+(./dirtytalk.sty
+Package: dirtytalk 2010/11/21 A package making "quoting" easier
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+\c@dirtytalk@qdepth=\count116
+)
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
@@ -254,13 +283,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count116
+\inf@bad=\count117
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count117
-\leftroot@=\count118
+\uproot@=\count118
+\leftroot@=\count119
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count119
-\DOTSCASE@=\count120
+\classnum@=\count120
+\DOTSCASE@=\count121
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -269,15 +298,15 @@ LaTeX Info: Redefining \cdots on input line 466.
 \big@size=\dimen132
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count121
-\c@MaxMatrixCols=\count122
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
 \dotsspace@=\muskip10
-\c@parentequation=\count123
-\dspbrk@lvl=\count124
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
 \tag@help=\toks21
-\row@=\count125
-\column@=\count126
-\maxfields@=\count127
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
 \andhelp@=\toks22
 \eqnshift@=\dimen133
 \alignsep@=\dimen134
@@ -292,15 +321,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-\c@lemma=\count128
-\c@definition=\count129
-\c@proof=\count130
-\c@remark=\count131
-\c@prop=\count132
-\c@theorem=\count133
+\c@lemma=\count129
+\c@definition=\count130
+\c@proof=\count131
+\c@remark=\count132
+\c@prop=\count133
+\c@theorem=\count134
  (./thesis.aux
 (./abstract.aux) (./publications.aux) (./introduction.aux) (./motivation.aux)
-(./architecture.aux
+(./background.aux) (./architecture.aux
 
 LaTeX Warning: Label `fig:general_architecture' multiply defined.
 
@@ -334,21 +363,21 @@ LaTeX Warning: Label `fig:attiny85' multiply defined.
 
 LaTeX Warning: Label `fig:esp8266' multiply defined.
 
-) (./background.aux) (./conclusions.aux))
+) (./conclusions.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -384,7 +413,7 @@ LaTeX Font Info:    ... okay on input line 56.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count134
+\c@lstlisting=\count135
 [1
 
 ]
@@ -443,28 +472,374 @@ Missing character: There is no ù in font cmr12!
 ]
 \openout2 = `motivation.aux'.
 
- (./motivation.tex
-! Undefined control sequence.
-l.10 ...get access to them, let alone develop \say
-                                                  {things} having them as a ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-) [5
+ (./motivation.tex) [5
 
 
 
 ]
+\openout2 = `background.aux'.
+
+
+(./background.tex
+Chapter 1.
+
+LaTeX Warning: Citation `Fuzyy_Sets' on page 6 undefined on input line 31.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.46 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.46 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[6
+
+
+
+]
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.60 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.60 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.60 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Illegal character in array arg.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \end{align}
+                
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Extra }, or forgotten \right.
+<template> }
+            $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
+l.60 \end{align}
+                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing \right. inserted.
+<inserted text> 
+                \right .
+l.60 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.60 \end{align}
+                
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+psfig: searching crisp_set.eps for bounding box
+psfig: including crisp_set.eps 
+psfig: searching fuzzy_set.eps for bounding box
+psfig: including fuzzy_set.eps 
+psfig: searching mf_functions.eps for bounding box
+psfig: including mf_functions.eps 
+[7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+
+! Too many }'s.
+l.119 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+[8]
+psfig: searching height.eps for bounding box
+psfig: including height.eps 
+Runaway argument?
+! Paragraph ended before \end was complete.
+<to be read again> 
+                   \par 
+l.178 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.218 ...mapping from the Cartesian space X \times
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.220 relation $\mu
+                   _{R}(x, y)$
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (13.74902pt too wide) in paragraph at lines 217--221
+\OT1/cmr/m/n/12 In fuzzy logic, a fuzzy re-la-tion $\OML/cmm/m/it/12 R$ \OT1/cm
+r/m/n/12 is a map-ping from the Carte-sian space X $\OMS/cmsy/m/n/12 ^^B\OML/cm
+m/m/it/12 Ytotheinterval$\OT1/cmr/m/n/12 [0,
+ []
+
+
+Overfull \hbox (40.16664pt too wide) in paragraph at lines 217--221
+\OT1/cmr/m/n/12 1]$\OML/cmm/m/it/12 ; wherethestrengthofthemappingisexpressedby
+themembershipfunctionoftherelation$$^^V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y
+\OT1/cmr/m/n/12 )$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.233 ...$ defined on the Cartesian space X \times
+                                                   Y and
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.235 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.235 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\@par ... \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.235 
+      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Extra }, or forgotten \endgroup.
+l.249 \end{itemize}}
+                    
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+) [10]
 \openout2 = `architecture.aux'.
 
  (./architecture.tex
-Chapter 1.
+Chapter 2.
 psfig: searching architecture_diagram.eps for bounding box
 psfig: including architecture_diagram.eps 
-[6
+[11
 
 
 
@@ -473,7 +848,7 @@ psfig: searching central_unit_diagram.eps for bounding box
 psfig: including central_unit_diagram.eps 
 psfig: searching central_unit.eps for bounding box
 psfig: including central_unit.eps 
-[7]
+[12]
 psfig: searching reporter_diagram.eps for bounding box
 psfig: including reporter_diagram.eps 
 psfig: searching reporter.eps for bounding box
@@ -481,7 +856,7 @@ psfig: including reporter.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8]
+[13]
 psfig: searching dht22.eps for bounding box
 psfig: including dht22.eps 
 Missing character: There is no ¬ in font cmr12!
@@ -493,94 +868,99 @@ psfig: including dht22_stats.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9]
+[14]
 psfig: searching rf_tx_rx.eps for bounding box
 psfig: including rf_tx_rx.eps 
-[10]
-Overfull \hbox (7.84767pt too wide) in paragraph at lines 180--185
-\OT1/cmr/m/n/12 RISC ar-chi-tec-ture. By ex-e-cut-ing pow-er-ful in-struc-tions
- in a sin-gle clock cy-cle, the AT-tiny25/45/85
- []
-
+[15]
 psfig: searching attiny85.eps for bounding box
 psfig: including attiny85.eps 
-[11]
+[16]
 psfig: searching ESP8266.eps for bounding box
 psfig: including ESP8266.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12] (./lstlang1.sty
+[17] (./lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 285.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 285.
-
-Overfull \hbox (6.45403pt too wide) in paragraph at lines 299--300
-[]\OT1/cmr/m/n/12 In the fol-low-ing sub-sec-tions the ba-sic API of the ESP826
-6 wire-less mod-ule will be de-scribed. 
- []
-
-[13]
+) [18]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 327.
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 327.
- [14] [15]
+ [19] [20]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 413.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 414.
 
-[16
+Overfull \hbox (25.077pt too wide) in paragraph at lines 441--442
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21
 
 ]
-Overfull \hbox (60.59573pt too wide) in paragraph at lines 502--505
+Overfull \hbox (60.59573pt too wide) in paragraph at lines 503--506
 \OT1/cmr/m/n/12 are record-ing and set a de-sired tem-per-a-ture. This is done 
 by go-ing the URL http://thermostat.local/control.
  []
 
-) [17]
-\openout2 = `background.aux'.
-
-
-No file background.tex.
+) [22]
 \openout2 = `conclusions.aux'.
 
-(./conclusions.tex
-Chapter 2.
-) [18
+ (./conclusions.tex
+Chapter 3.
+) [23
 
 
 
+] (./thesis.bbl
+Overfull \hbox (10.55542pt too wide) in paragraph at lines 72--75
+[]\OT1/cmr/m/n/12 Nathan Sei-dle.  Low power at-tiny85, https://learn.sparkfun.
+com/tutorials/h2ohno/low-
+ []
+
+[24
 
 
-] (./thesis.bbl) [19
+])
 
+! LaTeX Error: \begin{itemize} on input line 173 ended by \end{document}.
 
-] (./thesis.aux (./abstract.aux) (./publications.aux)
-(./introduction.aux) (./motivation.aux) (./architecture.aux) (./background.aux)
-(./conclusions.aux))
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 \end{document}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[25] (./thesis.aux (./abstract.aux) (./publications.aux) (./introduction.aux)
+(./motivation.aux) (./background.aux) (./architecture.aux) (./conclusions.aux))
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
- ) 
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 173 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 4784 strings out of 495029
- 63571 string characters out of 6181523
- 172211 words of memory out of 5000000
- 7862 multiletter control sequences out of 15000+600000
+ 5174 strings out of 495029
+ 69926 string characters out of 6181523
+ 180259 words of memory out of 5000000
+ 8226 multiletter control sequences out of 15000+600000
  11108 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,6n,51p,264b,1490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,51p,264b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (20 pages, 72624 bytes).
+Output written on thesis.dvi (26 pages, 94588 bytes).
