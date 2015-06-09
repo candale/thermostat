@@ -9,20 +9,24 @@
 \contentsline {section}{\numberline {1.3}Linguistic variables and values}{8}
 \contentsline {section}{\numberline {1.4}Fuzzy relations}{9}
 \contentsline {subsection}{\numberline {1.4.1}Composition of fuzzy rules}{10}
-\contentsline {chapter}{\numberline {2}Architecture}{11}
-\contentsline {section}{\numberline {2.1}Overview}{11}
-\contentsline {subsection}{\numberline {2.1.1}Central unit}{12}
-\contentsline {subsection}{\numberline {2.1.2}Reporter}{13}
-\contentsline {section}{\numberline {2.2}Sensors}{14}
-\contentsline {section}{\numberline {2.3}Radio communication}{15}
-\contentsline {section}{\numberline {2.4}Attiny85}{16}
-\contentsline {section}{\numberline {2.5}ESP8266}{17}
-\contentsline {subsection}{\numberline {2.5.1}Operation Mode}{18}
-\contentsline {subsection}{\numberline {2.5.2}Running a webserver}{20}
-\contentsline {subsection}{\numberline {2.5.3}Webserver wrapper}{20}
-\contentsline {subsection}{\numberline {2.5.4}Making HTTP requests}{21}
-\contentsline {section}{\numberline {2.6}Putting everything together}{22}
-\contentsline {subsection}{\numberline {2.6.1}Thermostat high level components interaction}{22}
-\contentsline {subsection}{\numberline {2.6.2}User interaction}{22}
-\contentsline {chapter}{\numberline {3}Conclusions}{23}
-\contentsline {chapter}{\textbf {Bibliography}}{24}
+\contentsline {section}{\numberline {1.5}Fuzzy inference}{11}
+\contentsline {subsection}{\numberline {1.5.1}Fuzzfication}{11}
+\contentsline {subsection}{\numberline {1.5.2}Rule evaluation}{12}
+\contentsline {section}{\numberline {1.6}Defuzzification}{14}
+\contentsline {chapter}{\numberline {2}Architecture}{15}
+\contentsline {section}{\numberline {2.1}Overview}{15}
+\contentsline {subsection}{\numberline {2.1.1}Central unit}{16}
+\contentsline {subsection}{\numberline {2.1.2}Reporter}{17}
+\contentsline {section}{\numberline {2.2}Sensors}{18}
+\contentsline {section}{\numberline {2.3}Radio communication}{19}
+\contentsline {section}{\numberline {2.4}Attiny85}{20}
+\contentsline {section}{\numberline {2.5}ESP8266}{21}
+\contentsline {subsection}{\numberline {2.5.1}Operation Mode}{22}
+\contentsline {subsection}{\numberline {2.5.2}Running a webserver}{24}
+\contentsline {subsection}{\numberline {2.5.3}Webserver wrapper}{24}
+\contentsline {subsection}{\numberline {2.5.4}Making HTTP requests}{25}
+\contentsline {section}{\numberline {2.6}Putting everything together}{26}
+\contentsline {subsection}{\numberline {2.6.1}Thermostat high level components interaction}{26}
+\contentsline {subsection}{\numberline {2.6.2}User interaction}{26}
+\contentsline {chapter}{\numberline {3}Conclusions}{27}
+\contentsline {chapter}{\textbf {Bibliography}}{28}
