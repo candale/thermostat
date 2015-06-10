@@ -1,0 +1,24 @@
+# x y
+0 0
+0 1
+140 1
+170 0
+
+# x y
+140 0
+170 1
+190 1
+210 0
+
+# x y
+190 0
+210 1
+250 1
+250 0
+
+# x y
+0 0
+250 0
+
+# set xtics 10
+# plot [0:259] [-0.05:1.1] 'height' title "Height"  with lines lt rgb "black"

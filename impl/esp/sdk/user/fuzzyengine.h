@@ -63,7 +63,7 @@ typedef struct point_struct {
 } point;
 
 /*
- * Allocates a fuzzy_egine structre that holds all the components of
+ * Allocates a fuzzy_egine structure that holds all the components of
  * the system
 */
 fuzzy_engine* ICACHE_FLASH_ATTR
@@ -80,7 +80,7 @@ void ICACHE_FLASH_ATTR
 add_rule(fuzzy_engine*, fuzzy_rule*);
 
 /*
- * Allocates memory for a lingustic variable and sets its name, id
+ * Allocates memory for a linguistic variable and sets its name, id
  * and variable type (INPUT, OUTPUT)
 */
 ling_var* ICACHE_FLASH_ATTR
