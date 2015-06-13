@@ -13,7 +13,7 @@ Esp8266 esphttpcliennt, https://github.com/caerbannog/esphttpclient.
 Esp8266 wifi serial module, http://is.gd/jiv6jk.
 
 \bibitem{website:fuzzy_ctr_sys}
-Fuzzy control systems, https://en.wikipedia.org/wiki/fuzzy_control_system.
+Fuzzy control systems, https://en.wikipedia.org/wiki/fuzzy\_control\_system.
 
 \bibitem{website:attiny85program}
 How to program an attiny85, http://highlowtech.org/?p=1695.

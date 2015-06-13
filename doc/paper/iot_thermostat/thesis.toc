@@ -44,5 +44,5 @@
 \contentsline {subsection}{\numberline {3.4.1}Thermostat high level components interaction}{47}
 \contentsline {subsection}{\numberline {3.4.2}User manual}{48}
 \contentsline {section}{\numberline {3.5}Results and discussions}{49}
-\contentsline {chapter}{\numberline {4}Conclusions}{51}
+\contentsline {chapter}{\numberline {4}Future work and conclusions}{51}
 \contentsline {chapter}{\textbf {Bibliography}}{52}

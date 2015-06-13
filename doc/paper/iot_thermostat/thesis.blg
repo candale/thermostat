@@ -53,7 +53,7 @@ Warning--empty journal in FuzzySets_Algo
 Warning--empty journal in ling_vars_zadeh
 You've used 36 entries,
             2118 wiz_defined-function locations,
-            636 strings with 7591 characters,
+            636 strings with 7593 characters,
 and the built_in function-call counts, 6683 in all, are:
 = -- 602
 > -- 173

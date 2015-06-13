@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 20:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1561,45 +1561,6 @@ Chapter 4.
 
 
 ] (./thesis.bbl
-! Missing $ inserted.
-<inserted text> 
-                $
-l.16 ...tems, https://en.wikipedia.org/wiki/fuzzy_
-                                                  control_system.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.17 
-     
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.17 
-     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.17 
-     
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 25--27
 []\OT1/cmr/m/n/12 Short term load fore-cast-ing us-ing neu-ral net-works and fu
 zzy logic,
@@ -1629,4 +1590,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  37i,14n,51p,264b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (56 pages, 190708 bytes).
+Output written on thesis.dvi (56 pages, 192900 bytes).
