@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  1 JUN 2015 22:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,13 +284,13 @@ Package etexcmds Info: Could not find \expanded.
 
 (./scss2015ac.aux
 
+LaTeX Warning: Label `fig:mf_comparison' multiply defined.
+
+
 LaTeX Warning: Label `fig:rule_eval' multiply defined.
 
 
-LaTeX Warning: Label `fig:nn' multiply defined.
-
-
-LaTeX Warning: Label `fig:mf_comparison' multiply defined.
+LaTeX Warning: Label `fig:fuzzy_to_end' multiply defined.
 
 
 LaTeX Warning: Label `fig:esp8266' multiply defined.
@@ -308,7 +308,13 @@ LaTeX Warning: Label `fig:nn' multiply defined.
 LaTeX Warning: Label `fig:nn' multiply defined.
 
 
-LaTeX Warning: Label `fig:nn' multiply defined.
+LaTeX Warning: Label `fig:humidex' multiply defined.
+
+
+LaTeX Warning: Label `fig:result1' multiply defined.
+
+
+LaTeX Warning: Label `fig:result2' multiply defined.
 
 )
 \openout1 = `scss2015ac.aux'.
@@ -325,24 +331,38 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
+
+! Undefined control sequence.
+l.54 \The
+          evolution of modern technologies has lead to an increased number o...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
- [1
+[1
 
 
 ]
+Underfull \vbox (badness 1400) has occurred while \output is active []
+
+
 psfig: searching identity.eps for bounding box
 psfig: including identity.eps 
 psfig: searching membership_mf.eps for bounding box
 psfig: including membership_mf.eps 
+[2]
 ! Missing } inserted.
 <inserted text> 
                 }
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -353,7 +373,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -361,7 +381,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -369,7 +389,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -377,7 +397,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -385,7 +405,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.168 \end{align}
+l.222 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -394,7 +414,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -405,7 +425,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -413,7 +433,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -421,7 +441,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -429,7 +449,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -437,7 +457,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.168 \end{align}
+l.222 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -448,7 +468,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.168 \end{align}
+l.222 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -456,7 +476,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.168 \end{align}
+l.222 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -465,7 +485,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -476,7 +496,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -484,7 +504,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -492,7 +512,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -500,7 +520,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -508,7 +528,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.171 \end{align}
+l.225 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -517,7 +537,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -528,7 +548,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -536,7 +556,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -544,7 +564,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -552,7 +572,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -560,7 +580,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.171 \end{align}
+l.225 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -571,7 +591,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.171 \end{align}
+l.225 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -579,7 +599,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.171 \end{align}
+l.225 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -588,7 +608,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -599,7 +619,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -607,7 +627,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -615,7 +635,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.174 \end{align}
+l.228 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -624,7 +644,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -635,7 +655,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -643,7 +663,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -651,7 +671,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.174 \end{align}
+l.228 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -662,7 +682,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.174 \end{align}
+l.228 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -670,7 +690,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.174 \end{align}
+l.228 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -679,7 +699,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -690,7 +710,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -698,7 +718,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -706,7 +726,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -714,7 +734,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -722,7 +742,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.179 \end{align}
+l.233 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -731,7 +751,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -742,7 +762,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -750,7 +770,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -758,7 +778,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -766,7 +786,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -774,7 +794,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.179 \end{align}
+l.233 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -785,7 +805,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.179 \end{align}
+l.233 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -793,7 +813,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.179 \end{align}
+l.233 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -802,7 +822,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -813,7 +833,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -821,7 +841,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -829,7 +849,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -837,7 +857,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -845,7 +865,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -853,7 +873,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -861,7 +881,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -869,7 +889,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -877,7 +897,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.182 \end{align}
+l.236 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -886,7 +906,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -897,7 +917,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -905,7 +925,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -913,7 +933,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -921,7 +941,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -929,7 +949,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -937,7 +957,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -945,7 +965,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -953,7 +973,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -961,7 +981,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.182 \end{align}
+l.236 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -972,7 +992,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.182 \end{align}
+l.236 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -980,7 +1000,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.182 \end{align}
+l.236 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -989,7 +1009,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1000,7 +1020,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1008,7 +1028,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1016,7 +1036,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.185 \end{align}
+l.239 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1025,7 +1045,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1036,7 +1056,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1044,7 +1064,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1052,7 +1072,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.185 \end{align}
+l.239 \end{align}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1063,7 +1083,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \omit.
 \math@cr@@@ ...@ \@ne \add@amps \maxfields@ \omit 
                                                   \kern -\alignsep@ \iftag@ ...
-l.185 \end{align}
+l.239 \end{align}
                  
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1071,7 +1091,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.185 \end{align}
+l.239 \end{align}
                  
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -1079,25 +1099,38 @@ Try to go on, since this might almost work.
 
 psfig: searching rule_eval.eps for bounding box
 psfig: including rule_eval.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2]
 psfig: searching defuzz.eps for bounding box
 psfig: including defuzz.eps 
-psfig: searching ESP8266.eps for bounding box
-psfig: including ESP8266.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[3]
+Underfull \hbox (badness 3965) in paragraph at lines 335--341
+[]\OT1/ptm/m/n/10 Incomplete or in-ac-cu-rate in-for-ma-tion about the
+ []
+
+! Too many }'s.
+l.341 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+psfig: searching ESP8266.eps for bounding box
+psfig: including ESP8266.eps 
+[4]
 psfig: searching attiny85.eps for bounding box
 psfig: including attiny85.eps 
-[3]
 psfig: searching receiver.eps for bounding box
 psfig: including receiver.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 psfig: searching transmiter.eps for bounding box
 psfig: including transmiter.eps 
-[4]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5]
 psfig: searching experiments.eps for bounding box
 psfig: including experiments.eps 
 
@@ -1108,7 +1141,45 @@ psfig: including humidity_mf_labeled.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5] (./scss2015ac.bbl)
+[6]
+Underfull \hbox (badness 2846) in paragraph at lines 578--579
+[]\OT1/ptm/m/n/10 ``if temp[]err is low and hu-mid-ity is low and
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 585--585
+[]\OT1/ptm/m/n/10 ``if temp[]err is high and hu-mid-ity is high and
+ []
+
+! Too many }'s.
+l.588 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+psfig: searching humidex.eps for bounding box
+psfig: including humidex.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+psfig: searching results1.eps for bounding box
+psfig: including results1.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+psfig: searching results2.eps for bounding box
+psfig: including results2.eps 
+[7] (./scss2015ac.bbl
+Underfull \hbox (badness 1635) in paragraph at lines 66--69
+[]\OT1/ptm/m/n/8 P. Ra-manathan, ``Fuzzy logic con-troller for tem-
+ []
+
+
+Underfull \hbox (badness 5133) in paragraph at lines 66--69
+\OT1/ptm/m/n/8 per-a-ture reg-u-la-tion pro-cess.'' [On-line]. Avail-able:
+ []
+
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1120,20 +1191,18 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
-
-] (./scss2015ac.aux)
+[8] (./scss2015ac.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3407 strings out of 495029
- 49861 string characters out of 6181523
- 117592 words of memory out of 5000000
- 6570 multiletter control sequences out of 15000+600000
- 28085 words of font info for 65 fonts, out of 8000000 for 9000
+ 3432 strings out of 495029
+ 50238 string characters out of 6181523
+ 119592 words of memory out of 5000000
+ 6592 multiletter control sequences out of 15000+600000
+ 28731 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,10n,22p,269b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,10n,22p,269b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on scss2015ac.dvi (6 pages, 33184 bytes).
+Output written on scss2015ac.dvi (8 pages, 54332 bytes).

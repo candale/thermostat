@@ -51,7 +51,7 @@ greater energy management control.
 \section{Introduction}
 \label{Introduction}
 
-The evolution of modern technologies has lead to an increased number of Do-It-Yourself $(DIY)$ possiblities in
+\The evolution of modern technologies has lead to an increased number of Do-It-Yourself $(DIY)$ possibilities in
 the field of electronics and microchips; thus it has become easy and affordable to incorporate such
 technologies in mundane, house-hold objects that can present themselves with some data that may be relevant.
 This new concept turned into a movement now called the Internet of Things $(IoT)$.
@@ -61,22 +61,44 @@ are readable, recognizable, locatable, addressable, and/or controllable via the 
 wireless LAN, wide-area network, or other means. Everyday objects includes not only the electronic devices we
 encounter everyday, and not only the products of higher technological development such as vehicles and
 equipment, but things that we do not ordinarily think of as electronic at all, such as food, clothing, and
-shelter; materials, arts, and sub-assemblies; commodities and luxury items;landmarks, boundaries,
-and monuments; and all the miscellany of commerce and culture. \cite{DisruptiveCivilTechnologies}
+shelter; materials, arts, and sub-assemblies; commodities and luxury items; landmarks, boundaries,
+and monuments; and all the miscellany of commerce and culture \cite{DisruptiveCivilTechnologies}
+\cite{DisruptiveCivilTechnologiesAppendix}.
 
 In order for this concept to grow, technologies had to be made available to the general public, meaning that
 the cost at which they came had to be affordable. Fortunately, the current technological context lead to
 the development of cheap and powerful components which can now be used to build the infrastructure of the IoT.
 
 With the now given possibility to acquire powerful, yet cheap, means by which one can control and gather data
-from different contexts, various applications can be developed, like the one described by this paper.
+from different contexts, various applications can be developed, like the one described in this paper.
 The chosen hardware for the proposed thermostat consist of 3 microcontrollers, temperature and humidity sensors
 and radio transceiver, all coming to a price comparable to a normal thermostat. The main processing unit
-is an ESP8266 wireless module. An in depth description of the architecture will be presented in
-section \ref{Architecture}.
+is an ESP8266 wireless module.
 
-This paper is organized as follows: Section II describes the motivation to build such a thermostat, Section III
-presents information relevant for the understanding of the chapter that follows, Section IV explains the proposed
+Fuzzy logic was first proposed by Lotfi Zadef in his paper \say{Fuzzy Sets} \cite{FuzzySets}. At first, the
+idea received a lot of criticism from the mathematical community and the world was skeptic in implementing it
+on real devices, but Japan took the lead and the first real-life applications that used fuzzy logic appeared on
+the market in the late 1980's \cite{zadeh1996fuzzy}. The most memorable such application was the Sendai subway
+system designed by Hitachi where fuzzy logic was used to control the train's acceleration, deceleration and
+breaking \cite{zadeh1996fuzzy}. Since its production it is said that it not only reduces the energy
+consumption by 10\%but the passengers hardly notice when the train is changing its velocity
+\cite{FuzzyLogicMassUse}. Since then, fuzzy logic has been used in devices ranging from shower heads
+\cite{zadeh1996fuzzy} to gear boxes and car breaking systems \cite{FuzzyAutomotive}.
+
+In the field of temperature control, fuzzy logic was applied with success in AC's \cite{FuzzyAppliences} where
+an energy saving of at least 3.5\% was observed. It has been shown that by this approach at temperature
+control, given a small number of rules and not needing advanced knowledge about the environment (e.g. a
+mathematical model of the problem is not required) a fuzzy logic controller is able to achieve faster transient
+response with less overshoot, more stable steady state response and less dependence of operating point
+\cite{FuzzyTempControl}.
+
+This paper presents an approach to a fuzzy logic thermostat that aims to increase the energy efficiency
+of temperature control, where a standard, ON/OFF, central heating unit is used. An important aspect of this
+proposal is the hardware implementation which is designed to reduce the cost of such an application and to
+enable it to be accessed through the infrastructure of the Internet.
+
+The paper is organized as follows: Section II describes the motivation to build such a thermostat, Section III
+consists of information needed to understand the sections that follow , Section IV explains the proposed
 approach, Section V outlines the hardware architecture and human interaction and Section VI presents the conclusion
 that were drawn.
 
@@ -85,16 +107,16 @@ that were drawn.
 
 The motivation behind this proposal is three-fold: affordability, efficiency and connectivity.
 
-The time we are living in presents itself with rapidly occurring technological breakthroughs that help human
-kind in setting up for themselves a better, more comfortable and efficient world. The greater problem concerning
+The time we are living in presents itself with rapidly occurring technological breakthroughs that help
+humankind in setting up for themselves a better, more comfortable and efficient world. The greater problem concerning
 this is that it does not come cheap. Advanced electronics were not affordable to the general public so the vast
 majority of people were unable to get access to them, let alone develop \say{things} having them as a platform. This
 situation has changed in the past few years and now we have easy access to such devices enabling the
 contribution of everybody to the Internet of Things.
 
 Having access to diverse pieces of technology lets anybody create mechanisms through which data is gathered
-from the environment, analysed and used to make existing processes more efficient. The Internet of Things
-enables the world to research itself and find patterns that were otherwise invisible, thus leading to a greater
+from the environment, analyzed and used to make existing processes more efficient. The Internet of Things
+offers the means by which one may find patterns that are otherwise invisible, thus leading to a greater
 understanding of the context we are living in, which in turn lets us control that context in a more efficient
 manner.
 
@@ -105,38 +127,65 @@ example, going away from home, one would turn the temperature down but when comi
 have the house already at a comfortable temperature level. This can be achieved by being connected to your
 home thermostat.
 
+\section{Related Work}
+\label{Related Work}
+
+There are a lot of implementation of intelligent thermostats, but the one that stood out is Nest Thermostat
+created by Google \cite{website:nest}. Nest is a IoT enabled thermostat that learns the behavior of the
+occupants of the environment it lies in and controls the temperature accordingly. For example, in a week's
+time, it can learn that at 9 AM every work day, the occupants leave the house and come back at 5 PM. After
+learning this, the thermostat can keep the temperature down as long as nobody home and heat it up half an
+hour before the occupants get home. This can save energy up to 24\$ \cite{website:nestsaving}.
+The thermostat is accessible through the clod and it also generates statistics and suggestions based on
+one's specific energy consume signature. The details of the learning algorithms are not yet disclosed.
+
+Another fuzzy logic thermostat approach is presented in article \cite{FuzzyAppliences}. The fuzzy engine
+that thermostat uses takes in five input parameters with are worth mentioning: number of set-temperature
+changes, temperature error (difference between the set and room temperatures), last set-temperature change,
+number of room temperature changes and brightness in the room. The las input is a rather interesting one
+because, indeed, the level of sunlight that enters a room, affects the perceived temperature
+\cite{human_comfort}. The approach presented in this article increases energy efficiency by 3.5\% compared
+to a normal thermostat.
+
+With the apparition of Nest thermostat from Google, the DIY community reacted and created a thermostat that
+has some of the feature presented by Google on their device, while being open source \cite{website:nestos}. It
+runs in the cloud, has a basic physical user interface and it price comes to half of that of the Nest
+thermostat. This initiative showed that with currently available technologies, one can design and implement
+such a device at a reasonable price with.
+
 \section{Theoretical Background}
 \label{Theoretical Background}
+
+\subsection{Fuzzy logic}
 
 As stated before, the proposed thermostat is using fuzzy logic for the decision engine because to model the
 problem using mathematics would be much to complex for a simple microcontroller to handle and specific data
 about each environment would have to be known.
 
-Fuzzy logic is an extension of Boolean logic coined by Lotfi Zadef. Fuzzy logic is build on the theory of fuzzy sets which is
-a generalization of the classical set theory. He introduced the notion of degree in the verification of a
-condition such that it could be in a state different from true or false. This provides a valuable extended
-flexibility for reasoning which makes it possible to take into account inaccurate data.
+Fuzzy logic is an extension of Boolean logic coined by Lotfi Zadef. Fuzzy logic is built on the theory of
+fuzzy sets which is a generalization of the classical set theory. He introduced the notion of degree in the
+verification of a condition such that it could be in a state different from true or false. This provides a
+valuable extended flexibility for reasoning that makes it possible to take into account inaccurate data.
 One advantage of fuzzy logic is that the rules by which the reasoning is made can be expressed in natural
 language making it easy to take advantage of a human expert and the knowledge he/she posses.
 
-\subsection{Definitions}
-
-In the rest of the chapter, the concepts surrounding fuzzy logic will be explained.
+In the rest of the section, the concepts surrounding fuzzy logic will be explained.
 \subsubsection{Fuzzy sets}
 
 A fuzzy set is a class of objects with a continuum of grades of membership\cite{FuzzySets}.
 
 \begin{definition}
 \label{def:fuzzye_set}
-Let $X$ be a set. A $fuzzy$ subset $A$ of $X$ is characterised by a \textbf{membership function}
+Let $X$ be a set. A $fuzzy$ subset $A$ of $X$ is characterized by a \textbf{membership function}
 \begin{align}
 f^{a}: X \rightarrow [0, 1]
 \end{align}
-Note: This membership function is equivalent to the identity function of a classical set.
+Note: This membership function is equivalent to the identity function of a classical set. Figure
+\ref{fig:mf_comparison} presents a graphical difference between the two.
 \end{definition}
 
 \begin{figure}[h!]
-\label{fig:nn}
+\label{fig:mf_comparison}
 \centerline{\psfig{figure=identity.eps,width=0.4\textwidth}}
 \centerline{\psfig{figure=membership_mf.eps,width=0.4\textwidth}}
       \caption[MainModule]{Comparison between a identity function of a conventional set and a membership
@@ -151,6 +200,11 @@ Let $V$ be a variable (temperature, humidity etc), $X$ the range of values of th
 finite or infinite set of fuzzy sets. A \textbf{linguistic variable} corresponds to the triplet (V, X, $T_{V}$).
 \end{definition}
 
+By a linguistic variable we mean a variable whose values are words or sentences in a natural or artificial
+language. For example, age is a linguistic variable if its values are linguistic rather than numerical, i.e.,
+young, not young, very young, quite young, old, not very old not very young, etc., rather than 20, 21, 22,
+23 \cite{ling_vars_zadeh}.
+
 The concept of membership function discussed above allows us to define fuzzy systems in a natural language,
 thus we can label different ranges of values for an input. For example, having a linguistic variable
 called \say{music} we have the linguistic value \say{silent}, \say{moderate} and \say{loud}. The membership
@@ -162,7 +216,7 @@ question.
 In order to properly manipulate fuzzy sets, the operators from classical set theory are redefined to fit the
 membership function values that are in rage $[0, 1]$. These operators can be chosen, having to kinds: Zadeh
 or probabilistic operators.
-Zadeh operators are in the folowing form:
+Zadeh operators are in the following form:
 \begin{align}
 AND = min($\mu$_{A}(x), $\mu$_{B}(x))
 \end{align}
@@ -187,7 +241,7 @@ NOT = 1 - $\mu$_{A}(x)
 \subsubsection{Fuzzy logic reasoning}
 
 In fuzzy logic, reasoning is based on \textbf{fuzzy rules} that are expressed in natural language using the
-above described linguistic variables. A fuzzy rules has the form:
+above described linguistic variables. A fuzzy rule has the form:
 \begin{align}
 if x \in A \quad and \quad y \in B \quad or \quad z \in C \quad then \quad d \in U
 \end{align}
@@ -214,7 +268,8 @@ while Larse fuzzy implication model takes the product of the two
 Larsen \quad f_{a} \times f_{b}
 \end{align}
 
-The result will be the membership function of the consequent or a clipped version of it.
+The result will be the membership function of the consequent or a clipped version of it. Figure
+\ref{fig:rule_eval} shows an example
 \begin{figure}[h!]
 \label{fig:rule_eval}
 \centerline{\psfig{figure=rule_eval.eps,width=0.5\textwidth}}
@@ -233,16 +288,66 @@ membership function for the second rule is 0.7, for the linguistic value \say{of
 heating\_status will be 0.7.
 
 After having the membership functions of all the consequents, a final result can be achieved by defuzzifying
-them. This is done by finding the abscissa of the center of gravity corresponding to the polygon described by the
-membership functions of all the output linguistic variables.
+them. This is done by finding the abscissa of the center of gravity corresponding to the polygon described in the
+membership functions of all the output linguistic variables. Figure \ref{fig:fuzzy_to_end} shows a graphical
+example of what the result of the rules represent and how they form a polygon whose center of gravity
+represents the actual result.
 
 \begin{figure}[h!]
-\label{fig:nn}
+\label{fig:fuzzy_to_end}
 \centerline{\psfig{figure=defuzz.eps,width=0.5\textwidth}}
       \caption[MainModule]{Resulting polygon. Image source \cite{website:defuzzimg}}
-\label{fig:mf_comparison}
+\label{fig:fuzzy_to_end}
 \end{figure}
 
+\subsection{Internet of Things}
+
+The term \say{Internet of Things} has first been mentioned by Kevin Ashton in 1999 at a MIT presentation, when
+he stated that adding a RFID (Radio Frequency Identification) to everyday objects would create an Internet
+of Things. The main idea behind the IoT, as expressed by Ashton \cite{IoTThing}, is that ever since the
+computers were invented, the main source of data that is on the Internet and in all of computers it mainly
+human in nature. This mean that the massive amount of information that Internet provides is mainly created
+by people \say{by typing, pressing a record button, taking a digital picture or scanning a bar code}
+\cite{IoTThing}. The problem with this is that human beings are limited in what they can observe, how much
+data they can produce and in the accuracy with which they can analyze.
+
+With the advent of technologies like sensors, we can now equip computers to collect data from the environment
+with a much larger precision, from nearly all sorts of contexts that people were unable to reach and most
+importantly, in a continuous fashion. As Kevin Ashton famously put it: \say{We need to empower computers with
+their own means of gathering information, so they can see, hear and smell the world for themselves, in all its
+random glory} \cite{IoTThing}.
+
+The Internet of Things represents all of the devices, objects or other \say{things} that sense the environment
+they are in, collect data about that environment and share this information over a network, usually the
+Internet, thus the term IoT. This collaborative approach to gathering data presents itself with a few
+challenges, as presented in the CERP-IOT report \cite{CERPIOT}:
+
+\begin{itemize}
+    \item Scale: With an increasing number of objects that are integrate into the IoT (millions if not
+    billions) monitoring and receiving data from all of them becomes a massive task in terms of memory,
+    computational power and energy consumption.
+
+    \item Large heterogeneity: With the rise of the IoT, more and more \say{things} were integrated
+    with the Internet and the rate at which this develops grows only faster. This has lead to a large number
+    of different devices that operate on various operating system, software platforms and hardware
+    implementations which makes it harder to interact with them in standard way.
+
+    \item Incomplete or inaccurate information about the \say{things}: Having an ever increasing number of
+    devices in the IoT infrastructure, wanting to access anyone of them requires some knowledge about the
+    target object, like the API it provides, what data it collects etc. With the large number of objects
+    that comprise the infrastructure, and the vast majority of them being installed by a human operator,
+    it is inevitable that for a great number of devices, the information that comes along will be incomplete
+    or inaccurate.
+\end{itemize}}
+
+Besides the challenges mentioned above, another one is to provide enough security for the devices that make up
+the infrastructure. Having so many small computer that are integrated into the Internet, it is easy to forget
+that despite the fact that they may not have a great processing capacity, the numbers in which they come
+can offer a great platform from which attackers may act. Any security flaw can leave the IoT vulnerable to
+hackers that may use it in destructive ways.
+
+The Internet of Things provides a promising platform on which new insights can be obtained about the world we
+live in given that the problem that may arise will be prevented.
 
 \section{Architecture}
 \label{Architecture}
@@ -263,22 +368,23 @@ The first microcontroller used is the ESP8266 wireless module created by Espress
 
 ESP8266 is a highly integrated chip designed for the needs of a new connected world. It offers a complete and
 self-contained WiFi networking solution, allowing it to either host the application or to offload all WiFi
-networking functions from another application processor.\cite{website:espressifdesc}
+networking functions from another application processor \cite{website:espressifdesc}.
 The microcontroller is build onto ARM platform, it has 200 kB of ROM, 32 kB of SRAM and 80 kB of DRAM.
 Given its relatively great storage capacity and RAM, the ESP8266 is the main processing unit of the thermostat
 where the fuzzy logic algorithm will run.
 This module also provides, as the name suggests, the connectivity capability. It supports 802.11 b,g and n
 standards and has TCP and UDP stack implemented on it.
 
-Since its release, the open-source community has developed a number of programming languages support, including
-lua\cite{website:nodemcu} and javascript\cite{website:espruino} but, while testing, it has been found that
-currently the C SDK that the producer has released is the most stable and it is the one used.
+Since its release, the open-source community has developed a number of programming languages for the ESP8266,
+including Lua\cite{website:nodemcu} and JavaScript\cite{website:espruino}. All of these are based on the SDK
+that the manufacturer has released and that, eventually, proved to be the preferred choice for this
+application because the other languages consume too much memory and lack the robustness that SDK provides.
 
 The SDK comes with a documented API that exposes low-level functions that perform basic tasks like initializing
 a WiFi Access Point $(AP)$, making a Http request and creating a server that listens and fetches the requests
 that the module receives.
 
-The second microcontroller used is the Atmel Attiny85 (Figure \ref{fig:attiny85}). \cite{website:attiny85}
+The second microcontroller used is the Atmel Attiny85 (Figure \ref{fig:attiny85}) \cite{website:attiny85}.
 
 \begin{figure}[h!]
 \label{fig:attiny85}
@@ -326,7 +432,7 @@ The radio communication between the modules is done using the Manchaster encodin
 
 The user may interact with the thermostat in a couple of ways.
 At first start-up, the WiFi module creates an AP (Access Point) and a webserver that listens to the default Http port 80
-on IP address 192.168.4.1. A small, lightweight webserver framework was designed in order to facilitate the 
+on IP address 192.168.4.1. A small, lightweight webserver framework was designed in order to facilitate the
 processing of requests.
 If the page /wifi\_setup is accessed, the user will be presented with a form
 where he should enter the SSID of his home wireless access point and the password with which the module
@@ -334,7 +440,7 @@ can connect to it. After doing that, in approximately twenty seconds the module 
 router and the AP it created will disappear. The ESP8266 will remember the SSID and password so the next time
 it starts-up, the same steps won't be necessary.
 After having connected and the AP disappeared, the ESP8266 will make use of its mDNS feature to publish itself
-on the intranet he just gained access to. After that, the user, while being connected to his home router, will 
+on the intranet he just gained access to. After that, the user, while being connected to his home router, will
 be able to access the thermostat by going to http://thermostat.local.
 
 If the thermostat has internet access while connected to the wireless router, it will publish its reading of
@@ -352,9 +458,30 @@ period of time which means that the time the heating should be on is greater. In
 changes brought to the target temperature, by the user, might mean that the desire is to achieve a more accurate
 temperature control.
 
-The second factor is the relation between the temperature and the relative humidity. The higher the relative 
-humidity is, the greater the felt temperature will be. Taken this into consideration, rules are constructed
-in such a way that heating control is \say{aware} that comfort level in high humidity is low.
+The second factor is the relation between the temperature and the relative humidity (Figure \ref{fig:humidex}).
+The higher the relative humidity is, the greater the felt temperature will be. This is called the Humidex and
+it is a measure of how hot a person feels. It is an equivalent scale intended for the general public to
+express the combined effects of warm temperatures and humidity. It provides a number that describes how hot
+people feel \cite{website:humidex}. A rule of thumb is presented in Table \ref{table:humidex_thumb} and a
+graphical representation of the correlation between temperature and relative humidity is shown in Figure
+\ref{fig:humidex}. Taking this into consideration, rules are constructed in such a way that heating control is
+\say{aware} that comfort level in high humidity is low.
+
+\begin{center}
+    \begin{table}[h!]
+    \centering
+    \begin{tabular}{| l | l |}
+        \hline
+        Humidex range & Degree of comfort  \\ \hline
+        20 - 29 & comfortable \\ \hline
+        30 - 39 & some discomfort \\ \hline
+        40 - 45 & great discomfort; avoid exertion \\ \hline
+        above 45 & dangerous; heat stroke possible \\ \hline
+    \end{tabular}
+    \caption[Humidex rule of thumb]{Humidex rule of thumb. Source \cite{website:humidex}.}
+    \label{table:humidex_thumb}
+    \end{table}
+\end{center}
 
 Another factor taken into consideration is the rate at which the sensed environment heats up or cools down. This
 information helps take pre-emptive measures or avoid heating a room in which the temperature is steadily rising.
@@ -373,7 +500,7 @@ based on all the inputs described above
 \end{itemize}
 
 The inputs temperature and humidity are read from the sensors but rate of cooling and heating has to be
-calculated in order to get the trend of the temperature. This was done by storing and analysing data from
+calculated in order to get the trend of the temperature. This was done by storing and analyzing data from
 a certain time interval in the past. Several approaches were considered for getting a useful value from the
 data points:
 \begin{itemize}
@@ -404,9 +531,12 @@ and
 
 \end{itemize}
 
-Experiments (Figure \ref{fig:experiments}) showed that the last method, least squares, proved to be the most steady and relevant with the
-fluctuations of temperature.
-Even with extreme differences, the values drop back to normal in a fair amount of time.
+Experiments (Figure \ref{fig:experiments}) showed that the last method, least squares, proved to be the most
+steady and relevant with the fluctuations of temperature.
+Even with extreme differences of more than 20 degrees, that would normally represent a glitch or a temporary
+situation, the values drop back to the actual representation of data in about three minutes. This can be
+improved by increasing the hysteresis of the system, i.e. increase the temperature sample time frame such
+that sporadic records have a smaller impact on the results.
 
 \begin{figure}[h!]
 \label{fig:nn}
@@ -426,6 +556,37 @@ All the linguistic variables described above have associated with them three lin
 \label{fig:humidity_mf}
 \end{figure}
 
+\qquad The fuzzy engine contains a set of fifty six rules that were defined using an expert's knowledge of
+temperature control. This section presents o few of them.
+
+\begin{itemize}
+    \item \say{if temp\_err is low and humidity is moderate and rate\_of\_heating is high then heat\_status is
+     off} \par
+    This is a general case where the heating should be off because the temperature error is low, meaning that
+    the temperature that the environment exhibits is close to the temperature the user has set. Also
+    the humidity begin moderate, the conditions are such that the humidex \ref{fig:humidex} would be in a
+    comfortable range. The only parameter that is high is the rate of heating. This means that the temperature
+    is rising at a fast rate. If all of these tests are passed, the heating should be off.
+
+    \item \say{if temp\_err is moderate and humidity is low and rate\_of\_heating is moderate heat\_status is
+    on} \par
+    This rule states that, although the temperature error is moderate and the rate of heating is moderate,
+    which means that the temperature is slowly rising to the user's desired point, the heating status
+    should be on due to the fact that the humidity is low which leads to a low humidex. A low humidex
+    expresses the fact that the comfort level is low and that the temperature or the humidity should rise.
+
+    \item \say{if temp\_err is low and humidity is low and rate\_of\_cooling is high then heat\_status is on}
+    \par
+    This situation expressed the case when although the temperature error is low, the humidity is also low
+    and the rate at which the environment cools down is high. This situation requires the heating to be on
+    in order to remain at a constant temperature.
+
+    \item \say{if temp\_err is high and humidity is high and rate\_of\_heating is high then heat\_status is
+    on} \par
+    It may happen that despite the fact that the humidex is high and the rate of heating is also high, the
+    temperature error is high as well, making it necessary to turn the heating on to compensate.
+\end{itemize}}
+
 The fuzzy engine is triggered at an established interval of time, usually a minute, and the decision is sent over
 serial communication to the on-board Attiny85 which controls the relay.
 
@@ -436,8 +597,8 @@ Experiments have shown that the chosen hardware and software setup is well fit t
 running a fuzzy engine and handle the communication with the user and with itself.
 The main concern that was present while developing was if the 32 kB memory of the ESP8266 will be enough to run
 the fuzzy engine and the first encountered challenge was the proper memory management and avoidance of memory leaks.
-While testing it was found that the \say{infrastructure} code, which is responsible for the interaction with 
-the user, is consuming about 4 kB of SRAM. 
+While testing it was found that the \say{infrastructure} code, which is responsible for the interaction with
+the user, is consuming about 4 kB of SRAM.
 The fuzzy engine is initialized at system start-up and it won't be freed from memory since it consumes about 10 kB of code. When running, the memory overhead is of approximately 3 kB.
 
 Testing was done to see how the ESP8266 behaves in time. While testing the responsiveness, a
@@ -446,7 +607,52 @@ loss of 14\% of the packets sent was recorded. The module behaves well except th
 In the event of a system crash, the ESP8266 recovers immediately and resumes normal operation, including connection
 to wireless router and mDNS publishing.
 
-Experiments to test the fuzzy engine's output and how it manages heating are yet to be performed.
+The fuzzy engine was tested and the resulting data was aggregates in Figure \ref{fig:result1} and
+\ref{fig:result2}. Figure \ref{fig:result1} shows the graph with the Y axis starting from 100 and decreasing
+while Figure \ref{fig:result2} show the graph with the Y axis starting from 0 and increasing.
+For both of the figures, we have the X axis that represents the temperature error, the Y axis that represents
+the humidity and the Z axis which represents the temperature trend that is described by the slope of the
+line defined by a given number of past recorded temperature points. The Z axis encompasses the
+rate\_of\_cooling (for negative values) and rate\_of\_heating (for positive values) linguistic variables.
+
+Analyzing Figure \ref{fig:result1} we can see that going from temperature error 0 to 2.2
+the state of the heating only gets set to ON starting from 1.8 but only for steady temperature trend. This is
+because the humidity is at 90 percent which lowers the comfort level. A possible improvement that can be
+observed is that comfort changes according to both humidity and temperature (Figure \ref{fig:humidex}) and
+that another parameter could be added to the fuzzy engine that would comply to the data in Figure
+\ref{fig:humidex}.
+
+\begin{figure}[h!]
+\label{fig:humidex}
+\centerline{\psfig{figure=humidex.eps,width=0.5\textwidth}}
+      \caption[Humidity and temperature correlation]{Humidity and temperature correlation.}
+\label{fig:humidex}
+\end{figure}
+
+Looking at Figure \ref{fig:result1} we can see that the graph has an overall uniform distribution with the
+moderate to high temperature error and low to moderate humidity resulting in turning the heat on while
+the low to moderate temperature error and moderate to high humidity resulting in turning the head off.
+The only exception is when the temperature trend (slope) is around 0. In this case, only the temperature and
+the humidity are the factors that are taken into consideration.
+
+\begin{figure}[h!]
+\label{fig:result1}
+\centerline{\psfig{figure=results1.eps,width=0.5\textwidth}}
+      \caption[Aggregated results (first figure).]{Aggregated results (first figure).}
+\label{fig:result1}
+\end{figure}
+
+Another thing that can be improved is seen in Figure \ref{fig:result2} where, for temperature trend of 0,
+temperature error 0 and humidity 0 the decision is to turn the heat on.
+\begin{figure}[h!]
+\label{fig:result2}
+\centerline{\psfig{figure=results2.eps,width=0.5\textwidth}}
+      \caption[Aggregated results (second figure).]{Aggregated results (second figure).}
+\label{fig:result2}
+\end{figure}
+
+With the help of results from further experiments the rules of the fuzzy engine will be tweaked an possibly
+more input parameters will be added such that the decision will be as informed as possible.
 
 \section{Conclusion}
 \label{Conclusion}
@@ -454,6 +660,8 @@ Experiments to test the fuzzy engine's output and how it manages heating are yet
 As seen from the experiments, the proposed solution is a promising one, offering enough computational power
 to run a fairly complex algorithm, sufficiently advanced hardware to accomplish the needs for a IoT enabled
 thermostat and cheap enough to be in a price range that can surpass the current, main-stream thermostats.
+Fuzzy logic seems to be an appropriate control method, performing as expected although improvements are in
+order.
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,bibliography}

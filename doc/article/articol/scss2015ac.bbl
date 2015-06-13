@@ -26,11 +26,73 @@
   \emph{Disruptive Civil Technologies}.\hskip 1em plus 0.5em minus 0.4em\relax
   National Intelligence Council, 2008.
 
+\bibitem{DisruptiveCivilTechnologiesAppendix}
+``Appendix f: The internet of things (background),'' in \emph{Disruptive Civil
+  Technologies}.\hskip 1em plus 0.5em minus 0.4em\relax National Intelligence
+  Council, 2008.
+
 \bibitem{FuzzySets}
 L.~A. Zadeh, ``Fuzzy sets,'' \emph{Fuzzy Logic}, 1965.
 
+\bibitem{zadeh1996fuzzy}
+\BIBentryALTinterwordspacing
+L.~Zadeh, G.~Klir, and B.~Yuan, \emph{Fuzzy Sets, Fuzzy Logic, and Fuzzy
+  Systems: Selected Papers}, ser. Advances in fuzzy systems : applications and
+  theory.\hskip 1em plus 0.5em minus 0.4em\relax World Scientific, 1996.
+  [Online]. Available: \url{https://books.google.ro/books?id=wu0dMiIHwJkC}
+\BIBentrySTDinterwordspacing
+
+\bibitem{FuzzyLogicMassUse}
+\BIBentryALTinterwordspacing
+S.~E. Kisko, \emph{Fuzzy Logic and its Practical use in Mass Transit Systems}.
+  [Online]. Available:
+  \url{http://skisko.blogspot.ro/2005/06/fuzzy-logic-and-its-practical-use-in.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{FuzzyAutomotive}
+\BIBentryALTinterwordspacing
+C.~von Altrock, ``Fuzzy logic in automotive engineering.'' [Online]. Available:
+  \url{http://is.gd/4JXXGX}
+\BIBentrySTDinterwordspacing
+
+\bibitem{FuzzyAppliences}
+\BIBentryALTinterwordspacing
+------, ``A fuzzy-logic thermostat.'' [Online]. Available:
+  \url{http://www.fuzzytech.com/e/e\_a\_esa.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{FuzzyTempControl}
+\BIBentryALTinterwordspacing
+P.~Ramanathan, ``Fuzzy logic controller for temperature regulation process.''
+  [Online]. Available: \url{http://www.idosi.org/mejsr/mejsr20(11)14/35.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{website:nest}
+Nest, ``https://nest.com/thermostat/life-with-nest-thermostat/.''
+
+\bibitem{website:nestsaving}
+------, ``https://nest.com/thermostat/saving-energy/.''
+
+\bibitem{human_comfort}
+W.~F. "Michael~Boduch", ``Standards of human comfort.''
+
+\bibitem{website:nestos}
+``Open source nest alternative, http://commons.wikimedia.org/.''
+
+\bibitem{ling_vars_zadeh}
+L.~A. Zadeh, ``The concept of a linguistic variable and its application to
+  approximate reasoning-i,'' 1975.
+
 \bibitem{website:defuzzimg}
 Defuzzification, ``http://commons.wikimedia.org/.''
+
+\bibitem{IoTThing}
+K.~Ashton, ``That 'internet of things' thingfuzzy sets,'' \emph{RFID Journal},
+  2009.
+
+\bibitem{CERPIOT}
+P.~F. S.~W. Harald~Sundmaeker, Patrick~Guillemin, ``Vision and challenges for
+  realising the internet of things,'' 2010.
 
 \bibitem{website:esppicture}
 ESP8266, ``http://is.gd/jiv6jk.''
@@ -52,5 +114,8 @@ H.~to~program~an Attiny85, ``http://highlowtech.org/?p=1695.''
 
 \bibitem{website:manchester}
 Manchester, ``http://mchr3k.github.io/arduino-libs-manchester/.''
+
+\bibitem{website:humidex}
+``Humidex, http://is.gd/llhnw3.''
 
 \end{thebibliography}

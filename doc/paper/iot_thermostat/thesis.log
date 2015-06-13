@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  10 JUN 2015 02:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -328,7 +328,7 @@ LaTeX Info: Redefining \] on input line 2666.
 \c@prop=\count133
 \c@theorem=\count134
  (./thesis.aux
-(./abstract.aux) (./publications.aux) (./introduction.aux) (./background.aux)
+(./abstract.aux) (./introduction.aux) (./background.aux)
 (./conceptual_model.aux
 
 LaTeX Warning: Label `fig:tmp_err_mf' multiply defined.
@@ -338,6 +338,12 @@ LaTeX Warning: Label `fig:humidex' multiply defined.
 
 
 LaTeX Warning: Label `fig:humidity_mf' multiply defined.
+
+
+LaTeX Warning: Label `fig:result1' multiply defined.
+
+
+LaTeX Warning: Label `fig:result2' multiply defined.
 
 ) (./architecture.aux
 
@@ -382,18 +388,18 @@ LaTeX Warning: Label `fig:control' multiply defined.
 ) (./conclusions.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -432,35 +438,31 @@ LaTeX Font Info:    ... okay on input line 57.
 \c@lstlisting=\count135
 [1
 
-]
+] [1]
 \openout2 = `abstract.aux'.
 
+ (./abstract.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 
-No file abstract.tex.
-\openout2 = `publications.aux'.
-
-No file publications.tex.
-(./thesis.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 4.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)) [0
 
 
-
+] (./thesis.toc
+[1
 
 
 ])
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
- [2]
-(./thesis.lof)
+ [2] (./thesis.lof)
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
@@ -482,17 +484,46 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-) [5
+ [5
 
 
-] [6]
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 74.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
+) [6]
 \openout2 = `background.aux'.
 
-
-(./background.tex
+ (./background.tex
 Chapter 1.
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.6 \subsection
+               {Introduction}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-LaTeX Warning: Citation `Fuzyy_Sets' on page 7 undefined on input line 31.
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.27 \subsection
+                {Fuzzy sets}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `Fuzyy_Sets' on page 7 undefined on input line 33.
 
 [7
 
@@ -506,7 +537,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.46 \end{align}
+l.48 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -518,7 +549,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.46 \end{align}
+l.48 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -526,7 +557,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.46 \end{align}
+l.48 \end{align}
                 
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -537,7 +568,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.46 \end{align}
+l.48 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -548,7 +579,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.46 \end{align}
+l.48 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -563,7 +594,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.46 \end{align}
+l.48 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -575,7 +606,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.46 \end{align}
+l.48 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -583,7 +614,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.46 \end{align}
+l.48 \end{align}
                 
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -594,7 +625,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.46 \end{align}
+l.48 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -605,7 +636,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.46 \end{align}
+l.48 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -620,7 +651,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.60 \end{align}
+l.62 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -632,7 +663,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.60 \end{align}
+l.62 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -640,7 +671,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.60 \end{align}
+l.62 \end{align}
                 
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -651,7 +682,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.60 \end{align}
+l.62 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -662,7 +693,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.60 \end{align}
+l.62 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -677,7 +708,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.60 \end{align}
+l.62 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -689,7 +720,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.60 \end{align}
+l.62 \end{align}
                 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -697,7 +728,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Extra }, or forgotten \right.
 <template> }
             $}\ifmeasuring@ \savefieldlength@ \fi \set@field \endtemplate 
-l.60 \end{align}
+l.62 \end{align}
                 
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -708,7 +739,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
-l.60 \end{align}
+l.62 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -719,7 +750,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.60 \end{align}
+l.62 \end{align}
                 
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -733,26 +764,61 @@ psfig: searching fuzzy_set.eps for bounding box
 psfig: including fuzzy_set.eps 
 psfig: searching mf_functions.eps for bounding box
 psfig: including mf_functions.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
- [9]
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.82 \subsubsection
+                   {Fuzzy sets properties}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.103 \subsubsection
+                    {Operations}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[9]
 ! Too many }'s.
-l.119 \end{itemize}}
+l.121 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.124 \subsection
+                 {Linguistic variables and values}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 [10]
 psfig: searching height.eps for bounding box
 psfig: including height.eps 
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.165 \subsection
+                 {Fuzzy relations}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -760,7 +826,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.218 ...mapping from the Cartesian space X \times
+l.220 ...mapping from the Cartesian space X \times
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -768,22 +834,33 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.220 relation $\mu
+l.222 relation $\mu
                    _{R}(x, y)$
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (40.79195pt too wide) in paragraph at lines 217--221
+Overfull \hbox (40.79195pt too wide) in paragraph at lines 219--223
 \OT1/cmr/m/n/12 1]$\OML/cmm/m/it/12 ; wherethestrengthofthemappingisexpressedby
 themembershipfunctionoftherelation$$^^V[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y
 \OT1/cmr/m/n/12 )$ 
  []
 
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.232 \subsubsection
+                    {Composition of fuzzy rules}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.233 ...$ defined on the Cartesian space X \times
+l.235 ...$ defined on the Cartesian space X \times
                                                    Y and
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -791,61 +868,143 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.235 
+l.237 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Too many }'s.
-l.249 \end{itemize}}
+l.251 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.254 \subsection
+                 {Fuzzy inference}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 [12]
 ! Too many }'s.
-l.277 \end{itemize}}
+l.279 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
+
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.284 \subsubsection
+                    {Fuzzfication}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 [13]
 psfig: searching fuzz_example_food.eps for bounding box
 psfig: including fuzz_example_food.eps 
 psfig: searching fuzz_example_treatment.eps for bounding box
 psfig: including fuzz_example_treatment.eps 
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.309 \subsubsection
+                    {Rule evaluation}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 [14] [15]
 psfig: searching fuzz_example.eps for bounding box
 psfig: including fuzz_example.eps 
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.383 \subsection
+                 {Defuzzification}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching final_res.eps for bounding box
 psfig: including final_res.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [16] [17]
+[16] [17]
+! Too many }'s.
+l.438 \end{itemize}}
+                    
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+) [18]
 \openout2 = `conceptual_model.aux'.
 
  (./conceptual_model.tex
 Chapter 2.
-[18
+[19
 
 
 
-] [19]
+]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.64 \subsection
+                {Temperature error}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 20
+ []
+
+[20]
 Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∞ in font cmr12!
 
 ! Too many }'s.
-l.88 \end{itemize}}
+l.91 \end{itemize}}
                    
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 psfig: searching tmp_err_mf.eps for bounding box
 psfig: including tmp_err_mf.eps 
-[20]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 ! Undefined control sequence.
-l.109 \qquadd
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.104 \subsection
+                 {Humidity}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.112 \qquadd
               When relative humidity gets too low, skin and mucous surfaces ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -853,6 +1012,13 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 21
+ []
+
+[21]
 psfig: searching humidex.eps for bounding box
 psfig: including humidex.eps 
 
@@ -863,33 +1029,105 @@ psfig: including humidity_mf.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] [22]
+
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 22
+ []
+
+[22]
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 23
+ []
+
+[23]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.171 \subsection
+                 {Rate of cooling and heating}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching experiments.eps for bounding box
 psfig: including experiments.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23
 
-] [24]
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 24
+ []
+
+[24
+
+]
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 25
+ []
+
+[25]
 ! Too many }'s.
-l.253 \end{itemize}}
+l.256 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-) [25]
+
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 26
+ []
+
+[26]
+psfig: searching results1.eps for bounding box
+psfig: including results1.eps 
+psfig: searching results2.eps for bounding box
+psfig: including results2.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 27
+ []
+
+[27]
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 28
+ []
+
+[28]
 \openout2 = `architecture.aux'.
 
  (./architecture.tex
 Chapter 3.
 psfig: searching architecture_diagram.eps for bounding box
 psfig: including architecture_diagram.eps 
-[26
+[29
 
 
 
 ]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.29 \subsection
+                {Central unit}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching central_unit_diagram.eps for bounding box
 psfig: including central_unit_diagram.eps 
 psfig: searching central_unit.eps for bounding box
@@ -897,13 +1135,35 @@ psfig: including central_unit.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[27]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.69 \subsection
+                {Reporter}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[30]
 psfig: searching reporter_diagram.eps for bounding box
 psfig: including reporter_diagram.eps 
-[28]
+[31]
 psfig: searching reporter.eps for bounding box
 psfig: including reporter.eps 
-[29]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.115 \subsection
+                 {Sensors}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[32]
 psfig: searching dht22.eps for bounding box
 psfig: including dht22.eps 
 Missing character: There is no ¬ in font cmr12!
@@ -912,49 +1172,140 @@ Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∞ in font cmr12!
 psfig: searching dht22_stats.eps for bounding box
 psfig: including dht22_stats.eps 
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.149 \subsection
+                 {Radio communication}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching rf_tx_rx.eps for bounding box
 psfig: including rf_tx_rx.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30]
+[33]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.181 \subsection
+                 {Attiny85}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching attiny85.eps for bounding box
 psfig: including attiny85.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[31] [32]
+[34] [35]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.256 \subsection
+                 {ESP8266}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 psfig: searching ESP8266.eps for bounding box
 psfig: including ESP8266.eps 
-[33] (./lstlang1.sty
+[36] (./lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-Overfull \hbox (6.45403pt too wide) in paragraph at lines 301--302
+Overfull \hbox (6.45403pt too wide) in paragraph at lines 303--304
 []\OT1/cmr/m/n/12 In the fol-low-ing sub-sec-tions the ba-sic API of the ESP826
 6 wire-less mod-ule will be de-scribed. 
  []
 
-[34]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 329.
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.305 \subsubsection
+                    {Operation Mode}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[37]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 331.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 329.
- [35] [36]
-[37]
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 416.
- [38
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 331.
+ [38]
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.369 \subsubsection
+                    {Running a webserver}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-] [39]
+[39]
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.410 \subsubsection
+                    {Webserver wrapper}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[40]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 418.
+
+! Undefined control sequence.
+\subsubsection ->\FloatBarrier 
+                               \Oldsubsubsection 
+l.451 \subsubsection
+                    {Making HTTP requests}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[41
+
+]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.482 \subsection
+                 {Data structures}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[42]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.527 inherited from linked_
+l.529 inherited from linked_
                             list.
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -962,7 +1313,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -970,7 +1321,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -981,7 +1332,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -992,7 +1343,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1003,7 +1354,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1014,7 +1365,7 @@ my insertion and my current dilemma will both disappear.
 ! Extra }, or forgotten \endgroup.
 \@par ... \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1025,7 +1376,7 @@ deleted material, e.g., by typing `I$}'.
 ! Undefined control sequence.
 \lst@GetLineInterval ...r \lst@GLI \lst@linerange 
                                                   \@nil 
-l.528 \begin{lstlisting}[frame=single]
+l.530 \begin{lstlisting}[frame=single]
                                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1038,26 +1389,49 @@ Runaway argument?
 ! Paragraph ended before \lst@GLI was complete.
 <to be read again> 
                    \par 
-l.531 
+l.533 
       
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[40] [41]
-Overfull \hbox (2.75229pt too wide) in paragraph at lines 610--611
+[43]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.568 \subsection
+                 {Fuzzy engine API}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[44]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 612--613
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[42]
-Overfull \hbox (2.75229pt too wide) in paragraph at lines 646--647
+[45]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 648--649
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
+
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.676 \subsection
+                 {API examples}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.676 \qquad First of all, a fuzzy_
+l.678 \qquad First of all, a fuzzy_
                                    engine object needs to be created that ho...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1065,7 +1439,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.677 \begin{lstlisting}[frame=single]
+l.679 \begin{lstlisting}[frame=single]
                                       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1073,7 +1447,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.677 \begin{lstlisting}[frame=single]
+l.679 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1084,7 +1458,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.677 \begin{lstlisting}[frame=single]
+l.679 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1095,7 +1469,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.677 \begin{lstlisting}[frame=single]
+l.679 \begin{lstlisting}[frame=single]
                                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1104,7 +1478,7 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (0.48763pt too wide) in paragraph at lines 676--677
+Overfull \hbox (0.48763pt too wide) in paragraph at lines 678--679
  \OT1/cmr/m/n/12 First of all, a fuzzy$[]\OML/cmm/m/it/12 ngineobjectneedstobec
 reatedthatholdsallthecomponentstogether$ 
  []
@@ -1112,7 +1486,7 @@ reatedthatholdsallthecomponentstogether$
 ! Undefined control sequence.
 \lst@GetLineInterval ...r \lst@GLI \lst@linerange 
                                                   \@nil 
-l.677 \begin{lstlisting}[frame=single]
+l.679 \begin{lstlisting}[frame=single]
                                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1125,43 +1499,113 @@ Runaway argument?
 ! Paragraph ended before \lst@GLI was complete.
 <to be read again> 
                    \par 
-l.680 
+l.682 
       
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[43]
-Overfull \hbox (2.75229pt too wide) in paragraph at lines 718--719
+[46]
+Overfull \hbox (2.75229pt too wide) in paragraph at lines 720--721
 [][][][][][][][][][][][][][][][][][][] 
  []
 
-[44] [45]
+[47]
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.753 \subsection
+                 {Thermostat high level components interaction}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\subsection ->\FloatBarrier 
+                            \Oldsubsection 
+l.770 \subsection
+                 {User manual}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[48]
 psfig: searching connect_to_ap.eps for bounding box
 psfig: including connect_to_ap.eps 
 
-Overfull \hbox (60.59573pt too wide) in paragraph at lines 784--787
+Overfull \hbox (60.59573pt too wide) in paragraph at lines 786--789
 \OT1/cmr/m/n/12 are record-ing and set a de-sired tem-per-a-ture. This is done 
 by go-ing the URL http://thermostat.local/control.
  []
 
 psfig: searching thermostat_control.eps for bounding box
 psfig: including thermostat_control.eps 
-) [46]
+) [49]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 4.
-) [47
+) [50
 
 
 
-] (./thesis.bbl [48
+] (./thesis.bbl
+! Missing $ inserted.
+<inserted text> 
+                $
+l.16 ...tems, https://en.wikipedia.org/wiki/fuzzy_
+                                                  control_system.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.17 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.17 
+     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.17 
+     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
 
-]) [49] (./thesis.aux (./abstract.aux)
-(./publications.aux) (./introduction.aux) (./background.aux)
-(./conceptual_model.aux) (./architecture.aux) (./conclusions.aux))
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
+[]\OT1/cmr/m/n/12 Short term load fore-cast-ing us-ing neu-ral net-works and fu
+zzy logic,
+ []
+
+Missing character: There is no √ in font cmr12!
+Missing character: There is no © in font cmr12!
+[51
+
+
+]) [52] (./thesis.aux (./abstract.aux) (./introduction.aux)
+(./background.aux) (./conceptual_model.aux) (./architecture.aux)
+(./conclusions.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -1170,12 +1614,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5340 strings out of 495029
- 72487 string characters out of 6181523
- 182273 words of memory out of 5000000
- 8382 multiletter control sequences out of 15000+600000
+ 5355 strings out of 495029
+ 72707 string characters out of 6181523
+ 181897 words of memory out of 5000000
+ 8398 multiletter control sequences out of 15000+600000
  11108 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,14n,51p,264b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,51p,266b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (50 pages, 169520 bytes).
+Output written on thesis.dvi (55 pages, 189516 bytes).

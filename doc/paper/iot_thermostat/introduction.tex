@@ -27,12 +27,52 @@ all kinds of objects, appliances etc, giving the possibility to monitor and anal
 anything. The broader affect of this, is the fact that data can be stored, analyzed and made sense of it
 in order to increase the comfort level and to grasp a better understanding of the environment we are living in.
 
-Starting from this idea, this paper describes a new application that makes uses of the cheap technology we
-have at hand and the easy access to a world wide data transport infrastructure (the Internet). The result is
-a device that increases home comfort levels, gathers data that is analyzed and makes of it information that
-is digestible by a human being, enabling one to better understand and control the context one is living in.
+Fuzzy logic was first proposed by Lotfi Zadef in his paper \say{Fuzzy Sets} \cite{FuzzySets}. At first, the
+idea received a lot of criticism from the mathematical community and the world was skeptic in implementing it
+on real devices, but Japan took the lead and the first real-life applications that used fuzzy logic appeared on
+the market in the late 1980's \cite{zadeh1996fuzzy}. The most memorable such application was the Sendai subway
+system designed by Hitachi where fuzzy logic was used to control the train's acceleration, deceleration and
+breaking \cite{zadeh1996fuzzy}. Since its production it is said that it not only reduces the energy
+consumption by 10\%but the passengers hardly notice when the train is changing its velocity
+\cite{FuzzyLogicMassUse}. Since then, fuzzy logic has been used in devices ranging from shower heads
+\cite{zadeh1996fuzzy} to gear boxes and car breaking systems \cite{FuzzyAutomotive}.
 
-The chosen hardware for the proposed thermostat consist of 3 micro-controllers, temperature and humidity sensors
-and radio transceivers, all coming to a price comparable to a normal thermostat. The main processing unit
-is an ESP8266 wireless module. An in depth description of the architecture will be presented in
-section.
+In the field of temperature control, fuzzy logic was applied with success in AC's \cite{FuzzyAppliences} where
+an energy saving of at least 3.5\% was observed. It has been shown that by this approach at temperature
+control, given a small number of rules and not needing advanced knowledge about the environment (e.g. a
+mathematical model of the problem is not required) a fuzzy logic controller is able to achieve faster transient
+response with less overshoot, more stable steady state response and less dependence of operating point
+\cite{FuzzyTempControl}.
+
+This paper presents an approach to a fuzzy logic thermostat that aims to increase the energy efficiency
+of temperature control, where a standard, ON/OFF, central heating unit is used. An important aspect of this
+proposal is the hardware implementation which is designed to reduce the cost of such an application and to
+enable it to be accessed through the infrastructure of the Internet.
+
+\qquad The thesis is structured in five chapters, as follows. \par
+\qquad Chapter I, \textbf{Theoretical background} presents to the reader the concepts surrounding fuzzy logic
+and the Internet of Things. It first addresses the building block of fuzzy logic, presenting it through
+comparison with the classical logic and then presents a short introduction to the Internet of Things
+
+\qquad Chapter II, \textbf{Our approach}, introduces the reader to the specifics of the fuzzy engine
+that the proposed thermostat is using. More precisely, the motivation behind the thermostat is presented, the
+variables that the fuzzy engine takes, the rules that make up its knowledge and how the engine arrives at a
+conclusion.This chapter is an continuation of our previous article \cite{FuzzyLogicIOT}.
+
+\qquad Chapter III, \textbf{Results and discussions}, presents the results that were obtained while testing
+both the hardware and the software.
+
+\qquad Chapter IV, \textbf{Architecture}, describes the hardware and software architecture, the electronics
+and microcontrollers that are used, the API's of chips on which the software runs and how all of the
+components come together to form the thermostat. The final section represents the user manual of the
+application.
+
+\quad Chapter V, \textbf{Conclusions}, presents to the reader the conclusions that were drawn from developing
+the described application.
+
+\section*{List of publications:}
+
+\begin{itemize}
+    \item \textbf{Candale Andrei}. Fuzzy logic-based IoT enabled thermostat. Sesiunea de Comunicari
+    Stiintifice ale Studentilor, Cluj-Napoca (Romania), June 19, 2015. --- accepted
+\end{itemize}

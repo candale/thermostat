@@ -13,47 +13,62 @@ Database file #2: bibliography.bib
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Warning--empty author in DisruptiveCivilTechnologies
+Warning--empty author in DisruptiveCivilTechnologiesAppendix
+Warning--missing publisher in FuzzyLogicMassUse
+Warning--empty year in FuzzyLogicMassUse
+Warning--empty journal in FuzzyAutomotive
+Warning--empty year in FuzzyAutomotive
+Warning--empty journal in FuzzyAppliences
+Warning--empty year in FuzzyAppliences
+Warning--empty journal in FuzzyTempControl
+Warning--empty year in FuzzyTempControl
+Warning--empty journal in human_comfort
+Warning--empty year in human_comfort
+Warning--empty journal in ling_vars_zadeh
+Too many commas in name 1 of "Harald Sundmaeker, Patrick Guillemin, Peter Friess, Sylvie Woelfflé" for entry CERPIOT
+while executing---line 2411 of file IEEEtran.bst
+Warning--empty journal in CERPIOT
 
 Done.
-You've used 10 entries,
+You've used 24 entries,
             4024 wiz_defined-function locations,
-            1211 strings with 15021 characters,
-and the built_in function-call counts, 3155 in all, are:
-= -- 186
-> -- 37
+            1266 strings with 16549 characters,
+and the built_in function-call counts, 7578 in all, are:
+= -- 484
+> -- 93
 < -- 0
-+ -- 19
-- -- 9
-* -- 96
-:= -- 529
-add.period$ -- 21
-call.type$ -- 10
-change.case$ -- 10
++ -- 48
+- -- 22
+* -- 268
+:= -- 1319
+add.period$ -- 49
+call.type$ -- 24
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 304
-empty$ -- 372
-format.name$ -- 9
-if$ -- 670
+cite$ -- 38
+duplicate$ -- 721
+empty$ -- 868
+format.name$ -- 23
+if$ -- 1615
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 68
-newline$ -- 53
-num.names$ -- 9
-pop$ -- 195
+int.to.str$ -- 24
+missing$ -- 147
+newline$ -- 105
+num.names$ -- 20
+pop$ -- 438
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 266
+skip$ -- 627
 stack$ -- 0
-substring$ -- 10
-swap$ -- 136
+substring$ -- 22
+swap$ -- 320
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 10
-warning$ -- 1
-while$ -- 9
-width$ -- 12
-write$ -- 85
-(There was 1 warning)
+type$ -- 24
+warning$ -- 14
+while$ -- 20
+width$ -- 26
+write$ -- 189
+(There was 1 error message)

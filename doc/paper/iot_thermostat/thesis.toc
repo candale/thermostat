@@ -1,45 +1,48 @@
 \select@language {english}
 \contentsline {chapter}{\textbf {Introduction}}{5}
 \contentsline {chapter}{\numberline {1}Theoretical background}{7}
-\contentsline {section}{\numberline {1.1}Introduction}{7}
-\contentsline {section}{\numberline {1.2}Fuzzy sets}{7}
-\contentsline {subsection}{\numberline {1.2.1}Fuzzy sets properties}{9}
-\contentsline {subsection}{\numberline {1.2.2}Operations}{9}
-\contentsline {section}{\numberline {1.3}Linguistic variables and values}{10}
-\contentsline {section}{\numberline {1.4}Fuzzy relations}{11}
-\contentsline {subsection}{\numberline {1.4.1}Composition of fuzzy rules}{12}
-\contentsline {section}{\numberline {1.5}Fuzzy inference}{13}
-\contentsline {subsection}{\numberline {1.5.1}Fuzzfication}{13}
-\contentsline {subsection}{\numberline {1.5.2}Rule evaluation}{14}
-\contentsline {section}{\numberline {1.6}Defuzzification}{16}
-\contentsline {chapter}{\numberline {2}Conceptual model}{18}
-\contentsline {section}{\numberline {2.1}Motivation}{18}
-\contentsline {section}{\numberline {2.2}Fuzzy engine overview}{19}
-\contentsline {section}{\numberline {2.3}Linguistic variables}{19}
-\contentsline {subsection}{\numberline {2.3.1}Temperature error}{19}
-\contentsline {subsection}{\numberline {2.3.2}Humidity}{20}
-\contentsline {subsection}{\numberline {2.3.3}Rate of cooling and heating}{23}
-\contentsline {section}{\numberline {2.4}Fuzzy rules}{24}
-\contentsline {section}{\numberline {2.5}Defuzzyfication}{25}
-\contentsline {chapter}{\numberline {3}Architecture}{26}
-\contentsline {section}{\numberline {3.1}Overview}{26}
-\contentsline {subsection}{\numberline {3.1.1}Central unit}{27}
-\contentsline {subsection}{\numberline {3.1.2}Reporter}{28}
-\contentsline {section}{\numberline {3.2}Hardware}{29}
-\contentsline {subsection}{\numberline {3.2.1}Sensors}{29}
-\contentsline {subsection}{\numberline {3.2.2}Radio communication}{30}
-\contentsline {subsection}{\numberline {3.2.3}Attiny85}{31}
-\contentsline {subsection}{\numberline {3.2.4}ESP8266}{33}
-\contentsline {subsubsection}{\numberline {3.2.4.1}Operation Mode}{34}
-\contentsline {subsubsection}{\numberline {3.2.4.2}Running a webserver}{36}
-\contentsline {subsubsection}{\numberline {3.2.4.3}Webserver wrapper}{37}
-\contentsline {subsubsection}{\numberline {3.2.4.4}Making HTTP requests}{38}
-\contentsline {section}{\numberline {3.3}Fuzzy engine implementation}{39}
-\contentsline {subsection}{\numberline {3.3.1}Data structures}{39}
-\contentsline {subsection}{\numberline {3.3.2}Fuzzy engine API}{41}
-\contentsline {subsection}{\numberline {3.3.3}API examples}{43}
-\contentsline {section}{\numberline {3.4}Application}{45}
-\contentsline {subsection}{\numberline {3.4.1}Thermostat high level components interaction}{45}
-\contentsline {subsection}{\numberline {3.4.2}User interaction}{46}
-\contentsline {chapter}{\numberline {4}Conclusions}{47}
-\contentsline {chapter}{\textbf {Bibliography}}{48}
+\contentsline {section}{\numberline {1.1}Fuzzy logic}{7}
+\contentsline {subsection}{\numberline {1.1.1}Introduction}{7}
+\contentsline {subsection}{\numberline {1.1.2}Fuzzy sets}{7}
+\contentsline {subsubsection}{\numberline {1.1.2.1}Fuzzy sets properties}{9}
+\contentsline {subsubsection}{\numberline {1.1.2.2}Operations}{9}
+\contentsline {subsection}{\numberline {1.1.3}Linguistic variables and values}{10}
+\contentsline {subsection}{\numberline {1.1.4}Fuzzy relations}{11}
+\contentsline {subsubsection}{\numberline {1.1.4.1}Composition of fuzzy rules}{12}
+\contentsline {subsection}{\numberline {1.1.5}Fuzzy inference}{13}
+\contentsline {subsubsection}{\numberline {1.1.5.1}Fuzzfication}{13}
+\contentsline {subsubsection}{\numberline {1.1.5.2}Rule evaluation}{14}
+\contentsline {subsection}{\numberline {1.1.6}Defuzzification}{16}
+\contentsline {section}{\numberline {1.2}Internet of Things}{16}
+\contentsline {chapter}{\numberline {2}Our approach: Fuzzy logic-based IoT enabled thermostat}{19}
+\contentsline {section}{\numberline {2.1}Motivation}{19}
+\contentsline {section}{\numberline {2.2}Fuzzy engine overview}{20}
+\contentsline {section}{\numberline {2.3}Linguistic variables}{20}
+\contentsline {subsection}{\numberline {2.3.1}Temperature error}{21}
+\contentsline {subsection}{\numberline {2.3.2}Humidity}{21}
+\contentsline {subsection}{\numberline {2.3.3}Rate of cooling and heating}{24}
+\contentsline {section}{\numberline {2.4}Fuzzy rules}{25}
+\contentsline {section}{\numberline {2.5}Defuzzyfication}{26}
+\contentsline {section}{\numberline {2.6}Results and discussions}{26}
+\contentsline {chapter}{\numberline {3}Architecture}{29}
+\contentsline {section}{\numberline {3.1}Overview}{29}
+\contentsline {subsection}{\numberline {3.1.1}Central unit}{30}
+\contentsline {subsection}{\numberline {3.1.2}Reporter}{31}
+\contentsline {section}{\numberline {3.2}Hardware}{32}
+\contentsline {subsection}{\numberline {3.2.1}Sensors}{32}
+\contentsline {subsection}{\numberline {3.2.2}Radio communication}{33}
+\contentsline {subsection}{\numberline {3.2.3}Attiny85}{34}
+\contentsline {subsection}{\numberline {3.2.4}ESP8266}{36}
+\contentsline {subsubsection}{\numberline {3.2.4.1}Operation Mode}{37}
+\contentsline {subsubsection}{\numberline {3.2.4.2}Running a webserver}{39}
+\contentsline {subsubsection}{\numberline {3.2.4.3}Webserver wrapper}{40}
+\contentsline {subsubsection}{\numberline {3.2.4.4}Making HTTP requests}{41}
+\contentsline {section}{\numberline {3.3}Fuzzy engine implementation}{42}
+\contentsline {subsection}{\numberline {3.3.1}Data structures}{42}
+\contentsline {subsection}{\numberline {3.3.2}Fuzzy engine API}{44}
+\contentsline {subsection}{\numberline {3.3.3}API examples}{46}
+\contentsline {section}{\numberline {3.4}Application}{48}
+\contentsline {subsection}{\numberline {3.4.1}Thermostat high level components interaction}{48}
+\contentsline {subsection}{\numberline {3.4.2}User manual}{49}
+\contentsline {chapter}{\numberline {4}Conclusions}{50}
+\contentsline {chapter}{\textbf {Bibliography}}{51}

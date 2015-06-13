@@ -7,21 +7,23 @@
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Graphical representation of rule evaluation}}{16}
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Final fuzzy engine result}}{17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Temperature membership function}}{20}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Humidex in as a relation of temperature and humidity}}{22}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Humidity membership function}}{22}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Values of slope with regard to temperature change}}{24}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Temperature membership function}}{22}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Humidex in as a relation of temperature and humidity}}{23}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Humidity membership function}}{23}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Values of slope with regard to temperature change}}{25}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Aggregated results (first figure).}}{27}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Aggregated results (second figure).}}{28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture Diagram}}{26}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Central Unit Electrical Diagram}}{27}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Central Unit Prototype On PCB}}{28}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Reporter electrical diagram}}{28}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Reporter Prototype On PCB}}{29}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces DHT22 Temperature and humidity sensor}}{30}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces DHT22 Temperature and humidity sensor errors}}{30}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces MX-05CV Radio transmitter and receiver}}{31}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Attiny85 AVR microcontroller}}{32}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces ESP8266 Wireless module}}{33}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Connect to wireless router access point}}{46}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Thermostat information and control page}}{46}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture Diagram}}{29}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Central Unit Electrical Diagram}}{30}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Central Unit Prototype On PCB}}{31}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Reporter electrical diagram}}{31}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Reporter Prototype On PCB}}{32}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces DHT22 Temperature and humidity sensor}}{33}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces DHT22 Temperature and humidity sensor errors}}{33}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces MX-05CV Radio transmitter and receiver}}{34}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Attiny85 AVR microcontroller}}{35}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces ESP8266 Wireless module}}{36}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Connect to wireless router access point}}{49}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Thermostat information and control page}}{49}
 \addvspace {10\p@ }

@@ -1,5 +1,8 @@
-\chapter{Conceptual model}
+\chapter{Our approach: Fuzzy logic-based IoT enabled thermostat}
 \label{chap:concept}
+
+This chapter represents an extension of our article \cite{FuzzyLogicIOT}. It presents the design of the fuzzy
+engine and the results that were achieved by this approach.
 
 \section{Motivation}
 
@@ -223,7 +226,7 @@ descending.
 
 \section{Fuzzy rules}
 
-\qquad The fuzzy engine contains a set of 64 rules that were defined using an expert's knowledge of
+\qquad The fuzzy engine contains a set of fifty six rules that were defined using an expert's knowledge of
 temperature control. This section presents o few of them.
 
 \begin{itemize}
@@ -252,7 +255,7 @@ temperature control. This section presents o few of them.
     temperature error is high as well, making it necessary to turn the heating on to compensate.
 \end{itemize}}
 
-\qquad All of the 64 rules are based on the same reasoning as the one that were presented above.
+\qquad All of the fifty six rules are based on the same reasoning as the one that were presented above.
 
 \section{Defuzzyfication}
 
@@ -261,3 +264,6 @@ to compute the result, the crisp value which will be the actual decision.
 
 \qquad The defuzzyfication process is done by computing the center of gravity for the polynomial that results
 from the combinations of rule consequents.
+
+\qquad Example:
+

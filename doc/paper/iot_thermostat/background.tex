@@ -1,7 +1,9 @@
 \chapter{Theoretical background}
 \label{chap:theoretical_brackground}
 
-\section{Introduction}
+\section{Fuzzy logic}
+
+\subsection{Introduction}
 
 \qquad Fuzzy logic is an extension of Boolean logic coined by Lotfi Zadef in 1965 \cite{FuzzySets}
 \cite{FuzzySets_NewApproach} \cite{FuzzySets_Algo}. Fuzzy logic is build on the theory of fuzzy sets which is
@@ -22,7 +24,7 @@ boxes \cite{INT:INT4550030208}.
 
 The following sections will present the concepts surrounding fuzzy logic.
 
-\section{Fuzzy sets}
+\subsection{Fuzzy sets}
 \label{sec:fuzzy_sets}
 
 \qquad Let $X$ be a space of points (objects), with a generic element of $X$ denoted by $x$. Thus, $X = {x}$.
@@ -69,7 +71,7 @@ Figure ~\ref{fig:crisp_fuzzy_cmp} is a graphical representation that compares a 
 
 \begin{figure}[h!]
     \centerline{\psfig{figure=mf_functions.eps,width=0.7\textwidth}}
-    \caption[Membership function types]{Membership function types}
+    \caption[Membership function types]{Membership function types. Image source \cite{website:mf_types}}
 \label{fig:mf_functions}
 \end{figure}
 
@@ -77,7 +79,7 @@ In the formula ~\ref{frm:mf}, $f(x)$ can be replaced with any function that may 
 application. Some popular examples for the membership functions are presented in figure
 ~\ref{fig:mf_functions}.
 
-\subsection{Fuzzy sets properties}
+\subsubsection{Fuzzy sets properties}
 
 Given the fact that fuzzy sets are an extension of crisp sets from classical mathematics, they comes with
 the following properties:
@@ -98,7 +100,7 @@ subnormal if less than 1
 
 \end{itemize}
 
-\subsection{Operations}
+\subsubsection{Operations}
 
 \qquad Like in classical sets, fuzzy sets also define operations that can be applied.
 \begin{itemize}
@@ -119,7 +121,7 @@ subnormal if less than 1
 \end{itemize}}
 
 
-\section{Linguistic variables and values}
+\subsection{Linguistic variables and values}
 
 \qquad By a linguistic variable we mean a variable whose values are words or sentences in a natural or artificial
 language. For example, age is a linguistic variable if its values are linguistic rather than numerical, i.e.,
@@ -160,7 +162,7 @@ discussed in section \ref{sec:fuzzy_sets}.
 \end{figure}
 
 
-\section{Fuzzy relations}
+\subsection{Fuzzy relations}
 
 \qquad A relation is mathematical description of a situation where certain elements of different sets are related
 based on some knowledge. Fuzzy relations are an important part of fuzzy logic and fuzzy control, representing
@@ -227,7 +229,7 @@ relation $\mu_{R}(x, y)$
 R = \{((x, y), \mu_{R}(x, y)) | \mu_{R}(x, y) \geq 0, x \in A, y \in B \}
 \end{align}
 
-\subsection{Composition of fuzzy rules}
+\subsubsection{Composition of fuzzy rules}
 
 \qquad For composing two fuzzy rules, one might use one of the the following compositions: max-min or min-max.
 Lets us consider two fuzzy relations $R_{1}$ and $R_{2}$ defined on the Cartesian space X \times Y and
@@ -249,7 +251,7 @@ Y \times Z respectively.
 \end{itemize}}
 
 
-\section{Fuzzy inference}
+\subsection{Fuzzy inference}
 
 \qquad Having established all the concepts surrounding fuzzy logic, we can now take it further to the actual steps
 that are involved in the decision making based on some given input, i.e. inference.
@@ -279,7 +281,7 @@ There are seven steps that to take a fuzzy logic iteration to its end:
 \quad The first three steps were described in the previous sections and in the following, the next four will
 be presented.
 
-\subsection{Fuzzfication}
+\subsubsection{Fuzzfication}
 \label{subsec:fuzzification}
 
 \qquad The fuzzification process happens right after the system receives the input values for all its
@@ -304,7 +306,7 @@ tasty and good, we find that the food was 0.48 tasty and the treatment was 0.57 
 membership to a certain linguistic value.
 
 
-\subsection{Rule evaluation}
+\subsubsection{Rule evaluation}
 
 \qquad After having the degree of membership of all inputs to some linguistic values, the next step is going
 through all the rules that were defined and compute their consequent.
@@ -373,11 +375,12 @@ apply the $min$ operator on the resulted membership degrees. The result is that 
 
 \begin{figure}[h!]
     \centerline{\psfig{figure=fuzz_example.eps,width=0.7\textwidth}}
-    \caption[Graphical representation of rule evaluation]{Graphical representation of rule evaluation}
+    \caption[Graphical representation of rule evaluation]{Graphical representation of rule evaluation.
+                                                          Image source \cite{website:fuzzy_ctr_sys}}
 \label{fig:rule_eval}
 \end{figure}
 
-\section{Defuzzification}
+\subsection{Defuzzification}
 
 \qquad After having computed the consequent of all the rules, it's time to take those values and turn them
 into a crisp value that can be used.
@@ -390,6 +393,55 @@ will represent the crisp value that is the final result of the system.
 
 \begin{figure}[h!]
     \centerline{\psfig{figure=final_res.eps,width=0.9\textwidth}}
-    \caption[Final fuzzy engine result]{Final fuzzy engine result}
+    \caption[Final fuzzy engine result]{Final fuzzy engine result. Image source \cite{website:fuzzy_ctr_sys}}
 \label{fig:final_res}
 \end{figure}
+
+\section{Internet of Things}
+
+The term \say{Internet of Things} has first been mentioned by Kevin Ashton in 1999 at a MIT presentation, when
+he stated that adding a RFID (Radio Frequency Identification) to everyday objects would create an Internet
+of Things. The main idea behind the IoT, as expressed by Ashton \cite{IoTThing}, is that ever since the
+computers were invented, the main source of data that is on the Internet and in all of computers it mainly
+human in nature. This mean that the massive amount of information that Internet provides is mainly created
+by people \say{by typing, pressing a record button, taking a digital picture or scanning a bar code}
+\cite{IoTThing}. The problem with this is that human beings are limited in what they can observe, how much
+data they can produce and in the accuracy with which they can analyze.
+
+With the advent of technologies like sensors, we can now equip computers to collect data from the environment
+with a much larger precision, from nearly all sorts of contexts that people were unable to reach and most
+importantly, in a continuous fashion. As Kevin Ashton famously put it: \say{We need to empower computers with
+their own means of gathering information, so they can see, hear and smell the world for themselves, in all its
+random glory} \cite{IoTThing}.
+
+The Internet of Things represents all of the devices, objects or other \say{things} that sense the environment
+they are in, collect data about that environment and share this information over a network, usually the
+Internet, thus the term IoT. This collaborative approach to gathering data presents itself with a few
+challenges, as presented in the CERP-IOT report \cite{CERPIOT}:
+
+\begin{itemize}
+    \item Scale: With an increasing number of objects that are integrate into the IoT (millions if not
+    billions) monitoring and receiving data from all of them becomes a massive task in terms of memory,
+    computational power and energy consumption.
+
+    \item Large heterogeneity: With the rise of the IoT, more and more \say{things} were integrated
+    with the Internet and the rate at which this develops grows only faster. This has lead to a large number
+    of different devices that operate on various operating system, software platforms and hardware
+    implementations which makes it harder to interact with them in standard way.
+
+    \item Incomplete or inaccurate information about the \say{things}: Having an ever increasing number of
+    devices in the IoT infrastructure, wanting to access anyone of them requires some knowledge about the
+    target object, like the API it provides, what data it collects etc. With the large number of objects
+    that comprise the infrastructure, and the vast majority of them being installed by a human operator,
+    it is inevitable that for a great number of devices, the information that comes along will be incomplete
+    or inaccurate.
+\end{itemize}}
+
+Besides the challenges mentioned above, another one is to provide enough security for the devices that make up
+the infrastructure. Having so many small computer that are integrated into the Internet, it is easy to forget
+that despite the fact that they may not have a great processing capacity, the numbers in which they come
+can offer a great platform from which attackers may act. Any security flaw can leave the IoT vulnerable to
+hackers that may use it in destructive ways.
+
+The Internet of Things provides a promising platform on which new insights can be obtained about the world we
+live in given that the problem that may arise will be prevented.
