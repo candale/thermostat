@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 19:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -339,12 +339,6 @@ LaTeX Warning: Label `fig:humidex' multiply defined.
 
 LaTeX Warning: Label `fig:humidity_mf' multiply defined.
 
-
-LaTeX Warning: Label `fig:result1' multiply defined.
-
-
-LaTeX Warning: Label `fig:result2' multiply defined.
-
 ) (./architecture.aux
 
 LaTeX Warning: Label `fig:general_architecture' multiply defined.
@@ -384,6 +378,13 @@ LaTeX Warning: Label `fig:connect_ap' multiply defined.
 
 
 LaTeX Warning: Label `fig:control' multiply defined.
+
+) (./results.aux
+
+LaTeX Warning: Label `fig:result1' multiply defined.
+
+
+LaTeX Warning: Label `fig:result2' multiply defined.
 
 ) (./conclusions.aux))
 \openout1 = `thesis.aux'.
@@ -488,17 +489,18 @@ Missing character: There is no ù in font cmr12!
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 74.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
-) [6]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 76.
+ [6]) [7]
 \openout2 = `background.aux'.
 
- (./background.tex
+
+(./background.tex
 Chapter 1.
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
@@ -523,9 +525,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Citation `Fuzyy_Sets' on page 7 undefined on input line 33.
+LaTeX Warning: Citation `Fuzyy_Sets' on page 8 undefined on input line 33.
 
-[7
+[8
 
 
 
@@ -764,7 +766,7 @@ psfig: searching fuzzy_set.eps for bounding box
 psfig: including fuzzy_set.eps 
 psfig: searching mf_functions.eps for bounding box
 psfig: including mf_functions.eps 
-[8]
+[9]
 ! Undefined control sequence.
 \subsubsection ->\FloatBarrier 
                                \Oldsubsubsection 
@@ -787,7 +789,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[9]
+[10]
 ! Too many }'s.
 l.121 \end{itemize}}
                     
@@ -805,7 +807,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[10]
+[11]
 psfig: searching height.eps for bounding box
 psfig: including height.eps 
 ! Undefined control sequence.
@@ -822,7 +824,7 @@ and I'll forget about whatever was undefined.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11]
+[12]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -890,7 +892,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[12]
+[13]
 ! Too many }'s.
 l.279 \end{itemize}}
                     
@@ -908,7 +910,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[13]
+[14]
 psfig: searching fuzz_example_food.eps for bounding box
 psfig: including fuzz_example_food.eps 
 psfig: searching fuzz_example_treatment.eps for bounding box
@@ -924,7 +926,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[14] [15]
+[15] [16]
 psfig: searching fuzz_example.eps for bounding box
 psfig: including fuzz_example.eps 
 ! Undefined control sequence.
@@ -943,19 +945,19 @@ psfig: including final_res.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16] [17]
+[17] [18]
 ! Too many }'s.
 l.438 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-) [18]
+) [19]
 \openout2 = `conceptual_model.aux'.
 
  (./conceptual_model.tex
 Chapter 2.
-[19
+[20
 
 
 
@@ -974,10 +976,10 @@ and I'll forget about whatever was undefined.
 
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 20
+STAT \OT1/cmr/m/n/12 21
  []
 
-[20]
+[21]
 Missing character: There is no ¬ in font cmr12!
 Missing character: There is no ∞ in font cmr12!
 
@@ -1015,10 +1017,10 @@ and I'll forget about whatever was undefined.
 
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 21
+STAT \OT1/cmr/m/n/12 22
  []
 
-[21]
+[22]
 psfig: searching humidex.eps for bounding box
 psfig: including humidex.eps 
 
@@ -1032,16 +1034,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 22
- []
-
-[22]
-Overfull \hbox (6.55655pt too wide) has occurred while \output is active
-\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
 STAT \OT1/cmr/m/n/12 23
  []
 
 [23]
+Overfull \hbox (6.55655pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
+STAT \OT1/cmr/m/n/12 24
+ []
+
+[24]
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
                             \Oldsubsection 
@@ -1061,18 +1063,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 24
+STAT \OT1/cmr/m/n/12 25
  []
 
-[24
+[25
 
 ]
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 25
+STAT \OT1/cmr/m/n/12 26
  []
 
-[25]
+[26]
 ! Too many }'s.
 l.256 \end{itemize}}
                     
@@ -1080,18 +1082,12 @@ You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-Overfull \hbox (6.55655pt too wide) has occurred while \output is active
-\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 26
+Overfull \hbox (41.3758pt too wide) in paragraph at lines 265--269
+\OT1/cmr/m/n/12 cen-troid of a non-self-intersecting poly-no-mial de-fined by n
+ ver-tices $(\OML/cmm/m/it/12 x[]; y[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/
+cmr/m/n/12 (\OML/cmm/m/it/12 x[]; y[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; :::; \
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x[]; y[]\OT1/cmr/m/n/12 )$: 
  []
-
-[26]
-psfig: searching results1.eps for bounding box
-psfig: including results1.eps 
-psfig: searching results2.eps for bounding box
-psfig: including results2.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 )
 Overfull \hbox (6.55655pt too wide) has occurred while \output is active
@@ -1100,19 +1096,13 @@ STAT \OT1/cmr/m/n/12 27
  []
 
 [27]
-Overfull \hbox (6.55655pt too wide) has occurred while \output is active
-\OT1/cmr/m/sl/12 CHAPTER 2.  OUR APPROACH: FUZZY LOGIC-BASED IOT ENABLED THERMO
-STAT \OT1/cmr/m/n/12 28
- []
-
-[28]
 \openout2 = `architecture.aux'.
 
  (./architecture.tex
 Chapter 3.
 psfig: searching architecture_diagram.eps for bounding box
 psfig: including architecture_diagram.eps 
-[29
+[28
 
 
 
@@ -1146,10 +1136,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[30]
+[29]
 psfig: searching reporter_diagram.eps for bounding box
 psfig: including reporter_diagram.eps 
-[31]
+[30]
 psfig: searching reporter.eps for bounding box
 psfig: including reporter.eps 
 ! Undefined control sequence.
@@ -1163,7 +1153,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[32]
+[31]
 psfig: searching dht22.eps for bounding box
 psfig: including dht22.eps 
 Missing character: There is no ¬ in font cmr12!
@@ -1188,7 +1178,7 @@ psfig: including rf_tx_rx.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33]
+[32]
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
                             \Oldsubsection 
@@ -1205,7 +1195,7 @@ psfig: including attiny85.eps
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[34] [35]
+[33] [34]
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
                             \Oldsubsection 
@@ -1219,7 +1209,7 @@ and I'll forget about whatever was undefined.
 
 psfig: searching ESP8266.eps for bounding box
 psfig: including ESP8266.eps 
-[36] (./lstlang1.sty
+[35] (./lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) (./lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
@@ -1240,7 +1230,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[37]
+[36]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 331.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
@@ -1248,7 +1238,7 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 331.
- [38]
+ [37]
 ! Undefined control sequence.
 \subsubsection ->\FloatBarrier 
                                \Oldsubsubsection 
@@ -1260,7 +1250,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[39]
+[38]
 ! Undefined control sequence.
 \subsubsection ->\FloatBarrier 
                                \Oldsubsubsection 
@@ -1272,7 +1262,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[40]
+[39]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 418.
 
@@ -1287,7 +1277,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[41
+[40
 
 ]
 ! Undefined control sequence.
@@ -1301,7 +1291,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[42]
+[41]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -1395,7 +1385,7 @@ I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[43]
+[42]
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
                             \Oldsubsection 
@@ -1407,12 +1397,12 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[44]
+[43]
 Overfull \hbox (2.75229pt too wide) in paragraph at lines 612--613
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[45]
+[44]
 Overfull \hbox (2.75229pt too wide) in paragraph at lines 648--649
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1505,12 +1495,12 @@ I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[46]
+[45]
 Overfull \hbox (2.75229pt too wide) in paragraph at lines 720--721
 [][][][][][][][][][][][][][][][][][][] 
  []
 
-[47]
+[46]
 ! Undefined control sequence.
 \subsection ->\FloatBarrier 
                             \Oldsubsection 
@@ -1533,7 +1523,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[48]
+[47]
 psfig: searching connect_to_ap.eps for bounding box
 psfig: including connect_to_ap.eps 
 
@@ -1544,12 +1534,29 @@ by go-ing the URL http://thermostat.local/control.
 
 psfig: searching thermostat_control.eps for bounding box
 psfig: including thermostat_control.eps 
-) [49]
+) [48]
+\openout2 = `results.aux'.
+
+ (./results.tex
+psfig: searching results1.eps for bounding box
+psfig: including results1.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+psfig: searching results2.eps for bounding box
+psfig: including results2.eps 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [49
+
+
+] [50]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 4.
-) [50
+) [51
 
 
 
@@ -1600,12 +1607,12 @@ zzy logic,
 
 Missing character: There is no √ in font cmr12!
 Missing character: There is no © in font cmr12!
-[51
+[52
 
 
-]) [52] (./thesis.aux (./abstract.aux) (./introduction.aux)
-(./background.aux) (./conceptual_model.aux) (./architecture.aux)
-(./conclusions.aux))
+]) [53] (./thesis.aux (./abstract.aux) (./introduction.aux)
+(./background.aux) (./conceptual_model.aux) (./architecture.aux) (./results.aux
+) (./conclusions.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -1614,12 +1621,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5355 strings out of 495029
- 72707 string characters out of 6181523
- 181897 words of memory out of 5000000
- 8398 multiletter control sequences out of 15000+600000
+ 5363 strings out of 495029
+ 72796 string characters out of 6181523
+ 182401 words of memory out of 5000000
+ 8399 multiletter control sequences out of 15000+600000
  11108 words of font info for 41 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,14n,51p,266b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,51p,264b,1534s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.dvi (55 pages, 189516 bytes).
+Output written on thesis.dvi (56 pages, 190708 bytes).

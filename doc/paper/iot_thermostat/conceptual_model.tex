@@ -263,7 +263,21 @@ temperature control. This section presents o few of them.
 to compute the result, the crisp value which will be the actual decision.
 
 \qquad The defuzzyfication process is done by computing the center of gravity for the polynomial that results
-from the combinations of rule consequents.
+from the combinations of rule consequents. It uses the formula for calculating the centroid of a
+non-self-intersecting polynomial defined by n vertices $(x_{0}, y_{0}), (x_{1}, y_{1}), ...,
+(x_{n -1}, y_{n-1})$:
 
-\qquad Example:
+\begin{align}
+    C_{x} = \frac{1}{6A} \sum{i=0}^{n - 1}(x_{i} + x_{i + 1})(x_{i}y_{i + 1} - x_{i + 1}y_{i})
+\end{align}
+
+\begin{align}
+    C_{y} = \frac{1}{6A} \sum{i=0}^{n - 1}(y_{i} + y_{i + 1})(x_{i}y_{i + 1} - x_{i + 1}y_{i})
+\end{align}
+where A is the polygon's signed area,
+
+\begin{align}
+    A = \frac{1}{2} \sum{i=0}^{n-1}(x_{i}y_{i + 1} - x_{i + 1}y_{i})
+\end{align}
+
 
