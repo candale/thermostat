@@ -155,10 +155,11 @@ void dump_engine(fuzzy_engine* engine)
     printf("Rules\n=====\n");
     node = engine->rules->head;
     condition* cond;
+    int i = 0;
     while(node != 0) {
         fuzzy_rule* rule = node->data;
         aux_node = rule->antecedent->head;
-        printf("if ");
+        printf("%d if ", i);
         while(aux_node != 0) {
             cond = aux_node->data;
             printf("%s is %s %d ", cond->variable->name, cond->value->name,
@@ -170,6 +171,7 @@ void dump_engine(fuzzy_engine* engine)
                rule->consequent->variable->name, rule->consequent->value->name,
                rule->result, rule->consequent->result);
         node = node->next;
+        i++;
     }
 }
 
@@ -511,6 +513,16 @@ static point* defuzzify(fuzzy_engine* engine)
     free(points);
     free(raw_points);
     free(consequent_list);
+
+    // reset rules
+    linked_list_node *rule_node = engine->rules->head;
+    while(rule_node != 0) {
+        fuzzy_rule* rule = rule_node->data;
+        rule->consequent->result = 0;
+        rule->result = 0;
+
+        rule_node = rule_node->next;
+    }
 
     return centroid;
 }
