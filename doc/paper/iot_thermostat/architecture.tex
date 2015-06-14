@@ -1,4 +1,4 @@
-\chapter{Architecture}
+\chapter{Application}
 \label{chap:architecture}
 
 \qquad This chapter will describe the architecture of the thermostat: the components that make it up and how
@@ -739,58 +739,3 @@ printf("Centroid: X: %.4f  Y: %.4f\n",
 \end{lstlisting}
 
 The printed result will be the point that resulted from running the fuzzy engine.
-
-\section{Application}
-\label{sec:application}
-
-\qquad Every component that we have described so far plays a crucial role in the functioning of the thermostat and
-they are all necessary for this purpose. All the pieces of hardware that were chosen were done so considering
-most of all affordability, processing power and connectivity.
-
-In the following, this section will describe how all of the above parts are combined together to make up
-a functioning thermostat and how the user is interacting with it.
-
-\subsection{Thermostat high level components interaction}
-
-\qquad As stated before, the thermostat is composed of a central unit and one or more reporters. The central unit's
-purpose is to collect data from reporters, process the data and make a decision about whether or not to turn
-the heating on or off and it is also responsible for running the necessary software that provides the user
-interaction with the system.
-
-\qquad There are two types of connections that need to be alive for the thermostat be operating as intended.
-First of all, the radio connection through which data is send from the reporters to the central unit. This is
-a key aspect that the system cannot do without.
-The second connection, though not mandatory, is with the home wireless router. The central unit needs to
-connect to an access point through which the Internet is accessible so that data can be sent to remote
-servers. Even without having an Internet connection, if the central unit is linked with an AP, the access to
-it is much more easy to achieve given the mDNS feature that the ESP8266 has \ref{sec:opmode}. As implied,
-these are not necessary conditions for the thermostat to work but having them present greatly increases the
-user experience.
-
-\subsection{User manual}
-
-\qquad After first starting up the thermostat, the user needs to set the SSID and password of his/shes home wireless
-router in order for the ESP8266 to connect to it. In order to do that one must connect to the AP that the
-central unit has created an go to the address $192.168.4.1/wifi\_setup$ to set the credentials.
-
-\begin{figure}[h!]
-    \label{fig:connect_ap}
-    \centerline{\psfig{figure=connect_to_ap.eps,width=0.9\textwidth}}
-    \caption[Connect to wireless router access point]{Connect to wireless router access point}
-    \label{fig:connect_ap}
-\end{figure}
-
-After doing so, the thermostat will connect to the router, the AP it created will disappear and the ESP8266
-will be accessible through the network to which it connected by going to the URL http://thermostat.local.
-
-The thermostat provides means by which one can monitor the temperature that the reporters are recording and
-set a desired temperature. This is done by going the URL http://thermostat.local/control. A webpage will
-appear where one can configure the temperature that one desires.
-
-\begin{figure}[h!]
-    \label{fig:control}
-    \centerline{\psfig{figure=thermostat_control.eps,width=0.9\textwidth}}
-    \caption[Thermostat information and control page]{Thermostat information and control page}
-    \label{fig:control}
-\end{figure}
-

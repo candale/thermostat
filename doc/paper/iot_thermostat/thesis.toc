@@ -14,7 +14,7 @@
 \contentsline {subsubsection}{\numberline {1.1.5.2}Rule evaluation}{15}
 \contentsline {subsection}{\numberline {1.1.6}Defuzzification}{17}
 \contentsline {section}{\numberline {1.2}Internet of Things}{17}
-\contentsline {chapter}{\numberline {2}Our approach: Fuzzy logic-based IoT enabled thermostat}{20}
+\contentsline {chapter}{\numberline {2}Our approach: Fuzzy logic IoT enabled thermostat}{20}
 \contentsline {section}{\numberline {2.1}Motivation}{20}
 \contentsline {section}{\numberline {2.2}Fuzzy engine overview}{21}
 \contentsline {section}{\numberline {2.3}Linguistic variables}{21}
@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {2.3.3}Rate of cooling and heating}{25}
 \contentsline {section}{\numberline {2.4}Fuzzy rules}{26}
 \contentsline {section}{\numberline {2.5}Defuzzyfication}{27}
-\contentsline {chapter}{\numberline {3}Architecture}{28}
+\contentsline {chapter}{\numberline {3}Application}{28}
 \contentsline {section}{\numberline {3.1}Overview}{28}
 \contentsline {subsection}{\numberline {3.1.1}Central unit}{29}
 \contentsline {subsection}{\numberline {3.1.2}Reporter}{30}
@@ -40,9 +40,6 @@
 \contentsline {subsection}{\numberline {3.3.1}Data structures}{41}
 \contentsline {subsection}{\numberline {3.3.2}Fuzzy engine API}{43}
 \contentsline {subsection}{\numberline {3.3.3}API examples}{45}
-\contentsline {section}{\numberline {3.4}Application}{47}
-\contentsline {subsection}{\numberline {3.4.1}Thermostat high level components interaction}{47}
-\contentsline {subsection}{\numberline {3.4.2}User manual}{48}
-\contentsline {section}{\numberline {3.5}Results and discussions}{49}
-\contentsline {chapter}{\numberline {4}Future work and conclusions}{51}
-\contentsline {chapter}{\textbf {Bibliography}}{52}
+\contentsline {section}{\numberline {3.4}Results and discussions}{48}
+\contentsline {chapter}{\numberline {4}Conclusions}{50}
+\contentsline {chapter}{\textbf {Bibliography}}{51}
