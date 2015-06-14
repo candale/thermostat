@@ -25,7 +25,7 @@
 \title{Fuzzy Logic-based IoT enabled thermostat}
 
 
-\author{\IEEEauthorblockN{Candale Andrei}
+\author{\IEEEauthorblockN{Andrei Candale}
 \IEEEauthorblockA{Department of Computer Science\\
 Babe\c{s}-Bolyai University\\
 1 M. Kogalniceanu Street, 400084, Cluj-Napoca, Romania\\
@@ -40,7 +40,7 @@ This paper presents an accessible approach to an efficient, intelligent, Interne
 thermostat to be used, instead of the usual, naive thermostats that are currently in a reasonable price range
 on the market. The current means by which most of the population control their house temperature is to use a
 simple, straight-forward thermostat that is simply reactive to only the temperature it records and the
-temperature set point of the user. The anticipated outcome of this approach is to create a new kind of
+temperature set point of the user. The anticipated outcome of the proposed approach is to create a new kind of
 thermostat that is first of all affordable, making the most of the new technologies we have, accessible through
 the infrastructure which the Internet provides and intelligent, giving the user an improved experience and
 greater energy management control.
@@ -51,14 +51,14 @@ greater energy management control.
 \section{Introduction}
 \label{Introduction}
 
-\The evolution of modern technologies has lead to an increased number of Do-It-Yourself $(DIY)$ possibilities in
+\qquad The evolution of modern technologies has lead to an increased number of Do-It-Yourself $(DIY)$ possibilities in
 the field of electronics and microchips; thus it has become easy and affordable to incorporate such
 technologies in mundane, house-hold objects that can present themselves with some data that may be relevant.
 This new concept turned into a movement now called the Internet of Things $(IoT)$.
 
 We use the term “Internet of Things” to refer to the general idea of things, especially everyday objects, that
 are readable, recognizable, locatable, addressable, and/or controllable via the Internet,
-wireless LAN, wide-area network, or other means. Everyday objects includes not only the electronic devices we
+wireless LAN, wide-area network, or other means. Everyday objects include not only the electronic devices we
 encounter everyday, and not only the products of higher technological development such as vehicles and
 equipment, but things that we do not ordinarily think of as electronic at all, such as food, clothing, and
 shelter; materials, arts, and sub-assemblies; commodities and luxury items; landmarks, boundaries,
@@ -71,8 +71,8 @@ the development of cheap and powerful components which can now be used to build 
 
 With the now given possibility to acquire powerful, yet cheap, means by which one can control and gather data
 from different contexts, various applications can be developed, like the one described in this paper.
-The chosen hardware for the proposed thermostat consist of 3 microcontrollers, temperature and humidity sensors
-and radio transceiver, all coming to a price comparable to a normal thermostat. The main processing unit
+The chosen hardware for the proposed thermostat consists of three microcontrollers, temperature and humidity sensors
+and a radio transceiver, all coming to a price comparable to a normal thermostat. The main processing unit
 is an ESP8266 wireless module.
 
 Fuzzy logic was first proposed by Lotfi Zadef in his paper \say{Fuzzy Sets} \cite{FuzzySets}. At first, the
@@ -98,7 +98,7 @@ proposal is the hardware implementation which is designed to reduce the cost of 
 enable it to be accessed through the infrastructure of the Internet.
 
 The paper is organized as follows: Section II describes the motivation to build such a thermostat, Section III
-consists of information needed to understand the sections that follow , Section IV explains the proposed
+consists of information needed to understand the sections that follow, Section IV explains the proposed
 approach, Section V outlines the hardware architecture and human interaction and Section VI presents the conclusion
 that were drawn.
 
@@ -169,7 +169,7 @@ valuable extended flexibility for reasoning that makes it possible to take into 
 One advantage of fuzzy logic is that the rules by which the reasoning is made can be expressed in natural
 language making it easy to take advantage of a human expert and the knowledge he/she posses.
 
-In the rest of the section, the concepts surrounding fuzzy logic will be explained.
+Next, the concepts surrounding fuzzy logic will be explained.
 \subsubsection{Fuzzy sets}
 
 A fuzzy set is a class of objects with a continuum of grades of membership\cite{FuzzySets}.
@@ -221,7 +221,7 @@ Zadeh operators are in the following form:
 AND = min($\mu$_{A}(x), $\mu$_{B}(x))
 \end{align}
 \begin{align}
-OR = min($\mu$_{A}(x), $\mu$_{B}(x))
+OR = max($\mu$_{A}(x), $\mu$_{B}(x))
 \end{align}
 \begin{align}
 NOT = 1 - $\mu$_{A}(x)
@@ -251,7 +251,7 @@ For example: \par
 
 After computing the degree of membership of the linguistic variables \say{food} and \say{treatment} to their
 respective linguistic values from the antecedent, \say{good} and \say{nice}, the binary fuzzy logic operator \say{and}
-will be applied which will get the minimum of the two degrees (Figure \ref{fig:rule_eval}).
+will be applied which will get the minimum of the two degrees.
 The variable \say{tip} belongs to the linguistic value \say{great} to the degree of validity of the
 premise.
 
@@ -268,14 +268,7 @@ while Larse fuzzy implication model takes the product of the two
 Larsen \quad f_{a} \times f_{b}
 \end{align}
 
-The result will be the membership function of the consequent or a clipped version of it. Figure
-\ref{fig:rule_eval} shows an example
-\begin{figure}[h!]
-\label{fig:rule_eval}
-\centerline{\psfig{figure=rule_eval.eps,width=0.5\textwidth}}
-      \caption[MainModule]{Rule evaluation result.}
-\label{fig:rule_eval}
-\end{figure}
+The result will be the membership function of the consequent or a clipped version of it. \par
 
 The case can present itself when we have multiple rules for which the consequent is identical. \par
 For example: \par
@@ -352,8 +345,8 @@ live in given that the problem that may arise will be prevented.
 \section{Architecture}
 \label{Architecture}
 
-This section will present an in-depth look at the architecture used for the thermostat: each of them
-individually and then as an assembly
+This section presents an in-depth look at the architecture used for the thermostat: each of the components,
+individually, that make it up and then as an assembly.
 Pursuing the first key of the motivation for this approach, the chosen microcontrollers for this
 application are in the affordable category, but nonetheless powerful enough to carry out the task.
 
@@ -401,7 +394,9 @@ and one or more smaller modules that can be spread around the environment. The f
 and sends it to the main module to be processed.
 
 The main module (Figure \ref{fig:first_module}) is made up of the ESP8266 wireless module, an Attiny85 and a
-433 MHz radio receiver
+433 MHz radio receiver and the second module (Figure \ref{fig:second_module}) (that we will call reporter) is
+made up of a temperature and humidity sensor (DHT22), an Attiny85 and a 433 MHz radio transmitter. This will
+run on battery.
 
 \begin{figure}[h!]
 \label{fig:first_module}
@@ -409,9 +404,6 @@ The main module (Figure \ref{fig:first_module}) is made up of the ESP8266 wirele
       \caption[MainModule]{Main module prototype.}
 \label{fig:first_module}
 \end{figure}
-
-and the second module (Figure \ref{fig:second_module}) (that we will call reporter) is made up of a temperature and humidity sensor (DHT22), an
-Attiny85 and a 433 MHz radio transmitter. This will run on battery.
 
 \begin{figure}[h!]
 \label{fig:nn}
@@ -446,7 +438,7 @@ be able to access the thermostat by going to http://thermostat.local.
 If the thermostat has internet access while connected to the wireless router, it will publish its reading of
 temperature, humidity and computed values (rate of heating, rate of cooling) to a remote server.
 
-\section{Proposed approach}
+\section{Thermostat fuzzy engine}
 
 The proposed thermostat uses a Mamdani fuzzy logic engine to reach a conclusion, based on 4 inputs, about
 whether or not is the heating supposed to be on.
@@ -486,7 +478,7 @@ graphical representation of the correlation between temperature and relative hum
 Another factor taken into consideration is the rate at which the sensed environment heats up or cools down. This
 information helps take pre-emptive measures or avoid heating a room in which the temperature is steadily rising.
 
-\subsubsection{FuzzyEngine}
+\subsubsection{Fuzzy engine}
 \label{Thermostat fuzzy engine}
 
 Having described the factors that are taken into consideration, these are the inputs that the fuzzy engine takes:\par
@@ -499,13 +491,13 @@ Having described the factors that are taken into consideration, these are the in
 based on all the inputs described above
 \end{itemize}
 
-The inputs temperature and humidity are read from the sensors but rate of cooling and heating has to be
+The inputs temperature and humidity are read from the sensors but rate of cooling and heating have to be
 calculated in order to get the trend of the temperature. This was done by storing and analyzing data from
 a certain time interval in the past. Several approaches were considered for getting a useful value from the
 data points:
 \begin{itemize}
 
-\item the difference between the last and first data point from the dataset
+\item the difference between the last datapoint ($t_{m}$) and first data point ($t_{1}$) from the dataset
 \begin{align}
 Rate of cooling = t_{m} - t_{1}
 \end{align}
@@ -563,8 +555,8 @@ temperature control. This section presents o few of them.
     \item \say{if temp\_err is low and humidity is moderate and rate\_of\_heating is high then heat\_status is
      off} \par
     This is a general case where the heating should be off because the temperature error is low, meaning that
-    the temperature that the environment exhibits is close to the temperature the user has set. Also
-    the humidity begin moderate, the conditions are such that the humidex \ref{fig:humidex} would be in a
+    the temperature that the environment exhibits is close to the temperature the user has set. Also, because
+    the humidity is moderate, the conditions are such that the humidex \ref{fig:humidex} would be in a
     comfortable range. The only parameter that is high is the rate of heating. This means that the temperature
     is rising at a fast rate. If all of these tests are passed, the heating should be off.
 
@@ -577,7 +569,7 @@ temperature control. This section presents o few of them.
 
     \item \say{if temp\_err is low and humidity is low and rate\_of\_cooling is high then heat\_status is on}
     \par
-    This situation expressed the case when although the temperature error is low, the humidity is also low
+    This situation expresses the case when although the temperature error is low, the humidity is also low
     and the rate at which the environment cools down is high. This situation requires the heating to be on
     in order to remain at a constant temperature.
 
@@ -587,8 +579,8 @@ temperature control. This section presents o few of them.
     temperature error is high as well, making it necessary to turn the heating on to compensate.
 \end{itemize}}
 
-The fuzzy engine is triggered at an established interval of time, usually a minute, and the decision is sent over
-serial communication to the on-board Attiny85 which controls the relay.
+The fuzzy engine is triggered at an established interval of time by a timer that runs on the ESP8266, usually
+a minute, and the decision is sent over serial communication to the on-board Attiny85 which controls the relay.
 
 \section{Results and discussions}
 \label{Results and discussions}
@@ -607,7 +599,7 @@ loss of 14\% of the packets sent was recorded. The module behaves well except th
 In the event of a system crash, the ESP8266 recovers immediately and resumes normal operation, including connection
 to wireless router and mDNS publishing.
 
-The fuzzy engine was tested and the resulting data was aggregates in Figure \ref{fig:result1} and
+The fuzzy engine was tested and the resulting data was aggregated in Figure \ref{fig:result1} and
 \ref{fig:result2}. Figure \ref{fig:result1} shows the graph with the Y axis starting from 100 and decreasing
 while Figure \ref{fig:result2} show the graph with the Y axis starting from 0 and increasing.
 For both of the figures, we have the X axis that represents the temperature error, the Y axis that represents
@@ -642,8 +634,12 @@ the humidity are the factors that are taken into consideration.
 \label{fig:result1}
 \end{figure}
 
-Another thing that can be improved is seen in Figure \ref{fig:result2} where, for temperature trend of 0,
-temperature error 0 and humidity 0 the decision is to turn the heat on.
+A problem that can be observed in Figure \ref{fig:result2} is the fact that for temperature trend of 0,
+temperature error 0 and humidity 0, the decision is to turn the heat on. Although the humidity is 0, which
+would result in an uncomfortable environment, the current temperature is identical with the one the user has
+set and it is also steady, so the correct decision would be to turn the heating off. This has yet to be
+improved.
+
 \begin{figure}[h!]
 \label{fig:result2}
 \centerline{\psfig{figure=results2.eps,width=0.5\textwidth}}
@@ -651,8 +647,8 @@ temperature error 0 and humidity 0 the decision is to turn the heat on.
 \label{fig:result2}
 \end{figure}
 
-With the help of results from further experiments the rules of the fuzzy engine will be tweaked an possibly
-more input parameters will be added such that the decision will be as informed as possible.
+With the help of results from further experiments, the rules of the fuzzy engine will be tweaked and possibly
+more input parameters will be added such that the decisions will be as informed as possible.
 
 \section{Conclusion}
 \label{Conclusion}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  13 JUN 2015 19:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  14 JUN 2015 13:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -287,9 +287,6 @@ Package etexcmds Info: Could not find \expanded.
 LaTeX Warning: Label `fig:mf_comparison' multiply defined.
 
 
-LaTeX Warning: Label `fig:rule_eval' multiply defined.
-
-
 LaTeX Warning: Label `fig:fuzzy_to_end' multiply defined.
 
 
@@ -331,23 +328,13 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
-
-! Undefined control sequence.
-l.54 \The
-          evolution of modern technologies has lead to an increased number o...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[1
+ [1
 
 
 ]
@@ -1097,34 +1084,29 @@ I've put in what seems to be necessary to fix
 the current column of the current alignment.
 Try to go on, since this might almost work.
 
-psfig: searching rule_eval.eps for bounding box
-psfig: including rule_eval.eps 
 psfig: searching defuzz.eps for bounding box
 psfig: including defuzz.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [3]
-Underfull \hbox (badness 3965) in paragraph at lines 335--341
+Underfull \hbox (badness 3965) in paragraph at lines 328--334
 []\OT1/ptm/m/n/10 Incomplete or in-ac-cu-rate in-for-ma-tion about the
  []
 
 ! Too many }'s.
-l.341 \end{itemize}}
+l.334 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 psfig: searching ESP8266.eps for bounding box
 psfig: including ESP8266.eps 
-[4]
 psfig: searching attiny85.eps for bounding box
 psfig: including attiny85.eps 
-psfig: searching receiver.eps for bounding box
-psfig: including receiver.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[4]
+psfig: searching receiver.eps for bounding box
+psfig: including receiver.eps 
 psfig: searching transmiter.eps for bounding box
 psfig: including transmiter.eps 
 
@@ -1133,43 +1115,35 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [5]
 psfig: searching experiments.eps for bounding box
 psfig: including experiments.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 psfig: searching humidity_mf_labeled.eps for bounding box
 psfig: including humidity_mf_labeled.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [6]
-Underfull \hbox (badness 2846) in paragraph at lines 578--579
+Underfull \hbox (badness 2846) in paragraph at lines 570--571
 []\OT1/ptm/m/n/10 ``if temp[]err is low and hu-mid-ity is low and
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 585--585
+Underfull \hbox (badness 1655) in paragraph at lines 577--577
 []\OT1/ptm/m/n/10 ``if temp[]err is high and hu-mid-ity is high and
  []
 
 ! Too many }'s.
-l.588 \end{itemize}}
+l.580 \end{itemize}}
                     
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 psfig: searching humidex.eps for bounding box
 psfig: including humidex.eps 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 psfig: searching results1.eps for bounding box
 psfig: including results1.eps 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[7]
 psfig: searching results2.eps for bounding box
 psfig: including results2.eps 
-[7] (./scss2015ac.bbl
+(./scss2015ac.bbl
 Underfull \hbox (badness 1635) in paragraph at lines 66--69
 []\OT1/ptm/m/n/8 P. Ra-manathan, ``Fuzzy logic con-troller for tem-
  []
@@ -1197,12 +1171,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3432 strings out of 495029
- 50238 string characters out of 6181523
- 119592 words of memory out of 5000000
- 6592 multiletter control sequences out of 15000+600000
+ 3430 strings out of 495029
+ 50214 string characters out of 6181523
+ 116592 words of memory out of 5000000
+ 6591 multiletter control sequences out of 15000+600000
  28731 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,10n,22p,269b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on scss2015ac.dvi (8 pages, 54332 bytes).
+Output written on scss2015ac.dvi (8 pages, 54488 bytes).
