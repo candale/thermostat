@@ -92,7 +92,7 @@ ling_val* create_linguistic_value(const char* name,
 /*
  * Allocates memory for a rule and sets its antecentent and consequent
 */
-fuzzy_rule* create_rule(fuzzy_engine*, rule_antecedent*, rule_consequent*);
+fuzzy_rule* create_rule(rule_antecedent*, rule_consequent*);
 
 /*
  * Allocates memory for a rule anatecedent
@@ -106,8 +106,12 @@ void add_condition_to_antecedent(rule_antecedent*, condition*);
 /*
  * Allocates memory for a rule consequent and sets its linguistic
  * variable and its linguistc value
+ *
+ * Creates a rule consequent if and only if it does not find
+ * an identical one. If it does find an identical one, it will return it
+ * Consequents will be singletones
 */
-rule_consequent* create_rule_consequent(ling_var*, ling_val*);
+rule_consequent* create_rule_consequent(fuzzy_engine* engine, ling_var*, ling_val*);
 
 /*
  * Allocates memory for a condition and sets its variable, value and

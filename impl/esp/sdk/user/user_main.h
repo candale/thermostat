@@ -124,7 +124,7 @@ const char STA_ERROR[] = "error";
 #define MOCK_TEMPERATURE_SET 40
 #define MOCK_TEMPERATURE 28
 #define MOCK_HUMIDITY 90
-#define MOCK_LEST_SQUARE 0
+#define MOCK_LEST_SQUARE 0.1
 
 
 /****************************************************/

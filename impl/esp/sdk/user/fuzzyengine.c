@@ -69,27 +69,13 @@ create_linguistic_value(const char* name, double a, double b,
 
 /* ======================== FUZZY RULE LOGIC ============================== */
 fuzzy_rule*
-create_rule(fuzzy_engine* engine, rule_antecedent* antecedent,
+create_rule(rule_antecedent* antecedent,
                         rule_consequent* consequent)
 {
     fuzzy_rule* rule = (fuzzy_rule*)os_malloc(sizeof(fuzzy_rule));
     os_memset(rule, 0, sizeof(fuzzy_rule));
     rule->antecedent = antecedent;
     rule->consequent = consequent;
-
-    linked_list_node* node = engine->consequents->head;
-    uint8_t found = 0;
-    while(node != 0) {
-        rule_consequent* tmp_consequent = (rule_consequent*)node->data;
-        if(strcmp(tmp_consequent->value->name, consequent->value->name) == 0) {
-            found = 1;
-            break;
-        }
-        node = node->next;
-    }
-    if(found == 0) {
-        engine->consequents->add(engine->consequents, consequent);
-    }
 
     return rule;
 }
@@ -130,13 +116,31 @@ add_condition_to_antecedent(rule_antecedent* antecedent, condition* cond)
     antecedent->add(antecedent, cond);
 }
 
+/*
+ * Creates a rule consequent if and only if it does not find
+ * an identical one. If it does find an identical one, it will return it
+ * Consequents will be singletones
+*/
 rule_consequent*
-create_rule_consequent(ling_var* variable, ling_val* value)
+create_rule_consequent(fuzzy_engine* engine, ling_var* variable,
+                       ling_val* value)
 {
+    linked_list_node* node = engine->consequents->head;
+    while(node != 0) {
+        rule_consequent* tmp_consequent = (rule_consequent*)node->data;
+        if(tmp_consequent->variable == variable && tmp_consequent->value == value) {
+            return tmp_consequent;
+        }
+        node = node->next;
+    }
+
     rule_consequent* consequent = (rule_consequent*)new_linked_list();
-    os_memset(consequent, 0, sizeof(rule_consequent));
+    memset(consequent, 0, sizeof(rule_consequent));
     consequent->variable = variable;
     consequent->value = value;
+    // add the new consequent to the list
+    engine->consequents->add(engine->consequents, consequent);
+
     return consequent;
 }
 
