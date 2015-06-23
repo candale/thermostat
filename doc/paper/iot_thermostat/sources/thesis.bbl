@@ -1,0 +1,157 @@
+\begin{thebibliography}{10}
+
+\bibitem{website:dht22_library}
+Dht-sensor-library, https://github.com/adafruit/dht-sensor-library.
+
+\bibitem{website:tokopedia}
+Dht22 , https://www.tokopedia.com/.
+
+\bibitem{website:httpclient_lib}
+Esp8266 esphttpcliennt, https://github.com/caerbannog/esphttpclient.
+
+\bibitem{website:esppicture}
+Esp8266 wifi serial module, http://is.gd/jiv6jk.
+
+\bibitem{website:fuzzy_ctr_sys}
+Fuzzy control systems, https://en.wikipedia.org/wiki/fuzzy\_control\_system.
+
+\bibitem{website:attiny85program}
+How to program an attiny85, http://highlowtech.org/?p=1695.
+
+\bibitem{website:humidex}
+Humidex, http://is.gd/llhnw3.
+
+\bibitem{website:mf_types}
+Short term load forecasting using neural networks and fuzzy logic,
+  http://enpub.fulton.asu.edu/powerzone/loadforecast/fuzzy.htm.
+
+\bibitem{website:softserial}
+Softwareserial library, http://www.arduino.cc/en/reference/softwareserial.
+
+\bibitem{DisruptiveCivilTechnologies}
+Six technologies with potential impacts on us interests out to 2025.
+\newblock In {\em Disruptive Civil Technologies}. National Intelligence
+  Council, 2008.
+
+\bibitem{FuzzyLogicIOT}
+Candale Andrei.
+\newblock Fuzzy logic-based iot enabled thermostat.
+\newblock {\em Sesiunea de Comunicari Stiintifice ale Studentilor, Cluj-Napoca
+  (Romania)}, 2015.
+
+\bibitem{datasheet:dht22}
+AOSONG, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf.
+\newblock {\em DHT22 Temperature and Humidity sensor}.
+
+\bibitem{IoTThing}
+Kevin Ashton.
+\newblock That 'internet of things' thingfuzzy sets.
+\newblock {\em RFID Journal}, 2009.
+
+\bibitem{datasheet:atmega328}
+Atmel, http://is.gd/ef7Fyq.
+\newblock {\em Atmega328P-PU microcontroller}.
+
+\bibitem{datasheet:attiny85}
+Atmel, http://is.gd/wV8aIA.
+\newblock {\em Attiny85 microcontroller}.
+
+\bibitem{website:attiny85pic}
+Attiny85.
+\newblock http://thomastesla.com/mcu\_class/.
+
+\bibitem{website:espressifdesc}
+ESP8266.
+\newblock http://espressif.com/en/products/esp8266/.
+
+\bibitem{datasheet:esp8266_api}
+Espressif, http://is.gd/H0otjK.
+\newblock {\em ESP8266 Wireless module API}.
+
+\bibitem{website:espruino}
+Espruino.
+\newblock http://www.espruino.com/.
+
+\bibitem{CERPIOT}
+Peter Friess Sylvie~Woelfflé Harald~Sundmaeker, Patrick~Guillemin.
+\newblock Vision and challenges for realising the internet of things.
+\newblock 2010.
+
+\bibitem{FuzzyLogicMassUse}
+Samuel~E. Kisko.
+\newblock {\em Fuzzy Logic and its Practical use in Mass Transit Systems}.
+
+\bibitem{website:manchester}
+Manchester.
+\newblock http://mchr3k.github.io/arduino-libs-manchester/.
+
+\bibitem{human_comfort}
+"Warren~Fincher" "Michael~Boduch".
+\newblock Standards of human comfort.
+
+\bibitem{website:rf_tx_rx_img}
+MX-05CV.
+\newblock http://is.gd/eubb0h.
+
+\bibitem{INT:INT4550030208}
+Constantin Negoita.
+\newblock Fuzzy sets and applications: Selected papers by l. a. zadeh, r.
+  yager, s. ovchinnokov, r. tong, and h. nguyen (eds.), wiley, new york, 1987,
+  684 p.
+\newblock {\em International Journal of Intelligent Systems}, 3(2):203--204,
+  1988.
+
+\bibitem{website:nodemcu}
+NodeMCU.
+\newblock http://www.nodemcu.com/.
+
+\bibitem{FuzzyTempControl}
+P~Ramanathan.
+\newblock Fuzzy logic controller for temperature regulation process.
+
+\bibitem{website:attiny_sleep_tests}
+Nathan Seidle.
+\newblock Low power attiny85,
+  https://learn.sparkfun.com/tutorials/h2ohno/low-power-attiny.
+
+\bibitem{datasheet:radio_tx}
+Texas Instruments, http://www.ti.com/lit/ds/swrs037b/swrs037b.pdf.
+\newblock {\em Low Power Sub-1 GHz RF Transmitter}.
+
+\bibitem{FuzzyAutomotive}
+Constantin von Altrock.
+\newblock Fuzzy logic in automotive engineering.
+
+\bibitem{FuzzyAppliences}
+Constantin von Altrock.
+\newblock A fuzzy-logic thermostat.
+
+\bibitem{zadeh1996fuzzy}
+L.A. Zadeh, G.J. Klir, and B.~Yuan.
+\newblock {\em Fuzzy Sets, Fuzzy Logic, and Fuzzy Systems: Selected Papers}.
+\newblock Advances in fuzzy systems : applications and theory. World
+  Scientific, 1996.
+
+\bibitem{FuzzySets}
+Lotfali~Askar Zadeh.
+\newblock Fuzzy sets.
+\newblock {\em Fuzzy Logic}, 1965.
+
+\bibitem{FuzzySets_Algo}
+Lotfali~Askar Zadeh.
+\newblock Fuzzy algorithms.
+\newblock 1968.
+
+\bibitem{FuzzySets_NewApproach}
+Lotfali~Askar Zadeh.
+\newblock Outline of a new approach to the analysis of of complex systems and
+  decision processes.
+\newblock {\em Fuzzy Logic}, 1973.
+
+\bibitem{ling_vars_zadeh}
+Lotfali~Askar Zadeh.
+\newblock The concept of a linguistic variable and its application to
+  approximate reasoning-i.
+\newblock 1975.
+
+\end{thebibliography}

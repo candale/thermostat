@@ -1,0 +1,187 @@
+\documentclass[a4paper, 12pt, english]{report}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{babel}
+\usepackage{multicol}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\usepackage{psfig}
+
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{dirtytalk}
+
+\usepackage[parfill]{parskip}
+
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\usepackage{setspace}
+\onehalfspacing
+% \singlespacing
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\graphicspath{{images/}}
+
+\newcommand{\A}{\ensuremath{\mathcal A}}
+\newcommand{\M}{\ensuremath{\mathcal M}}
+\newcommand{\E}{\ensuremath{\mathcal E}}
+\newcommand{\X}{\ensuremath{\mathcal X}}
+\newcommand{\D}{\ensuremath{\mathcal D}}
+\newcommand{\G}{\ensuremath{\mathcal G}}
+\newcommand{\powerset}{\ensuremath{\mathcal P}}
+\newcommand{\R}{\ensuremath{\mathcal R}}
+\newcommand{\re}{\ensuremath{\mathbb R}}
+\newcommand{\nat}{\ensuremath{\mathbb N}}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+
+
+\setcounter{secnumdepth}{3}
+
+\geometry{a4paper,top=2cm,left=2cm,right=2cm,bottom=2cm}
+\newtheorem{lemma} {Lemma}
+\newtheorem{definition} {Definition}[section]
+\newtheorem{proof} {Proof}
+\newtheorem{remark} {Remark}[section]
+\newtheorem{prop} {Proposition}
+\newtheorem{theorem} {Theorem}
+%\newtheorem{algorithm}{Algorithm}[section]
+
+\newcommand{\eop}{\hfill $\sqcap\!\!\!\!\sqcup$} % end of proof
+\pagestyle{headings}
+\begin{document}
+
+\begin{titlepage}
+\sloppy
+\vspace*{\fill}
+\begin{center}
+\Huge{LUCRARE DE LICEN\c{T}\u{A}}
+\vspace*{\fill}
+
+\end{center}
+\end{titlepage}
+\flushpage
+
+\begin{titlepage}
+\sloppy
+\begin{center}
+\Large{UNIVERSITATEA BABE\c{S}-BOLYAI CLUJ-NAPOCA}
+
+\Large{FACULTATEA DE MATEMATIC\u{A} \c{S}I INFORMATIC\u{A} }
+
+\Large{SPECIALIZAREA INFORMATICA ENGLEZ\u{A}}
+
+
+
+%\textsl{
+\vspace{7cm}
+
+\Large \textbf{LUCRARE DE LICEN\c{T}\u{A} }
+
+\vspace{1.3cm}
+
+\Huge \textbf{TERMOSTAT BAZAT PE LOGICA FUZZY SI ACCESIBIL PRIN IOT}
+
+\end{center}
+\vspace{4cm}
+
+\begin{flushleft}
+    \Large{Conduc\u{a}tor \c{s}tiin\c{t}ific: Lect. Ph.D. Radu D. G\u{a}ceanu}
+\end{flushleft}
+
+\vspace{1cm}
+
+\begin{flushright}
+\Large{Absolvent: Candale Andrei}
+
+\end{flushright}
+
+\vspace{1cm}
+
+\begin{center}
+\Large{2015}
+\end{center}
+
+\end{titlepage}
+
+\begin{titlepage}
+\sloppy
+\begin{center}
+\Large{BABE\c{S}-BOLYAI UNIVERSITY CLUJ-NAPOCA}
+
+\Large{FACULTY OF MATHEMATICS AND COMPUTER SCIENCE}
+
+\Large{SPECIALIZATION COMPUTER SCIENCE IN ENGLISH}
+
+
+
+%\textsl{
+\vspace{7cm}
+\Large \textbf{DIPLOMA THESIS}
+
+\vspace{1.3cm}
+\Huge \textbf{FUZZY LOGIC-BASED IOT ENABLED THERMOSTAT}
+
+\end{center}
+\vspace{4cm}
+
+\begin{flushleft}
+    \Large{Scientific supervisor: Lect. Ph.D. Radu D. G\u{a}ceanu}
+\end{flushleft}
+
+\vspace{1cm}
+
+\begin{flushright}
+    \Large{Author: Candale Andrei}
+\end{flushright}
+
+\vspace{1cm}
+
+\begin{center}
+\Large{2015}
+\end{center}
+
+\end{titlepage}
+
+
+\include{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{introduction}
+
+\include{background}
+
+\include{conceptual_model}
+
+\include{architecture}
+
+\include{results}
+
+\include{conclusions}
+
+
+
+
+\renewcommand\bibname{Bibliography}
+
+\addcontentsline{toc}{chapter}{\textbf{Bibliography}}
+%\bibliographystyle{apalike}
+%\bibliographystyle{alpha}
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}

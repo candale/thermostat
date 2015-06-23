@@ -1,0 +1,57 @@
+\chapter*{Abstract}
+\thispagestyle{empty}
+\addtocounter{page}{-1}
+
+\scriptsize
+
+\qquad This paper presents an accessible approach to an efficient, intelligent, Internet of Things $(IoT)$ enabled
+thermostat to be used, instead of the usual, naive thermostats that are currently in a reasonable price range
+on the market. The current means by which most of the population control their house temperature is to use a
+simple, straight-forward thermostat that is simply reactive to only the temperature it records and the
+temperature set point of the user. The time we live in allows us to consider new approaches to temperature
+control that greatly reduce the production costs and enables greater control over how we choose to spend energy
+in this direction.
+
+\qquad With the help of fuzzy logic and the microcontrollers we now have at hand, it is possible
+to create a thermostat that is first of all affordable, accessible through the Internet and most of all
+intelligent, adapting to its environment based on o larger number of factors such as humidity and the rate at
+which the temperature rises or decreases. The presented application uses two types of microcontrollers, the ESP8266
+that has 802.11 b/g/n wireless capabilities and a full TCP and UDP stack built on it and the Attiny85
+developed by Atmel. The ESP8266 provides the memory and computational power to drive the fuzzy logic engine
+while the Attiny85 is used to perform tasks like actuating a relay, act as an interface between the ESP8266
+and a radio receiver, and collect data from sensors and send it through radio signals.
+The general architecture follows an agent-like pattern, having a central unit (ESP8266), where the fuzzy engine and user
+interaction software (low level webserver) is running and one or more \say{reporters} which are placed around the environment.
+The \say{reporters} have the task to read temperature and humidity data and sent it to the central unit for
+processing. The thermostat has the capability to publish its data on a remote server, where more complex
+processing may take place. It can also receive commands over the Internet, enabling one to control it in a
+remote fashion.
+
+
+\qquad This paper aims to achieve three main goals. First of all, to demonstrate that with the currently
+available hardware, an Internet of Things enabled thermostat can be build that would go into a price range
+comparable to normal thermostats. By normal, we mean thermostats that cannot be accessed through the Internet
+and do not have any intelligent decision making capabilities. Secondly, we aim to show that nowadays we have
+sufficiently powerful microcontrollers that can perform advanced enough tasks to make them suitable
+for an intelligent, fuzzy logic-based thermostat. Thirdly, this paper aims to show that having a thermostat
+that is integrated into the Internet of Things does not have to be an expensive choice and that is should be
+a rather ordinary feature.
+
+\qquad Results have shown that taking this approach at temperature control makes for a thermostat that is not
+only cheaper, but also smarter, being able to make decisions that are based on broader range of factors which
+lead to a more efficient energy consumption.
+
+\qquad The anticipated outcome of this approach is to create a new kind of
+thermostat that is first of all affordable, making the most of the new technologies we have, accessible through
+the infrastructure which the Internet provides and intelligent, giving the user an improved experience and
+greater energy management control.
+
+\qquad This work is the result of my own activity. I have neither given nor received unauthorized
+assistance on this work.
+
+\begin{flushright}
+Candale Andrei
+\end{flushright}
+
+
+\normalsize

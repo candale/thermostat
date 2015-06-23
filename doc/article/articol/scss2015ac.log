@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  14 JUN 2015 13:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2015.5.30)  17 JUN 2015 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1153,6 +1153,44 @@ Underfull \hbox (badness 5133) in paragraph at lines 66--69
 \OT1/ptm/m/n/8 per-a-ture reg-u-la-tion pro-cess.'' [On-line]. Avail-able:
  []
 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.113 ------, ``http://thomastesla.com/mcu_
+                                           class/.''
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.114 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.114 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.114 
+      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
 )
 
 ** Conference Paper **
@@ -1171,12 +1209,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3430 strings out of 495029
- 50214 string characters out of 6181523
+ 3439 strings out of 495029
+ 50309 string characters out of 6181523
  116592 words of memory out of 5000000
- 6591 multiletter control sequences out of 15000+600000
- 28731 words of font info for 66 fonts, out of 8000000 for 9000
+ 6596 multiletter control sequences out of 15000+600000
+ 29866 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,10n,22p,269b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on scss2015ac.dvi (8 pages, 54488 bytes).
+Output written on scss2015ac.dvi (8 pages, 54728 bytes).
