@@ -51,7 +51,7 @@ void init_program_data() {
 
 void ICACHE_RAM_ATTR
 setup_mdns(void *arg) {
-    serial_debug("Trying to setup mdns...", DEBUG_1);
+    // serial_debug("Trying to setup mdns...", DEBUG_1);
 
     uint8 station_status = wifi_station_get_connect_status();
     struct ip_info station_info;
@@ -69,25 +69,17 @@ setup_mdns(void *arg) {
         info->ipAddr = station_info.ip.addr;
         info->server_name = MDNS_SERVER_NAME;
         info->server_port = 80;
-        os_strcpy(info->txt_data, "version = now");
+        info->txt_data = "version = now";
 
         espconn_mdns_init(info);
         espconn_mdns_enable();
         espconn_mdns_server_register();
 
-        // reset timer at larger interval to keep publishing
-        // itself on the network
-        if(MDNS_RUNNING == 0) {
-            os_timer_disarm(&mdns_setup_timer);
-            os_timer_setfn(&mdns_setup_timer,
-                           (os_timer_func_t *)setup_mdns, NULL);
-            os_timer_arm(&mdns_setup_timer, MDNS_REPEAT_PUBLISH_INTERVAL_MILIS, 1);
-            MDNS_RUNNING = 1;
-        }
+        os_timer_disarm(&mdns_setup_timer);
 
-        serial_debug("Successfull mdns setup", DEBUG_1);
+        serial_debug("Mdns setup", DEBUG_1);
     } else {
-        serial_debug("Don't have station ip yet. Next time", DEBUG_1);
+        serial_debug("Don't have station IP yet. Next time", DEBUG_1);
     }
 }
 
@@ -514,11 +506,14 @@ double get_temperature_trend()
     for(i = 1; i < TEMPERATURE_HISTORY_CONTAINER_COUNT - 1; i++) {
         avg = (avg + temperature_history[i + 1] - temperature_history[i]) / 2;
     }
+
+    serial_debug("History", DEBUG_2);
+    serial_debug("=======", DEBUG_2);
     for(i = 0; i < TEMPERATURE_HISTORY_CONTAINER_COUNT; i++) {
         // sprintf_double(buf, temperature_history[i]);
         buf[0] = 0;
         ftoa(temperature_history[i], buf);
-        serial_debug(buf, DEBUG_1);
+        serial_debug(buf, DEBUG_2);
     }
 
     if(temperature_history_count != TEMPERATURE_HISTORY_CONTAINER_COUNT) {
@@ -527,13 +522,13 @@ double get_temperature_trend()
 
     os_sprintf(buf, "average: ");
     ftoa(avg, buf);
-    serial_debug(buf, DEBUG_1);
+    serial_debug(buf, DEBUG_2);
     publish_params.tmp_trend_avg = avg;
 
     os_sprintf(buf, "last and first difference: ");
     ftoa(temperature_history[temperature_history_count - 1] -
          temperature_history[0], buf);
-    serial_debug(buf, DEBUG_1);
+    serial_debug(buf, DEBUG_2);
     publish_params.tmp_trend_diff = (
         temperature_history[temperature_history_count - 1] -
         temperature_history[0]);
@@ -542,7 +537,7 @@ double get_temperature_trend()
     linreg(temperature_history_count, temperature_history, &m, &b, &r);
     os_sprintf(buf, "least squares: ");
     ftoa(m, buf);
-    serial_debug(buf, DEBUG_1);
+    serial_debug(buf, DEBUG_2);
     publish_params.tmp_trend_least_square = m;
 
     return avg;
@@ -618,6 +613,7 @@ void mock_data() {
 uint8 ICACHE_RAM_ATTR
 collect_data()
 {
+    // serial_debug("Collecting data...", DEBUG_1);
     if(!IS_DATA_COLLECTION_ENABLED) {
         serial_debug("Data collection is not enabled", DEBUG_1);
         return 0;
@@ -628,14 +624,25 @@ collect_data()
         return 1;
     }
 
-    serial_nprint(REQUEST_ATTINTY_TEMP, 3);
-    os_delay_us(1000 * 20);
+    os_delay_us(1000 * 50);
 
     char buffer[50];
     buffer[0] = 0;
+    int count = 0;
+    do {
+        count++;
+        serial_nprint(REQUEST_ATTINTY_TEMP, 3);
+        os_delay_us(1000 * 50);
+    } while(serial_read(buffer, 50) == 0 && count <3);
 
-    if(serial_read(buffer, 50) == 0) {
+    if(count == 3)  {
         serial_debug("Did not receive any data form sensors", DEBUG_1);
+        return 0;
+    }
+
+    serial_println(buffer);
+    if(nstrcmp(buffer, "NO_DATA", 7) == 0) {
+        serial_debug("No data from reporters", DEBUG_1);
         return 0;
     }
 
@@ -647,30 +654,47 @@ collect_data()
     // sometimes we get values that are very high ( ~= 150) out of nowhere
     // this is a temporary fix that solves that. the problem seems to originate
     // in the attiny code
-    if(publish_params.temperature != MAX_VAR) {
-        if(abs(tmp -  publish_params.temperature) <= MAX_VAR_DIFF) {
-            publish_params.temperature = tmp;
-        }
-    } else {
-        publish_params.temperature = tmp;
-    }
+    // if(publish_params.temperature != MAX_VAR) {
+    //     if(abs(tmp -  publish_params.temperature) <= MAX_VAR_DIFF) {
+    //         publish_params.temperature = tmp;
+    //     }
+    // } else {
+    //     publish_params.temperature = tmp;
+    // }
 
-    if(publish_params.humidity != MAX_VAR) {
-        if(abs(hum -  publish_params.humidity) <= MAX_VAR_DIFF) {
-            publish_params.humidity = hum;
-        }
-    } else {
-        publish_params.humidity = hum;
-    }
+    // if(publish_params.humidity != MAX_VAR) {
+    //     if(abs(hum -  publish_params.humidity) <= MAX_VAR_DIFF) {
+    //         publish_params.humidity = hum;
+    //     }
+    // } else {
+    //     publish_params.humidity = hum;
+    // }
+
+    publish_params.temperature = tmp;
+    publish_params.humidity = hum;
 
     record_temperature_history(publish_params.temperature);
     get_temperature_trend();
+
+    os_sprintf(buffer, "Temperature: ");
+    ftoa(publish_params.temperature, buffer);
+    serial_debug(buffer, DEBUG_1);
+
+    os_sprintf(buffer, "Humidity: ");
+    ftoa(publish_params.humidity, buffer);
+    serial_debug(buffer, DEBUG_1);
+
+    os_sprintf(buffer, "Temperature trend: ");
+    ftoa(publish_params.tmp_trend_least_square, buffer);
+    serial_debug(buffer, DEBUG_1);
+
     return 1;
 }
 
 void ICACHE_RAM_ATTR
 handle_fuzzy()
 {
+    serial_debug("Running fuzzy engine...", DEBUG_1);
     if(!IS_FUZZY_ENABLED) {
         serial_debug("Fuzzy is not enabled", DEBUG_1);
         return;
@@ -690,19 +714,14 @@ handle_fuzzy()
     point* p = run_fuzzy(engine);
 
     if(p == 0) {
-        serial_debug("Rules do not cover everything. Area is 0", DEBUG_1);
+        serial_debug("Fuzzy engine decision: stay the same", DEBUG_1);
         return;
     }
 
     char buf[50];
-    os_strcpy(buf, "x: ");
+    os_strcpy(buf, "Fuzzy engine decision value: ");
     ftoa(p->x, buf);
     serial_debug(buf, DEBUG_1);
-
-    os_strcpy(buf, "y: ");
-    ftoa(p->y, buf);
-    serial_debug(buf, DEBUG_1);
-    os_free(p);
 }
 
 void ICACHE_RAM_ATTR
@@ -712,11 +731,10 @@ collect_and_process_data(void* arg)
     if(collect_data()) {
         handle_fuzzy();
 
-        if(wifi_station_get_connect_status() == STATION_GOT_IP &&
-                !IS_PUBLISH_ENABLED) {
+        if(wifi_station_get_connect_status() == STATION_GOT_IP) {
             publish_data();
         } else {
-            serial_println("Station does not have ip");
+            serial_println("Station does not have IP");
         }
     }
     reset_serial_params();
@@ -813,7 +831,7 @@ void init_fuzzy_engine()
 
     // RATE OF HEATING -- INPUT
     ling_var* rate_of_heating = create_linguistic_variable("roh", 4, INPUT);
-    ling_val* high_roh = create_linguistic_value("low", 0, 0, 0.11, 0.28);
+    ling_val* high_roh = create_linguistic_value("low", -0.01, -0.01, 0.11, 0.28);
     ling_val* moderate_roh = create_linguistic_value("moderate",
                                                      0.11, 0.32, 0.32, 0.5);
     ling_val* low_roh = create_linguistic_value("high", 0.35, 0.5, 2, 2);

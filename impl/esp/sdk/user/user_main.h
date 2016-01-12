@@ -48,7 +48,7 @@
 /*****************************************************/
 /* *************** TIME SYNC CONSTANTS ***************/
 // data read and publish time interval
-#define PUBLISH_REPEAT_INTERVAL_SECONDS 10
+#define PUBLISH_REPEAT_INTERVAL_SECONDS 30
 #define PUBLISH_REPEAT_INTERVAL_MILIS PUBLISH_REPEAT_INTERVAL_SECONDS * 1000
 
 // mdns retry time interval
@@ -65,7 +65,7 @@
 #define MAX_VAR_DIFF 40
 #define MAX_VAR 0xFFFFFFFF
 // how many minutes of history will be held in memory
-#define TEMPERATURE_HISTORY_SPAN 5
+#define TEMPERATURE_HISTORY_SPAN 1
 // don't touch this. IT IS COMPUTED
 #define TEMPERATURE_HISTORY_CONTAINER_COUNT 60 / PUBLISH_REPEAT_INTERVAL_SECONDS * TEMPERATURE_HISTORY_SPAN
 
@@ -120,7 +120,7 @@ const char STA_ERROR[] = "error";
 
 /*****************************************/
 /* *************** MOCKING ***************/
-#define MOCK_DATA 1
+#define MOCK_DATA 0
 #define MOCK_TEMPERATURE_SET 40
 #define MOCK_TEMPERATURE 28
 #define MOCK_HUMIDITY 90
@@ -129,7 +129,7 @@ const char STA_ERROR[] = "error";
 
 /****************************************************/
 /* *************** PROGRAM PARAMETERS ***************/
-#define IS_PUBLISH_ENABLED 0
+#define IS_PUBLISH_ENABLED 1
 #define IS_FUZZY_ENABLED 1
 #define IS_DATA_COLLECTION_ENABLED 1
 

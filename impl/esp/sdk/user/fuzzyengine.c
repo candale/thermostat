@@ -541,9 +541,17 @@ point* defuzzify(fuzzy_engine* engine)
     os_free(points);
     os_free(raw_points);
     os_free(consequent_list);
-    points = 0;
-    raw_points = 0;
-    consequent_list = 0;
+
+    // reset rules
+    linked_list_node *rule_node = engine->rules->head;
+    while(rule_node != 0) {
+        fuzzy_rule* rule = rule_node->data;
+        rule->consequent->result = 0;
+        rule->result = 0;
+
+        rule_node = rule_node->next;
+    }
+
     return centroid;
 }
 

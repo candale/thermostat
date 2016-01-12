@@ -664,9 +664,9 @@ void init_fuzzy_engine(fuzzy_engine* engine) {
 
 void test_single(fuzzy_engine* engine) {
     register_value_by_name(engine, "temp_err", 2.81);
-    register_value_by_name(engine, "humidity", 90.01);
-    register_value_by_name(engine, "roc", -1.12);
-    register_value_by_name(engine, "roh", -1);
+    register_value_by_name(engine, "humidity", 40);
+    register_value_by_name(engine, "roc", 0);
+    register_value_by_name(engine, "roh", 0);
 
     point * p = run_fuzzy(engine);
     dump_engine(engine);
@@ -712,7 +712,7 @@ void run_test(fuzzy_engine * engine)
 int main() {
     fuzzy_engine* engine = create_fuzzy_engine();
     init_fuzzy_engine(engine);
-    // test_single(engine);
-    run_test(engine);
+    test_single(engine);
+    // run_test(engine);
     return 0;
 }
